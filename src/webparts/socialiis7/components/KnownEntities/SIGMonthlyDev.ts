@@ -6,6 +6,7 @@ function SIGMonthlyDev(){
     const entity :IEntity = {
       title: '', //
       keywords: ["SIG","SharePoint","SPFx"],
+      profilePic: "https://someURL.com",
       blog: [
         {
           title: '',

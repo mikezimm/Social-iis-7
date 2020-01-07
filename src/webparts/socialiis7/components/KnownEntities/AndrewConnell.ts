@@ -6,6 +6,7 @@ function AndrewConnell(){
     const entity :IEntity = {
       title: 'Andrew Connell', //
       keywords: ["MVP","SharePoint","SPFx"],
+      profilePic: "https://someURL.com",
       blog: [
         {
           title: 'Andrew\'s Blog',

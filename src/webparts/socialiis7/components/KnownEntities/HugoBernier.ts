@@ -6,6 +6,7 @@ function HugoBernier(){
     const entity :IEntity = {
       title: '', //
       keywords: ["MVP","SharePoint","SPFx"],
+      profilePic: "https://someURL.com",
       blog: [
         {
           title: '',

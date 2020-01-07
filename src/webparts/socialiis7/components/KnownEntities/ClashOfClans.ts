@@ -6,6 +6,7 @@ function SIGSPFx(){
     const entity :IEntity = {
       title: '', //
       keywords: ["Game","IPad","bla bla bla"],
+      profilePic: "https://someURL.com",
       blog: [
         {
           title: '',
