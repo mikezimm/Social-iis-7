@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.9.1",
+    "libraryName": "socialiis-7",
+    "libraryId": "08c78ac8-2814-43b1-820d-7b01145e9a0e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Socialiis7",
+    "componentType": "webpart",
+    "framework": "react",
+    "componentName": "Socialiis7",
+    "componentDescription": "Socialiis7 web part v7",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false
+  }
+}
