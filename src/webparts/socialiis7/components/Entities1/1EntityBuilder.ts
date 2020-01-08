@@ -7,9 +7,6 @@ export function buildEntities() {
     let Entities : IEntity[] = [];
     console.log('ents', ents);
     Entities.push(addTitleKey(ents.AndrewConnell()));
-    Entities.push(addTitleKey(ents.BlackCats()));
-    Entities.push(addTitleKey(ents.ClashOfClans()));
-    Entities.push(addTitleKey(ents.DarkSouls()));
     Entities.push(addTitleKey(ents.DavidWarner()));
     Entities.push(addTitleKey(ents.HugoBernier()));
     Entities.push(addTitleKey(ents.SIGGeneralDev()));

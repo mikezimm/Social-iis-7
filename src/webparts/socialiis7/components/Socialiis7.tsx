@@ -18,10 +18,11 @@ import {
   buildEntities,buildEntityKeywords, getEntitiesForThis
 
 } from './Entities1/1EntityBuilder';
-import {
-  buildEntities2
+import {  buildEntities2} from './Entities2/1EntityBuilder';
+import {  buildEntities4} from './Entities4/1EntityBuilder';
+import {  buildEntities7} from './Entities7/1EntityBuilder';
 
-} from './Entities2/1EntityBuilder';
+
 /**
  * Typical Youtube embed
  * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -35,7 +36,6 @@ import {
  */
 
 export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
-
 
   private createPivotData(){
     // Using https://stackoverflow.com/questions/3103962/converting-html-string-into-dom-elements
@@ -96,10 +96,13 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
   public constructor(props:ISocialiis7Props){
     super(props);
-    let thisTopic = "Auto";
-    let buildEntitiesX = buildEntities();
-    let userEntities = buildEntities2();
-    let allEntities = buildEntitiesX.concat(userEntities);
+    let thisTopic = "SharePoint";
+    let Entities1 = buildEntities();
+    let Entities2 = buildEntities2();
+    let Entities4 = buildEntities4();
+    let Entities7 = buildEntities7();
+    
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7);
     let entityKeywords = buildEntityKeywords(allEntities, "keywords");
     let allTopics = buildEntityKeywords(allEntities, "topics");
     let entitiesForTopics = getEntitiesForThis(allEntities, "topics",thisTopic);
@@ -110,8 +113,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
       loadData: {
         thisTopic: thisTopic,
-        masterEntities: buildEntitiesX,
-        userEntities: userEntities,
+        Entities1: Entities1,
+        Entities2: Entities2,
+        Entities4: Entities4,
+        Entities7: Entities7,
         allEntities: allEntities,
         entityKeys: entityKeywords,
         allTopics: allTopics,
@@ -151,7 +156,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
   public render(): React.ReactElement<ISocialiis7Props> {
     console.log('Public Render: this.state', this.state);
-    console.log('buildEntities', buildEntities());
     return (
       <div className={ styles.socialiis7 }>
         <div className={ styles.container }>

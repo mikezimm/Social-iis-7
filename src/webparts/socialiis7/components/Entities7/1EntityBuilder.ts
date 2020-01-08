@@ -3,13 +3,13 @@ import { IEntity } from '../ISocialiis7Props';
 
 import * as ents from './index';
 
-export function buildEntities2() {
+export function buildEntities7() {
     let Entities : IEntity[] = [];
     console.log('ents', ents);
-    Entities.push(addTitleKey(ents.GM()));
-    Entities.push(addTitleKey(ents.Ford()));
-    Entities.push(addTitleKey(ents.FCA()));
-    Entities.push(addTitleKey(ents.Tesla()));
+    Entities.push(addTitleKey(ents.BlackCats()));
+    Entities.push(addTitleKey(ents.ClashOfClans()));
+    Entities.push(addTitleKey(ents.DarkSouls()));
+
     return Entities;
 }
 

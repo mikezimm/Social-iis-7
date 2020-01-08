@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function FCA(){
 
   const entity :IEntity = {
-    title: 'Add Title of Entity', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    title: 'FCA', //
+    keywords: ["Global","Cars","Trucks","Electric","Gas","OEM"], // Can be any number of
     profilePic: "https://someURL.com",
     topics: ["Auto"],
     blog: [
