@@ -10,7 +10,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { pivotOptionsGroup, } from '../../../services/propPane';
-import {IUser, IMyPivots, IPivot,} from './ISocialiis7State';
+import {IUser, ISocialiis7State, IMyPivots, IPivot,} from './ISocialiis7State';
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
@@ -21,7 +21,7 @@ import {
 import {  buildEntities2} from './Entities2/1EntityBuilder';
 import {  buildEntities4} from './Entities4/1EntityBuilder';
 import {  buildEntities7} from './Entities7/1EntityBuilder';
-
+import {  buildEntities9} from './Entities9/1EntityBuilder';
 
 /**
  * Typical Youtube embed
@@ -35,90 +35,118 @@ import {  buildEntities7} from './Entities7/1EntityBuilder';
  * 
  */
 
-export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
+export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocialiis7State> {
 
-  private createPivotData(){
+  private containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+          console.log('containsObject: True',obj, list);
+          return true;
+        }
+    }
+
+    console.log('containsObject: False',obj, list);
+    return false;
+}
+
+  private createPivotData(sourceArray: any [], key = null){
     // Using https://stackoverflow.com/questions/3103962/converting-html-string-into-dom-elements
-    let pivots : IMyPivots = {
-      projects: 
-        [
-          { headerText: "Yours",
-            filter: "your",
-            itemKey: "your",
-            data: "Projects where you are the Leader",
-          },
-          { headerText: "Your Team",
-            filter: "team",
-            itemKey: "team",
-            data: "Projects where you are in the Team",
-          },
-          { headerText: "Everyone",
-            filter: "everyone",
-            itemKey: "everyone",
-            data: "Projects where Everyone is marked Yes - overrides other categories",
-          },
-          { headerText: "Others",
-            filter: "otherPeople",
-            itemKey: "otherPeople",
-            data: "Projects where you are not the Leader, nor in the team, and not marked Everyone",
-          },
-        ]
-      ,
-      history: 
-        [
-          { headerText: "Yours",
-            filter: "your",
-            itemKey: "your",
-            data: "History where you are the User",
-          },
-          { headerText: "Your Team",
-            filter: "team",
-            itemKey: "team",
-            data: "History where you are part of the Team, but not the User",
-          },
-          { headerText: "Everyone",
-            filter: "everyone",
-            itemKey: "everyone",
-            data: "Currently not in use",
-          },
-          { headerText: "Others",
-            filter: "otherPeople",
-            itemKey: "otherPeople",
-            data: "History where you are not the Leader, nor in the team, and not marked Everyone",
-          },
-        ]
-      ,
-    };
+    let result : IPivot[] = [];
+    let headers: string[]= [];
 
-    return pivots;
+    if (!key) {
+      for (let item of sourceArray) {
+        let newPivot = {
+          headerText: item,
+          itemKey: item.replace(" ", ""),
+          filter: item,
+        };
+        console.log('createPivotData: ',headers, item);
+        if (headers.indexOf(item) < 0 ) { result.push(newPivot); headers.push(item) }
+      }
 
+    } else {
+      for (let item of sourceArray) {
+        console.log('createPivotData: typeof item ',typeof item);
+        console.log('createPivotData: typeof item ',typeof item === 'string');
+        if (typeof item !== 'string' && typeof item !== 'number'){
+          for (let child of item[key]) {
+            let newPivot = {
+              headerText: child,
+              itemKey: child.replace(" ", ""),
+              filter: child,
+            };
+            console.log('createPivotData: ',headers, child);
+            if (headers.indexOf(child) < 0 ) { result.push(newPivot); headers.push(child) }
+          }
+        } else {
+          let newPivot = {
+            headerText: item[key],
+            itemKey: item[key].replace(" ", ""),
+            filter: item[key],
+          };
+          console.log('createPivotData: ',headers, item[key]);
+          if (headers.indexOf(item[key]) < 0 ) { result.push(newPivot); headers.push(item[key]) }
+        }
+
+      }
+
+    }
+
+    return result;
   }
 
   public constructor(props:ISocialiis7Props){
     super(props);
+    let currentPivotSet = "keysForTopic";
     let thisTopic = "SharePoint";
     let Entities1 = buildEntities();
     let Entities2 = buildEntities2();
     let Entities4 = buildEntities4();
     let Entities7 = buildEntities7();
+    let Entities9 = buildEntities9();    
     
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7);
-    let entityKeywords = buildEntityKeywords(allEntities, "keywords");
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9);
+    let allEntityKeywords = buildEntityKeywords(allEntities, "keywords");
     let allTopics = buildEntityKeywords(allEntities, "topics");
     let entitiesForTopics = getEntitiesForThis(allEntities, "topics",thisTopic);
     let keysForTopic = buildEntityKeywords(entitiesForTopics, "keywords");
+    
+
+    let pivots : IMyPivots = {
+      allTopics: [],
+      allEntityKeywords: [],
+      keysForTopic: [],
+      entities: [],
+      spacers: [],
+    };
+
+    pivots.allTopics = this.createPivotData(allTopics, null);
+    pivots.keysForTopic = this.createPivotData(keysForTopic, null);
+    pivots.allEntityKeywords = this.createPivotData(entitiesForTopics, 'keywords');
+    pivots.entities = this.createPivotData(allEntities, 'title');
+    pivots.spacers =  this.createPivotData([" "," "," "], null);
+
+    let currentPivots : IPivot[][] = [pivots.allEntityKeywords,pivots.keysForTopic];
+
 
     this.state = { 
-      pivots: this.createPivotData(),
-
+      sourceListName: "Something",
+      description: "desc goes here",
+      pivots: pivots,
+      loadStatus: "loading",
+      currentPivotSet: currentPivotSet,
+      currentPivots: currentPivots,
       loadData: {
         thisTopic: thisTopic,
         Entities1: Entities1,
         Entities2: Entities2,
         Entities4: Entities4,
         Entities7: Entities7,
+        Entities9: Entities9,
         allEntities: allEntities,
-        entityKeys: entityKeywords,
+        allEntityKeywords: allEntityKeywords,
         allTopics: allTopics,
         entitiesForTopics: entitiesForTopics,
         keysForTopic: keysForTopic,
@@ -153,13 +181,54 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 */
   }
 
+  public createPivotObject(pivots: IPivot[][], display){
+
+    if (pivots.length === 0) { return '';}
+
+    //let setPivot = pivots[0].headerText;
+    let pivotPart = 
+    <Pivot 
+      style={{ flexGrow: 1, paddingLeft: '10px', display: display }}
+      linkSize= { pivotOptionsGroup.getPivSize(this.props.pivotSize) }
+      linkFormat= { pivotOptionsGroup.getPivFormat(this.props.pivotFormat) }
+      onLinkClick= { this.onLinkClick.bind(this) }  //{this.specialClick.bind(this)}
+      //selectedKey={ setPivot }
+      headersOnly={true}>
+        {this.createPivots(pivots[0] , this.props)}
+        {this.createPivots(this.state.pivots.spacers , this.props)}
+        {this.createPivots(pivots[1] , this.props)}
+    </Pivot>;
+    return pivotPart;
+  }
+
 
   public render(): React.ReactElement<ISocialiis7Props> {
     console.log('Public Render: this.state', this.state);
+
+        /**
+     * this section was added to keep pivots in sync when syncProjectPivotsOnToggle === true
+     */
+    let display1 = this.state.loadStatus !== 'xyz' ? "block" :"none";
+    let display2 = this.state.loadStatus !== 'xyz' ? "block" :"none";
+    let choice1 = this.state.loadStatus;
+    let choice2 = this.state.loadStatus;
+
+    /*
+    if (this.state.syncProjectPivotsOnToggle){
+      display1 = "block";
+      display2 = "none";
+      choice1 = this.state.projectMasterPriorityChoice;
+      choice2 = this.state.projectMasterPriorityChoice;
+    }
+*/
+
     return (
       <div className={ styles.socialiis7 }>
         <div className={ styles.container }>
           <div className={ styles.row }>
+          <div className={styles.floatLeft}>
+          { this.createPivotObject(this.state.currentPivots, display1)  }
+          </div>
             <div className={ styles.column }>
               <span className={ styles.title }>Welcome to SharePoint!</span>
               <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
@@ -175,4 +244,64 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
       </div>
     );
   }
+
+  public onLinkClick = (item): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+    let e: any = event;
+
+    if (e.ctrlKey) {
+      //Set clicked pivot as the hero pivot
+
+
+    } else if (e.altKey) {
+      //Enable-disable ChangePivots options
+      /*
+      this.setState({
+        
+      });
+      */
+
+    } else {
+
+      console.log('onLinkClick: this.state', this.state);
+      console.log('onLinkClick: item', item);
+      
+      let thisFilter = [];
+      let pivots = this.state.pivots.allTopics;  
+
+      for (let p of pivots){
+        if ( p.headerText === item.props.headerText ) {
+          thisFilter.push(p.filter);
+        }
+      }
+
+
+      this.setState({
+
+      });
+
+    }
+
+  } //End onClick
+
+    //http://react.tips/how-to-create-reactjs-components-dynamically/ - based on createImage
+    public createPivot(pivT: IPivot) {
+
+      return (
+        <PivotItem 
+          headerText={pivT.headerText} 
+          itemKey={pivT.itemKey}
+        >
+        </PivotItem>
+      );
+  }
+
+  public createPivots(pivots: IPivot[], thisProps: ISocialiis7Props){
+    let piv2 = pivots.map(this.createPivot);
+    return (
+      piv2
+    );
+  }
+
+
 }

@@ -48,7 +48,7 @@ export function getEntitiesForThis(Entities : IEntity[], useKey: string, thisKey
         let theseKeys = entity[useKey];
         if ( theseKeys ) {
 
-            if (theseKeys.indexOf(thisKey) > -1) { filteredEntities.push(entity)}
+            if (theseKeys.indexOf(thisKey) > -1) { filteredEntities.push(entity);}
 
         }
     }

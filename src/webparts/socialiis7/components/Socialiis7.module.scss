@@ -10,8 +10,23 @@
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
+    background-color: $ms-color-themeLight;
     padding: 20px;
+  }
+
+  .floatLeft {
+    //width: 1200px;
+    //max-width: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    //align-items: center makes items centered vertically
+    align-items: center;
+
+    //These did nothing to prevent the left icons from shifting on hover.
+    //border: 0px;
+    //margin: 0px;
+    //padding: 0px;
   }
 
   .column {
