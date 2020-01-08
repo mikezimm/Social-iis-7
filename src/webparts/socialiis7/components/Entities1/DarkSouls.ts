@@ -1,11 +1,12 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
-  export function HugoBernier(){
+export function DarkSouls(){
 
-    const entity :IEntity = {
+  const entity :IEntity = {
+
       title: '', //
-      keywords: ["MVP","SharePoint","SPFx"],
+      keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
       blog: [
         {
@@ -88,7 +89,7 @@ import { IEntity } from '../ISocialiis7Props'
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

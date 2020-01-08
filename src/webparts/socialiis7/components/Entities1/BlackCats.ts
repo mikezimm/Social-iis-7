@@ -1,13 +1,14 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
+export function BlackCats(){
 
-export function ClashOfClans(){
+  const entity :IEntity = {
 
-    const entity :IEntity = {
       title: '', //
-      keywords: ["Game","IPad","bla bla bla"],
+      keywords: ["Pets","Dark"],
       profilePic: "https://someURL.com",
+      topics: ["Animals"],
       blog: [
         {
           title: '',
@@ -89,7 +90,7 @@ export function ClashOfClans(){
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

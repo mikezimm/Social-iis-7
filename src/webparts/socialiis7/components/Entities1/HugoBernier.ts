@@ -1,12 +1,13 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
-export function SIGMonthlyDev(){
+  export function HugoBernier(){
 
     const entity :IEntity = {
       title: '', //
-      keywords: ["SIG","SharePoint","SPFx"],
+      keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
+      topics: ["SharePoint"],
       blog: [
         {
           title: '',
@@ -88,7 +89,7 @@ export function SIGMonthlyDev(){
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

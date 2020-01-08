@@ -1,12 +1,12 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
-export function DarkSouls(){
 
-  const entity :IEntity = {
+export function ClashOfClans(){
 
+    const entity :IEntity = {
       title: '', //
-      keywords: ["SIG","SharePoint","SPFx"],
+      keywords: ["Game","IPad","bla bla bla"],
       profilePic: "https://someURL.com",
       blog: [
         {
@@ -89,7 +89,7 @@ export function DarkSouls(){
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

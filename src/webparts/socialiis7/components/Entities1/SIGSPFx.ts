@@ -1,13 +1,13 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
-export function BlackCats(){
+export function SIGSPFx(){
 
-  const entity :IEntity = {
-
+    const entity :IEntity = {
       title: '', //
-      keywords: ["Pets","Dark","Animals"],
+      keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
+      topics: ["SharePoint"],
       blog: [
         {
           title: '',
@@ -89,7 +89,7 @@ export function BlackCats(){
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

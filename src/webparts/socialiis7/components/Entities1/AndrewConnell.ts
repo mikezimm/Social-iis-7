@@ -1,5 +1,5 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
 export function AndrewConnell(){
 
@@ -7,6 +7,7 @@ export function AndrewConnell(){
       title: 'Andrew Connell', //
       keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
+      topics: ["SharePoint"],
       blog: [
         {
           title: 'Andrew\'s Blog',
@@ -84,7 +85,7 @@ export function AndrewConnell(){
       },
   
   
-    }
+    };
   
       //twitter: any,
       //blog: any,

@@ -11,36 +11,36 @@ export function makeTheTimeObject(timeString) {
 
   let now = new Date();
 
-  if (timeString ) { now = new Date(timeString)}
+  if (timeString ) { now = new Date(timeString);}
 
   let theTime : ITheTime = {
     now: now,
     theTime: now.toUTCString(),
     milliseconds: now.getTime(),
-  }
+  };
 
   return theTime;
 
 }
 export function getLocalMonths(local,format){
 
-    let months = [];
-    var getMonth = function(idx) {
+  let months = [];
 
-        var objDate = new Date();
-        objDate.setDate(1);
-        objDate.setMonth(idx-1);
-        var locale = local,
-            month = objDate.toLocaleString(locale, { month: format });
-          return month;
-      };
-    
-      var i;
-      for (i = 1; i < 12; i++) {
-        months.push(getMonth(i));
-      }
+  let getMonth = (idx) => {
+      var objDate = new Date();
+      objDate.setDate(1);
+      objDate.setMonth(idx-1);
+      var locale = local,
+          month = objDate.toLocaleString(locale, { month: format });
+        return month;
+    };
+  
+    var i;
+    for (i = 1; i < 12; i++) {
+      months.push(getMonth(i));
+    }
 
-      return months;
+    return months;
 }
 
 export function msPerMin(){

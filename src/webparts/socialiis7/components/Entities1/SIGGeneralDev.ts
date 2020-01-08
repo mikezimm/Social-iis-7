@@ -1,15 +1,16 @@
 
-import { IEntity } from '../ISocialiis7Props'
+import { IEntity } from '../ISocialiis7Props';
 
-  export function DavidWarner(){
+export function SIGGeneralDev(){
 
     const entity :IEntity = {
-      title: 'David Warner', //
-      keywords: ["MVP","SharePoint","SPFx"],
+      title: '', //
+      keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
+      topics: ["SharePoint"],
       blog: [
         {
-          title: 'David\'s Blog',
+          title: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -88,7 +89,7 @@ import { IEntity } from '../ISocialiis7Props'
       }, // End YouTube
   
   
-    }
+    };
   
       //instagram:any,
       //facebook: any,

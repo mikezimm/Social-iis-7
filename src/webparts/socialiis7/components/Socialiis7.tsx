@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
-import { ISocialiis7Props } from './ISocialiis7Props';
+import { ISocialiis7Props, IEntity } from './ISocialiis7Props';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
@@ -15,10 +15,13 @@ import {IUser, IMyPivots, IPivot,} from './ISocialiis7State';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import {
-  buildEntities,
+  buildEntities,buildEntityKeywords, getEntitiesForThis
 
-} from './KnownEntities/1EntityBuilder';
+} from './Entities1/1EntityBuilder';
+import {
+  buildEntities2
 
+} from './Entities2/1EntityBuilder';
 /**
  * Typical Youtube embed
  * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -32,6 +35,7 @@ import {
  */
 
 export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
+
 
   private createPivotData(){
     // Using https://stackoverflow.com/questions/3103962/converting-html-string-into-dom-elements
@@ -84,7 +88,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
           },
         ]
       ,
-    }
+    };
 
     return pivots;
 
@@ -92,8 +96,29 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
   public constructor(props:ISocialiis7Props){
     super(props);
+    let thisTopic = "Auto";
+    let buildEntitiesX = buildEntities();
+    let userEntities = buildEntities2();
+    let allEntities = buildEntitiesX.concat(userEntities);
+    let entityKeywords = buildEntityKeywords(allEntities, "keywords");
+    let allTopics = buildEntityKeywords(allEntities, "topics");
+    let entitiesForTopics = getEntitiesForThis(allEntities, "topics",thisTopic);
+    let keysForTopic = buildEntityKeywords(entitiesForTopics, "keywords");
+
     this.state = { 
       pivots: this.createPivotData(),
+
+      loadData: {
+        thisTopic: thisTopic,
+        masterEntities: buildEntitiesX,
+        userEntities: userEntities,
+        allEntities: allEntities,
+        entityKeys: entityKeywords,
+        allTopics: allTopics,
+        entitiesForTopics: entitiesForTopics,
+        keysForTopic: keysForTopic,
+        topicKeys: [],
+      },
 
     };
 
@@ -125,7 +150,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
 
   public render(): React.ReactElement<ISocialiis7Props> {
-
+    console.log('Public Render: this.state', this.state);
     console.log('buildEntities', buildEntities());
     return (
       <div className={ styles.socialiis7 }>

@@ -1,5 +1,5 @@
 
-import { ISocialiis7Props } from './ISocialiis7Props';
+import { ISocialiis7Props, IEntity } from './ISocialiis7Props';
 import { string } from 'prop-types';
 
 import { ITheTime } from '../../../services/dateServices';

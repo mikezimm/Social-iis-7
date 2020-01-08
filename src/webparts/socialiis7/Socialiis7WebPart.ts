@@ -55,7 +55,14 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         // other init code may be present
   
         //https://stackoverflow.com/questions/52010321/sharepoint-online-full-width-page
-        document.getElementById("workbenchPageContent").style.maxWidth = "none";
+        if ( window.location.href &&  
+          window.location.href.indexOf("layouts/15/workbench.aspx") > 0 ) {
+            
+          if (document.getElementById("workbenchPageContent")) {
+            document.getElementById("workbenchPageContent").style.maxWidth = "none";
+          }
+        } 
+        
         //console.log('window.location',window.location);
         sp.setup({
           spfxContext: this.context
