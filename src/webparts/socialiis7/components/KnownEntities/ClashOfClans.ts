@@ -1,7 +1,8 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function SIGSPFx(){
+
+export function ClashOfClans(){
 
     const entity :IEntity = {
       title: '', //

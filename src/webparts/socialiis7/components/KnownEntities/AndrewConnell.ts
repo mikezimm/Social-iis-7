@@ -1,7 +1,7 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function AndrewConnell(){
+export function AndrewConnell(){
 
     const entity :IEntity = {
       title: 'Andrew Connell', //

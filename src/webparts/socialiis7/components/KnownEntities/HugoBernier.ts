@@ -1,7 +1,7 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function HugoBernier(){
+  export function HugoBernier(){
 
     const entity :IEntity = {
       title: '', //

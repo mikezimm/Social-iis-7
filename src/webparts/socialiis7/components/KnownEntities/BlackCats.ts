@@ -1,9 +1,10 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function BlackCats(){
+export function BlackCats(){
 
-    const entity :IEntity = {
+  const entity :IEntity = {
+
       title: '', //
       keywords: ["Pets","Dark","Animals"],
       profilePic: "https://someURL.com",

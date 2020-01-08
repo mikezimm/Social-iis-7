@@ -1,7 +1,7 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function SIGSPFx(){
+export function SIGSPFx(){
 
     const entity :IEntity = {
       title: '', //

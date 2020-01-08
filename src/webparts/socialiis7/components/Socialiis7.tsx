@@ -14,6 +14,11 @@ import {IUser, IMyPivots, IPivot,} from './ISocialiis7State';
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
+import {
+  buildEntities,
+
+} from './KnownEntities/1EntityBuilder';
+
 /**
  * Typical Youtube embed
  * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -120,6 +125,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, {}> {
 
 
   public render(): React.ReactElement<ISocialiis7Props> {
+
+    console.log('buildEntities', buildEntities());
     return (
       <div className={ styles.socialiis7 }>
         <div className={ styles.container }>

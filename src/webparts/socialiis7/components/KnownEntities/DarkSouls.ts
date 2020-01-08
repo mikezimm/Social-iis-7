@@ -1,9 +1,10 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function SIGSPFx(){
+export function DarkSouls(){
 
-    const entity :IEntity = {
+  const entity :IEntity = {
+
       title: '', //
       keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://someURL.com",

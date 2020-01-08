@@ -1,7 +1,7 @@
 
 import { IEntity } from '../ISocialiis7Props'
 
-function SIGGeneralDev(){
+export function SIGGeneralDev(){
 
     const entity :IEntity = {
       title: '', //
