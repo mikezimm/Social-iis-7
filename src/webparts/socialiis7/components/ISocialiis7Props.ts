@@ -47,7 +47,6 @@ export interface IEntity {
   title: string; //
   titleKey?: string;
   keywords: string[];
-  topics?: string[];
   profilePic: string;
   webSites?: IWeb[];
   youtube?: IYoutube;
@@ -57,8 +56,10 @@ export interface IEntity {
   instagram?:IWeb;
   facebook?: IWeb;
   github?: IWeb;
+  location?: IWeb; //Like Bing Map of city or office or whatever.
   androidStore?: any;
   appleStore?: any;
+  stock?: IWeb[];
 
 }
 

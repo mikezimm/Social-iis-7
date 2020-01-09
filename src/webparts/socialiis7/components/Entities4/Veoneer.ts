@@ -5,9 +5,8 @@ export function Veoneer(){
 
   const entity :IEntity = {
     title: 'Veoneer', //
-    keywords: ["Global","Tier1","Active","Radar","Night","Eye"], // Can be any number of
+    keywords: ["Auto","Global","Tier1","Active","Radar","Night","Eye"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',

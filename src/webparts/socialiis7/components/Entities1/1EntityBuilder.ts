@@ -12,6 +12,8 @@ export function buildEntities() {
     Entities.push(addTitleKey(ents.SIGGeneralDev()));
     Entities.push(addTitleKey(ents.SIGMonthlyDev()));
     Entities.push(addTitleKey(ents.SIGSPFx()));
+    Entities.push(addTitleKey(ents.VesaJuvonen()));
+    
     return Entities;
 }
 

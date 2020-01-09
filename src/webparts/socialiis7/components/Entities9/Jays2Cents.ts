@@ -5,9 +5,8 @@ export function Jays2Cents(){
 
   const entity :IEntity = {
     title: 'Jays 2 Cents YouTuber', //
-    keywords: ["PCBuild","HomeRepairs"], // Can be any number of
+    keywords: ["PC","PCBuild","HomeRepairs"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["PCs"],
     blog: [
       {
         title: 'Someone\'s Blog',

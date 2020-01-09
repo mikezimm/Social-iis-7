@@ -5,9 +5,8 @@ export function PCBuild(){
 
   const entity :IEntity = {
     title: 'Upgrading your PC', //
-    keywords: ["PCBuild"], // Can be any number of
+    keywords: ["PC","PCBuild"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["PCBuild"],
     blog: [
       {
         title: 'Someone\'s Blog',

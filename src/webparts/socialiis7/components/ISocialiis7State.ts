@@ -15,7 +15,10 @@ export interface IMyPivots {
     allTopics: IPivot[];
     allEntityKeywords: IPivot[];
     keysForTopic: IPivot[];
-    entities: IPivot[];
+    subTopic1Titles: IPivot[];
+    subTopic2Titles: IPivot[];
+    subTopic3Titles: IPivot[];
+    entTitlesForTopics: IPivot[];
     spacers: IPivot[];
 }
  
@@ -63,6 +66,8 @@ export interface ISocialiis7State {
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;
     currentPivots: IPivot[][];
+    selectedEntity: IEntity;
+    selectedMedia : string,
 
     pivots?: IMyPivots;
     pivtTitles?:string[];

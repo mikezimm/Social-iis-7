@@ -6,9 +6,8 @@ export function BlackCats(){
   const entity :IEntity = {
 
       title: '', //
-      keywords: ["Pets","Dark"],
+      keywords: ["Animals","Pets","Dark"],
       profilePic: "https://someURL.com",
-      topics: ["Animals"],
       blog: [
         {
           title: '',

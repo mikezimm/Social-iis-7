@@ -5,9 +5,8 @@ export function Tesla(){
 
   const entity :IEntity = {
     title: 'Tesla', //
-    keywords: ["North America","Cars","Trucks","Electric","OEM"], // Can be any number of
+    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',

@@ -5,9 +5,8 @@ export function TRW(){
 
   const entity :IEntity = {
     title: 'TRW', //
-    keywords: ["Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
+    keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',

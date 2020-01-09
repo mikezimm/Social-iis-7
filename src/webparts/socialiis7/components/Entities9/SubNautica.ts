@@ -5,9 +5,8 @@ export function SubNautica(){
 
   const entity :IEntity = {
     title: 'SubNautica', //
-    keywords: ["OpenWorld","Water","FirstPerson","Builder"], // Can be any number of
+    keywords: ["PC","Game","OpenWorld","Water","FirstPerson","Builder"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Game"],
     blog: [
       {
         title: 'Someone\'s Blog',

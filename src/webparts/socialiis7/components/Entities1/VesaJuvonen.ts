@@ -1,15 +1,15 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function GM(){
+export function VesaJuvonen(){
 
   const entity :IEntity = {
-    title: 'GM', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","OEM"], // Can be any number of
+    title: 'Vesa Juvonen', //
+    keywords: ["SharePoint","SPFx","MSFT"],
     profilePic: "https://someURL.com",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        title: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble

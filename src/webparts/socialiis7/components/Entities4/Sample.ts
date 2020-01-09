@@ -7,7 +7,6 @@ export function Sample(){
     title: 'Add Title of Entity', //
     keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["SharePoint"],
     blog: [
       {
         title: 'Someone\'s Blog',

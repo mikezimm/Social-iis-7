@@ -5,9 +5,8 @@ export function Autoliv(){
 
   const entity :IEntity = {
     title: 'Autoliv', //
-    keywords: ["Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
+    keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',
