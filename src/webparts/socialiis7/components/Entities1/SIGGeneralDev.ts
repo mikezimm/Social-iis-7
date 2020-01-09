@@ -4,10 +4,9 @@ import { IEntity } from '../ISocialiis7Props';
 export function SIGGeneralDev(){
 
     const entity :IEntity = {
-      title: '', //
+      title: 'SIG General', //
       keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
-      topics: ["SharePoint"],
       blog: [
         {
           title: '',

@@ -12,6 +12,8 @@ export function buildEntities() {
     Entities.push(addTitleKey(ents.SIGGeneralDev()));
     Entities.push(addTitleKey(ents.SIGMonthlyDev()));
     Entities.push(addTitleKey(ents.SIGSPFx()));
+    Entities.push(addTitleKey(ents.VesaJuvonen()));
+    
     return Entities;
 }
 
@@ -48,7 +50,7 @@ export function getEntitiesForThis(Entities : IEntity[], useKey: string, thisKey
         let theseKeys = entity[useKey];
         if ( theseKeys ) {
 
-            if (theseKeys.indexOf(thisKey) > -1) { filteredEntities.push(entity)}
+            if (theseKeys.indexOf(thisKey) > -1) { filteredEntities.push(entity);}
 
         }
     }

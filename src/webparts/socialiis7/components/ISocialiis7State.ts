@@ -12,8 +12,14 @@ export interface IPivot {
 }
   
 export interface IMyPivots {
-    projects: IPivot[];
-    history: IPivot[];
+    allTopics: IPivot[];
+    allEntityKeywords: IPivot[];
+    keysForTopic: IPivot[];
+    subTopic1Titles: IPivot[];
+    subTopic2Titles: IPivot[];
+    subTopic3Titles: IPivot[];
+    entTitlesForTopics: IPivot[];
+    spacers: IPivot[];
 }
  
   
@@ -58,6 +64,11 @@ export interface ISocialiis7State {
     // 7 - Media Choices - Left Side bar
 
     // 8 - Pivot Choices - Top Bar
+    currentPivotSet: string;
+    currentPivots: IPivot[][];
+    selectedEntity: IEntity;
+    selectedMedia : string,
+
     pivots?: IMyPivots;
     pivtTitles?:string[];
     filteredCategory?: string;
@@ -67,6 +78,7 @@ export interface ISocialiis7State {
     // 9 - Other web part options
 
     loadStatus?: string;
+    loadData: any;
 
     userLoadStatus?: string;
 

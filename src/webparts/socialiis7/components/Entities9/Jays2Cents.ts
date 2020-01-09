@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function GM(){
+export function Jays2Cents(){
 
   const entity :IEntity = {
-    title: 'GM', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","OEM"], // Can be any number of
+    title: 'Jays 2 Cents YouTuber', //
+    keywords: ["PC","PCBuild","HomeRepairs"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {

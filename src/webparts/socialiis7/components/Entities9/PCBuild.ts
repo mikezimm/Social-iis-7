@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function GM(){
+export function PCBuild(){
 
   const entity :IEntity = {
-    title: 'GM', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","OEM"], // Can be any number of
+    title: 'Upgrading your PC', //
+    keywords: ["PC","PCBuild"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {

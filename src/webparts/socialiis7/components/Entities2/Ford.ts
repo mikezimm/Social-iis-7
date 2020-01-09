@@ -4,10 +4,9 @@ import { IEntity } from '../ISocialiis7Props';
 export function Ford(){
 
   const entity :IEntity = {
-    title: 'Ford Motors', //
-    keywords: ["North America","Cars","Trucks","Electric"], // Can be any number of
+    title: 'Ford', //
+    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',

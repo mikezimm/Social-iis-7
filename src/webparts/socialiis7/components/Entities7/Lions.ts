@@ -1,11 +1,12 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function SIGMonthlyDev(){
+export function Lions(){
 
-    const entity :IEntity = {
-      title: 'SIG Monthly', //
-      keywords: ["SIG","SharePoint","SPFx"],
+  const entity :IEntity = {
+
+      title: '', //
+      keywords: ["Animals","Pets","Africa"],
       profilePic: "https://someURL.com",
       blog: [
         {

@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function GM(){
+export function SubNautica(){
 
   const entity :IEntity = {
-    title: 'GM', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","OEM"], // Can be any number of
+    title: 'SubNautica', //
+    keywords: ["PC","Game","OpenWorld","Water","FirstPerson","Builder"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {

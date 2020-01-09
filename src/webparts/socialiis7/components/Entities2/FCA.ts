@@ -5,9 +5,8 @@ export function FCA(){
 
   const entity :IEntity = {
     title: 'FCA', //
-    keywords: ["Global","Cars","Trucks","Electric","Gas","OEM"], // Can be any number of
+    keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM"], // Can be any number of
     profilePic: "https://someURL.com",
-    topics: ["Auto"],
     blog: [
       {
         title: 'Someone\'s Blog',

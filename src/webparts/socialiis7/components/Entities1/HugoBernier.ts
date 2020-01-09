@@ -4,10 +4,9 @@ import { IEntity } from '../ISocialiis7Props';
   export function HugoBernier(){
 
     const entity :IEntity = {
-      title: '', //
+      title: 'Hugo Bernier', //
       keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
-      topics: ["SharePoint"],
       blog: [
         {
           title: '',

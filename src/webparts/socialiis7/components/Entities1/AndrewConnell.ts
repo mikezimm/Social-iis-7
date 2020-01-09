@@ -7,7 +7,6 @@ export function AndrewConnell(){
       title: 'Andrew Connell', //
       keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
-      topics: ["SharePoint"],
       blog: [
         {
           title: 'Andrew\'s Blog',

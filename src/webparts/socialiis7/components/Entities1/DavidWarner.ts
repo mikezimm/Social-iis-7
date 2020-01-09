@@ -7,7 +7,6 @@ import { IEntity } from '../ISocialiis7Props';
       title: 'David Warner', //
       keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://someURL.com",
-      topics: ["SharePoint"],
       blog: [
         {
           title: 'David\'s Blog',
