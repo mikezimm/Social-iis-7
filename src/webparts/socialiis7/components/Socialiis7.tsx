@@ -28,7 +28,7 @@ import * as choiceBuilders from './choiceFieldBuilder';
 import PageNavigator from './Navigator/PageNavigator';
 import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
-//import AboutMe from './AboutMe/AboutMe';
+import AboutMe from './AboutMe/AboutMe';
 
 /**
  * Typical Youtube embed
@@ -217,6 +217,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public render(): React.ReactElement<ISocialiis7Props> {
+    console.log("this.state.navigationType",this.state.navigationType);
     console.log('Public Render: this.state', this.state);
 
     /**
@@ -232,8 +233,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
     
     let aboutMe =  null;
-    /*
-    if ( this.state.navigationType === 'asdfasdf' ) {
+
+    console.log("this.state.navigationType",this.state.navigationType);
+    if ( this.state.navigationType !== 'asdfasdf' ) {
+        console.log("Should get image!");
         aboutMe = 
         <AboutMe
           imageUrl={this.state.selectedEntity.profilePic}
@@ -242,6 +245,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         >
       </AboutMe>
     }
+        /*
     */
 
     /*
@@ -276,7 +280,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           { ( this.props.navigationType === 'choice' ? entryOptions : leftNavigation ) }
             <div className={ styles.column }>
-              { aboutMe }
+
               <span className={ styles.title }>{this.state.selectedEntity.title}</span>
               <a href="https://aka.ms/spfx" className={ styles.button }>
                 <span className={ styles.label }>Learn more</span>
@@ -290,6 +294,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           </div>
           <div className={ styles.description }>
             { (JSON.stringify(this.state.selectedEntity.navigation ))  }
+          </div>
+          <div className={ styles.description }>
+            { aboutMe }
           </div>
 
         </div>
