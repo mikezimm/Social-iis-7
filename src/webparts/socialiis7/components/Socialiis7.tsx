@@ -83,7 +83,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let subTopic1 = "SIG";
     let subTopic2 = "MSFT";
     let subTopic3 = "MVP";
-
+/*
+    mainTopic = "Auto";
+    subTopic1 = "OEM";
+    subTopic2 = "Passive";
+    subTopic3 = "Active";
+*/
     let Entities1 = buildEntities();
     let Entities2 = buildEntities2();
     let Entities4 = buildEntities4();
@@ -120,8 +125,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     pivots.subTopic1Titles = this.createPivotData(subTopic1Entities, 'title');
     pivots.subTopic2Titles = this.createPivotData(subTopic2Entities, 'title');
     pivots.subTopic3Titles = this.createPivotData(subTopic3Entities, 'title');
-
-
 
     pivots.spacers =  this.createPivotData([" "], null);
 

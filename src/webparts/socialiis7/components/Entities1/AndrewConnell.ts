@@ -49,6 +49,11 @@ export function AndrewConnell(){
           order: 1, //For Sorting
           url: 'https://www.voitanos.io/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
+        },        {
+          title: 'Voitanos Training2',
+          order: 1, //For Sorting
+          url: 'https://www.voitanos.io/',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],  // End webSites
       youtube: {
