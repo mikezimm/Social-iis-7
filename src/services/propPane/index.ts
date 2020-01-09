@@ -2,4 +2,6 @@
 export * from './IntroPage';
 export * from './WebPartSettingsPage';
 export * from './ReactPivotOptions';
-export * from './ReactTrackTimeOptions';
+
+
+export * from './ReactSocialiis7Options';
