@@ -5,7 +5,7 @@ export function Chevy(){
 
   const entity :IEntity = {
     title: 'Chevy', //
-    keywords: ["Auto","GM","Global","Cars","Trucks","Electric","Gas","Brand"], // Can be any number of
+    keywords: ["Auto","GM","North America","Cars","Trucks","Electric","Gas","Brand"], // Can be any number of
     profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
