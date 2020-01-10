@@ -107,7 +107,14 @@ export interface IEntityModel {
 
 }
 
+export interface ITopics {
 
+    mainTopic?: string;
+    subTopic1?: string;
+    subTopic2?: string;
+    subTopic3?: string;
+
+}
 export interface ISocialiis7Props {
 
   // 0 - Context
@@ -135,7 +142,9 @@ export interface ISocialiis7Props {
 
   // 7 - Media Choices - Left Side bar
   navigationType: string;
-  mainTopic: string;
+
+  topics: ITopics;
+
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
   pivotFormat: string;

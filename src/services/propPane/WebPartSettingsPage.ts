@@ -38,6 +38,21 @@ import {
                 label: 'Main Topic',
                 options: socialiis7OptionsGroup.sampleTopicChoices,
               }),
+
+              PropertyPaneTextField('subTopic1', {
+                label: 'Sub Topic1',
+                description: 'This is the left most set of Pivots',
+              }),
+
+              PropertyPaneTextField('subTopic2', {
+                label: 'SubTopic2',
+                description: 'This is the middle set of Pivots',
+              }),
+
+              PropertyPaneTextField('subTopic3', {
+                label: 'SubTopic3',
+                description: 'This is the right most set of Pivots',
+              }),
               
             ]
 

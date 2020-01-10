@@ -1,6 +1,7 @@
 
 import { IEntity, IWeb } from '../ISocialiis7Props';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import * as ents from './index';
 
@@ -29,7 +30,8 @@ function buildNavigationForWeb( thisSection: IWeb[], sectionName: string){
     if (!thisSection[0] ) { return navigation; }
     if (thisSection[0].url.length === 0 ) { return navigation; }
 
-    navigation = thisSection.map((item) => {
+    let newSection = cloneDeep(thisSection);
+    navigation = newSection.map((item) => {
         return {
             name: item.title,
             key:  sectionName + makeKeyFromString(item.title),
@@ -51,7 +53,7 @@ function makeKeyFromString(str : string){
 
 export function  addOtherProps(Entity : IEntity ) {
 
-    let result : IEntity = Entity;
+    let result : IEntity = cloneDeep(Entity);
     result.titleKey = makeKeyFromString(result.title);
 
     result.navigation = [];

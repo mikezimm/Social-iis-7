@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
-import { ISocialiis7Props, IEntity } from './ISocialiis7Props';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
+import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
@@ -10,7 +10,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { pivotOptionsGroup, } from '../../../services/propPane';
-import {IUser, ISocialiis7State, IMyPivots, IPivot,} from './ISocialiis7State';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
@@ -84,44 +84,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public constructor(props:ISocialiis7Props){
     super(props);
     let currentPivotSet = "keysForTopic";
-    let mainTopic = this.props.mainTopic;
-    let subTopic1 = "SIG";
-    let subTopic2 = "MSFT";
-    let subTopic3 = "MVP";
 
-    if ( mainTopic === 'MSFT') {
-      subTopic1 = "MSFT";
-      subTopic2 = "";
-      subTopic3 = "";
-    } else if ( mainTopic === 'SPFx') {
-      subTopic1 = "SIG";
-      subTopic2 = "MSFT";
-      subTopic3 = "MVP";
-    } else if ( mainTopic === 'Auto') {
-      subTopic1 = "OEM";
-      subTopic2 = "Passive";
-      subTopic3 = "Active";
-    } else if ( mainTopic === 'GM') {
-      subTopic1 = "OEM";
-      subTopic2 = "Brand";
-      subTopic3 = "Vehicle";
-    } else if ( mainTopic === 'Game') {
-      subTopic1 = "PC";
-      subTopic2 = "FirstPerson";
-      subTopic3 = "Builder";
-    } else if ( mainTopic === 'PC') {
-      subTopic1 = "PCBuild";
-      subTopic2 = "Game";
-      subTopic3 = "OpenWorld";
-    } else  if ( mainTopic === 'Animals') {
-      subTopic1 = "Pets";
-      subTopic2 = "Africa";
-      subTopic3 = "Dark";
-    } else  if ( mainTopic === 'ttp') {
-      subTopic1 = "Gaming";
-      subTopic2 = "Animals";
-      subTopic3 = "PS";
-    } 
+    let topics : ITopics = this.props.topics;
 
     let Entities1 = buildEntities();
     let Entities2 = buildEntities2();
@@ -130,37 +94,34 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let Entities9 = buildEntities9();    
     
     let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9);
-    let allEntityKeywords = buildEntityKeywords(allEntities, "keywords");
-    let allTopics = buildEntityKeywords(allEntities, "keywords");
-    let entitiesForMainTopic = getEntitiesForThis(allEntities, "keywords",mainTopic);
-    let subTopic1Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic1);
-    let subTopic2Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic2);
-    let subTopic3Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic3);
-    let keysForTopic = buildEntityKeywords(entitiesForMainTopic, "keywords");
 
-    let selectedEntity = subTopic1Entities[0];
+    let loadData: ILoadData = {
 
-    let pivots : IMyPivots = {
-      allTopics: [],
-      allEntityKeywords: [],
+      Entities1: Entities1,
+      Entities2: Entities2,
+      Entities4: Entities4,
+      Entities7: Entities7,
+      Entities9: Entities9,
+
+      allEntities: allEntities,
+      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
+      allTopics: buildEntityKeywords(allEntities, "keywords"),
+
+      entitiesForMainTopic: [],
+      availSubTopicEntities: [],
       keysForTopic: [],
-      subTopic1Titles: [],
-      subTopic2Titles: [],
-      subTopic3Titles: [],
-      entTitlesForTopics: [],
-      spacers: [],
+
+      subTopic1Entities: null,
+      subTopic2Entities: null,
+      subTopic3Entities: null,
+
     };
 
-    pivots.allTopics = this.createPivotData(allTopics, null);
-    pivots.keysForTopic = this.createPivotData(keysForTopic, null);
-    pivots.allEntityKeywords = this.createPivotData(entitiesForMainTopic, 'keywords');
-    pivots.entTitlesForTopics = this.createPivotData(entitiesForMainTopic, 'title');
+    loadData = this._rebuildEntities(topics, loadData);
 
-    pivots.subTopic1Titles = this.createPivotData(subTopic1Entities, 'title');
-    pivots.subTopic2Titles = this.createPivotData(subTopic2Entities, 'title');
-    pivots.subTopic3Titles = this.createPivotData(subTopic3Entities, 'title');
+    let selectedEntity = loadData.subTopic1Entities[0];
 
-    pivots.spacers =  this.createPivotData([" "], null);
+    let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
@@ -174,27 +135,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
       navigationType: this.props.navigationType,
-      mainTopic: this.props.mainTopic,
-      loadData: {
-        mainTopic: mainTopic,
-        subTopic1: subTopic1,
-        subTopic1Entities: subTopic1Entities,
-        subTopic2: subTopic2,
-        subTopic2Entities: subTopic2Entities,
-        subTopic3: subTopic3,
-        subTopic3Entities: subTopic3Entities,
-        Entities1: Entities1,
-        Entities2: Entities2,
-        Entities4: Entities4,
-        Entities7: Entities7,
-        Entities9: Entities9,
-        allEntities: allEntities,
-        allEntityKeywords: allEntityKeywords,
-        allTopics: allTopics,
-        entitiesForMainTopic: entitiesForMainTopic,
-        keysForTopic: keysForTopic,
-        topicKeys: [],
-      },
+      topics: topics,
+
+      loadData: loadData,
 
     };
 
@@ -215,13 +158,15 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   
   public componentDidUpdate(prevProps){
 /*
-    let rebuildTiles = false;
-    if (this.props.defaultProjectPicker !== prevProps.defaultProjectPicker) {  rebuildTiles = true ; }
+*/
 
-    if (rebuildTiles === true) {
+    let rebuildPivots = false;
+    if (this.props.topics !== prevProps.topics) {  rebuildPivots = true ; }
+
+    if (rebuildPivots === true) {
       this._updateStateOnPropsChange({});
     }
-*/
+
   }
 
   public createPivotObject(currentPivots: IPivot[][], display){
@@ -321,7 +266,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           </div>
           <div className={ styles.description }>
-            { (this.state.selectedEntity ? (JSON.stringify(this.state.selectedEntity.navigation, null, 4)) : '')  }
+            { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
+              JSON.stringify(jsonobj,null,'\t') */}
+            { (this.state.selectedEntity ? (JSON.stringify(this.state.selectedEntity.navigation, undefined, 4)) : '')  }
           </div>
 
 
@@ -329,6 +276,73 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       </div>
     );
   }
+
+  private _updateStateOnPropsChange(params: any ): void {
+
+    let loadData = this._rebuildEntities(this.props.topics, this.state.loadData);
+
+    let selectedEntity = loadData.subTopic1Entities[0];
+
+    let pivots = this._rebuildPivots(loadData);
+
+    let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+
+    let topics : ITopics = this.props.topics;
+
+    this.setState({
+      pivots: pivots,
+      currentPivots: currentPivots,
+      selectedEntity: selectedEntity,
+      loadData: loadData,
+      topics: topics,
+    });
+
+  }
+
+  private _rebuildEntities(topics: ITopics, loadData1: ILoadData ) {
+
+    let loadData: ILoadData = cloneDeep(loadData1);
+
+    loadData.entitiesForMainTopic = getEntitiesForThis(loadData.allEntities, "keywords",topics.mainTopic);
+    loadData.availSubTopicEntities = cloneDeep(loadData.entitiesForMainTopic);
+    loadData.subTopic1Entities = getEntitiesForThis(loadData.entitiesForMainTopic, "keywords", topics.subTopic1);
+
+    //This loop removes entities from what is available for the next section so pivots are not duplicated.
+    //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
+    loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
+      x => !loadData.subTopic1Entities.filter( y => y.title === x.title).length);
+
+    loadData.subTopic2Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic2);
+
+    //This loop removes entities from what is available for the next section so pivots are not duplicated.
+    //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
+    loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
+      x => !loadData.subTopic2Entities.filter( y => y.title === x.title).length);
+
+    loadData.subTopic3Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic3);
+    loadData.keysForTopic = buildEntityKeywords(loadData.entitiesForMainTopic, "keywords");
+
+    return loadData;
+
+  }
+
+  private _rebuildPivots(loadData: ILoadData ) {
+
+    let pivots : IMyPivots = {
+      allTopics: this.createPivotData(loadData.allTopics, null),
+      allEntityKeywords: this.createPivotData(loadData.entitiesForMainTopic, 'keywords'),
+      keysForTopic:this.createPivotData(loadData.keysForTopic, null),
+      subTopic1Titles: this.createPivotData(loadData.subTopic1Entities, 'title'),
+      subTopic2Titles: this.createPivotData(loadData.subTopic2Entities, 'title'),
+      subTopic3Titles: this.createPivotData(loadData.subTopic3Entities, 'title'),
+      entTitlesForTopics: this.createPivotData([" "], null),
+      spacers: [],
+    };
+
+    return pivots;
+
+  }
+
 
   private _updateEntryType(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption){
 
