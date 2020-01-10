@@ -3,7 +3,6 @@ import { Image, ImageFit, } from 'office-ui-fabric-react/lib/Image';
 import { css, IImageProps, sizeToPixels, } from 'office-ui-fabric-react';
 
 import styles from './AboutMe.module.scss';
-import tUtils from './utilTiles';
 
 import { IAboutMeProps } from './AboutMeProps';
 import { IAboutMeState } from './AboutMeState';
@@ -44,10 +43,22 @@ export default class AboutMe extends React.Component<IAboutMeProps, IAboutMeStat
     //let thisHref = (item[this.props.linkField]) ? item[this.props.linkField].Url : "#";
     let thisPadding = `${this.props.textPadding}px`;
 
-    var iHoverZoomStyle = tUtils.getOnHoverStyle(this.props.onHoverZoom);
+    var iHoverZoomStyle = styles.imgHoverZoomHover12;
 
       return (
         <div>
+          <a href={this.props.href} 
+            className={styles.aboutMe}
+            style={ {width: thisWidth, height: thisHeight }  }
+            target={imageOptionsGroup.getTarget(this.props.target)}
+            role="listitem" 
+            onMouseOver={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}
+            onClick={this.specialClick.bind(this)}
+            >
+
+        <div className={ [styles.pTileItemWrapper, styles.pTileItemWrapperExpanded].join(" ")}
+        style={ { width: thisWidth, height: thisHeight } } 
+        >
           <Image 
             className={
               styles.pTileItemImageCustom} 
@@ -58,6 +69,9 @@ export default class AboutMe extends React.Component<IAboutMeProps, IAboutMeStat
             coverStyle={imageOptionsGroup.getImgCover(this.props.setImgCover)}      
           />
 
+          </div>
+
+          </a>
           </div>
   
       );

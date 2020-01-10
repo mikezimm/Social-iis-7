@@ -10,6 +10,7 @@ export function buildEntities() {
     Entities.push( addOtherProps(ents.AndrewConnell() ) );
     Entities.push( addOtherProps(ents.DavidWarner() ) );
     Entities.push( addOtherProps(ents.HugoBernier() ) );
+    Entities.push( addOtherProps(ents.JeffTeper() ) );
     Entities.push( addOtherProps(ents.SIGGeneralDev() ) );
     Entities.push( addOtherProps(ents.SIGMonthlyDev() ) );
     Entities.push( addOtherProps(ents.SIGSPFx() ) );

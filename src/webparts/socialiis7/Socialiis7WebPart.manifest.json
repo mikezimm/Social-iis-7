@@ -21,7 +21,8 @@
     "description": { "default": "Socialiis7 web part v7" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Socialiis7"
+      "description": "Socialiis7",
+      "navigationType": "naviation",
     }
   }]
 }

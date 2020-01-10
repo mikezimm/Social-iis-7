@@ -2,7 +2,7 @@
 import { IEntity } from '../ISocialiis7Props';
 
 import * as ents from './index';
-import { addOtherProps } from '../Entities1/1EntityBuilder'
+import { addOtherProps } from '../Entities1/1EntityBuilder';
 
 export function buildEntities7() {
     let Entities : IEntity[] = [];

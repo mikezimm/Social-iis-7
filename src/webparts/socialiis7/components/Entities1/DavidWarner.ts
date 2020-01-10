@@ -6,12 +6,12 @@ import { IEntity } from '../ISocialiis7Props';
     const entity :IEntity = {
       title: 'David Warner', //
       keywords: ["MVP","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+      profilePic: "http://warner.digital/resume/images/profile/davidwarner-headshot-001.jpg",
       blog: [
         {
           title: 'David\'s Blog',
           order: 1, //For Sorting
-          url: '',
+          url: 'http://warner.digital/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

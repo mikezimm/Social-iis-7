@@ -242,8 +242,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           imageUrl={this.state.selectedEntity.profilePic}
           setImgCover='centerContain'
           setImgFit='portrait'
+          imageHeight={400}
+          imageWidth={600}
         >
-      </AboutMe>
+      </AboutMe>;
     }
         /*
     */
@@ -281,12 +283,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           { ( this.props.navigationType === 'choice' ? entryOptions : leftNavigation ) }
             <div className={ styles.column }>
 
-              <span className={ styles.title }>{this.state.selectedEntity.title}</span>
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
-                
-              </a>
+            <div className={ styles.description }>
+              { aboutMe }
+            </div>
             </div>
             </Stack>  {/* Stack for Buttons and Fields */}
 
@@ -295,9 +294,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           <div className={ styles.description }>
             { (JSON.stringify(this.state.selectedEntity.navigation ))  }
           </div>
-          <div className={ styles.description }>
-            { aboutMe }
-          </div>
+
 
         </div>
       </div>

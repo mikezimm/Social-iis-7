@@ -6,7 +6,7 @@ export function AndrewConnell(){
     const entity :IEntity = {
       title: 'Andrew Connell', //
       keywords: ["MVP","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+      profilePic: "https://www.andrewconnell.com/assets/images/Headshot_Color-1.png",
       blog: [
         {
           title: 'Andrew\'s Blog',

@@ -1,13 +1,19 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function VesaJuvonen(){
+export function JeffTeper(){
 
   const entity :IEntity = {
-    title: 'Vesa Juvonen', //
+    title: 'Jeff Teper', //
     keywords: ["SharePoint","SPFx","MSFT"],
-    profilePic: "https://pbs.twimg.com/profile_images/671684244738060288/QQY3z7Qi_400x400.jpg",
+    profilePic: "https://pbs.twimg.com/profile_images/844289729583464449/dSjzFMo8_400x400.jpg",
     blog: [
+      {
+        title: 'About Me',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
       {
         title: '',
         order: 1, //For Sorting
@@ -19,7 +25,7 @@ export function VesaJuvonen(){
       {
         title: 'Twitter',
         order: 1, //For Sorting
-        url: 'https://twitter.com/vesajuvonen',
+        url: 'https://twitter.com/jeffteper',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
@@ -33,15 +39,15 @@ export function VesaJuvonen(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        title: 'Linked In',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.linkedin.com/in/jeffteper',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        title: 'Github',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
