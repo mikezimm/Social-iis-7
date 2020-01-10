@@ -6,32 +6,32 @@ export function Autoliv(){
   const entity :IEntity = {
     title: 'Autoliv', //
     keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://upload.wikimedia.org/wikipedia/en/5/56/Autoliv_logo.svg?download",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        title: 'About Us',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.autoliv.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
-    twitter: 
+    twitter:
       {
-        title: '',
+        title: '@Autoliv on Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/AutolivInc',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
-    facebook: 
+    facebook:
     {
-      title: '',
+      title: 'FaceBook',
       order: 1, //For Sorting
-      url: '',
+      url: 'https://www.facebook.com/pages/Autoliv/104462136316253',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
-    linkedIn: 
+    linkedIn:
       {
         title: '',
         order: 1, //For Sorting
@@ -39,7 +39,7 @@ export function Autoliv(){
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
-    github: 
+    github:
       {
         title: '',
         order: 1, //For Sorting
@@ -57,7 +57,7 @@ export function Autoliv(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Youtube User (from URL)
       order: 0, //For Sorting
       channels: [
         {
@@ -97,5 +97,5 @@ export function Autoliv(){
     //appleStore: any,
 
     return entity;
-    
+
 }
