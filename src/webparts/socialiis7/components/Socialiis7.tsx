@@ -114,7 +114,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       subTopic2 = "Africa";
       subTopic3 = "Dark";
     } else  if ( mainTopic === 'ttp') {
-      subTopic1 = "Game";
+      subTopic1 = "Gaming";
       subTopic2 = "Animals";
       subTopic3 = "PS";
     } 

@@ -6,7 +6,7 @@ export function ClashOfClans(){
 
     const entity :IEntity = {
       title: 'Clash Of Clans', //
-      keywords: ["ttp","Game","IPad","Mobile"],
+      keywords: ["ttp","Gaming","IPad","Mobile"],
       profilePic: "https://pbs.twimg.com/profile_images/1006114388397391874/5mcVx5ku_400x400.jpg",
       blog: [
         {
