@@ -31,6 +31,7 @@ import {
       {   index: 0,   key: 'SharePoint', text: "SharePoint"  },
       {   index: 6,   key: 'SPFx', text: "SPFx"  },
       {   index: 1,   key: 'Auto', text: "Auto"  },
+      {   index: 7,   key: 'GM', text: "GM"  },
       {   index: 2,   key: 'Game', text: "Game"  },
       {   index: 3,   key: 'PC', text: "PC"  },
       {   index: 4,   key: 'Animals', text: "Animals"  },

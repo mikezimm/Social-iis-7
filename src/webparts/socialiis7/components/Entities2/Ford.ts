@@ -5,8 +5,8 @@ export function Ford(){
 
   const entity :IEntity = {
     title: 'Ford', //
-    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM"], // Can be any number of
-    profilePic: "https://someURL.com",
+    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM","Ford"], // Can be any number of
+    profilePic: "https://www.ford.com/cmslibs/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2020/collections/3-2/20_frd_mst_ps34_gt350R_rcrd_32.jpg/_jcr_content/renditions/cq5dam.web.2160.2160.jpeg",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -49,9 +49,14 @@ export function Ford(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        title: 'Ford Home',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.ford.com/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },      {
+        title: 'Shelby',
+        order: 1, //For Sorting
+        url: 'https://www.ford.com/cars/mustang/models/shelby-gt350/?gnav=header-all-vehicles',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],

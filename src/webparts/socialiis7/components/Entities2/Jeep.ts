@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function FCA(){
+export function Jeep(){
 
   const entity :IEntity = {
-    title: 'FCA', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM","FCA"], // Can be any number of
+    title: 'Jeep', //
+    keywords: ["Auto","FCA","North America","Trucks","Gas","Brand"], // Can be any number of
     profilePic: "https://www.fcagroup.com/PublishingImages/Brands/Jeep/hero-jeep_4.jpg",
     blog: [
       {
@@ -57,14 +57,14 @@ export function FCA(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'thejeepchannel', //Youtube User (from URL)
       order: 0, //For Sorting
       channels: [
         {
-          title: '',
+          title: 'The Jeep Channel',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          objectUrl: 'https://www.youtube.com/user/thejeepchannel', // to be used as generic link if no API key is given
         },{
           title: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
@@ -74,10 +74,10 @@ export function FCA(){
       ], // End YouTube channels
       playLists: [
         {
-          title: '',
+          title: 'World Surf League Locals Tour',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          objectUrl: 'https://www.youtube.com/playlist?list=PLvULN5PwSSrt4iuIfcSO4FX_yLdW7gkzi', // to be used as generic link if no API key is given
         },{
           title: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
@@ -86,7 +86,17 @@ export function FCA(){
         }
       ] // End YouTube playlists
     }, // End YouTube
+    instagram: 
+        {
+          title: 'Jeep Instagram',
+          order: 1, //For Sorting
+          url: 'https://www.instagram.com/jeep/',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
+        }
+      ,
 
+
+    
 
   };
 

@@ -6,7 +6,7 @@ export function Autoliv(){
   const entity :IEntity = {
     title: 'Autoliv', //
     keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW"], // Can be any number of
-    profilePic: "https://upload.wikimedia.org/wikipedia/en/5/56/Autoliv_logo.svg?download",
+    profilePic: "https://www.autoliv.com/sites/default/files/banner-contents/Crash-Test-Dummy-Closeup_3.jpg",
     blog: [
       {
         title: 'About Us',

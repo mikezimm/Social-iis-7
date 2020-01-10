@@ -62,6 +62,7 @@ export interface IEntity {
   androidStore?: any;
   appleStore?: any;
   stock?: IWeb;
+  wikipedia?: IWeb;
   navigation?: INavLink[];
   selectedNav?: INavLink;
   steamStore?: IWeb[];
