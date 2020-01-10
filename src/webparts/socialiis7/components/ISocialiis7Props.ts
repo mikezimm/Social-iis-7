@@ -64,6 +64,7 @@ export interface IEntity {
   stock?: IWeb;
   navigation?: INavLink[];
   selectedNav?: INavLink;
+  steamStore?: IWeb[];
 
 }
 
