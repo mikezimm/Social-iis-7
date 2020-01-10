@@ -5,7 +5,7 @@ export function Camaro(){
 
   const entity :IEntity = {
     title: 'Camaro', //
-    keywords: ["Auto","GM","Chevy","Global","Cars","Trucks","Electric","Gas","Vehicle"], // Can be any number of
+    keywords: ["Auto","GM","Chevy","North America","Cars","Sport","Gas","Vehicle"], // Can be any number of
     profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
@@ -49,7 +49,7 @@ export function Camaro(){
     ,  // End github
     webSites: [
       {
-        title: 'Chevy Home',
+        title: 'Camaro Home',
         order: 1, //For Sorting
         url: 'https://www.chevrolet.com',
         codeType: 'TBD', //Used to determine what functions to have avaialble

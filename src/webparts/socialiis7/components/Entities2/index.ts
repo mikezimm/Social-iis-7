@@ -15,3 +15,10 @@ export * from './Ford';
 export * from './Tesla';
 
 //EU
+export * from './Bentley';
+export * from './LandRover';
+export * from './VW';
+
+//Asia
+export * from './Tata';
+

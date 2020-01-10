@@ -25,8 +25,12 @@ export function buildEntities2() {
     Entities.push(addOtherProps(ents.Tesla()));
 
     //EU
+    Entities.push(addOtherProps(ents.Bentley()));
+    Entities.push(addOtherProps(ents.LandRover()));
+    Entities.push(addOtherProps(ents.VW()));
 
-
+    //Asia
+    Entities.push(addOtherProps(ents.Tata()));
 
 
     return Entities;

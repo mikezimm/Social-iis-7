@@ -55,6 +55,7 @@ export function  addOtherProps(Entity : IEntity ) {
 
     let result : IEntity = cloneDeep(Entity);
     result.titleKey = makeKeyFromString(result.title);
+    if ( result.keywords.indexOf(result.title) < 0) { result.keywords.push(result.title);}
 
     result.navigation = [];
     //let blog = buildNavigationForWeb(Entity.blog, 'blog');

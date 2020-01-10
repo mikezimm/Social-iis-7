@@ -5,7 +5,7 @@ export function Corvette(){
 
   const entity :IEntity = {
     title: 'Corvette', //
-    keywords: ["Auto","GM","Chevy","Global","Cars","Trucks","Electric","Gas","Vehicle"], // Can be any number of
+    keywords: ["Auto","GM","Chevy","Global","Cars","Sport","Gas","Vehicle"], // Can be any number of
     profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/zerv-reveal/gallery/exterior/2020-corvette-reveal-gal-ext-convertible-01.jpg",
     blog: [
       {

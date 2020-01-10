@@ -33,6 +33,8 @@ import {
       {   index: 6,   key: 'SPFx', text: "SPFx"  },
       {   index: 1,   key: 'Auto', text: "Auto OEMs"  },
       {   index: 7,   key: 'GM', text: "One OEM and children"  },
+      {   index: 8,   key: 'VW', text: "VW"  },
+      {   index: 8,   key: 'Tata', text: "Tata"  },
       {   index: 2,   key: 'Gaming', text: "Gaming"  },
       {   index: 3,   key: 'PC', text: "PC"  },
       {   index: 4,   key: 'Animals', text: "Animals"  },
@@ -60,7 +62,7 @@ import {
       subTopic1 = "OEM";
       subTopic2 = "Passive";
       subTopic3 = "Active";
-    } else if ( mainTopic === 'GM') {
+    } else if ( ["GM","VW","FCA","Tata","Tesla"].indexOf(mainTopic) > -1 ) {
       subTopic1 = "OEM";
       subTopic2 = "Brand";
       subTopic3 = "Vehicle";

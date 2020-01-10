@@ -1,37 +1,37 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Autoliv(){
+export function Bentley(){
 
   const entity :IEntity = {
-    title: 'Autoliv', //
-    keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW","ALV"], // Can be any number of
-    profilePic: "https://www.autoliv.com/sites/default/files/banner-contents/Crash-Test-Dummy-Closeup_3.jpg",
+    title: 'Bentley', //
+    keywords: ["Auto","VW","Europe","Cars","Electric","Luxury","Gas","Brand"], // Can be any number of
+    profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
-        title: 'About Us',
+        title: 'Someone\'s Blog',
         order: 1, //For Sorting
-        url: 'https://www.autoliv.com/',
+        url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
-    twitter:
+    twitter: 
       {
-        title: '@Autoliv on Twitter',
+        title: '',
         order: 1, //For Sorting
-        url: 'https://twitter.com/AutolivInc',
+        url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
-    facebook:
+    facebook: 
     {
-      title: 'FaceBook',
+      title: '',
       order: 1, //For Sorting
-      url: 'https://www.facebook.com/pages/Autoliv/104462136316253',
+      url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
-    linkedIn:
+    linkedIn: 
       {
         title: '',
         order: 1, //For Sorting
@@ -39,7 +39,7 @@ export function Autoliv(){
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
-    github:
+    github: 
       {
         title: '',
         order: 1, //For Sorting
@@ -49,7 +49,19 @@ export function Autoliv(){
     ,  // End github
     webSites: [
       {
+        title: 'Bentley Home',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
+      {
         title: '',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
+      {
+        title: '2020 Corvette',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -57,7 +69,7 @@ export function Autoliv(){
     ],
     youtube: {
       title: 'YouTube',
-      user: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Youtube User (from URL)
+      user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       channels: [
         {
@@ -97,5 +109,5 @@ export function Autoliv(){
     //appleStore: any,
 
     return entity;
-
+    
 }
