@@ -4,7 +4,7 @@ import { IEntity } from '../ISocialiis7Props';
 export function GM(){
 
   const entity :IEntity = {
-    title: 'General Motors', //
+    title: 'GM', //
     keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [

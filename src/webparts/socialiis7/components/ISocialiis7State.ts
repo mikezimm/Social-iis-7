@@ -63,7 +63,8 @@ export interface ISocialiis7State {
 
     // 7 - Media Choices - Left Side bar
     navigationType: string;
-
+    mainTopic: string;
+    
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;
     currentPivots: IPivot[][];

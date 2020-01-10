@@ -6,7 +6,7 @@ export function MineCraft(){
   const entity :IEntity = {
     title: 'MineCraft', //
     keywords: ["PC","Game","OpenWorld","Builder","MultiPlayer"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://www.westbuxtonpubliclibrary.org/wp-content/uploads/2018/09/0fe20042-0bb8-4781-82f4-7130f928b021.jpg?w=1400",
     blog: [
       {
         title: 'Someone\'s Blog',

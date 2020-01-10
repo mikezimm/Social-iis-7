@@ -46,6 +46,7 @@ export interface ISocialiis7WebPartProps {
   pivotTab: string;  //May not be needed because we have projectMasterPriority
 
   navigationType: string;
+  mainTopic: string;
 
 }
 
@@ -111,11 +112,12 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         // 4 - 
       
         // 5 - UI Defaults
-      
+
         // 6 - User Feedback
       
         // 7 - Media Choices - Left Side bar
         navigationType: this.properties.navigationType,
+        mainTopic: this.properties.mainTopic,
 
         // 8 - Pivot Choices - Top Bar
         pivotSize: this.properties.pivotSize,
@@ -176,7 +178,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
      */
     let updateOnThese = [
       'setSize','setTab','otherTab','setTab','otherTab','setTab','otherTab','setTab','otherTab',
-      'navigationType'
+      'navigationType','mainTopic'
     ];
 
     if (updateOnThese.indexOf(propertyPath) > -1 ) {

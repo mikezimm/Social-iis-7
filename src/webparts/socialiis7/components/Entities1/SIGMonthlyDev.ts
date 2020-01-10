@@ -6,12 +6,12 @@ export function SIGMonthlyDev(){
     const entity :IEntity = {
       title: 'SIG Monthly', //
       keywords: ["SIG","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+      profilePic: "https://developer.microsoft.com/en-us/sharepoint/blogs/wp-content/uploads/2019/12/Thumbnail-Dec-10-Gen-900x360.png",
       blog: [
         {
-          title: '',
+          title: 'Blog',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://developer.microsoft.com/en-us/sharepoint/blogs/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -49,9 +49,9 @@ export function SIGMonthlyDev(){
       ,  // End github
       webSites: [
         {
-          title: '',
+          title: 'YouTube Call Playlist',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

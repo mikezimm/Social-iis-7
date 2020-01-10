@@ -6,12 +6,12 @@ export function SIGSPFx(){
     const entity :IEntity = {
       title: 'SIG SPFx', //
       keywords: ["SIG","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+      profilePic: "https://developer.microsoft.com/en-us/office/blogs/wp-content/uploads/2020/01/Slide2-900x360.png",
       blog: [
         {
-          title: '',
+          title: 'Blog',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://developer.microsoft.com/en-us/sharepoint/blogs/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -49,9 +49,9 @@ export function SIGSPFx(){
       ,  // End github
       webSites: [
         {
-          title: '',
+          title: 'YouTube Call Playlist',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

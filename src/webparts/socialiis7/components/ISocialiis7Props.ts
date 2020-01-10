@@ -133,7 +133,7 @@ export interface ISocialiis7Props {
 
   // 7 - Media Choices - Left Side bar
   navigationType: string;
-
+  mainTopic: string;
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
   pivotFormat: string;

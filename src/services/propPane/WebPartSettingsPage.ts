@@ -33,6 +33,12 @@ import {
                 label: 'Left Nav Style',
                 options: socialiis7OptionsGroup.leftNavChoices,
               }),
+
+              PropertyPaneDropdown('mainTopic', <IPropertyPaneDropdownProps>{
+                label: 'Main Topic',
+                options: socialiis7OptionsGroup.sampleTopicChoices,
+              }),
+              
             ]
 
           }

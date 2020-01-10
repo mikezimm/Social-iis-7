@@ -84,16 +84,41 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public constructor(props:ISocialiis7Props){
     super(props);
     let currentPivotSet = "keysForTopic";
-    let mainTopic = "SharePoint";
+    let mainTopic = this.props.mainTopic;
     let subTopic1 = "SIG";
     let subTopic2 = "MSFT";
     let subTopic3 = "MVP";
-/*
-    mainTopic = "Auto";
-    subTopic1 = "OEM";
-    subTopic2 = "Passive";
-    subTopic3 = "Active";
-*/
+
+    if ( mainTopic === 'MSFT') {
+      subTopic1 = "MSFT";
+      subTopic2 = "";
+      subTopic3 = "";
+    } else if ( mainTopic === 'SPFx') {
+      subTopic1 = "SIG";
+      subTopic2 = "MSFT";
+      subTopic3 = "MVP";
+    } else if ( mainTopic === 'Auto') {
+      subTopic1 = "OEM";
+      subTopic2 = "Passive";
+      subTopic3 = "Active";
+    } else if ( mainTopic === 'Game') {
+      subTopic1 = "PC";
+      subTopic2 = "FirstPerson";
+      subTopic3 = "Builder";
+    } else if ( mainTopic === 'PC') {
+      subTopic1 = "PCBuild";
+      subTopic2 = "Game";
+      subTopic3 = "OpenWorld";
+    } else  if ( mainTopic === 'Animals') {
+      subTopic1 = "Pets";
+      subTopic2 = "Africa";
+      subTopic3 = "Dark";
+    } else  if ( mainTopic === 'ttp') {
+      subTopic1 = "Game";
+      subTopic2 = "Animals";
+      subTopic3 = "PS";
+    } 
+
     let Entities1 = buildEntities();
     let Entities2 = buildEntities2();
     let Entities4 = buildEntities4();
@@ -145,6 +170,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
       navigationType: this.props.navigationType,
+      mainTopic: this.props.mainTopic,
       loadData: {
         mainTopic: mainTopic,
         subTopic1: subTopic1,
@@ -217,7 +243,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public render(): React.ReactElement<ISocialiis7Props> {
-    console.log("this.state.navigationType",this.state.navigationType);
     console.log('Public Render: this.state', this.state);
 
     /**
@@ -234,8 +259,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     
     let aboutMe =  null;
 
-    console.log("this.state.navigationType",this.state.navigationType);
-    if ( this.state.navigationType !== 'asdfasdf' ) {
+    if ( this.state.selectedEntity && this.state.navigationType !== 'asdfasdf' ) {
         console.log("Should get image!");
         aboutMe = 
         <AboutMe
@@ -261,13 +285,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     /*
         */
+
     const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
       PageNavigator,
       {
         description: 'Social Footprint',
         //Why do I get an error here every time?
         //selectedKey: 'x',
-        anchorLinks: this.state.selectedEntity.navigation,
+        anchorLinks: (this.state.selectedEntity ? this.state.selectedEntity.navigation : []),
       }
     );
 
@@ -292,7 +317,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           </div>
           <div className={ styles.description }>
-            { (JSON.stringify(this.state.selectedEntity.navigation ))  }
+            { (this.state.selectedEntity ? (JSON.stringify(this.state.selectedEntity.navigation, null, 4)) : '')  }
           </div>
 
 
@@ -333,8 +358,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
 
 
-      console.log('onLinkClick: this.state', this.state);
-      console.log('onLinkClick: item', item);
+      //console.log('onLinkClick: this.state', this.state);
+      //console.log('onLinkClick: item', item);
       
       let thisFilter = [];
       let pivots = this.state.pivots.allTopics;  
