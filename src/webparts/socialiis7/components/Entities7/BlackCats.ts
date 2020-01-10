@@ -5,34 +5,34 @@ export function BlackCats(){
 
   const entity :IEntity = {
 
-      title: '', //
-      keywords: ["Animals","Pets","Dark"],
-      profilePic: "https://someURL.com",
+      title: 'Black Cats', //
+      keywords: ["ttp","Animals","Pets","Dark"],
+      profilePic: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Blackcat-Lilith.jpg",
       blog: [
         {
-          title: '',
+          title: 'Wikipedia',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Black_cat',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
-      twitter: 
+      twitter:
         {
-          title: '',
+          title: 'Twitter',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://twitter.com/blackcatrescue',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
-      facebook: 
+      facebook:
       {
-        title: '',
+        title: 'Facebook',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.facebook.com/Black-Cats-759441280811241/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
       ,  // End facebook
-      linkedIn: 
+      linkedIn:
         {
           title: '',
           order: 1, //For Sorting
@@ -40,7 +40,7 @@ export function BlackCats(){
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End linkedIn
-      github: 
+      github:
         {
           title: '',
           order: 1, //For Sorting
@@ -87,10 +87,10 @@ export function BlackCats(){
           }
         ] // End YouTube playlists
       }, // End YouTube
-  
-  
+
+
     };
-  
+
       //instagram:any,
       //facebook: any,
       //github: any,
@@ -98,5 +98,5 @@ export function BlackCats(){
       //appleStore: any,
 
       return entity;
-      
+
   }

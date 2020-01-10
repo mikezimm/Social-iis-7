@@ -5,18 +5,18 @@ export function Lions(){
 
   const entity :IEntity = {
 
-      title: '', //
-      keywords: ["Animals","Pets","Africa"],
-      profilePic: "https://someURL.com",
+      title: 'Lions', //
+      keywords: ["ttp","Animals","Africa"],
+      profilePic: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1024px-Lion_waiting_in_Namibia.jpg",
       blog: [
         {
-          title: '',
+          title: 'Lions',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Lion',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
-      twitter: 
+      twitter:
         {
           title: '',
           order: 1, //For Sorting
@@ -24,7 +24,7 @@ export function Lions(){
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
-      facebook: 
+      facebook:
       {
         title: '',
         order: 1, //For Sorting
@@ -32,7 +32,7 @@ export function Lions(){
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
       ,  // End facebook
-      linkedIn: 
+      linkedIn:
         {
           title: '',
           order: 1, //For Sorting
@@ -40,7 +40,7 @@ export function Lions(){
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End linkedIn
-      github: 
+      github:
         {
           title: '',
           order: 1, //For Sorting
@@ -87,10 +87,10 @@ export function Lions(){
           }
         ] // End YouTube playlists
       }, // End YouTube
-  
-  
+
+
     };
-  
+
       //instagram:any,
       //facebook: any,
       //github: any,
@@ -98,5 +98,5 @@ export function Lions(){
       //appleStore: any,
 
       return entity;
-      
+
   }

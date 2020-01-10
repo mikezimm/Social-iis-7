@@ -1,38 +1,38 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
+
 export function DarkSouls(){
 
-  const entity :IEntity = {
-
-      title: '', //
-      keywords: ["Game","SIG","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+    const entity :IEntity = {
+      title: 'Dark Souls', //
+      keywords: ["ttp","Gaming","RPG","Multiplayer"],
+      profilePic: "https://upload.wikimedia.org/wikipedia/en/8/8d/Dark_Souls_Cover_Art.jpg",
       blog: [
         {
-          title: '',
+          title: 'Dark Souls',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Dark_Souls',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
-      twitter: 
+      twitter:
         {
-          title: '',
+          title: '@DarkSoulsGame',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://twitter.com/DarkSoulsGame',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
-      facebook: 
+      facebook:
       {
-        title: '',
+        title: 'Dark Souls Community',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.facebook.com/darksoulsEU/?brand_redir=163714144280778',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
       ,  // End facebook
-      linkedIn: 
+      linkedIn:
         {
           title: '',
           order: 1, //For Sorting
@@ -40,7 +40,7 @@ export function DarkSouls(){
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End linkedIn
-      github: 
+      github:
         {
           title: '',
           order: 1, //For Sorting
@@ -87,10 +87,10 @@ export function DarkSouls(){
           }
         ] // End YouTube playlists
       }, // End YouTube
-  
-  
+
+
     };
-  
+
       //instagram:any,
       //facebook: any,
       //github: any,
@@ -98,5 +98,5 @@ export function DarkSouls(){
       //appleStore: any,
 
       return entity;
-      
+
   }
