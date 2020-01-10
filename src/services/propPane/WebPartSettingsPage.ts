@@ -13,7 +13,7 @@ import {
   import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
   
   import * as strings from 'Socialiis7WebPartStrings';
-  import { pivotOptionsGroup, trackTimeOptionsGroup } from './index';
+  import { pivotOptionsGroup, socialiis7OptionsGroup } from './index';
   
   export class WebPartSettingsPage {
 
@@ -25,6 +25,17 @@ import {
           description: strings.PropertyPaneDescription,
         },
         groups: [
+
+          {
+            groupName: 'Stuff',
+            groupFields: [
+              PropertyPaneDropdown('navigationType', <IPropertyPaneDropdownProps>{
+                label: 'Left Nav Style',
+                options: socialiis7OptionsGroup.leftNavChoices,
+              }),
+            ]
+
+          }
 /*
          { groupName: strings.PropPaneGroupLabel_UserFeedback,
           isCollapsed: webPartProps.setSize === "This does nothing yet" ? true : false ,

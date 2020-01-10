@@ -6,20 +6,26 @@ import { IEntity } from '../ISocialiis7Props';
     const entity :IEntity = {
       title: 'Hugo Bernier', //
       keywords: ["MVP","SharePoint","SPFx"],
-      profilePic: "https://someURL.com",
+      profilePic: "https://tahoeninjas.blog/wp-content/uploads/2019/08/Hugo-Headshot-260-Square.jpg",
       blog: [
         {
-          title: '',
+          title: 'About Me',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://tahoeninjas.blog/about/',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
+        },
+        {
+          title: 'Tahoe Nijas',
+          order: 1, //For Sorting
+          url: 'https://tahoeninjas.blog/author/bernierh/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter: 
         {
-          title: '',
+          title: 'Twitter',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://twitter.com/bernierh',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
@@ -33,17 +39,17 @@ import { IEntity } from '../ISocialiis7Props';
       ,  // End facebook
       linkedIn: 
         {
-          title: '',
+          title: 'Linked In',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://linkedin.com/in/bernierh',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End linkedIn
       github: 
         {
-          title: '',
+          title: 'Github',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://github.com/hugoabernier',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End github

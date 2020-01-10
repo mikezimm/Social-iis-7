@@ -62,12 +62,13 @@ export interface ISocialiis7State {
     // 6 - User Feedback
 
     // 7 - Media Choices - Left Side bar
+    navigationType: string;
 
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;
     currentPivots: IPivot[][];
     selectedEntity: IEntity;
-    selectedMedia : string,
+    selectedMedia : string;
 
     pivots?: IMyPivots;
     pivtTitles?:string[];
@@ -76,6 +77,7 @@ export interface ISocialiis7State {
 
 
     // 9 - Other web part options
+
 
     loadStatus?: string;
     loadData: any;

@@ -2,6 +2,7 @@ import { string } from "prop-types";
 
 import { PageContext } from '@microsoft/sp-page-context';
 
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 
 export interface ISocialTopicModel {
 
@@ -16,6 +17,7 @@ export interface ISocialModels {
 
 export interface IWeb {
   title: string;
+  titleKey?: string;
   order: number; //For Sorting
   url: string;
   codeType: string; //Used to determine what functions to have avaialble
@@ -59,7 +61,9 @@ export interface IEntity {
   location?: IWeb; //Like Bing Map of city or office or whatever.
   androidStore?: any;
   appleStore?: any;
-  stock?: IWeb[];
+  stock?: IWeb;
+  navigation?: INavLink[];
+  selectedNav?: INavLink;
 
 }
 
@@ -128,6 +132,7 @@ export interface ISocialiis7Props {
   // 6 - User Feedback
 
   // 7 - Media Choices - Left Side bar
+  navigationType: string;
 
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;

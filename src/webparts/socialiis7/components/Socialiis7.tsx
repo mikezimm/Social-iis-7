@@ -25,6 +25,11 @@ import {  buildEntities9} from './Entities9/1EntityBuilder';
 
 import * as choiceBuilders from './choiceFieldBuilder';
 
+import PageNavigator from './Navigator/PageNavigator';
+import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
+
+import AboutMe from './AboutMe/AboutMe';
+
 /**
  * Typical Youtube embed
  * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -50,7 +55,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           itemKey: item.replace(" ", ""),
           filter: item,
         };
-        if (headers.indexOf(item) < 0 ) { result.push(newPivot); headers.push(item) }
+        if (headers.indexOf(item) < 0 ) { result.push(newPivot); headers.push(item); }
       }
     } else {
       for (let item of sourceArray) {
@@ -61,7 +66,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
               itemKey: child.replace(" ", ""),
               filter: child,
             };
-            if (headers.indexOf(child) < 0 ) { result.push(newPivot); headers.push(child) }
+            if (headers.indexOf(child) < 0 ) { result.push(newPivot); headers.push(child); }
           }
         } else {
           let newPivot = {
@@ -69,7 +74,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
             itemKey: item[key].replace(" ", ""),
             filter: item[key],
           };
-          if (headers.indexOf(item[key]) < 0 ) { result.push(newPivot); headers.push(item[key]) }
+          if (headers.indexOf(item[key]) < 0 ) { result.push(newPivot); headers.push(item[key]); }
         }
       }
     }
@@ -130,7 +135,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
-
     this.state = { 
       sourceListName: "Something",
       description: "desc goes here",
@@ -140,6 +144,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
+      navigationType: this.props.navigationType,
       loadData: {
         mainTopic: mainTopic,
         subTopic1: subTopic1,
@@ -212,6 +217,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public render(): React.ReactElement<ISocialiis7Props> {
+    console.log("this.state.navigationType",this.state.navigationType);
     console.log('Public Render: this.state', this.state);
 
     /**
@@ -226,6 +232,22 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let entryOptions = choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this));
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
     
+    let aboutMe =  null;
+
+    console.log("this.state.navigationType",this.state.navigationType);
+    if ( this.state.navigationType !== 'asdfasdf' ) {
+        console.log("Should get image!");
+        aboutMe = 
+        <AboutMe
+          imageUrl={this.state.selectedEntity.profilePic}
+          setImgCover='centerContain'
+          setImgFit='portrait'
+        >
+      </AboutMe>
+    }
+        /*
+    */
+
     /*
     if (this.state.syncProjectPivotsOnToggle){
       display1 = "block";
@@ -234,6 +256,18 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       choice2 = this.state.projectMasterPriorityChoice;
     }
 */
+
+    /*
+        */
+    const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
+      PageNavigator,
+      {
+        description: 'Social Footprint',
+        //Why do I get an error here every time?
+        //selectedKey: 'x',
+        anchorLinks: this.state.selectedEntity.navigation,
+      }
+    );
 
     return (
       <div className={ styles.socialiis7 }>
@@ -244,22 +278,27 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           </div>
           <Stack horizontal={true} horizontalAlign={"end"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
-          { entryOptions }
+          { ( this.props.navigationType === 'choice' ? entryOptions : leftNavigation ) }
             <div className={ styles.column }>
+
               <span className={ styles.title }>{this.state.selectedEntity.title}</span>
               <a href="https://aka.ms/spfx" className={ styles.button }>
                 <span className={ styles.label }>Learn more</span>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
-
+                
               </a>
             </div>
             </Stack>  {/* Stack for Buttons and Fields */}
 
 
           </div>
-          <div className={ styles.title }>
-            { (JSON.stringify(this.state.selectedEntity[this.state.selectedMedia] ))  }
-            </div>
+          <div className={ styles.description }>
+            { (JSON.stringify(this.state.selectedEntity.navigation ))  }
+          </div>
+          <div className={ styles.description }>
+            { aboutMe }
+          </div>
+
         </div>
       </div>
     );
@@ -269,7 +308,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     console.log('_updateEntryType: ev', ev);
 
-    let selectedMedia = option.key
+    let selectedMedia = option.key;
 
     this.setState({ 
       selectedMedia: selectedMedia,

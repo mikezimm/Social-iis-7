@@ -54,13 +54,13 @@ export function creatEntryTypeChoices(parentProps:ISocialiis7Props , parentState
     key: 'webSites',
     text: 'WebSites',
     disabled: ( parentState.selectedEntity.webSites[0] && parentState.selectedEntity.webSites[0].url ? false: true),
-  }
+  };
 
   console.log('creatEntryTypeChoices:', parentState.selectedEntity.webSites.length );
   if ( parentState.selectedEntity.webSites.length > 1) {
     webSites["onRenderField"]= (props, render) => {
       if (parentState.selectedEntity.webSites.length < 2 ) {
-        return ("")
+        return ("");
       } else {
         return (
           <div className={optionRootClass}>
@@ -75,7 +75,7 @@ export function creatEntryTypeChoices(parentProps:ISocialiis7Props , parentState
           </div>
         );
       }
-    }
+    };
   }
 
   options.push(  webSites );

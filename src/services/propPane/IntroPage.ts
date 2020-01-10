@@ -13,7 +13,6 @@ import * as strings from 'Socialiis7WebPartStrings';
 import { pivotOptionsGroup} from './index';
 
 
-
 export class IntroPage {
   public getPropertyPanePage(webPartProps): IPropertyPanePage {
     return <IPropertyPanePage>
