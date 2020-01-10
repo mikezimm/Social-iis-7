@@ -58,14 +58,14 @@ export function ClashOfClans(){
       ],
       youtube: {
         title: 'YouTube',
-        user: '', //Youtube User (from URL)
+        user: 'OfficialClashOfClans', //Youtube User (from URL)
         order: 0, //For Sorting
         channels: [
           {
-            title: '',
+            title: 'OfficialClashOfClans',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectID: 'OfficialClashOfClans', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/user/OfficialClashOfClans', // to be used as generic link if no API key is given
           },{
             title: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video

@@ -62,10 +62,10 @@ export function BlackCats(){
         order: 0, //For Sorting
         channels: [
           {
-            title: '',
+            title: 'Black Cats Rescue',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectUrl: 'https://www.youtube.com/watch?v=7pgY2YetXyE', // to be used as generic link if no API key is given
           },{
             title: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
