@@ -5,34 +5,34 @@ import { IEntity } from '../ISocialiis7Props';
 export function ClashOfClans(){
 
     const entity :IEntity = {
-      title: '', //
-      keywords: ["Game","IPad","bla bla bla"],
-      profilePic: "https://someURL.com",
+      title: 'Clash Of Clans', //
+      keywords: ["ttp","Game","IPad","Mobile"],
+      profilePic: "https://pbs.twimg.com/profile_images/1006114388397391874/5mcVx5ku_400x400.jpg",
       blog: [
         {
-          title: '',
+          title: 'Clash Of Clans',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Clash_of_Clans',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
-      twitter: 
+      twitter:
         {
-          title: '',
+          title: '@ClashOfClans',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://twitter.com/ClashofClans',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
-      facebook: 
+      facebook:
       {
-        title: '',
+        title: 'ClashOfClans',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.facebook.com/gaming/clashofclans/?sub_view=videos&fbsource=1103&external_ref=game_search_unit',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
       ,  // End facebook
-      linkedIn: 
+      linkedIn:
         {
           title: '',
           order: 1, //For Sorting
@@ -40,7 +40,7 @@ export function ClashOfClans(){
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End linkedIn
-      github: 
+      github:
         {
           title: '',
           order: 1, //For Sorting
@@ -58,14 +58,14 @@ export function ClashOfClans(){
       ],
       youtube: {
         title: 'YouTube',
-        user: '', //Youtube User (from URL)
+        user: 'OfficialClashOfClans', //Youtube User (from URL)
         order: 0, //For Sorting
         channels: [
           {
-            title: '',
+            title: 'OfficialClashOfClans',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectID: 'OfficialClashOfClans', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/user/OfficialClashOfClans', // to be used as generic link if no API key is given
           },{
             title: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
@@ -87,10 +87,10 @@ export function ClashOfClans(){
           }
         ] // End YouTube playlists
       }, // End YouTube
-  
-  
+
+
     };
-  
+
       //instagram:any,
       //facebook: any,
       //github: any,
@@ -98,5 +98,5 @@ export function ClashOfClans(){
       //appleStore: any,
 
       return entity;
-      
+
   }
