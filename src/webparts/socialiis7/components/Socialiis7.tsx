@@ -335,8 +335,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       subTopic1Titles: this.createPivotData(loadData.subTopic1Entities, 'title'),
       subTopic2Titles: this.createPivotData(loadData.subTopic2Entities, 'title'),
       subTopic3Titles: this.createPivotData(loadData.subTopic3Entities, 'title'),
-      entTitlesForTopics: this.createPivotData([" "], null),
-      spacers: [],
+      entTitlesForTopics: [],
+      spacers: this.createPivotData([" "], null),
     };
 
     return pivots;

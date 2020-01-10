@@ -33,7 +33,7 @@ import {
       {   index: 6,   key: 'SPFx', text: "SPFx"  },
       {   index: 1,   key: 'Auto', text: "Auto OEMs"  },
       {   index: 7,   key: 'GM', text: "One OEM and children"  },
-      {   index: 2,   key: 'Game', text: "Game"  },
+      {   index: 2,   key: 'Gaming', text: "Gaming"  },
       {   index: 3,   key: 'PC', text: "PC"  },
       {   index: 4,   key: 'Animals', text: "Animals"  },
       {   index: 5,   key: 'ttp', text: "ttp"  },
