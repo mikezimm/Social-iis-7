@@ -25,20 +25,32 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
     //return empty if this does not have any content
-    if (!thisSection) { return navigation; }
-    if (thisSection.length === 0 ) { return navigation; }
-    if (!thisSection[0] ) { return navigation; }
-    if (thisSection[0].url.length === 0 ) { return navigation; }
+     if (sectionName !== 'debug') {
+        if (!thisSection) { return navigation; }
+        if (thisSection.length === 0 ) { return navigation; }
+        if (!thisSection[0] ) { return navigation; }
+        if (thisSection[0].url.length === 0 ) { return navigation; }
+     }
 
     let newSection = cloneDeep(thisSection);
-    navigation = newSection.map((item) => {
-        return {
-            name: item.title,
-            key:   Entity.titleKey + '||||' + sectionName + makeKeyFromString(item.title),
-            url: item.url,
+
+    if (sectionName !== 'debug') {
+        navigation = newSection.map((item) => {
+            return {
+                name: item.title,
+                key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
+                url: item.url,
+                onClick: onNavClick,
+            };
+        });
+    } else {
+        navigation = [{
+            name: 'Share Me',
+            key:   Entity.titleKey + '||||' + sectionName + '||||' + Entity.titleKey,
+            url:   'xxxxx',
             onClick: onNavClick,
-        };
-    });
+        }]
+    }
 
     return navigation;
 
@@ -71,6 +83,7 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'github', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'location', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'debug', onNavClick));
 
     return result;
 

@@ -29,7 +29,10 @@ import * as choiceBuilders from './choiceFieldBuilder';
 import PageNavigator from './Navigator/PageNavigator';
 import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
-import AboutMe from './AboutMe/AboutMe';
+import { IAboutInfoProps } from './AboutInfo'
+import AboutInfo from './AboutInfo'
+
+import AboutPage from './AboutInfo';
 
 /**
  * Typical Youtube embed
@@ -142,7 +145,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedEntity: selectedEntity,
       navigationType: this.props.navigationType,
       topics: topics,
-      selectedNavKey: 'public constructor(',
+      selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
       loadData: loadData,
 
     };
@@ -210,21 +213,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let entryOptions = choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this));
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
-    
-    let aboutMe =  null;
 
-    if ( this.state.selectedEntity && this.state.navigationType !== 'asdfasdf' ) {
-        console.log("Should get image!");
-        aboutMe = 
-        <AboutMe
-          imageUrl={this.state.selectedEntity.profilePic}
-          setImgCover='centerContain'
-          setImgFit='portrait'
-          imageHeight={400}
-          imageWidth={600}
-        >
-      </AboutMe>;
-    }
         /*
     */
 
@@ -239,6 +228,13 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     /*
         */
+    let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
+      AboutInfo,
+      {
+        parentProps: this.props,
+        parentState: this.state,
+      }
+    );
 
     const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
       PageNavigator,
@@ -247,6 +243,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         //Why do I get an error here every time?
         //selectedKey: 'x',
         selectedNavKey: this.state.selectedNavKey,
+        selectedEntityString: this.state.selectedEntity.titleKey,
         anchorLinks: (this.state.selectedEntity ? this.state.selectedEntity.navigation : []),
       }
     );
@@ -258,25 +255,18 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           <div className={styles.floatLeft}>
           { this.createPivotObject(this.state.currentPivots, display1)  }
           </div>
-          <Stack horizontal={true} horizontalAlign={"end"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
+          <Stack horizontal={true} horizontalAlign={"space-between"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
           { ( this.props.navigationType === 'choice' ? entryOptions : leftNavigation ) }
-            <div className={ styles.column }>
-
-            <div className={ styles.description }>
-              { aboutMe }
-            </div>
+            <div className={ styles.column } style={{paddingLeft: 50, minWidth: 700}}>
+              <div className={ styles.description }>
+                { aboutMe }
+              </div>
             </div>
             </Stack>  {/* Stack for Buttons and Fields */}
 
 
           </div>
-          <div className={ styles.description }>
-            { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
-              JSON.stringify(jsonobj,null,'\t') */}
-            { (this.state.selectedEntity ? (JSON.stringify(this.state.selectedEntity.navigation, undefined, 4)) : '')  }
-          </div>
-
 
         </div>
       </div>
@@ -380,22 +370,21 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     } else {
 
-
-
-      //console.log('onLinkClick: this.state', this.state);
-      //console.log('onLinkClick: item', item);
-      
+     
       let thisFilter = [];
       let pivots = this.state.pivots.allTopics;  
       let selectedEntity : IEntity = null;
       for (let entity of this.state.loadData.entitiesForMainTopic){
+
         if ( entity.title === item.props.headerText ) {
           selectedEntity = entity;
         }
+
       }
 
       this.setState({
-        selectedEntity:selectedEntity,
+        selectedEntity: selectedEntity,
+        selectedNavKey: selectedEntity.navigation.length > 0 ? selectedEntity.navigation[0].key : selectedEntity.titleKey,
       });
 
     }
@@ -416,10 +405,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     for (let ent of this.state.loadData.entitiesForMainTopic) {
       if (ent.titleKey === thisEntityKey) { selectedEntity = ent }
     }
-    console.log('onNavClick: this.state', this.state);
-    console.log('onNavClick: item', item);
-    console.log('onNavClick: ev', ev);
-    console.log('onNavClick: e', e);
+
+    //This is done to confirm that the "Share Info" button was clicked
+    if ( item.key.indexOf('debug') > -1 ) { item.key = item.key.replace('debug','showDebug')}
+
     if (ev.ctrlKey) {
       //Set clicked pivot as the hero pivot
         let openThisWindow = item.url;

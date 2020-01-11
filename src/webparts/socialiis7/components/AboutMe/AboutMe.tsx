@@ -33,7 +33,7 @@ export default class AboutMe extends React.Component<IAboutMeProps, IAboutMeStat
 
   public render(): React.ReactElement<IAboutMeProps> {
     
-    console.log('AboutMe: this.props',this.props);
+    //console.log('AboutMe: this.props',this.props);
     let thisTop = `${this.props.imageHeight * .6 }px`;
     let thisHeight = `${this.props.imageHeight}px`;
     let thisWidth = `${this.props.imageWidth}px`;

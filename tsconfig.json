@@ -29,7 +29,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts", "src/webparts/socialiis7/components/AboutPage.tsx"
   ],
   "exclude": [
     "node_modules",
