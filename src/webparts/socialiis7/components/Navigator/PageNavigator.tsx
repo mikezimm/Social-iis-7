@@ -10,7 +10,7 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
 
     this.state = {
       anchorLinks: [],
-      selectedKey: '',
+      selectedKey: this.props.selectedNavKey,
     };
 
     this.onLinkClick = this.onLinkClick.bind(this);
@@ -33,15 +33,15 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
   }
 
   public render(): React.ReactElement<IPageNavigatorProps> {
-    console.log('PageNavRenderProps:' , this.props);
+    console.log('PageNavRenderProps:' , this.props, this.state);
     return (
       <div className={styles.pageNavigator}>
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>
               <div className={styles.title}>{this.props.description}</div>
-              <Nav selectedKey={this.state.selectedKey}
-                onLinkClick={this.onLinkClick}
+              <Nav selectedKey={this.props.selectedNavKey}
+                onLinkClick={(this.props.onNavClick)}
                 groups={[
                   {
                     links: this.state.anchorLinks

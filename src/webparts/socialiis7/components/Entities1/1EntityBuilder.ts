@@ -5,25 +5,25 @@ import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import * as ents from './index';
 
-export function buildEntities() {
+export function buildEntities(onNavClick) {
     let Entities : IEntity[] = [];
     console.log('ents', ents);
-    Entities.push( addOtherProps(ents.AndrewConnell() ) );
-    Entities.push( addOtherProps(ents.DavidWarner() ) );
-    Entities.push( addOtherProps(ents.HugoBernier() ) );
-    Entities.push( addOtherProps(ents.JeffTeper() ) );
-    Entities.push( addOtherProps(ents.SIGGeneralDev() ) );
-    Entities.push( addOtherProps(ents.SIGMonthlyDev() ) );
-    Entities.push( addOtherProps(ents.SIGSPFx() ) );
-    Entities.push( addOtherProps(ents.VesaJuvonen() ) );
+    Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick ) );
+    Entities.push( addOtherProps(ents.DavidWarner(),onNavClick ) );
+    Entities.push( addOtherProps(ents.HugoBernier(),onNavClick ) );
+    Entities.push( addOtherProps(ents.JeffTeper(),onNavClick ) );
+    Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick ) );
+    Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick ) );
+    Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick ) );
+    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick ) );
     
     return Entities;
 }
 
-function buildNavigationForWeb( thisSection: IWeb[], sectionName: string){
+function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick){
 
     let navigation: INavLink[] = [];
-
+    let thisSection = Entity[sectionName];
     //return empty if this does not have any content
     if (!thisSection) { return navigation; }
     if (thisSection.length === 0 ) { return navigation; }
@@ -34,8 +34,9 @@ function buildNavigationForWeb( thisSection: IWeb[], sectionName: string){
     navigation = newSection.map((item) => {
         return {
             name: item.title,
-            key:  sectionName + makeKeyFromString(item.title),
+            key:   Entity.titleKey + '||||' + sectionName + makeKeyFromString(item.title),
             url: item.url,
+            onClick: onNavClick,
         };
     });
 
@@ -51,24 +52,25 @@ function makeKeyFromString(str : string){
 
 }
 
-export function  addOtherProps(Entity : IEntity ) {
+export function  addOtherProps(Entity : IEntity, onNavClick ) {
 
     let result : IEntity = cloneDeep(Entity);
     result.titleKey = makeKeyFromString(result.title);
+    Entity.titleKey = result.titleKey;
     if ( result.keywords.indexOf(result.title) < 0) { result.keywords.push(result.title);}
 
     result.navigation = [];
     //let blog = buildNavigationForWeb(Entity.blog, 'blog');
     //console.log('blog', blog);
-    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity.blog, 'blog'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity.webSites, 'webSites'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.twitter], 'twitter'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.linkedIn], 'linkedIn'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.instagram], 'instagram'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.facebook], 'facebook'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.github], 'github'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.location], 'location'));
-    result.navigation = result.navigation.concat(buildNavigationForWeb([Entity.stock], 'stock'));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'blog', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'webSites', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'twitter', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'linkedIn', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'instagram', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'facebook', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'github', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'location', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));
 
     return result;
 
