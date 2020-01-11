@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 import * as ents from './index';
 import { addOtherProps } from '../Entities1/1EntityBuilder';
 
-export function buildEntities4() {
+export function buildEntities4(onNavClick) {
     let Entities : IEntity[] = [];
     console.log('ents', ents);
-    Entities.push(addOtherProps(ents.Autoliv()));
-    Entities.push(addOtherProps(ents.TRW()));
-    Entities.push(addOtherProps(ents.Veoneer()));
+    Entities.push(addOtherProps(ents.Autoliv(), onNavClick));
+    Entities.push(addOtherProps(ents.TRW(), onNavClick));
+    Entities.push(addOtherProps(ents.Veoneer(), onNavClick));
 
     return Entities;
 }

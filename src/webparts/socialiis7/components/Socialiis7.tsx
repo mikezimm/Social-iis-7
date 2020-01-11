@@ -5,6 +5,7 @@ import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { DefaultButton, autobind, getLanguage, ZIndexes } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -83,17 +84,22 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   public constructor(props:ISocialiis7Props){
     super(props);
+
+    this.onNavClick = this.onNavClick.bind(this);
+
     let currentPivotSet = "keysForTopic";
 
     let topics : ITopics = this.props.topics;
 
-    let Entities1 = buildEntities();
-    let Entities2 = buildEntities2();
-    let Entities4 = buildEntities4();
-    let Entities7 = buildEntities7();
-    let Entities9 = buildEntities9();    
+    let Entities1 = buildEntities(this.onNavClick);
+    let Entities2 = buildEntities2(this.onNavClick);
+    let Entities4 = buildEntities4(this.onNavClick);
+    let Entities7 = buildEntities7(this.onNavClick);
+    let Entities9 = buildEntities9(this.onNavClick);    
     
     let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9);
+
+
 
     let loadData: ILoadData = {
 
@@ -136,7 +142,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedEntity: selectedEntity,
       navigationType: this.props.navigationType,
       topics: topics,
-
+      selectedNavKey: 'public constructor(',
       loadData: loadData,
 
     };
@@ -146,9 +152,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     //  components properties (this.props)... otherwise "this" is undefined
 
     /*
-    this.onLinkClick = this.onLinkClick.bind(this);
+        this.onLinkClick = this.onLinkClick.bind(this);
     */
-    
+
   }
 
   public componentDidMount() {
@@ -159,7 +165,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public componentDidUpdate(prevProps){
 /*
 */
-
     let rebuildPivots = false;
     if (this.props.topics !== prevProps.topics) {  rebuildPivots = true ; }
 
@@ -241,6 +246,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         description: 'Social Footprint',
         //Why do I get an error here every time?
         //selectedKey: 'x',
+        selectedNavKey: this.state.selectedNavKey,
         anchorLinks: (this.state.selectedEntity ? this.state.selectedEntity.navigation : []),
       }
     );
@@ -388,7 +394,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         }
       }
 
-
       this.setState({
         selectedEntity:selectedEntity,
       });
@@ -396,6 +401,54 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     }
 
   } //End onClick
+
+  public onNavClick = (ev?: React.MouseEvent<HTMLElement>, item?: INavLink): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+
+    let e: any = ev;
+
+    ev.preventDefault(); // Let's stop this event.
+    e.preventDefault(); // Let's stop this event.
+
+    let thisEntityKey = item.key.split('||||')[0];
+    let selectedEntity : IEntity = null;
+
+    for (let ent of this.state.loadData.entitiesForMainTopic) {
+      if (ent.titleKey === thisEntityKey) { selectedEntity = ent }
+    }
+    console.log('onNavClick: this.state', this.state);
+    console.log('onNavClick: item', item);
+    console.log('onNavClick: ev', ev);
+    console.log('onNavClick: e', e);
+    if (ev.ctrlKey) {
+      //Set clicked pivot as the hero pivot
+        let openThisWindow = item.url;
+        window.open(openThisWindow, '_blank');
+        this.setState({
+          selectedEntity : selectedEntity,
+          selectedNavKey : item.key,
+        });
+
+
+    } else if (ev.altKey) {
+      //Enable-disable ChangePivots options
+      /*
+      this.setState({
+        
+      });
+      */
+
+    } else {
+
+      this.setState({
+        selectedEntity : selectedEntity,
+        selectedNavKey : item.key,
+      });
+
+    }
+
+  } //End onNavClick
+
 
   //http://react.tips/how-to-create-reactjs-components-dynamically/ - based on createImage
   public createPivot(pivT: IPivot) {

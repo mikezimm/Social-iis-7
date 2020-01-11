@@ -4,4 +4,7 @@ export interface IPageNavigatorProps {
   description: string;
 
   anchorLinks: INavLink[];
+  selectedNavKey: string;
+  onNavClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
+  
 }
