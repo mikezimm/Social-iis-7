@@ -58,13 +58,14 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     let objectType = null;
     if (selectedNavItem.objectType.toLowerCase().indexOf('playlist') > -1 ) { objectType = 'playlistId' ; youTube = true }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true }
 
     if ( youTube && objectType != null && selectedNavItem.objectID ) {
       //This is a Youtube Channel or Playlist
       aboutPane = React.createElement(
         Youtube,
         {
-          description: 'Description',
+          description: selectedNavItem.title,
           apiKey: 'AIzaSyD6O2VK5QY_NY2UbNINCM-VDjmth2NRU3U', //
           objectId: selectedNavItem.objectID,
           maxResults: 3,

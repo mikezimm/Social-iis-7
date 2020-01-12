@@ -53,29 +53,78 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
     if (sectionName === 'youtube') {
         //console.log('buildNavigationForWeb youtube:',Entity, sectionName );
 
+        //navKeys is just an array of the keys found.  If the item already exists, do not duplicate
+        let navKeys: string[] = [];
         //let navigation = [];
         Object.keys(newSection).forEach(key => {
             //console.log('buildNavigationForWeb youtube keys(newSection):',key );
             let navElements = [];
 
-            if (key === 'channels' || key === 'playLists' ) {
+            if ( key === 'items' ) {
+
+                navElements = newSection[key].map((item) => {
+                    console.log('buildNavigationForWeb 1a:',item );
+                    if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
+
+                        let navKey = Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title);
+                        if ( navKeys.indexOf(navKey) > -1 ) { return null; } else {
+
+                            navKeys.push(navKey);
+                            let host = 'https://www.youtube.com/';
+
+                            if ( item.objectType.toLowerCase().indexOf('channel') > -1 ) { host += 'channel/'};
+                            if ( item.objectType.toLowerCase().indexOf('playlist') > -1 ) { host += 'playlist?list='};
+                            if ( item.objectType.toLowerCase().indexOf('video') > -1 ) { host += 'watch?v='};
+
+                            return {
+                                name: item.title,
+                                key:   navKey,
+                                url: host + item.objectID,
+                                onClick: onNavClick,
+                                mediaSource: sectionName,
+                                objectType: item.objectType,
+                                objectID: item.objectID,
+            
+                            };
+                        }
+                    }
+
+                });
+                //console.log('buildNavigationForWeb youtube navElements:',navElements );
+
+                //Need to remove any null items from array before adding to navigation or they make spaces in nav
+                //https://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
+                navigation = navigation.concat(
+                    navElements.filter(function (el) {
+                        return el != null;
+                    })
+                );
+
+            //This section can be removed once 'items' is coded
+            } else if ( key === 'channels' || key === 'playLists' ) {
                 navElements = newSection[key].map((item) => {
                     //console.log('buildNavigationForWeb 1a:',item );
                     if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
-                        let host = 'https://www.youtube.com/';
-                        if ( key === 'channels') { host += 'channel/'};
-                        if ( key === 'playLists') { host += 'playlist?list='};
-    
-                        return {
-                            name: item.title,
-                            key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
-                            url: host + item.objectID,
-                            onClick: onNavClick,
-                            mediaSource: sectionName,
-                            objectType: item.objectType,
-                            objectID: item.objectID,
+
+                        let navKey = Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title);
+                        if ( navKeys.indexOf(navKey) > -1 ) { return null; } else {
+
+                            navKeys.push(navKey);
+                            let host = 'https://www.youtube.com/';
+                            if ( key === 'channels') { host += 'channel/'};
+                            if ( key === 'playLists') { host += 'playlist?list='};
         
-                        };
+                            return {
+                                name: item.title,
+                                key:   navKey,
+                                url: host + item.objectID,
+                                onClick: onNavClick,
+                                mediaSource: sectionName,
+                                objectType: item.objectType,
+                                objectID: item.objectID,
+            
+                            };
+                        }
                     }
 
                 });

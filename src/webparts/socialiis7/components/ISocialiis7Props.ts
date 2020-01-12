@@ -36,6 +36,7 @@ export interface IYoutube {
   title: string;
   user?: string; //Youtube User (from URL)
   order?: number; //For Sorting
+  items?: IYoutubeObject[];
   channels?: IYoutubeObject[];
   playLists?: IYoutubeObject[];
 
