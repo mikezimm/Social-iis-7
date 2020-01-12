@@ -33,5 +33,7 @@ npm install --save @pnp/polyfill-ie11
 npm install @pnp/spfx-property-controls
 npm install --save office-ui-fabric-react
 
+$ npm install axios --save  (For Youtube component)
+
 
 ```

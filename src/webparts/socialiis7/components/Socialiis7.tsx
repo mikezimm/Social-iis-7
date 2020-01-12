@@ -129,7 +129,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     loadData = this._rebuildEntities(topics, loadData);
 
     let selectedEntity = loadData.subTopic1Entities[0];
-
+    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
     let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
@@ -143,6 +143,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
+      selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
       topics: topics,
       selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
@@ -382,9 +383,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
       }
 
+      let selectedNavItem = selectedEntity.navigation[0];
+
       this.setState({
         selectedEntity: selectedEntity,
         selectedNavKey: selectedEntity.navigation.length > 0 ? selectedEntity.navigation[0].key : selectedEntity.titleKey,
+        selectedNavItem: selectedNavItem,
       });
 
     }
@@ -402,9 +406,20 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let thisEntityKey = item.key.split('||||')[0];
     let selectedEntity : IEntity = null;
 
+    let selectedNavItem = null;
+
+    
     for (let ent of this.state.loadData.entitiesForMainTopic) {
-      if (ent.titleKey === thisEntityKey) { selectedEntity = ent }
+      if (ent.titleKey === thisEntityKey) { 
+        selectedEntity = ent;
+      }
     }
+
+   for (let nav of selectedEntity.navigation) {
+    if (nav.key === item.key) { 
+      selectedNavItem = nav;
+    }
+  }
 
     //This is done to confirm that the "Share Info" button was clicked
     if ( item.key.indexOf('debug') > -1 ) { item.key = item.key.replace('debug','showDebug')}
@@ -416,6 +431,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         this.setState({
           selectedEntity : selectedEntity,
           selectedNavKey : item.key,
+          selectedNavItem : selectedNavItem,
         });
 
 
@@ -432,6 +448,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       this.setState({
         selectedEntity : selectedEntity,
         selectedNavKey : item.key,
+        selectedNavItem : selectedNavItem,
       });
 
     }

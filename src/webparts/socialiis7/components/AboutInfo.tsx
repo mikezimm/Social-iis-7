@@ -1,6 +1,7 @@
 
 
 import * as React from 'react';
+import * as ReactDom from 'react-dom';
 
 import {ISocialiis7State} from './ISocialiis7State';
 
@@ -13,6 +14,10 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import styles from './Socialiis7.module.scss';
 import AboutMe from './AboutMe/AboutMe';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
+
+import Youtube from './youTube/Youtube';
+import { IYoutubeProps } from './youTube/IYoutubeProps';
+
 
 export interface IAboutInfoProps {
   parentProps:ISocialiis7Props,
@@ -35,10 +40,11 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
   public render(): React.ReactElement<IAboutInfoProps> {
 
     let selectedNavKey = this.props.parentState.selectedNavKey;
+    let selectedNavItem = this.props.parentState.selectedNavItem;
     let Entity = this.props.parentState.selectedEntity;  
+    if (!selectedNavItem ) { selectedNavItem = Entity.navigation[0];}
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
-    console.log('Render AboutInfo');
-    console.log('this.props.parentState',this.props.parentState);
+    console.log('Render AboutInfo parentState',this.props.parentState);
 
     //showDebug
     let showDebug = false;
@@ -46,20 +52,42 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       showDebug = true;
     }
 
+    let aboutPane = null;
+    let youTube = null;
+
+    if ( selectedNavItem.mediaSource === 'youtube' && selectedNavItem.objectType === 'Channel' ) {
+      //This is a Youtube Channel
+      aboutPane = React.createElement(
+        Youtube,
+        {
+          description: 'Description',
+          apiKey: 'AIzaSyD6O2VK5QY_NY2UbNINCM-VDjmth2NRU3U', //
+          channelId: selectedNavItem.objectID,
+          maxResults: 3
+        }
+      );
+
+
+    } else {
+      aboutPane = 
+      <AboutMe
+        imageUrl={ (!showDebug ? this.props.parentState.selectedEntity.profilePic : '')}
+        setImgCover='centerContain'
+        setImgFit='portrait'
+        imageHeight={ !showDebug ? 400 : 0 }
+        imageWidth={ !showDebug ? 600 : 0 }
+        >
+      </AboutMe>
+    }
+
+
     if ( this.props.parentState.selectedEntity && this.props.parentState.navigationType !== 'asdfasdf' ) {
       console.log('Inside AboutInfo');
       return (
         <div>
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
-          <AboutMe
-            imageUrl={ (!showDebug ? this.props.parentState.selectedEntity.profilePic : '')}
-            setImgCover='centerContain'
-            setImgFit='portrait'
-            imageHeight={ !showDebug ? 400 : 0 }
-            imageWidth={ !showDebug ? 600 : 0 }
-            >
-          </AboutMe>
+          { aboutPane }
           <div className={ styles.description }>
             { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
               JSON.stringify(jsonobj,null,'\t') */}
