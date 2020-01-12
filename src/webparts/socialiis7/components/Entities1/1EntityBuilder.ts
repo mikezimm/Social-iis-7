@@ -89,7 +89,8 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 url: item.url,
                 onClick: onNavClick,
                 mediaSource: sectionName,
-                objectType: item.objectType,
+                objectType: sectionName,
+                objectID: item.objectID,
 
             };
         });
@@ -100,6 +101,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             url:   'xxxxx',
             onClick: onNavClick,
             mediaSource: sectionName,
+            objectID: 'the Cat Jumped over the Moon!',
             objectType: 'JSON',
         }]
     }

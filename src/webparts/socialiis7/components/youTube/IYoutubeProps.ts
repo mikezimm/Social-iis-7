@@ -1,6 +1,7 @@
 export interface IYoutubeProps {
   description: string;
   apiKey: string;
-  channelId: string;
+  objectId: string;
+  objectType: string; //Like channelId, playlistId
   maxResults: number;
 }
