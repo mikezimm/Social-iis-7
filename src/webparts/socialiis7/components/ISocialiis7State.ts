@@ -97,6 +97,7 @@ export interface ISocialiis7State {
     currentPivots: IPivot[][];
     selectedEntity: IEntity;
     selectedNavKey: string;
+    selectedNavItem: any;
     selectedMedia : string;
 
     pivots?: IMyPivots;

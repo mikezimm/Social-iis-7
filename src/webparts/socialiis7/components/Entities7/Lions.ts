@@ -63,7 +63,7 @@ export function Lions(){
         channels: [
           {
             title: 'YouTube for Lions',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+            objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/watch?v=5oqtcM0Y7Jo', // to be used as generic link if no API key is given
           },{
