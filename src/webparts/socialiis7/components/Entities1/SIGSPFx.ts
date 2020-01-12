@@ -49,9 +49,9 @@ export function SIGSPFx(){
       ,  // End github
       webSites: [
         {
-          title: 'YouTube Call Playlist',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

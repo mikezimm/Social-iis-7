@@ -23,20 +23,26 @@ export function buildEntities(onNavClick) {
 
 function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick){
 
-    console.log('buildNavigationForWeb 1:',Entity, sectionName );
+    //console.log('buildNavigationForWeb 1:',Entity, sectionName );
 
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
     //return empty if this does not have any content
     //console.log('buildNavigationForWeb 2: thisSection',thisSection );
      if (sectionName !== 'debug') {
-        if (!thisSection) { console.log('!thisSection');return navigation; }
+        if (!thisSection) { 
+            //console.log('!thisSection');
+            return navigation; }
         if (thisSection.length === 0 ) { console.log('.length === 0'); return navigation; }
 
         if ( sectionName !== 'youtube') {
             //This section only applies where the first key is not an array.
-            if (!thisSection[0] ) { console.log('!thisSection[0]'); return navigation; }
-            if (thisSection[0].url.length === 0 ) { console.log('!n[0].url.length === 0'); return navigation; }
+            if (!thisSection[0] ) {
+                 //console.log('!thisSection[0]'); 
+                 return navigation; }
+            if (thisSection[0].url.length === 0 ) { 
+                //console.log('!n[0].url.length === 0'); 
+                return navigation; }
         }
 
 
@@ -54,8 +60,8 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
             if (key === 'channels' || key === 'playLists' ) {
                 navElements = newSection[key].map((item) => {
-
-                    if ( item.objectID.length === 0 && item.objectID.url === 0 ) {return null; } else {
+                    //console.log('buildNavigationForWeb 1a:',item );
+                    if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
                         let host = 'https://www.youtube.com/';
                         if ( key === 'channels') { host += 'channel/'};
                         if ( key === 'playLists') { host += 'playlist?list='};
@@ -74,8 +80,16 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
                 });
                 //console.log('buildNavigationForWeb youtube navElements:',navElements );
-                navigation = navigation.concat(navElements);
-                console.log('buildNavigationForWeb youtube navigation1:',navigation );                
+
+                //Need to remove any null items from array before adding to navigation or they make spaces in nav
+                //https://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
+                navigation = navigation.concat(
+                    navElements.filter(function (el) {
+                        return el != null;
+                    })
+                );
+
+                //console.log('buildNavigationForWeb youtube navigation1:',navigation );                
             }
             //console.log('buildNavigationForWeb youtube navigation2:',navigation );  
         });
@@ -105,7 +119,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             objectType: 'JSON',
         }]
     }
-    console.log('buildNavigationForWeb youtube navigation4:',navigation );  
+    //console.log('buildNavigationForWeb youtube navigation4:',navigation );  
     return navigation;
 
 }
@@ -134,9 +148,9 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'linkedIn', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'instagram', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'facebook', onNavClick));
-    console.log('Navigation B4 Youtube',result.navigation);
+    //console.log('Navigation B4 Youtube',result.navigation);
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'youtube', onNavClick));
-    console.log('Navigation B4 After',result.navigation);
+    //console.log('Navigation B4 After',result.navigation);
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'github', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'location', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));

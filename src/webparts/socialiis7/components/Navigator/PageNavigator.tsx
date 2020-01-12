@@ -49,7 +49,7 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
 
   public render(): React.ReactElement<IPageNavigatorProps> {
 
-    console.log('Build page navigation: ', this.props, this.state);
+    //console.log('Build page navigation: ', this.props, this.state);
     return (
       <div className={styles.pageNavigator}>
         <div className={styles.container}>

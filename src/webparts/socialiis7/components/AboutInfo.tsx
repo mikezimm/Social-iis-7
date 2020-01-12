@@ -72,7 +72,6 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         }
       );
 
-
     } else {
       aboutPane = 
       <AboutMe

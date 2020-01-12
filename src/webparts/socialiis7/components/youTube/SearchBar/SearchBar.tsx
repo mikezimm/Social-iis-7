@@ -19,7 +19,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
             return (
                 <div className="search-bar">
                     <TextField
-                        label='Search a video'
+                        label='Search a video -- CURRENTLY DISABLED DUE TO HIGH API Quota Cost'
                         iconProps={{ iconName: 'Search' }}
                         value={this.state.term}
                         onChanged={this.onInputChange}

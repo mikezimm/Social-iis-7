@@ -49,9 +49,9 @@ export function SIGMonthlyDev(){
       ,  // End github
       webSites: [
         {
-          title: 'YouTube Call Playlist',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
