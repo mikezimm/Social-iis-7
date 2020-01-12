@@ -10,15 +10,21 @@ export const VideoList = (props) => {
                 onVideoSelect={props.onVideoSelect} />
         )
     });
+    console.log('List width: ', props.listWidth);
 
-    return (
-        // <ul className="ms-Grid-col ms-lg4 ms-xl4">
-        //   {videoItems}
-        // </ul>
-        <ul className="ms-Grid-col ms-lg4 ms-xl4">
-            {videoItems}
-        </ul>
-    );
+    if ( props.videos.length < 2 ) { return (<div></div>); } else {
+        return (
+            // <ul className="ms-Grid-col ms-lg4 ms-xl4">
+            //   {videoItems}
+            // </ul>
+            //<div style={{width: props.listWidth}}>
+            <ul className="ms-Grid-col ms-lg4 ms-xl4">
+                {videoItems}
+            </ul>
+            //</div>
+        );
+    }
+
 };
 
 // export default VideoList;

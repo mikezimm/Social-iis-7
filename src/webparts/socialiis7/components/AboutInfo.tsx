@@ -65,7 +65,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       aboutPane = React.createElement(
         Youtube,
         {
-          description: 'Description',
+          description: selectedNavItem.title,
           apiKey: 'AIzaSyD6O2VK5QY_NY2UbNINCM-VDjmth2NRU3U', //
           objectId: selectedNavItem.objectID,
           maxResults: 3,

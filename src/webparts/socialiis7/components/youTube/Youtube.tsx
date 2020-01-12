@@ -52,20 +52,25 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
     //Always force to search playlist items because this should only be visible when a play list is on the screen
     //const videoSearch = _.debounce((term) => { this.playListSearch(this.props.apiKey, ROOT_URL + 'playlistItems', term, 'playlist', this.state.activePlayList, this.props.maxResults.toString(), true) }, 300);
+    let paneWidth = 700;
+    let videoWidth = this.state.videos.length > 1 ? paneWidth * .55 : paneWidth;
+    let listWidth = this.state.videos.length > 1 ? paneWidth - videoWidth : 0;
 
     return (
       <div className={styles.youtube}>
         <div className={styles.container}>
-          <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-black ${styles.row}`}>
+          {/* <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-black ${styles.row}`}> */}
+          <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-black ${styles.row}`} style={{width: paneWidth}}>
             <p className="ms-font-l">{escape(this.props.description)}</p>
             <div>
               { /*  Search is not available on playlists... only channels */ }
               { /*<SearchBar onSearchTermChange={videoSearch} />*/ }
               <br />
-              <VideoDetail video={this.state.selectedVideo} />
+              <VideoDetail video={this.state.selectedVideo} width={videoWidth}/>
               <VideoList
                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                videos={this.state.videos} />
+                videos={this.state.videos}
+                listWidth={listWidth} />
             </div>
           </div>
         </div>
@@ -190,14 +195,14 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
     console.log('YouTube playListSearch: props/state',  this.props, this.state);
     console.log('YouTube playListSearch: search params: ', params);
 */
-    console.log('YouTube Search params:', params );
+    //console.log('YouTube Search params:', params );
 
     axios.get(Search_ROOT_URL, { params: params })
       .then((response) => {
         // if (callback) { callback(response.data.items); }
         // return response.data.items;
 
-        console.log('YouTube Search response: items', response.data );
+        //console.log('YouTube Search response: items', response.data );
         let decodedItems = [];
 
         for (let item of response.data.items ) {

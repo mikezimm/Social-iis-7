@@ -60,7 +60,7 @@ export function Lions(){
         title: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
-        channels: [
+        items: [
           {
             title: 'YouTube for Lions',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
@@ -72,20 +72,8 @@ export function Lions(){
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           }
-        ], // End YouTube channels
-        playLists: [
-          {
-            title: '',
-            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
-          },{
-            title: '',
-            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
-          }
-        ] // End YouTube playlists
+        ], // End YouTube items
+
       }, // End YouTube
 
 
