@@ -18,10 +18,11 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      activePlayList: this.props.objectType.indexOf('playlist') > -1 ? this.props.objectId : null,
     };
     console.log('YouTube constructor:', this.props, this.state);
-    this.videoSearch(this.props.apiKey, '',  this.props.objectType , this.props.objectId, this.props.maxResults.toString())
+    this.videoSearch(this.props.apiKey, '',  this.props.objectType , this.props.objectId, this.props.maxResults.toString());
   }
 
   public componentDidUpdate(prevProps){
@@ -31,16 +32,26 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
       if ( prevProps.objectId !== this.props.objectId ) { rebuildYouTube = true }
 
       console.log('Youtube componentDidUpdate:', prevProps, this.props);
-
       if ( rebuildYouTube === true){
+        
+        this.state = {
+          videos: [],
+          selectedVideo: null,
+          activePlayList: this.props.objectType.indexOf('playlist') > -1 ? this.props.objectId : null,
+        };
+
         this.videoSearch(this.props.apiKey, '',  this.props.objectType , this.props.objectId, this.props.maxResults.toString());
+
+        //This should only fire when the search is used.
+        //this.playListSearch(this.props.apiKey, ROOT_URL + 'search', '',  this.props.objectType , this.props.objectId, this.props.maxResults.toString(),true);
       }
     }
 
 
   public render(): React.ReactElement<IYoutubeProps> {
 
-    const videoSearch = _.debounce((term) => { this.videoSearch(this.props.apiKey, term, this.props.objectType, this.props.objectId, this.props.maxResults.toString()) }, 300);
+    //Always force to search playlist items because this should only be visible when a play list is on the screen
+    //const videoSearch = _.debounce((term) => { this.playListSearch(this.props.apiKey, ROOT_URL + 'playlistItems', term, 'playlist', this.state.activePlayList, this.props.maxResults.toString(), true) }, 300);
 
     return (
       <div className={styles.youtube}>
@@ -48,7 +59,8 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
           <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-black ${styles.row}`}>
             <p className="ms-font-l">{escape(this.props.description)}</p>
             <div>
-              <SearchBar onSearchTermChange={videoSearch} />
+              { /*  Search is not available on playlists... only channels */ }
+              { /*<SearchBar onSearchTermChange={videoSearch} />*/ }
               <br />
               <VideoDetail video={this.state.selectedVideo} />
               <VideoList
@@ -66,7 +78,13 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
     
     if (objectType.toLowerCase().indexOf('playlist') > -1 ) { 
       objectType = 'playlistId';
-      this.playListSearch(key, ROOT_URL + 'playlistItems', term, objectId, maxResults);
+      this.playListSearch(key, ROOT_URL + 'playlistItems', term, objectType, objectId, maxResults, false);
+
+    }
+    else if ( objectType.toLowerCase().indexOf('video' ) > -1 ) { 
+      // per https://stackoverflow.com/a/27872244/4210807
+      objectType = 'forUsername';
+      this.playListSearch(key, ROOT_URL + 'videos', term, objectType, objectId, maxResults, false);
 
     }
     else if ( objectType.toLowerCase().indexOf('user' ) > -1 ) { 
@@ -82,8 +100,8 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
     }
     else { 
-      objectType = 'search';https://console.cloud.google.com/iam-admin/quotas?project=socialiis-01112020
-      this.playListSearch(key, ROOT_URL + 'search', term, objectId, maxResults);
+      objectType = 'search';  //https://console.cloud.google.com/iam-admin/quotas?project=socialiis-01112020
+      this.playListSearch(key, ROOT_URL + 'search', term, objectType, objectId, maxResults, false);
 
       console.log('Youtube Search expected an objectType of channel or playlist but received ', objectType );
      }
@@ -121,7 +139,7 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
         //console.log('YouTube Search response: user:', response.data );
         let userPlayList = response.data.items[0].contentDetails.relatedPlaylists.uploads;
 
-        this.playListSearch(key, ROOT_URL + 'playlistItems', term, userPlayList, maxResults);
+        this.playListSearch(key, ROOT_URL + 'playlistItems', term, 'playlist', userPlayList, maxResults, false);
 
       })
       .catch((error) => {
@@ -132,7 +150,7 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
   }
 
-  private playListSearch(key: string, Search_ROOT_URL : string, term: string, objectId: string, maxResults: string): any {
+  private playListSearch(key: string, Search_ROOT_URL : string, term: string, objectType: string, objectId: string, maxResults: string , useSearchAPI: boolean): any {
     if (!key) {
       //throw new Error('Youtube Search expected key, received undefined');
       console.log('Youtube Search expected key, received undefined');
@@ -141,7 +159,6 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
     let params = {
       part: 'snippet',
-      playlistId: objectId || null,
       key: key,
       maxResults: maxResults,
       q: term,
@@ -149,11 +166,32 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
       type: 'video',
     };
 
+    let activePlayList = null;
+
+    if ( Search_ROOT_URL.indexOf('search') > -1) {
+      //This is a search and you need to look at the playlist to focus search.
+      activePlayList = this.state.activePlayList;
+      params['playlistId'] = activePlayList;
+
+    } else if (objectType.toLowerCase().indexOf('video') > -1) {
+      params['id'] = objectId || null;
+
+    } else if (objectType.toLowerCase().indexOf('playlist') > -1) {
+      params['playlistId'] = objectId || null;
+      activePlayList = objectId;
+
+    } else {
+      params['id'] = objectId || null;
+      console.log('unexpected objectType in playListSearch (expecting either video or playlist): ', objectType);
+    }
+
 /*
     console.log('YouTube playListSearch: Search_ROOT_URL,: ', Search_ROOT_URL);
     console.log('YouTube playListSearch: props/state',  this.props, this.state);
     console.log('YouTube playListSearch: search params: ', params);
 */
+    console.log('YouTube Search params:', params );
+
     axios.get(Search_ROOT_URL, { params: params })
       .then((response) => {
         // if (callback) { callback(response.data.items); }
@@ -171,7 +209,8 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
 
         this.setState({
           videos: decodedItems,
-          selectedVideo: decodedItems[0]
+          selectedVideo: decodedItems[0],
+          activePlayList: activePlayList,
         });
       })
       .catch((error) => {

@@ -5,7 +5,8 @@ export const VideoDetail = ({ video }) => {
     return <div>Please be sure that the web part is properly configured with a valid API key!</div>;
   }
   console.log('Youtube Video: ', video);
-  const videoId = video.snippet.resourceId.videoId;
+  //If you use search api, then the video id is: video.id.videoId for Playlist or Channel, its: video.snippet.resourceId.videoId
+  const videoId = video.snippet.resourceId ? video.snippet.resourceId.videoId : video.id.videoId;
   const url = `https://www.youtube.com/embed/${videoId}`;
   console.log('Youtube Video url: ', url);
 

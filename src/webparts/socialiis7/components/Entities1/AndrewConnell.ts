@@ -59,8 +59,8 @@ export function AndrewConnell(){
       youtube: {
         title: 'YouTube',
         user: 'jaconnell', //Youtube User (from URL)
-        order: 0, //For Sorting
-        channels: [
+        order: 0, //For Sorting,
+        items: [
           {
             title: 'AC Channel',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
@@ -71,10 +71,7 @@ export function AndrewConnell(){
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: 'UCbTVoDCaPM6wE0xsDGGr9VA', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/channel/UCbTVoDCaPM6wE0xsDGGr9VA', // to be used as generic link if no API key is given
-          }
-        ],
-        playLists: [
-          {
+          },{
             title: 'Office / SharePoint / SPFx',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLb9FvVDRfRYjJxT9CBTJy1ugWcGrebq0W', //Used to determine what functions to have avaialble
@@ -84,8 +81,14 @@ export function AndrewConnell(){
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLb9FvVDRfRYgLUxBwoDo_Qzt-G3_YgckS', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/playlist?list=PLb9FvVDRfRYgLUxBwoDo_Qzt-G3_YgckS', // to be used as generic link if no API key is given
+          },{
+            title: 'Test Video',
+            objectType: 'Video', //user,Channel, Playlist, Videos, Video
+            objectID: 'R4zeaxHxswM', //Used to determine what functions to have avaialble
+            objectUrl: '', // to be used as generic link if no API key is given
           }
-        ]
+          
+        ],
       },
   
   
