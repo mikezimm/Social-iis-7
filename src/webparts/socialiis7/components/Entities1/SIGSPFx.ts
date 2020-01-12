@@ -49,9 +49,9 @@ export function SIGSPFx(){
       ,  // End github
       webSites: [
         {
-          title: 'YouTube Call Playlist',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -74,10 +74,10 @@ export function SIGSPFx(){
         ], // End YouTube channels
         playLists: [
           {
-            title: '',
+            title: 'SPFx call playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectID: 'PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x', // to be used as generic link if no API key is given
           },{
             title: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video

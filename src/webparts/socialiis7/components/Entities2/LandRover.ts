@@ -1,12 +1,12 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function FCA(){
+export function LandRover(){
 
   const entity :IEntity = {
-    title: 'FCA', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM","FCA"], // Can be any number of
-    profilePic: "https://www.fcagroup.com/PublishingImages/Brands/Jeep/hero-jeep_4.jpg",
+    title: 'LandRover', //
+    keywords: ["Auto","Tata","Europe","Cars","Electric","Luxury","Gas","Brand"], // Can be any number of
+    profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -17,17 +17,17 @@ export function FCA(){
     ],
     twitter: 
       {
-        title: 'Twitter for Jeep',
+        title: '',
         order: 1, //For Sorting
-        url: 'https://twitter.com/jeep',
+        url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: 'FaceBook Jeep',
+      title: '',
       order: 1, //For Sorting
-      url: 'https://www.facebook.com/jeep',
+      url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -48,6 +48,18 @@ export function FCA(){
       }
     ,  // End github
     webSites: [
+      {
+        title: 'Land Rover Home',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
+      {
+        title: '',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
       {
         title: '',
         order: 1, //For Sorting

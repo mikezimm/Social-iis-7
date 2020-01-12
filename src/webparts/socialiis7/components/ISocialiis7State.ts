@@ -39,6 +39,27 @@ export interface IUser {
     LoginName?: string;
 }
 
+export interface ILoadData {
+    Entities1: IEntity[];
+    Entities2: IEntity[];
+    Entities4: IEntity[];
+    Entities7: IEntity[];
+    Entities9: IEntity[];
+
+    allEntities: IEntity[];
+    allEntityKeywords: string[];
+    allTopics: string[];
+
+    entitiesForMainTopic: IEntity[];
+    keysForTopic: string[];
+
+    availSubTopicEntities: IEntity[];
+    subTopic1Entities: IEntity[];
+    subTopic2Entities: IEntity[];
+    subTopic3Entities: IEntity[];
+
+}
+
 export interface ISocialiis7State {
     // 0 - Context
     currentUser?: IUser;  //Current user information
@@ -63,12 +84,20 @@ export interface ISocialiis7State {
 
     // 7 - Media Choices - Left Side bar
     navigationType: string;
-    mainTopic: string;
+
+    topics: {
+        mainTopic?: string;
+        subTopic1?: string;
+        subTopic2?: string;
+        subTopic3?: string;
+    };
     
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;
     currentPivots: IPivot[][];
     selectedEntity: IEntity;
+    selectedNavKey: string;
+    selectedNavItem: any;
     selectedMedia : string;
 
     pivots?: IMyPivots;
@@ -81,7 +110,7 @@ export interface ISocialiis7State {
 
 
     loadStatus?: string;
-    loadData: any;
+    loadData: ILoadData;
 
     userLoadStatus?: string;
 

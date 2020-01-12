@@ -62,6 +62,7 @@ export interface IEntity {
   androidStore?: any;
   appleStore?: any;
   stock?: IWeb;
+  wikipedia?: IWeb;
   navigation?: INavLink[];
   selectedNav?: INavLink;
   steamStore?: IWeb[];
@@ -106,7 +107,14 @@ export interface IEntityModel {
 
 }
 
+export interface ITopics {
 
+    mainTopic?: string;
+    subTopic1?: string;
+    subTopic2?: string;
+    subTopic3?: string;
+
+}
 export interface ISocialiis7Props {
 
   // 0 - Context
@@ -134,12 +142,15 @@ export interface ISocialiis7Props {
 
   // 7 - Media Choices - Left Side bar
   navigationType: string;
-  mainTopic: string;
+
+  topics: ITopics;
+
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
   pivotFormat: string;
   pivotOptions: string;
   pivotTab: string;  //May not be needed because we have projectMasterPriority
+
 
   
   // 9 - Other web part options

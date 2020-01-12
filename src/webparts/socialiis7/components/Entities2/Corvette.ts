@@ -1,12 +1,12 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function FCA(){
+export function Corvette(){
 
   const entity :IEntity = {
-    title: 'FCA', //
-    keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM","FCA"], // Can be any number of
-    profilePic: "https://www.fcagroup.com/PublishingImages/Brands/Jeep/hero-jeep_4.jpg",
+    title: 'Corvette', //
+    keywords: ["Auto","GM","Chevy","North America","Cars","Sport","Gas","Vehicle"], // Can be any number of
+    profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/zerv-reveal/gallery/exterior/2020-corvette-reveal-gal-ext-convertible-01.jpg",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -17,17 +17,17 @@ export function FCA(){
     ],
     twitter: 
       {
-        title: 'Twitter for Jeep',
+        title: '',
         order: 1, //For Sorting
-        url: 'https://twitter.com/jeep',
+        url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: 'FaceBook Jeep',
+      title: '',
       order: 1, //For Sorting
-      url: 'https://www.facebook.com/jeep',
+      url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -49,9 +49,15 @@ export function FCA(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        title: 'Chevy Home',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.chevrolet.com',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },
+      {
+        title: '2020 Corvette',
+        order: 1, //For Sorting
+        url: 'https://www.chevrolet.com/upcoming-vehicles/2020-corvette',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],

@@ -14,6 +14,7 @@ import { sp } from '@pnp/sp';
 import { Web } from "@pnp/sp/presets/all";
 
 import { propertyPaneBuilder } from '../../services/propPane/PropPaneBuilder';
+import { socialiis7OptionsGroup } from '../../services/propPane/ReactSocialiis7Options';
 import { saveTheTime, getTheCurrentTime, saveAnalytics } from '../../services/createAnalytics';
 
 import { PageContext } from '@microsoft/sp-page-context';
@@ -21,7 +22,7 @@ import { PageContext } from '@microsoft/sp-page-context';
 
 import * as strings from 'Socialiis7WebPartStrings';
 import Socialiis7 from './components/Socialiis7';
-import { ISocialiis7Props } from './components/ISocialiis7Props';
+import { ISocialiis7Props, ITopics } from './components/ISocialiis7Props';
 
 export interface ISocialiis7WebPartProps {
 
@@ -38,6 +39,13 @@ export interface ISocialiis7WebPartProps {
   // 2 - Source and destination list information
   sourceListURL: string;
   sourceListTitle: string;
+  
+  // 7 - Media Choices - Left Side bar
+
+  mainTopic: string;
+  subTopic1: string;
+  subTopic2: string;
+  subTopic3: string;  
 
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
@@ -46,7 +54,7 @@ export interface ISocialiis7WebPartProps {
   pivotTab: string;  //May not be needed because we have projectMasterPriority
 
   navigationType: string;
-  mainTopic: string;
+
 
 }
 
@@ -117,7 +125,13 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       
         // 7 - Media Choices - Left Side bar
         navigationType: this.properties.navigationType,
-        mainTopic: this.properties.mainTopic,
+
+        topics: {
+          mainTopic: this.properties.mainTopic,
+          subTopic1: this.properties.subTopic1,
+          subTopic2: this.properties.subTopic2,
+          subTopic3: this.properties.subTopic3,
+        },
 
         // 8 - Pivot Choices - Top Bar
         pivotSize: this.properties.pivotSize,
@@ -178,8 +192,45 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
      */
     let updateOnThese = [
       'setSize','setTab','otherTab','setTab','otherTab','setTab','otherTab','setTab','otherTab',
-      'navigationType','mainTopic'
+      'navigationType'
     ];
+    console.log('onPropertyPaneFieldChanged: ',propertyPath, newValue);
+    if (  propertyPath === 'mainTopic') {
+      this.properties[propertyPath] = newValue;  
+      let topics: ITopics = socialiis7OptionsGroup.getTopics(newValue);
+      this.properties.subTopic1 = topics.subTopic1;
+      this.properties.subTopic2 = topics.subTopic2;
+      this.properties.subTopic3 = topics.subTopic3;
+
+      this.context.propertyPane.refresh();
+      
+      console.log('onPropertyPaneFieldChanged #1: topics', topics);
+      console.log('onPropertyPaneFieldChanged #1: this.properties', this.properties);
+
+    }
+    if (  ['subTopic1', 'subTopic2', 'subTopic3'].indexOf(propertyPath) > -1 ) {
+
+      if (propertyPath === 'subTopic1') { 
+        this.properties.subTopic1 = newValue;
+        this.properties.subTopic2 = '';
+        this.properties.subTopic3 = '';
+        
+      } else if ( propertyPath === 'subTopic2' ) {
+        this.properties.subTopic2 = newValue;
+        this.properties.subTopic3 = '';
+
+      } else if ( propertyPath === 'subTopic3' ) {
+        this.properties.subTopic3 = newValue;
+
+      } else { 
+        alert('There was a problem in onPropertyPaneFieldChanged()... checksubTopicX'); 
+      }
+
+      this.context.propertyPane.refresh();
+      
+      console.log('onPropertyPaneFieldChanged #2: this.properties', this.properties);
+
+    }
 
     if (updateOnThese.indexOf(propertyPath) > -1 ) {
       this.properties[propertyPath] = newValue;   

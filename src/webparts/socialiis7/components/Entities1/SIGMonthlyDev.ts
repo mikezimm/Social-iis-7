@@ -49,9 +49,9 @@ export function SIGMonthlyDev(){
       ,  // End github
       webSites: [
         {
-          title: 'YouTube Call Playlist',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -79,10 +79,10 @@ export function SIGMonthlyDev(){
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            title: 'Monthly Dev playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectID: 'PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', // to be used as generic link if no API key is given
           }
         ] // End YouTube playlists
       }, // End YouTube

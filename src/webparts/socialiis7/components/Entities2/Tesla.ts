@@ -5,8 +5,8 @@ export function Tesla(){
 
   const entity :IEntity = {
     title: 'Tesla', //
-    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM"], // Can be any number of
-    profilePic: "https://someURL.com",
+    keywords: ["Auto","North America","Cars","Trucks","Electric","OEM","Tesla"], // Can be any number of
+    profilePic: "https://www.tesla.com/sites/tesla/files/curatedmedia/hero%402_1.jpg",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -49,9 +49,9 @@ export function Tesla(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        title: 'Tesla',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.tesla.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],

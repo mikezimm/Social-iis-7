@@ -18,12 +18,43 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "Socialiis7" },
-    "description": { "default": "Socialiis7 web part v7" },
+    "description": { "default": "Socialiis7 SharePoint" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "Socialiis7",
       "navigationType": "naviation",
-      "mainTopic": "SharePoint"
+      "mainTopic": "SharePoint",
+      "subTopic1": "SIG",
+      "subTopic2": "MSFT",
+      "subTopic3": "MVP"
+    }
+  },{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Socialiis7 - ttp" },
+    "description": { "default": "Socialiis7 ttp Items" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Socialiis7",
+      "navigationType": "naviation",
+      "mainTopic": "ttp",
+      "subTopic1": "Gaming",
+      "subTopic2": "Animals",
+      "subTopic3": "PS"
+    }
+  },{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Socialiis7 - MZ" },
+    "description": { "default": "Socialiis7 MZ Test Items" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Socialiis7",
+      "navigationType": "naviation",
+      "mainTopic": "PC",
+      "subTopic1": "PCBuild",
+      "subTopic2": "Gaming",
+      "subTopic3": "OpenWorld"
     }
   }]
 }

@@ -1,16 +1,17 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
-import { ISocialiis7Props, IEntity } from './ISocialiis7Props';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
+import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { DefaultButton, autobind, getLanguage, ZIndexes } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { pivotOptionsGroup, } from '../../../services/propPane';
-import {IUser, ISocialiis7State, IMyPivots, IPivot,} from './ISocialiis7State';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
@@ -28,7 +29,10 @@ import * as choiceBuilders from './choiceFieldBuilder';
 import PageNavigator from './Navigator/PageNavigator';
 import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
-import AboutMe from './AboutMe/AboutMe';
+import { IAboutInfoProps } from './AboutInfo'
+import AboutInfo from './AboutInfo'
+
+import AboutPage from './AboutInfo';
 
 /**
  * Typical Youtube embed
@@ -83,80 +87,50 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   public constructor(props:ISocialiis7Props){
     super(props);
+
+    this.onNavClick = this.onNavClick.bind(this);
+
     let currentPivotSet = "keysForTopic";
-    let mainTopic = this.props.mainTopic;
-    let subTopic1 = "SIG";
-    let subTopic2 = "MSFT";
-    let subTopic3 = "MVP";
 
-    if ( mainTopic === 'MSFT') {
-      subTopic1 = "MSFT";
-      subTopic2 = "";
-      subTopic3 = "";
-    } else if ( mainTopic === 'SPFx') {
-      subTopic1 = "SIG";
-      subTopic2 = "MSFT";
-      subTopic3 = "MVP";
-    } else if ( mainTopic === 'Auto') {
-      subTopic1 = "OEM";
-      subTopic2 = "Passive";
-      subTopic3 = "Active";
-    } else if ( mainTopic === 'Game') {
-      subTopic1 = "PC";
-      subTopic2 = "FirstPerson";
-      subTopic3 = "Builder";
-    } else if ( mainTopic === 'PC') {
-      subTopic1 = "PCBuild";
-      subTopic2 = "Game";
-      subTopic3 = "OpenWorld";
-    } else  if ( mainTopic === 'Animals') {
-      subTopic1 = "Pets";
-      subTopic2 = "Africa";
-      subTopic3 = "Dark";
-    } else  if ( mainTopic === 'ttp') {
-      subTopic1 = "Game";
-      subTopic2 = "Animals";
-      subTopic3 = "PS";
-    } 
+    let topics : ITopics = this.props.topics;
 
-    let Entities1 = buildEntities();
-    let Entities2 = buildEntities2();
-    let Entities4 = buildEntities4();
-    let Entities7 = buildEntities7();
-    let Entities9 = buildEntities9();    
+    let Entities1 = buildEntities(this.onNavClick);
+    let Entities2 = buildEntities2(this.onNavClick);
+    let Entities4 = buildEntities4(this.onNavClick);
+    let Entities7 = buildEntities7(this.onNavClick);
+    let Entities9 = buildEntities9(this.onNavClick);    
     
     let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9);
-    let allEntityKeywords = buildEntityKeywords(allEntities, "keywords");
-    let allTopics = buildEntityKeywords(allEntities, "keywords");
-    let entitiesForMainTopic = getEntitiesForThis(allEntities, "keywords",mainTopic);
-    let subTopic1Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic1);
-    let subTopic2Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic2);
-    let subTopic3Entities = getEntitiesForThis(entitiesForMainTopic, "keywords", subTopic3);
-    let keysForTopic = buildEntityKeywords(entitiesForMainTopic, "keywords");
 
-    let selectedEntity = subTopic1Entities[0];
 
-    let pivots : IMyPivots = {
-      allTopics: [],
-      allEntityKeywords: [],
+
+    let loadData: ILoadData = {
+
+      Entities1: Entities1,
+      Entities2: Entities2,
+      Entities4: Entities4,
+      Entities7: Entities7,
+      Entities9: Entities9,
+
+      allEntities: allEntities,
+      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
+      allTopics: buildEntityKeywords(allEntities, "keywords"),
+
+      entitiesForMainTopic: [],
+      availSubTopicEntities: [],
       keysForTopic: [],
-      subTopic1Titles: [],
-      subTopic2Titles: [],
-      subTopic3Titles: [],
-      entTitlesForTopics: [],
-      spacers: [],
+
+      subTopic1Entities: null,
+      subTopic2Entities: null,
+      subTopic3Entities: null,
+
     };
 
-    pivots.allTopics = this.createPivotData(allTopics, null);
-    pivots.keysForTopic = this.createPivotData(keysForTopic, null);
-    pivots.allEntityKeywords = this.createPivotData(entitiesForMainTopic, 'keywords');
-    pivots.entTitlesForTopics = this.createPivotData(entitiesForMainTopic, 'title');
+    loadData = this._rebuildEntities(topics, loadData);
 
-    pivots.subTopic1Titles = this.createPivotData(subTopic1Entities, 'title');
-    pivots.subTopic2Titles = this.createPivotData(subTopic2Entities, 'title');
-    pivots.subTopic3Titles = this.createPivotData(subTopic3Entities, 'title');
-
-    pivots.spacers =  this.createPivotData([" "], null);
+    let selectedEntity = loadData.subTopic1Entities[0];
+    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+    let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
@@ -169,28 +143,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
+      selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
-      mainTopic: this.props.mainTopic,
-      loadData: {
-        mainTopic: mainTopic,
-        subTopic1: subTopic1,
-        subTopic1Entities: subTopic1Entities,
-        subTopic2: subTopic2,
-        subTopic2Entities: subTopic2Entities,
-        subTopic3: subTopic3,
-        subTopic3Entities: subTopic3Entities,
-        Entities1: Entities1,
-        Entities2: Entities2,
-        Entities4: Entities4,
-        Entities7: Entities7,
-        Entities9: Entities9,
-        allEntities: allEntities,
-        allEntityKeywords: allEntityKeywords,
-        allTopics: allTopics,
-        entitiesForMainTopic: entitiesForMainTopic,
-        keysForTopic: keysForTopic,
-        topicKeys: [],
-      },
+      topics: topics,
+      selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
+      loadData: loadData,
 
     };
 
@@ -199,9 +156,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     //  components properties (this.props)... otherwise "this" is undefined
 
     /*
-    this.onLinkClick = this.onLinkClick.bind(this);
+        this.onLinkClick = this.onLinkClick.bind(this);
     */
-    
+
   }
 
   public componentDidMount() {
@@ -211,13 +168,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   
   public componentDidUpdate(prevProps){
 /*
-    let rebuildTiles = false;
-    if (this.props.defaultProjectPicker !== prevProps.defaultProjectPicker) {  rebuildTiles = true ; }
+*/
+    let rebuildPivots = false;
+    if (this.props.topics !== prevProps.topics) {  rebuildPivots = true ; }
 
-    if (rebuildTiles === true) {
+    if (rebuildPivots === true) {
       this._updateStateOnPropsChange({});
     }
-*/
+
   }
 
   public createPivotObject(currentPivots: IPivot[][], display){
@@ -256,21 +214,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let entryOptions = choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this));
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
-    
-    let aboutMe =  null;
 
-    if ( this.state.selectedEntity && this.state.navigationType !== 'asdfasdf' ) {
-        console.log("Should get image!");
-        aboutMe = 
-        <AboutMe
-          imageUrl={this.state.selectedEntity.profilePic}
-          setImgCover='centerContain'
-          setImgFit='portrait'
-          imageHeight={400}
-          imageWidth={600}
-        >
-      </AboutMe>;
-    }
         /*
     */
 
@@ -285,6 +229,13 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     /*
         */
+    let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
+      AboutInfo,
+      {
+        parentProps: this.props,
+        parentState: this.state,
+      }
+    );
 
     const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
       PageNavigator,
@@ -292,6 +243,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         description: 'Social Footprint',
         //Why do I get an error here every time?
         //selectedKey: 'x',
+        selectedNavKey: this.state.selectedNavKey,
+        selectedEntityString: this.state.selectedEntity.titleKey,
         anchorLinks: (this.state.selectedEntity ? this.state.selectedEntity.navigation : []),
       }
     );
@@ -303,28 +256,90 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           <div className={styles.floatLeft}>
           { this.createPivotObject(this.state.currentPivots, display1)  }
           </div>
-          <Stack horizontal={true} horizontalAlign={"end"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
+          <Stack horizontal={true} horizontalAlign={"space-between"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
           { ( this.props.navigationType === 'choice' ? entryOptions : leftNavigation ) }
-            <div className={ styles.column }>
-
-            <div className={ styles.description }>
-              { aboutMe }
-            </div>
+            <div className={ styles.column } style={{paddingLeft: 50, minWidth: 700}}>
+              <div className={ styles.description }>
+                { aboutMe }
+              </div>
             </div>
             </Stack>  {/* Stack for Buttons and Fields */}
 
 
           </div>
-          <div className={ styles.description }>
-            { (this.state.selectedEntity ? (JSON.stringify(this.state.selectedEntity.navigation, null, 4)) : '')  }
-          </div>
-
 
         </div>
       </div>
     );
   }
+
+  private _updateStateOnPropsChange(params: any ): void {
+
+    let loadData = this._rebuildEntities(this.props.topics, this.state.loadData);
+
+    let selectedEntity = loadData.subTopic1Entities[0];
+
+    let pivots = this._rebuildPivots(loadData);
+
+    let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+
+    let topics : ITopics = this.props.topics;
+
+    this.setState({
+      pivots: pivots,
+      currentPivots: currentPivots,
+      selectedEntity: selectedEntity,
+      loadData: loadData,
+      topics: topics,
+    });
+
+  }
+
+  private _rebuildEntities(topics: ITopics, loadData1: ILoadData ) {
+
+    let loadData: ILoadData = cloneDeep(loadData1);
+
+    loadData.entitiesForMainTopic = getEntitiesForThis(loadData.allEntities, "keywords",topics.mainTopic);
+    loadData.availSubTopicEntities = cloneDeep(loadData.entitiesForMainTopic);
+    loadData.subTopic1Entities = getEntitiesForThis(loadData.entitiesForMainTopic, "keywords", topics.subTopic1);
+
+    //This loop removes entities from what is available for the next section so pivots are not duplicated.
+    //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
+    loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
+      x => !loadData.subTopic1Entities.filter( y => y.title === x.title).length);
+
+    loadData.subTopic2Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic2);
+
+    //This loop removes entities from what is available for the next section so pivots are not duplicated.
+    //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
+    loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
+      x => !loadData.subTopic2Entities.filter( y => y.title === x.title).length);
+
+    loadData.subTopic3Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic3);
+    loadData.keysForTopic = buildEntityKeywords(loadData.entitiesForMainTopic, "keywords");
+
+    return loadData;
+
+  }
+
+  private _rebuildPivots(loadData: ILoadData ) {
+
+    let pivots : IMyPivots = {
+      allTopics: this.createPivotData(loadData.allTopics, null),
+      allEntityKeywords: this.createPivotData(loadData.entitiesForMainTopic, 'keywords'),
+      keysForTopic:this.createPivotData(loadData.keysForTopic, null),
+      subTopic1Titles: this.createPivotData(loadData.subTopic1Entities, 'title'),
+      subTopic2Titles: this.createPivotData(loadData.subTopic2Entities, 'title'),
+      subTopic3Titles: this.createPivotData(loadData.subTopic3Entities, 'title'),
+      entTitlesForTopics: [],
+      spacers: this.createPivotData([" "], null),
+    };
+
+    return pivots;
+
+  }
+
 
   private _updateEntryType(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption){
 
@@ -356,28 +371,90 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     } else {
 
-
-
-      //console.log('onLinkClick: this.state', this.state);
-      //console.log('onLinkClick: item', item);
-      
+     
       let thisFilter = [];
       let pivots = this.state.pivots.allTopics;  
       let selectedEntity : IEntity = null;
       for (let entity of this.state.loadData.entitiesForMainTopic){
+
         if ( entity.title === item.props.headerText ) {
           selectedEntity = entity;
         }
+
       }
 
+      let selectedNavItem = selectedEntity.navigation[0];
 
       this.setState({
-        selectedEntity:selectedEntity,
+        selectedEntity: selectedEntity,
+        selectedNavKey: selectedEntity.navigation.length > 0 ? selectedEntity.navigation[0].key : selectedEntity.titleKey,
+        selectedNavItem: selectedNavItem,
       });
 
     }
 
   } //End onClick
+
+  public onNavClick = (ev?: React.MouseEvent<HTMLElement>, item?: INavLink): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+
+    let e: any = ev;
+
+    ev.preventDefault(); // Let's stop this event.
+    e.preventDefault(); // Let's stop this event.
+
+    let thisEntityKey = item.key.split('||||')[0];
+    let selectedEntity : IEntity = null;
+
+    let selectedNavItem = null;
+
+    
+    for (let ent of this.state.loadData.entitiesForMainTopic) {
+      if (ent.titleKey === thisEntityKey) { 
+        selectedEntity = ent;
+      }
+    }
+
+   for (let nav of selectedEntity.navigation) {
+    if (nav.key === item.key) { 
+      selectedNavItem = nav;
+    }
+  }
+
+    //This is done to confirm that the "Share Info" button was clicked
+    if ( item.key.indexOf('debug') > -1 ) { item.key = item.key.replace('debug','showDebug')}
+
+    if (ev.ctrlKey) {
+      //Set clicked pivot as the hero pivot
+        let openThisWindow = item.url;
+        window.open(openThisWindow, '_blank');
+        this.setState({
+          selectedEntity : selectedEntity,
+          selectedNavKey : item.key,
+          selectedNavItem : selectedNavItem,
+        });
+
+
+    } else if (ev.altKey) {
+      //Enable-disable ChangePivots options
+      /*
+      this.setState({
+        
+      });
+      */
+
+    } else {
+
+      this.setState({
+        selectedEntity : selectedEntity,
+        selectedNavKey : item.key,
+        selectedNavItem : selectedNavItem,
+      });
+
+    }
+
+  } //End onNavClick
+
 
   //http://react.tips/how-to-create-reactjs-components-dynamically/ - based on createImage
   public createPivot(pivT: IPivot) {
@@ -400,3 +477,5 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
 
 }
+
+//   SPFxYouTubeTesting:  AIzaSyD6O2VK5QY_NY2UbNINCM-VDjmth2NRU3U
