@@ -103,7 +103,7 @@ export function Jays2Cents(){
         },{
           title: '10 Realistic games of 2020?',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
-          objectID: 'EXiJGsTnJfhs', //Used to determine what functions to have avaialble
+          objectID: 'XiJGsTnJfhs', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
           title: 'Replace GPU Thermal Paste?',
