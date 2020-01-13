@@ -6,7 +6,7 @@ export function PnPPowerShell(){
 
     const entity :IEntity = {
       title: 'PnPPowerShell', //
-      keywords: ["ttp","Gaming","RPG","Multiplayer"],
+      keywords: ["PowerShell","SharePoint","ttp"],
       profilePic: "https://collab365.community/wp-content/uploads/2018/12/get-started-with-sharepoint-powershell-pnp-1280x720.png",
       blog: [
         {

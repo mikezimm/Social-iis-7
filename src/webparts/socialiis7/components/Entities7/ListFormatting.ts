@@ -2,11 +2,11 @@
 import { IEntity } from '../ISocialiis7Props';
 
 
-export function ColumnFormatting(){
+export function ListFormatting(){
 
     const entity :IEntity = {
-      title: 'ColumnFormatting', //
-      keywords: ["ttp","Gaming","RPG","Multiplayer"],
+      title: 'ListFormatting', //
+      keywords: ["ColumnFormatting","SharePoint","ttp","ListFormatting"],
       profilePic: "http://niftit.com/wp-content/uploads/2018/08/NIFTITPost-ColumnFormatting.png",
       blog: [
         {

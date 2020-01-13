@@ -12,7 +12,7 @@ export function buildEntities7(onNavClick) {
     Entities.push(addOtherProps(ents.DarkSouls(), onNavClick));
     Entities.push(addOtherProps(ents.Lions(), onNavClick));
     Entities.push(addOtherProps(ents.SiteDesigns(), onNavClick));
-    Entities.push(addOtherProps(ents.ColumnFormatting(), onNavClick));
+    Entities.push(addOtherProps(ents.ListFormatting(), onNavClick));
     Entities.push(addOtherProps(ents.PnPPowerShell(), onNavClick));
 
     return Entities;

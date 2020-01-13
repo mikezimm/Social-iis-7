@@ -62,11 +62,6 @@ export function AndrewConnell(){
         order: 0, //For Sorting,
         items: [
           {
-            title: 'AC Channel',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: 'UC5KFTohDGmAekuBwECj38PA', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/channel/UC5KFTohDGmAekuBwECj38PA', // to be used as generic link if no API key is given
-          },{
             title: 'Laura Rogers Channel',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: 'UCbTVoDCaPM6wE0xsDGGr9VA', //Used to determine what functions to have avaialble

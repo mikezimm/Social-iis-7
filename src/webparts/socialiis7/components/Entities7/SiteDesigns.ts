@@ -6,7 +6,7 @@ export function SiteDesigns(){
 
     const entity :IEntity = {
       title: 'SiteDesigns', //
-      keywords: ["ttp","Gaming","RPG","Multiplayer"],
+      keywords: ["SiteDesigns","SharePoint","ttp"],
       profilePic: "http://ericoverfield.com/wp-content/uploads/2018/06/modern-classic-theming-1.jpg",
       blog: [
         {
