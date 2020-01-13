@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function NHSTA(){
 
   const entity :IEntity = {
-    title: 'Sample', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    title: 'NHSTA', //
+    keywords: ["Auto","Regulatory","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
@@ -17,17 +17,17 @@ export function Sample(){
     ],
     twitter: 
       {
-        title: '',
+        title: 'Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/NHTSAgov',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      title: 'Facebook',
       order: 1, //For Sorting
-      url: '',
+      url: 'https://www.facebook.com/NHTSA/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -49,6 +49,21 @@ export function Sample(){
     ,  // End github
     webSites: [
       {
+        title: 'NHTSA.gov',
+        order: 1, //For Sorting
+        url: 'https://www.nhtsa.gov',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'NHTSA Ratings',
+        order: 1, //For Sorting
+        url: 'https://www.nhtsa.gov/ratings',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'NHTSA Recalls',
+        order: 1, //For Sorting
+        url: 'https://www.nhtsa.gov/recalls',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
         title: '',
         order: 1, //For Sorting
         url: '',
@@ -57,7 +72,7 @@ export function Sample(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'usdotnhtsa', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
@@ -71,21 +86,38 @@ export function Sample(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'Distracted Driving',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PL2GlXO1j4M734mT_Q4nxsle5UhfR-nxUG', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'Victim\'s Stories',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PL2GlXO1j4M710fnrcOSAQUn3WeNlZkBI2', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'Newer Cars are Safer',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: 'PL2GlXO1j4M71HXh-KNeh6F1a5nBdZZn5p', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         }
+
+        
+
       ] // End YouTube playlists
     }, // End YouTube
-
+    instagram: 
+      {
+        title: 'Instagram',
+        order: 1, //For Sorting
+        url: 'https://www.instagram.com/nhtsagov/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      }
+    ,  // End linkedIn
 
   };
+
+  
 
     //instagram:any,
     //facebook: any,

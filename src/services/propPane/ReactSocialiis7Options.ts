@@ -31,10 +31,13 @@ import {
     public sampleTopicChoices: IPropertyPaneDropdownOption[] = <IPropertyPaneDropdownOption[]>[
       {   index: 0,   key: 'SharePoint', text: "SharePoint"  },
       {   index: 6,   key: 'SPFx', text: "SPFx"  },
+      {   index: 10,   key: 'MSOffice', text: "MSOffice"  },
       {   index: 1,   key: 'Auto', text: "Auto OEMs"  },
+      {   index: 1,   key: 'Tradeshow', text: "Automotive Tradeshows"  },
+      {   index: 1,   key: 'Regulatory', text: "Automotive Regulatory"  },
       {   index: 7,   key: 'GM', text: "One OEM and children"  },
       {   index: 8,   key: 'VW', text: "VW"  },
-      {   index: 8,   key: 'Tata', text: "Tata"  },
+      {   index: 9,   key: 'Tata', text: "Tata"  },
       {   index: 2,   key: 'Gaming', text: "Gaming"  },
       {   index: 3,   key: 'PC', text: "PC"  },
       {   index: 4,   key: 'Animals', text: "Animals"  },
@@ -62,6 +65,14 @@ import {
       subTopic1 = "OEM";
       subTopic2 = "Passive";
       subTopic3 = "Active";
+    } else if ( mainTopic === 'Regulatory') {
+      subTopic1 = "Auto";
+      subTopic2 = "NA";
+      subTopic3 = "EU";
+    } else if ( mainTopic === 'Tradeshow') {
+      subTopic1 = "Auto";
+      subTopic2 = "Electronics";
+      subTopic3 = "";
     } else if ( ["GM","VW","FCA","Tata","Tesla"].indexOf(mainTopic) > -1 ) {
       subTopic1 = "OEM";
       subTopic2 = "Brand";
@@ -82,7 +93,13 @@ import {
       subTopic1 = "Gaming";
       subTopic2 = "Animals";
       subTopic3 = "PS";
+    } else  if ( mainTopic === 'MSOffice') {
+      subTopic1 = "Online";
+      subTopic2 = "Application";
+      subTopic3 = "SharePoint";
     } 
+    
+
 
     let topics : ITopics = {
       mainTopic : mainTopic,

@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function IIHS(){
 
   const entity :IEntity = {
-    title: 'Sample', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    title: 'IIHS', //
+    keywords: ["Auto","Industry","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
@@ -17,17 +17,17 @@ export function Sample(){
     ],
     twitter: 
       {
-        title: '',
+        title: 'Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/iihs_autosafety',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      title: 'Facebook',
       order: 1, //For Sorting
-      url: '',
+      url: 'https://www.facebook.com/iihs.org/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -47,17 +47,43 @@ export function Sample(){
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
+    instagram: 
+      {
+        title: 'Instagram',
+        order: 1, //For Sorting
+        url: 'https://www.instagram.com/iihs_autosafety/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      }
+      ,  // End github
+      wikipedia: 
+        {
+          title: 'Wikipedia',
+          order: 1, //For Sorting
+          url: 'https://en.wikipedia.org/wiki/Insurance_Institute_for_Highway_Safety',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
+        }
+    ,  // End instagram
     webSites: [
       {
-        title: '',
+        title: 'IIHS-HLDI',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.iihs.org',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'IIHS-HLDI Ratings',
+        order: 1, //For Sorting
+        url: 'https://www.iihs.org/ratings',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'IIHS-HLDI News',
+        order: 1, //For Sorting
+        url: 'https://www.iihs.org/news',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'iihs', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
@@ -87,7 +113,6 @@ export function Sample(){
 
   };
 
-    //instagram:any,
     //facebook: any,
     //github: any,
     //androidStore: any,

@@ -11,5 +11,11 @@ export function buildEntities4(onNavClick) {
     Entities.push(addOtherProps(ents.TRW(), onNavClick));
     Entities.push(addOtherProps(ents.Veoneer(), onNavClick));
 
+    Entities.push(addOtherProps(ents.CES(), onNavClick));
+    Entities.push(addOtherProps(ents.NAIAS(), onNavClick));
+    Entities.push(addOtherProps(ents.NHSTA(), onNavClick));
+
+    Entities.push(addOtherProps(ents.IIHS(), onNavClick));
+
     return Entities;
 }

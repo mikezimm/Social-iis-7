@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function NAIAS(){
 
   const entity :IEntity = {
-    title: 'Sample', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    title: 'NAIAS', //
+    keywords: ["Auto","Tradeshow","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
@@ -49,15 +49,20 @@ export function Sample(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        title: 'NAIAS.com',
         order: 1, //For Sorting
-        url: '',
+        url: 'http://www.naias.com',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'Automotive News',
+        order: 1, //For Sorting
+        url: 'https://www.autonews.com/naias',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'NAIASDetroit', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {

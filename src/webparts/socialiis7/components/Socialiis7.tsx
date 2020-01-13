@@ -22,6 +22,7 @@ import {
 import {  buildEntities2} from './Entities2/1EntityBuilder';
 import {  buildEntities4} from './Entities4/1EntityBuilder';
 import {  buildEntities7} from './Entities7/1EntityBuilder';
+import {  buildEntities8} from './Entities8/1EntityBuilder';
 import {  buildEntities9} from './Entities9/1EntityBuilder';
 
 import * as choiceBuilders from './choiceFieldBuilder';
@@ -98,9 +99,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let Entities2 = buildEntities2(this.onNavClick);
     let Entities4 = buildEntities4(this.onNavClick);
     let Entities7 = buildEntities7(this.onNavClick);
+    let Entities8 = buildEntities8(this.onNavClick);
     let Entities9 = buildEntities9(this.onNavClick);    
     
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9);
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8);
 
 
 
@@ -203,6 +205,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public render(): React.ReactElement<ISocialiis7Props> {
     console.log('Public Render: this.state', this.state);
 
+    
     /**
      * this section was added to keep pivots in sync when syncProjectPivotsOnToggle === true
      */
@@ -237,6 +240,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       }
     );
 
+    
     const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
       PageNavigator,
       {

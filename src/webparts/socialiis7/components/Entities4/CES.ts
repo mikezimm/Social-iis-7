@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function CES(){
 
   const entity :IEntity = {
-    title: 'Sample', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    title: 'CES', //
+    keywords: ["Electronics","Tradeshow","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
@@ -57,7 +57,7 @@ export function Sample(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'cesonthetube', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
@@ -71,14 +71,14 @@ export function Sample(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'CES Tech Talk Podcast',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLm9O7GKkPgESf3iU7VXlxuGrs9TqCsM1Q', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'CES 2020',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLm9O7GKkPgETvf4OxLHTLuikyeRLDlt8C', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube playlists
