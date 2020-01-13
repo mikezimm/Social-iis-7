@@ -139,6 +139,22 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 );
 
                 //console.log('buildNavigationForWeb youtube navigation1:',navigation );                
+            } else if ( key === 'user' && newSection[key].length > 0 ) {
+
+                let navKey = Entity.titleKey + '||||' + sectionName + '||||' + newSection[key] + 'YouTubeUploadChannel';
+                let host = 'https://www.youtube.com/user/';
+
+                navigation = navigation.concat(
+                    {   name: Entity.title + '`s Youtube Channel',
+                        key:   navKey,
+                        url: host + newSection[key],
+                        onClick: onNavClick,
+                        mediaSource: sectionName,
+                        objectType: 'user',
+                        objectID: newSection[key],
+                    }
+                );
+
             }
             //console.log('buildNavigationForWeb youtube navigation2:',navigation );  
         });

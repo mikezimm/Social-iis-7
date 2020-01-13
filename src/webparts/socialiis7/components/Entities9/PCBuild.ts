@@ -4,7 +4,7 @@ import { IEntity } from '../ISocialiis7Props';
 export function PCBuild(){
 
   const entity :IEntity = {
-    title: 'Upgrading your PC', //
+    title: 'Upgrade PC', //
     keywords: ["PC","PCBuild"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
@@ -76,9 +76,14 @@ export function PCBuild(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
-          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          title: 'Top 10 PC Build mistakes',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'VZDv9ubQfY4', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'PC Build Traps',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: '-plesrt8ZCs', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
