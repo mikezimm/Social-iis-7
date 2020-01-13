@@ -59,10 +59,10 @@ export function SubNautica(){
       title: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
-      channels: [
+      items: [
         {
           title: '',
-          objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
@@ -70,9 +70,7 @@ export function SubNautica(){
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
-        }
-      ], // End YouTube channels
-      playLists: [
+        },
         {
           title: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
@@ -84,7 +82,7 @@ export function SubNautica(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         }
-      ] // End YouTube playlists
+      ] // End YouTube items
     }, // End YouTube
 
 

@@ -78,7 +78,7 @@ export function DarkSouls(){
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           }
-        ] // End YouTube playlists
+        ] // End YouTube items
       }, // End YouTube
 
 
