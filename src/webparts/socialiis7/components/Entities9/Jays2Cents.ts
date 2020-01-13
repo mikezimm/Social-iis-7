@@ -57,12 +57,12 @@ export function Jays2Cents(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'Jayztwocents', //Youtube User (from URL)
       order: 0, //For Sorting
-      channels: [
+      items: [
         {
           title: '',
-          objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
@@ -70,21 +70,55 @@ export function Jays2Cents(){
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
-        }
-      ], // End YouTube channels
-      playLists: [
-        {
-          title: '',
-          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
         },{
           title: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'Wood Case mod',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'lUyfdRpqDp0', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'Intel vs AMD - 2020',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'p-B3_QXBgZk', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'Make old PC fast',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: '9zGMi7HZ2AA', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'New AMD CPUs... should I upgrade?',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'ElQbvMj08Ro', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'What to do?',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'mVccnAr39Mo', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: '10 Realistic games of 2020?',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'EXiJGsTnJfhs', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: 'Replace GPU Thermal Paste?',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: '6HbCY3-tun0', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
         }
-      ] // End YouTube playlists
+
+
+        
+
+
+
+        
+      ] // End YouTube items
     }, // End YouTube
 
 

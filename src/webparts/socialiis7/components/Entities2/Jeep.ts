@@ -59,7 +59,7 @@ export function Jeep(){
       title: 'YouTube',
       user: 'thejeepchannel', //Youtube User (from URL)
       order: 0, //For Sorting
-      channels: [
+      items: [
         {
           title: 'The Jeep Channel',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
@@ -67,13 +67,10 @@ export function Jeep(){
           objectUrl: 'https://www.youtube.com/user/thejeepchannel', // to be used as generic link if no API key is given
         },{
           title: '',
-          objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
-        }
-      ], // End YouTube channels
-      playLists: [
-        {
+        },{
           title: 'World Surf League Locals Tour',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
@@ -84,7 +81,7 @@ export function Jeep(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         }
-      ] // End YouTube playlists
+      ] // End YouTube items
     }, // End YouTube
     instagram: 
         {
