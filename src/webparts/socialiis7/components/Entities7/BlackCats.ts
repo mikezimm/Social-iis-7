@@ -60,11 +60,11 @@ export function BlackCats(){
         title: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
-        channels: [
+        items: [
           {
             title: 'Black Cats Rescue',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            objectID: '7pgY2YetXyE', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/watch?v=7pgY2YetXyE', // to be used as generic link if no API key is given
           },{
             title: 'Funny Cat Videos',
@@ -72,20 +72,7 @@ export function BlackCats(){
             objectID: 'PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/playlist?list=PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB', // to be used as generic link if no API key is given
           }
-        ], // End YouTube channels
-        playLists: [
-          {
-            title: '',
-            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
-          },{
-            title: '',
-            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
-          }
-        ] // End YouTube playlists
+        ], // End YouTube items
       }, // End YouTube
 
 

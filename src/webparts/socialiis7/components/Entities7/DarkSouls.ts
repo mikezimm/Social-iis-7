@@ -60,20 +60,13 @@ export function DarkSouls(){
         title: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
-        channels: [
+        items: [
           {
-            title: 'Channel - this is not a channel and wont work',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/watch?v=6u2w7kzmweU&list=PL7RtZMiaOk8i5W4e8j_Bz6YDdFq3o4aAh', // to be used as generic link if no API key is given
-          },{
-            title: '',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            title: 'Your video',
+            objectType: 'video', //user,Channel, Playlist, Videos, Video
+            objectID: '6u2w7kzmweU', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
-          }
-        ], // End YouTube channels
-        playLists: [
+          },
           {
             title: 'Dark Souls Walkthrough',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
@@ -85,7 +78,7 @@ export function DarkSouls(){
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           }
-        ] // End YouTube playlists
+        ] // End YouTube items
       }, // End YouTube
 
 
