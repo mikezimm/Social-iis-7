@@ -21,6 +21,7 @@ export interface IWeb {
   order: number; //For Sorting
   url: string;
   codeType: string; //Used to determine what functions to have avaialble
+  objectID?: string;
 
 }
 

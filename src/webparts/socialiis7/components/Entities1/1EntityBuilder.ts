@@ -35,7 +35,13 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             return navigation; }
         if (thisSection.length === 0 ) { console.log('.length === 0'); return navigation; }
 
-        if ( sectionName !== 'youtube') {
+
+        if ( sectionName === 'facebook') {
+            if ( thisSection.url.length === 0 && thisSection.title.length === 0) { 
+                //console.log('!n[0].url.length === 0'); 
+                return navigation; }
+
+        } else if ( sectionName !== 'youtube') {
             //This section only applies where the first key is not an array.
             if (!thisSection[0] ) {
                  //console.log('!thisSection[0]'); 
@@ -63,7 +69,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             if ( key === 'items' ) {
 
                 navElements = newSection[key].map((item) => {
-                    console.log('buildNavigationForWeb 1a:',item );
+                    //console.log('buildNavigationForWeb 1a:',item );
                     if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
 
                         let navKey = Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title);
@@ -160,19 +166,62 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         });
         //console.log('buildNavigationForWeb youtube navigation3:',navigation );  
 
-    } else  if (sectionName !== 'debug') {
-        navigation = newSection.map((item) => {
-            return {
-                name: item.title,
-                key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
-                url: item.url,
+    } else if (sectionName !== 'debug') {
+        //console.log('sectionName: ', sectionName);
+        //console.log('newSection: ', newSection);
+
+        if (sectionName === 'facebook') {
+            let objectID = newSection.objectID;
+            let url = newSection.url;
+
+            //If there is no object ID or URL, return empty since there is no facebook info
+            if ( !objectID && !url ) { return navigation; }
+
+            if ( !objectID || objectID.length === 0 ) {
+
+                //objectID is not filled out, try to get from url.
+                if ( url.length > 0 ) { 
+                    //Can't get this regex to work :(    [^/]+(?=/$|$)     https://stackoverflow.com/a/8798292
+                    //Remove last / from url 
+                    objectID = url.slice(-1) === '/' ? url.slice(0, -1) : url; //
+                    //Then get accountName from previous /
+                    objectID = objectID.slice(objectID.lastIndexOf('/')+1);
+                    //console.log('facebook objectID: ', objectID);
+                }
+             } else if ( url.length === 0 && objectID.length > 0 ) { 
+                url = 'https://www.facebook.com/' + objectID;
+                //console.log('facebook url: ', url);
+             }
+
+             return {
+                name: Entity.title,
+                key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(Entity.title),
+                url: url,
                 onClick: onNavClick,
                 mediaSource: sectionName,
-                objectType: sectionName,
-                objectID: item.objectID,
+                objectType: 'user',
+                objectID: objectID,
 
             };
-        });
+
+
+        } else { //This is expected to be an array
+            navigation = newSection.map((item) => {
+                
+                return {
+                    name: item.title,
+                    key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
+                    url: item.url,
+                    onClick: onNavClick,
+                    mediaSource: sectionName,
+                    objectType: sectionName,
+                    objectID: item.objectID,
+    
+                };
+            });
+        }
+
+
     } else {
         navigation = [{
             name: 'Share Me',

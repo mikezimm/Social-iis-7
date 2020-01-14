@@ -25,9 +25,10 @@ export function GM(){
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      title: 'Facebook',
       order: 1, //For Sorting
       url: '',
+      objectID: 'generalmotors',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook

@@ -36,5 +36,9 @@ npm install --save office-ui-fabric-react
 NEW INSTALL Required:
 npm install axios --save  (For Youtube component)
 
+NEW INSTALL Required:  2020-01-13
+npm install on-el-resize  (For Facebook component)
+
+
 
 ```

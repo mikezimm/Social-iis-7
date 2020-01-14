@@ -15,8 +15,13 @@ import styles from './Socialiis7.module.scss';
 import AboutMe from './AboutMe/AboutMe';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+
 import Youtube from './youTube/Youtube';
 import { IYoutubeProps } from './youTube/IYoutubeProps';
+
+import FacebookPage from './Facebook/FacebookPage';
+import { IFacebookPageProps } from './Facebook/IFacebookPageProps';
 
 
 export interface IAboutInfoProps {
@@ -39,9 +44,9 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
   public render(): React.ReactElement<IAboutInfoProps> {
 
-    let selectedNavKey = this.props.parentState.selectedNavKey;
-    let selectedNavItem = this.props.parentState.selectedNavItem;
-    let Entity = this.props.parentState.selectedEntity;  
+    let selectedNavKey : string = this.props.parentState.selectedNavKey;
+    let selectedNavItem : INavLink = this.props.parentState.selectedNavItem;
+    let Entity : IEntity = this.props.parentState.selectedEntity;  
     if (!selectedNavItem ) { selectedNavItem = Entity.navigation[0];}
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
     console.log('Render AboutInfo parentState',this.props.parentState);
@@ -56,7 +61,8 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     let youTube = false;
 
     let objectType = null;
-    if (selectedNavItem.objectType.toLowerCase().indexOf('playlist') > -1 ) { objectType = 'playlistId' ; youTube = true }
+    if (selectedNavItem.mediaSource.toLowerCase().indexOf('youtube') < 0 ) { youTube = false }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('playlist') > -1 ) { objectType = 'playlistId' ; youTube = true }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('user') > -1 ) { objectType = 'user'; youTube = true }
@@ -76,6 +82,21 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
           objectType: objectType,
         }
       );
+
+    } else if ( selectedNavItem.mediaSource === 'facebook' ) {
+      //This is a Youtube Channel or Playlist
+      console.log('Facebook page props: ', selectedNavItem);
+      aboutPane = React.createElement(
+        FacebookPage,
+        {
+          company: selectedNavItem.objectID,
+          width: Number(500),
+          smallHeader: false,
+          hideCover: false,
+          showFacepile: false,
+        }
+      );
+      console.log('aboutPane:', aboutPane);
 
     } else {
       aboutPane = 
