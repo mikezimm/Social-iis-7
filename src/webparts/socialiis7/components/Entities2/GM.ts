@@ -25,7 +25,7 @@ export function GM(){
     ,  // End twitter
     facebook: 
     {
-      title: 'Facebook',
+      title: 'GM Facebook',
       order: 1, //For Sorting
       url: '',
       objectID: 'generalmotors',

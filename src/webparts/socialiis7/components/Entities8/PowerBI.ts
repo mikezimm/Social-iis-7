@@ -59,23 +59,20 @@ export function PowerBI(){
         title: 'YouTube',
         user: 'mspowerbi', //Youtube User (from URL)
         order: 0, //For Sorting
-        channels: [
+        items: [
           {
+            title: 'Guy in a Cube Channel',
+            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+            objectID: 'UCFp1vaKzpfvoGai0vE5VJ0w', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w', // to be used as generic link if no API key is given
+          },{
             title: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
             title: '',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
-          }
-        ], // End YouTube channels
-        playLists: [
-          {
-            title: '',
-            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{

@@ -36,7 +36,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         if (thisSection.length === 0 ) { console.log('.length === 0'); return navigation; }
 
 
-        if ( sectionName === 'facebook') {
+        if ( ['facebook','twitter'].indexOf(sectionName) > -1 ) {
             if ( thisSection.url.length === 0 && thisSection.title.length === 0) { 
                 //console.log('!n[0].url.length === 0'); 
                 return navigation; }
@@ -170,40 +170,47 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         //console.log('sectionName: ', sectionName);
         //console.log('newSection: ', newSection);
 
-        if (sectionName === 'facebook') {
+        if ( ['facebook','twitter'].indexOf(sectionName) > -1 ) {
             let objectID = newSection.objectID;
             let url = newSection.url;
 
             //If there is no object ID or URL, return empty since there is no facebook info
             if ( !objectID && !url ) { return navigation; }
 
+            //objectID is not filled out, try to get from url.
             if ( !objectID || objectID.length === 0 ) {
 
-                //objectID is not filled out, try to get from url.
                 if ( url.length > 0 ) { 
                     //Can't get this regex to work :(    [^/]+(?=/$|$)     https://stackoverflow.com/a/8798292
                     //Remove last / from url 
                     objectID = url.slice(-1) === '/' ? url.slice(0, -1) : url; //
                     //Then get accountName from previous /
-                    objectID = objectID.slice(objectID.lastIndexOf('/')+1);
+                    objectID = objectID.slice(objectID.lastIndexOf('/') + 1 );
                     //console.log('facebook objectID: ', objectID);
                 }
-             } else if ( url.length === 0 && objectID.length > 0 ) { 
-                url = 'https://www.facebook.com/' + objectID;
-                //console.log('facebook url: ', url);
+
+            } else if ( url.length === 0 && objectID.length > 0 ) { 
+
+                if ( sectionName === 'facebook' ){
+                    url = 'https://www.facebook.com/';
+
+                } else if ( sectionName === 'twitter' ){
+                    url = 'https://www.twitter.com/';
+                }
+
+                url =+ objectID;
+
              }
 
              return {
-                name: Entity.title,
-                key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(Entity.title),
+                name: newSection.title,
+                key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(newSection.title),
                 url: url,
                 onClick: onNavClick,
                 mediaSource: sectionName,
                 objectType: 'user',
                 objectID: objectID,
-
             };
-
 
         } else { //This is expected to be an array
             navigation = newSection.map((item) => {
@@ -220,7 +227,6 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 };
             });
         }
-
 
     } else {
         navigation = [{

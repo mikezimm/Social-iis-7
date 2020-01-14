@@ -90,7 +90,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         FacebookPage,
         {
           company: selectedNavItem.objectID,
-          width: Number(500),
+          width: Number(700),
           smallHeader: false,
           hideCover: false,
           showFacepile: false,

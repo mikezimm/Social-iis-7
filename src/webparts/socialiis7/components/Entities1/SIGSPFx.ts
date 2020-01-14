@@ -17,9 +17,9 @@ export function SIGSPFx(){
       ],
       twitter: 
         {
-          title: '',
+          title: 'Twitter @SharePoint',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://twitter.com/sharepoint',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
@@ -59,10 +59,10 @@ export function SIGSPFx(){
         title: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
-        channels: [
+        items: [
           {
             title: '',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+            objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
@@ -70,10 +70,7 @@ export function SIGSPFx(){
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
-          }
-        ], // End YouTube channels
-        playLists: [
-          {
+          },{
             title: 'SPFx call playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x', //Used to determine what functions to have avaialble
@@ -84,7 +81,7 @@ export function SIGSPFx(){
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           }
-        ] // End YouTube playlists
+        ] // End YouTube items
       }, // End YouTube
   
   
