@@ -17,10 +17,10 @@ import { IEntity } from '../ISocialiis7Props';
       ],
       twitter: 
         {
-          title: '',
+          title: 'David Warner @Twitter',
           order: 1, //For Sorting
-          url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          url: 'https://twitter.com/DavidWarnerII',
+          codeType: 'user', //Used to determine what functions to have avaialble
         }
       ,  // End twitter
       facebook: 

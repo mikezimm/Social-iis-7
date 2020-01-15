@@ -23,6 +23,9 @@ import { IYoutubeProps } from './youTube/IYoutubeProps';
 import FacebookPage from './Facebook/FacebookPage';
 import { IFacebookPageProps } from './Facebook/IFacebookPageProps';
 
+import TweetsFeedWebPart from './tweetsFeed/TweetsFeedWebPart';
+import { ITweetsFeedWebPartProps } from './tweetsFeed/ITweetsFeedWebPartProps'
+
 
 export interface IAboutInfoProps {
   parentProps:ISocialiis7Props,
@@ -98,6 +101,31 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       );
       console.log('aboutPane:', aboutPane);
 
+    } else if ( selectedNavItem.mediaSource === 'twitter' ) {
+      //This is a Youtube Channel or Playlist
+      console.log('Twitter page props: ', selectedNavItem);
+      aboutPane = <TweetsFeedWebPart
+
+          title={Entity.title}
+          account= {selectedNavItem.objectID}
+          width= '600'
+          height= '400'
+
+          autoLimit= {true}
+          limit= {250}
+          header= {true}
+          dark= {true}
+          footer= {false}
+          borders= {false}
+          scrollbars= {true}
+          transparent= {true}
+          linkColor= "#820bbb"
+          borderColor= "#a80000"
+
+      ></TweetsFeedWebPart>;
+
+      console.log('aboutPane:', aboutPane);
+
     } else {
       aboutPane = 
       <AboutMe
@@ -118,6 +146,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
           { aboutPane }
+
           <div className={ styles.description }>
             { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
               JSON.stringify(jsonobj,null,'\t') */}
