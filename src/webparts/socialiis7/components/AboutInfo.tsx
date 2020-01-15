@@ -106,7 +106,8 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       console.log('Twitter page props: ', selectedNavItem);
       aboutPane = <TweetsFeedWebPart
 
-          account= 'SharePoint'
+          title={Entity.title}
+          account= {selectedNavItem.objectID}
           width= '600'
           height= '400'
 
@@ -145,28 +146,6 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
           { aboutPane }
-
-
-          <TweetsFeedWebPart
-
-            account= 'SharePoint'
-            width= '600'
-            height= '400'
-
-            autoLimit= {true}
-            limit= {250}
-            header= {true}
-            dark= {true}
-            footer= {false}
-            borders= {false}
-            scrollbars= {true}
-            transparent= {true}
-            linkColor= "#820bbb"
-            borderColor= "#a80000"
-
-            ></TweetsFeedWebPart>
-
-
 
           <div className={ styles.description }>
             { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:

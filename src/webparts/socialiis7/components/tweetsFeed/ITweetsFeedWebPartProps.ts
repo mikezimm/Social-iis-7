@@ -6,6 +6,7 @@
  * Copyright (c) 2016
  */
 export interface ITweetsFeedWebPartProps {
+  title: string;
   account: string;
   autoLimit: boolean;
   limit: number;

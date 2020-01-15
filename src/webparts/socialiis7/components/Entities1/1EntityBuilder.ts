@@ -17,6 +17,7 @@ export function buildEntities(onNavClick) {
     Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick ) );
     Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick ) );
     Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick ) );
+    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick ) );
     
     return Entities;
 }

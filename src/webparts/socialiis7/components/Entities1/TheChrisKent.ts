@@ -6,7 +6,7 @@ export function TheChrisKent(){
   const entity :IEntity = {
     title: 'Chris Kent', //
     keywords: ["MVP","SharePoint","SPFx","ColumnFormatting"],
-    profilePic: "",
+    profilePic: "https://pbs.twimg.com/profile_images/814833960039673856/gnupN0Hs_400x400.jpg",
     blog: [
       {
         title: 'About Me',

@@ -8,3 +8,4 @@ export * from './VesaJuvonen';
 export * from './SIGGeneralDev';
 export * from './SIGMonthlyDev';
 export * from './SIGSPFx';
+export * from './TheChrisKent';
