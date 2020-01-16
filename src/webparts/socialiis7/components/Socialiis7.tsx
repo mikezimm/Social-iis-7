@@ -106,10 +106,15 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let Entities9 = buildEntities9(this.onNavClick);    
 
     let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
+    let testUserEntities2 = IsValidJSONString(this.props.userEntities2);
+    let testUserEntities3 = IsValidJSONString(this.props.userEntities3);
 
-    let userEntitiesTest1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
+    let userEntities1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
+    let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
+    let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
     
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntitiesTest1);
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntities1);
+    allEntities = allEntities.concat(userEntities1).concat(userEntities2).concat(userEntities3);
 
     let loadData: ILoadData = {
 
@@ -118,6 +123,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       Entities4: Entities4,
       Entities7: Entities7,
       Entities9: Entities9,
+      userEntities1: userEntities1,
+      userEntities2: userEntities2,
+      userEntities3: userEntities3,
 
       allEntities: allEntities,
       allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),

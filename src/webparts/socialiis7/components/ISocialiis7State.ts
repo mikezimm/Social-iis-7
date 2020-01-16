@@ -46,6 +46,10 @@ export interface ILoadData {
     Entities7: IEntity[];
     Entities9: IEntity[];
 
+    userEntities1: IEntity[];
+    userEntities2: IEntity[];
+    userEntities3: IEntity[];
+
     allEntities: IEntity[];
     allEntityKeywords: string[];
     allTopics: string[];
