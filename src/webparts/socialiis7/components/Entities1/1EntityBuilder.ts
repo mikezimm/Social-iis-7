@@ -45,7 +45,16 @@ export function buildUserEntities(onNavClick , userEntity: string) {
 
     let newEntity = JSON.parse(userEntity);
 
-    Entities.push( addOtherProps(newEntity, onNavClick ) );
+    if ( userEntity.indexOf('[') !== 0 ) {
+        // assume it's single item
+        Entities.push( addOtherProps(newEntity, onNavClick ) );
+    } else {
+        for (let ent of newEntity) {
+            Entities.push( addOtherProps(ent, onNavClick ) );
+        }
+    }
+
+
     
     return Entities;
 }
