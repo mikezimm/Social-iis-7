@@ -5,7 +5,7 @@ import { IYoutubeState } from './IYoutubeState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { SearchBar } from './SearchBar/SearchBar';
 import { VideoDetail } from './VideoDetail/VideoDetail';
-import { VideoList } from './VideoList/VideoList'
+import { VideoList } from './VideoList/VideoList';
 import * as _ from 'lodash';
 import axios from 'axios';
 
@@ -29,7 +29,7 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
     /*
     */
       let rebuildYouTube = false;
-      if ( prevProps.objectId !== this.props.objectId ) { rebuildYouTube = true }
+      if ( prevProps.objectId !== this.props.objectId ) { rebuildYouTube = true; }
 
       console.log('Youtube componentDidUpdate:', prevProps, this.props);
       if ( rebuildYouTube === true){

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
 import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
 import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
@@ -11,12 +12,12 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { pivotOptionsGroup, } from '../../../services/propPane';
-import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
+
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import {
-  buildEntities,buildEntityKeywords, getEntitiesForThis
+  buildEntities,buildEntityKeywords, getEntitiesForThis, buildUserEntities, IsValidJSONString
 
 } from './Entities1/1EntityBuilder';
 import {  buildEntities2} from './Entities2/1EntityBuilder';
@@ -25,13 +26,15 @@ import {  buildEntities7} from './Entities7/1EntityBuilder';
 import {  buildEntities8} from './Entities8/1EntityBuilder';
 import {  buildEntities9} from './Entities9/1EntityBuilder';
 
+
+
 import * as choiceBuilders from './choiceFieldBuilder';
 
 import PageNavigator from './Navigator/PageNavigator';
 import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
-import { IAboutInfoProps } from './AboutInfo'
-import AboutInfo from './AboutInfo'
+import { IAboutInfoProps } from './AboutInfo';
+import AboutInfo from './AboutInfo';
 
 import AboutPage from './AboutInfo';
 
@@ -101,10 +104,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let Entities7 = buildEntities7(this.onNavClick);
     let Entities8 = buildEntities8(this.onNavClick);
     let Entities9 = buildEntities9(this.onNavClick);    
+
+    let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
+
+    let userEntitiesTest1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
     
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8);
-
-
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntitiesTest1);
 
     let loadData: ILoadData = {
 
@@ -150,6 +155,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       topics: topics,
       selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
       loadData: loadData,
+
+      userEntitiesTest1: '',
+      userEntitiesTest2: '',  
+      userEntitiesTest3: '',
 
     };
 
@@ -426,7 +435,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
     //This is done to confirm that the "Share Info" button was clicked
-    if ( item.key.indexOf('debug') > -1 ) { item.key = item.key.replace('debug','showDebug')}
+    if ( item.key.indexOf('debug') > -1 ) { item.key = item.key.replace('debug','showDebug');}
 
     if (ev.ctrlKey) {
       //Set clicked pivot as the hero pivot

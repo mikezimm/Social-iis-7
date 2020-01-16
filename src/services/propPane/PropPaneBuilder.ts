@@ -5,6 +5,9 @@ import {
 import {
   introPage,
   webPartSettingsPage,
+  userEntitiesPage1,
+  userEntitiesPage2,
+  userEntitiesPage3,
 
 } from './index';
 
@@ -20,7 +23,9 @@ export class PropertyPaneBuilder {
       pages: [
         introPage.getPropertyPanePage(webPartProps),
         webPartSettingsPage.getPropertyPanePage(webPartProps),
-
+        userEntitiesPage1.getPropertyPanePage(webPartProps),
+        userEntitiesPage2.getPropertyPanePage(webPartProps),
+        userEntitiesPage3.getPropertyPanePage(webPartProps),
       ]
     };
   } // getPropertyPaneConfiguration()

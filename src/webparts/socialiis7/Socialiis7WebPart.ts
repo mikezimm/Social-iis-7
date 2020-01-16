@@ -42,10 +42,15 @@ export interface ISocialiis7WebPartProps {
   
   // 7 - Media Choices - Left Side bar
 
+  mainTopicPick: string;
   mainTopic: string;
   subTopic1: string;
   subTopic2: string;
-  subTopic3: string;  
+  subTopic3: string; 
+  
+  userEntities1?: string;
+  userEntities2?: string;  
+  userEntities3?: string;
 
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
@@ -66,11 +71,12 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         // other init code may be present
   
         //https://stackoverflow.com/questions/52010321/sharepoint-online-full-width-page
+        console.log('location',window.location.href);
         if ( window.location.href &&  
-          window.location.href.indexOf("layouts/15/workbench.aspx") > 0 ) {
+           window.location.href.indexOf("layouts/15/workbench.aspx") > 0  ) {
             
           if (document.getElementById("workbenchPageContent")) {
-            document.getElementById("workbenchPageContent").style.maxWidth = "none";
+            document.getElementById("workbenchPageContent").style.maxWidth = "1300px";
           }
         } 
         
@@ -132,6 +138,10 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
           subTopic2: this.properties.subTopic2,
           subTopic3: this.properties.subTopic3,
         },
+
+        userEntities1: this.properties.userEntities1,
+        userEntities2: this.properties.userEntities2, 
+        userEntities3: this.properties.userEntities3,
 
         // 8 - Pivot Choices - Top Bar
         pivotSize: this.properties.pivotSize,

@@ -14,7 +14,9 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
         };
     }
 
-    render(): React.ReactElement<ISearchBarProps> {
+    //Was not marked public but came up in TS Lint error
+    //The class method 'render' must be marked either 'private', 'public', or 'protected'
+    public render(): React.ReactElement<ISearchBarProps> {
         {
             return (
                 <div className="search-bar">

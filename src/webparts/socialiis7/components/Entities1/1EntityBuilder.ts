@@ -1,12 +1,17 @@
 
-import { IEntity, IWeb } from '../ISocialiis7Props';
-import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+
 import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
+
+import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import * as ents from './index';
 import { keyframes } from 'office-ui-fabric-react';
 
-export function buildEntities(onNavClick) {
+import { IEntity, IWeb, ISocialiis7Props, ITopics } from '../ISocialiis7Props';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISocialiis7State';
+
+//export function buildEntities(onNavClick, parentProps: ISocialiis7Props, parentState: ISocialiis7State) {
+export function buildEntities(onNavClick ) {
     let Entities : IEntity[] = [];
     console.log('ents', ents);
     Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick ) );
@@ -18,6 +23,29 @@ export function buildEntities(onNavClick) {
     Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick ) );
     Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick ) );
     Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick ) );
+    
+    return Entities;
+}
+
+//https://codeblogmoney.com/validate-json-string-using-javascript/
+export function IsValidJSONString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        console.log('string is not a valid JSON');
+        return false;
+    }
+    console.log('string IS a valid JSON');
+    return true;
+}
+
+
+export function buildUserEntities(onNavClick , userEntity: string) {
+    let Entities : IEntity[] = [];
+
+    let newEntity = JSON.parse(userEntity);
+
+    Entities.push( addOtherProps(newEntity, onNavClick ) );
     
     return Entities;
 }
@@ -79,9 +107,9 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                             navKeys.push(navKey);
                             let host = 'https://www.youtube.com/';
 
-                            if ( item.objectType.toLowerCase().indexOf('channel') > -1 ) { host += 'channel/'};
-                            if ( item.objectType.toLowerCase().indexOf('playlist') > -1 ) { host += 'playlist?list='};
-                            if ( item.objectType.toLowerCase().indexOf('video') > -1 ) { host += 'watch?v='};
+                            if ( item.objectType.toLowerCase().indexOf('channel') > -1 ) { host += 'channel/'; }
+                            if ( item.objectType.toLowerCase().indexOf('playlist') > -1 ) { host += 'playlist?list='; }
+                            if ( item.objectType.toLowerCase().indexOf('video') > -1 ) { host += 'watch?v='; }
 
                             return {
                                 name: item.title,
@@ -102,9 +130,14 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 //Need to remove any null items from array before adding to navigation or they make spaces in nav
                 //https://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
                 navigation = navigation.concat(
-                    navElements.filter(function (el) {
-                        return el != null;
-                    })
+
+                    //navElements.filter(function (el) {
+                    //    return el != null;
+                    //})
+
+                    //.filter((duration) => duration >= 2)
+
+                    navElements.filter((el) => el !== null)
                 );
 
             //This section can be removed once 'items' is coded
@@ -118,8 +151,8 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
                             navKeys.push(navKey);
                             let host = 'https://www.youtube.com/';
-                            if ( key === 'channels') { host += 'channel/'};
-                            if ( key === 'playLists') { host += 'playlist?list='};
+                            if ( key === 'channels') { host += 'channel/'; }
+                            if ( key === 'playLists') { host += 'playlist?list='; }
         
                             return {
                                 name: item.title,
@@ -140,9 +173,12 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 //Need to remove any null items from array before adding to navigation or they make spaces in nav
                 //https://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
                 navigation = navigation.concat(
-                    navElements.filter(function (el) {
-                        return el != null;
-                    })
+                    //navElements.filter(function (el) {
+                    //    return el != null;
+                    //})
+                    //.filter((duration) => duration >= 2)
+                    //https://code.tutsplus.com/tutorials/how-to-use-map-filter-reduce-in-javascript--cms-26209
+                    navElements.filter((el) => el !== null)
                 );
 
                 //console.log('buildNavigationForWeb youtube navigation1:',navigation );                
@@ -238,7 +274,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             mediaSource: sectionName,
             objectID: 'the Cat Jumped over the Moon!',
             objectType: 'JSON',
-        }]
+        }];
     }
     //console.log('buildNavigationForWeb youtube navigation4:',navigation );  
     return navigation;

@@ -1,6 +1,7 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
+
 export function Sample(){
 
   const entity :IEntity = {

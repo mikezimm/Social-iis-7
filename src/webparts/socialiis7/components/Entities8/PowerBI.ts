@@ -51,7 +51,7 @@ export function PowerBI(){
         {
           title: 'PowerBI.com',
           order: 1, //For Sorting
-          url: 'https://community.powerbi.com/ ',
+          url: 'https://community.powerbi.com/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -66,9 +66,9 @@ export function PowerBI(){
             objectID: 'UCFp1vaKzpfvoGai0vE5VJ0w', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w', // to be used as generic link if no API key is given
           },{
-            title: '',
+            title: 'Curbal Youtube Channel',  //Submitted by Kittipong Neamchalone
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            objectID: 'https://www.youtube.com/channel/UhloHSA4wAqPzyi6TOkw', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
             title: '',

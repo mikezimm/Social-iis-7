@@ -91,6 +91,16 @@ export interface ISocialiis7State {
         subTopic2?: string;
         subTopic3?: string;
     };
+
+    //Saved in webpart props
+    userEntities1?: string;
+    userEntities2?: string;  
+    userEntities3?: string;
+
+    //Input box any user can add to
+    userEntitiesTest1: string;
+    userEntitiesTest2: string;
+    userEntitiesTest3: string;
     
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;

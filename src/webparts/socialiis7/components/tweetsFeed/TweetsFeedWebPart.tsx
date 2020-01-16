@@ -4,7 +4,7 @@ import * as ReactDom from 'react-dom';
 
 import { ITweetsFeedWebPartProps } from './ITweetsFeedWebPartProps';
 import AboutMe from '../AboutMe/AboutMe';
-import styles from './TweetsFeed.module.scss'
+import styles from './TweetsFeed.module.scss';
 
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
@@ -27,6 +27,19 @@ export default class TweetsFeedWebPart extends React.Component<ITweetsFeedWebPar
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
 
     let tweeterPage = null;
+    var dataChrome = '';
+
+    if (this.props.footer === false)
+      dataChrome += "nofooter ";
+    if (this.props.header === false)
+      dataChrome += "noheader ";
+    if (this.props.borders === false)
+      dataChrome += "noborders ";
+    if (this.props.scrollbars === false)
+      dataChrome += "noscrollbar ";
+    if (this.props.transparent === true)
+      dataChrome += "transparent ";
+      
     if (this.props.account == null || this.props.account == '') {
 
       tweeterPage =         
@@ -59,21 +72,9 @@ export default class TweetsFeedWebPart extends React.Component<ITweetsFeedWebPar
               </a>
             </div>
             <div style={{paddingBottom: 50}}></div>
-      </Stack>
+      </Stack>;
 
     } else {
-      var dataChrome = '';
-
-      if (this.props.footer === false)
-        dataChrome += "nofooter ";
-      if (this.props.header === false)
-        dataChrome += "noheader ";
-      if (this.props.borders === false)
-        dataChrome += "noborders ";
-      if (this.props.scrollbars === false)
-        dataChrome += "noscrollbar ";
-      if (this.props.transparent === true)
-        dataChrome += "transparent ";
   
       var limit = '';
       if (this.props.autoLimit === false)
@@ -143,7 +144,7 @@ export default class TweetsFeedWebPart extends React.Component<ITweetsFeedWebPar
             <div style={{paddingBottom: 50}}>
 
           </div>
-        </Stack>
+        </Stack>;
 
 
     }
