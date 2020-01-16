@@ -1,11 +1,12 @@
 .facebookPageContainer {
 
+  width: 800px;
   display: flex;
   justify-content: center;
 
   > iframe {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 900px;
   }
 
 }

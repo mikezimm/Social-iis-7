@@ -6,7 +6,7 @@ export function Veoneer(){
   const entity :IEntity = {
     title: 'Veoneer', //
     keywords: ["Auto","Global","Tier1","Active","Radar","Night","Eye"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://pbs.twimg.com/media/ENwfZNqX0AAfZLr?format=jpg&name=240x240",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -17,10 +17,11 @@ export function Veoneer(){
     ],
     twitter: 
       {
-        title: '',
+        title: 'Veoneer on Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/Veoneer',
         codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectID: 'Veoneer' 
       }
     ,  // End twitter
     facebook: 

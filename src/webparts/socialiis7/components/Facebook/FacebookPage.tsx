@@ -12,9 +12,9 @@ export default class FacebookPage extends React.Component<IFacebookPageProps, {}
         render={({ width }) => {
           return (
             <iframe
-              src={this.buildIFrameUrl( this.props.width)}
-              width={this.props.width}
-              height={this.props.width * 9 / 16}
+              src={this.buildIFrameUrl( 800)}
+              width={800}
+              height={500}
               style={{
                 border: 'none',
                 overflow: 'hidden',
@@ -32,12 +32,12 @@ export default class FacebookPage extends React.Component<IFacebookPageProps, {}
   private buildIFrameUrl(width: number): string {
     return `https://www.facebook.com/plugins/page.php?` +
       `href=${encodeURIComponent(`https://www.facebook.com/${this.props.company || 'Microsoft'}`)}&` +
-      `width=${width}&` +
-      `height=${this.props.height || 500}&` +
+      `width=${800}&` +
+      `height=${500}&` +
       `small_header=${typeof this.props.smallHeader !== 'undefined' ? this.props.smallHeader : false}&` +
       `hide_cover=${typeof this.props.hideCover !== 'undefined' ? this.props.hideCover : false}&` +
       `show_facepile=${typeof this.props.showFacepile !== 'undefined' ? this.props.showFacepile : false}&` +
-      `adapt_container_width=true&` +
+      //`adapt_container_width=true&` +
       `tabs=timeline`;
   }
 
