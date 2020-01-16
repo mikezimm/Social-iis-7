@@ -91,6 +91,10 @@ export interface ISocialiis7State {
         subTopic2?: string;
         subTopic3?: string;
     };
+
+    userEntities1?: string;
+    userEntities2?: string;  
+    userEntities3?: string;
     
     // 8 - Pivot Choices - Top Bar
     currentPivotSet: string;

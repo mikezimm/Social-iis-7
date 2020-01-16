@@ -78,6 +78,7 @@ export interface IEntity {
   steamStore?: IWeb[];
   feeds?: INewsFeed[];
 
+
 }
 
 
@@ -155,6 +156,10 @@ export interface ISocialiis7Props {
   navigationType: string;
 
   topics: ITopics;
+
+  userEntities1: string;
+  userEntities2: string;  
+  userEntities3: string;
 
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;

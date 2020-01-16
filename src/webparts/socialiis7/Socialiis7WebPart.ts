@@ -42,10 +42,15 @@ export interface ISocialiis7WebPartProps {
   
   // 7 - Media Choices - Left Side bar
 
+  mainTopicPick: string;
   mainTopic: string;
   subTopic1: string;
   subTopic2: string;
-  subTopic3: string;  
+  subTopic3: string; 
+  
+  userEntities1?: string;
+  userEntities2?: string;  
+  userEntities3?: string;
 
   // 8 - Pivot Choices - Top Bar
   pivotSize: string;
