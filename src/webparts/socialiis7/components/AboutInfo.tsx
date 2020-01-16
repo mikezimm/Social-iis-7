@@ -24,12 +24,12 @@ import FacebookPage from './Facebook/FacebookPage';
 import { IFacebookPageProps } from './Facebook/IFacebookPageProps';
 
 import TweetsFeedWebPart from './tweetsFeed/TweetsFeedWebPart';
-import { ITweetsFeedWebPartProps } from './tweetsFeed/ITweetsFeedWebPartProps'
+import { ITweetsFeedWebPartProps } from './tweetsFeed/ITweetsFeedWebPartProps';
 
 
 export interface IAboutInfoProps {
-  parentProps:ISocialiis7Props,
-  parentState: ISocialiis7State,
+  parentProps:ISocialiis7Props;
+  parentState: ISocialiis7State;
   
 }
 
@@ -40,9 +40,9 @@ export interface IAboutInfoState {
 export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutInfoState> {
   constructor(props: IAboutInfoProps) {
     super(props);
-    this.setState({ 
+    this.state = { 
       selectedEntityTitle: this.props.parentState.selectedEntity.titleKey,
-    });
+    };
   }
 
   public render(): React.ReactElement<IAboutInfoProps> {
@@ -64,11 +64,11 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     let youTube = false;
 
     let objectType = null;
-    if (selectedNavItem.mediaSource.toLowerCase().indexOf('youtube') < 0 ) { youTube = false }
-    else if (selectedNavItem.objectType.toLowerCase().indexOf('playlist') > -1 ) { objectType = 'playlistId' ; youTube = true }
-    else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true }
-    else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true }
-    else if (selectedNavItem.objectType.toLowerCase().indexOf('user') > -1 ) { objectType = 'user'; youTube = true }
+    if (selectedNavItem.mediaSource.toLowerCase().indexOf('youtube') < 0 ) { youTube = false; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('playlist') > -1 ) { objectType = 'playlistId' ; youTube = true; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('user') > -1 ) { objectType = 'user'; youTube = true; }
 
     if ( youTube && objectType != null && selectedNavItem.objectID ) {
       //This is a Youtube Channel or Playlist
@@ -135,7 +135,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         imageHeight={ !showDebug ? 400 : 0 }
         imageWidth={ !showDebug ? 600 : 0 }
         >
-      </AboutMe>
+      </AboutMe>;
     }
 
 
