@@ -55,9 +55,9 @@ export function TheChrisKent(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        title: 'List formatting examples',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://sharepoint.github.io/sp-dev-list-formatting/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],

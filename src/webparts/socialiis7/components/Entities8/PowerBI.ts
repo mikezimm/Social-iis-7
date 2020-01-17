@@ -67,9 +67,9 @@ export function PowerBI(){
             objectUrl: 'https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w', // to be used as generic link if no API key is given
           },{
             title: 'Curbal Youtube Channel',  //Submitted by Kittipong Neamchalone
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: 'https://www.youtube.com/channel/UhloHSA4wAqPzyi6TOkw', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            objectType: 'Channel', //user,Channel, Playlist, Videos, Video   Twitter:  https://twitter.com/CurbalEN
+            objectID: 'UCJ7UhloHSA4wAqPzyi6TOkw', //Used to determine what functions to have avaialble
+            objectUrl: 'https://www.youtube.com/channel/UCJ7UhloHSA4wAqPzyi6TOkw', // to be used as generic link if no API key is given
           },{
             title: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video

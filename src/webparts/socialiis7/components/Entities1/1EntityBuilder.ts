@@ -258,20 +258,27 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 objectID: objectID,
             };
 
-        } else { //This is expected to be an array
-            navigation = newSection.map((item) => {
-                
-                return {
-                    name: item.title,
-                    key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
-                    url: item.url,
-                    onClick: onNavClick,
-                    mediaSource: sectionName,
-                    objectType: sectionName,
-                    objectID: item.objectID,
-    
-                };
-            });
+        } else { //This is expected to be an array like websites
+
+            //navElements.filter((el) => el !== null)
+            //navigation = newSection.map((item) => {
+            navigation = [];
+            for (let item of newSection){
+                let tempNav = null;
+                if (item.title.length > 0 || item.url.length > 0 ){
+                    tempNav = {
+                        name: item.title,
+                        key:   Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.title),
+                        url: item.url,
+                        onClick: onNavClick,
+                        mediaSource: sectionName,
+                        objectType: sectionName,
+                        objectID: item.objectID,
+                    };
+                    navigation.push(tempNav);
+                }
+            }
+
         }
 
     } else {

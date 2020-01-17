@@ -94,54 +94,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.onNavClick = this.onNavClick.bind(this);
 
-    let currentPivotSet = "keysForTopic";
-
     let topics : ITopics = this.props.topics;
 
-    let Entities1 = buildEntities(this.onNavClick);
-    let Entities2 = buildEntities2(this.onNavClick);
-    let Entities4 = buildEntities4(this.onNavClick);
-    let Entities7 = buildEntities7(this.onNavClick);
-    let Entities8 = buildEntities8(this.onNavClick);
-    let Entities9 = buildEntities9(this.onNavClick);    
+    let currentPivotSet = "keysForTopic";
 
-    let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
-    let testUserEntities2 = IsValidJSONString(this.props.userEntities2);
-    let testUserEntities3 = IsValidJSONString(this.props.userEntities3);
-
-    let userEntities1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
-    let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
-    let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
-    
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntities1);
-    allEntities = allEntities.concat(userEntities1).concat(userEntities2).concat(userEntities3);
-
-    let loadData: ILoadData = {
-
-      Entities1: Entities1,
-      Entities2: Entities2,
-      Entities4: Entities4,
-      Entities7: Entities7,
-      Entities9: Entities9,
-      userEntities1: userEntities1,
-      userEntities2: userEntities2,
-      userEntities3: userEntities3,
-
-      allEntities: allEntities,
-      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
-      allTopics: buildEntityKeywords(allEntities, "keywords"),
-
-      entitiesForMainTopic: [],
-      availSubTopicEntities: [],
-      keysForTopic: [],
-
-      subTopic1Entities: null,
-      subTopic2Entities: null,
-      subTopic3Entities: null,
-
-    };
-
-    loadData = this._rebuildEntities(topics, loadData);
+    let loadData: ILoadData = this.rebuildAllEntities();
 
     let selectedEntity = loadData.subTopic1Entities[0];
     let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
@@ -161,12 +118,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
       topics: topics,
-      selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
+      selectedNavKey: 'public constructor: ' + selectedEntity.titleKey,
       loadData: loadData,
-
-      userEntitiesTest1: '',
-      userEntitiesTest2: '',  
-      userEntitiesTest3: '',
 
     };
 
@@ -297,25 +250,94 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   private _updateStateOnPropsChange(params: any ): void {
 
-    let loadData = this._rebuildEntities(this.props.topics, this.state.loadData);
+    this.onNavClick = this.onNavClick.bind(this);
+    let topics : ITopics = this.props.topics;
+
+    let currentPivotSet = "keysForTopic";
+
+    let loadData: ILoadData = this.rebuildAllEntities();
 
     let selectedEntity = loadData.subTopic1Entities[0];
-
-    let pivots = this._rebuildPivots(loadData);
+    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+    let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
-    let topics : ITopics = this.props.topics;
-
     this.setState({
       pivots: pivots,
+      selectedMedia: '',
+      loadStatus: "updating Props",
+      currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
+      selectedNavKey: '_updateStateOnPropsChange: ' + selectedEntity.titleKey,
       loadData: loadData,
+      selectedNavItem: selectedNavItem,
+      navigationType: this.props.navigationType,
       topics: topics,
     });
 
   }
+
+
+
+  private rebuildAllEntities() {
+
+    this.onNavClick = this.onNavClick.bind(this);
+
+    let topics : ITopics = this.props.topics;
+
+    let Entities1 = buildEntities(this.onNavClick);
+    let Entities2 = buildEntities2(this.onNavClick);
+    let Entities4 = buildEntities4(this.onNavClick);
+    let Entities7 = buildEntities7(this.onNavClick);
+    let Entities8 = buildEntities8(this.onNavClick);
+    let Entities9 = buildEntities9(this.onNavClick);    
+
+    let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
+    let testUserEntities2 = IsValidJSONString(this.props.userEntities2);
+    let testUserEntities3 = IsValidJSONString(this.props.userEntities3);
+
+    let userEntities1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
+    let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
+    let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
+
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntities1);
+    allEntities = allEntities.concat(userEntities1).concat(userEntities2).concat(userEntities3);
+
+    let loadData: ILoadData = {
+
+      Entities1: Entities1,
+      Entities2: Entities2,
+      Entities4: Entities4,
+      Entities7: Entities7,
+      Entities9: Entities9,
+      userEntities1: userEntities1,
+      userEntities2: userEntities2,
+      userEntities3: userEntities3,
+      
+      allEntities: allEntities,
+      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
+      allTopics: buildEntityKeywords(allEntities, "keywords"),
+
+      entitiesForMainTopic: [],
+      availSubTopicEntities: [],
+      keysForTopic: [],
+
+      subTopic1Entities: null,
+      subTopic2Entities: null,
+      subTopic3Entities: null,
+
+    };
+
+    loadData = this._rebuildEntities(topics, loadData);
+
+    return loadData;
+
+  }
+
+
+
 
   private _rebuildEntities(topics: ITopics, loadData1: ILoadData ) {
 
