@@ -6,7 +6,7 @@ export function Veoneer(){
   const entity :IEntity = {
     title: 'Veoneer', //
     keywords: ["Auto","Global","Tier1","Active","Radar","Night","Eye"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://www.veoneer.com/en/who-we-are",
     blog: [
       {
         title: 'Someone\'s Blog',
@@ -17,25 +17,26 @@ export function Veoneer(){
     ],
     twitter: 
       {
-        title: '',
+        title: 'Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/veoneer',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      title: 'Facebook',
       order: 1, //For Sorting
-      url: '',
+      objectID: 'Veoneer',
+      url: 'https://www.facebook.com/Veoneer/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        title: 'LinkedIn',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.linkedin.com/company/veoneer/?viewAsMember=true',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
@@ -61,14 +62,14 @@ export function Veoneer(){
       order: 0, //For Sorting
       items: [
         {
-          title: '',
-          objectType: 'Video', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
-        },{
-          title: '',
+          title: 'Youtube Veoneer',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'UCRO1uMYtcNm1pzmQly1L4nw', //Used to determine what functions to have avaialble
+          objectUrl: 'https://www.youtube.com/channel/UCRO1uMYtcNm1pzmQly1L4nw', // to be used as generic link if no API key is given
+        },{
+          title: 'MIT Human-Centered Autonomous Vehicle',
+          objectType: 'Video', //user,Channel, Playlist, Videos, Video
+          objectID: 'OoC8oH0CLGc', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
           title: '',

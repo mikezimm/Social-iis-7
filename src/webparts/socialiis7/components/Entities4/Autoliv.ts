@@ -27,7 +27,7 @@ export function Autoliv(){
     {
       title: 'FaceBook',
       order: 1, //For Sorting
-      url: 'https://www.facebook.com/pages/Autoliv/104462136316253',
+      url: 'https://www.facebook.com/Autoliv/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -57,7 +57,7 @@ export function Autoliv(){
     ],
     youtube: {
       title: 'YouTube',
-      user: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Youtube User (from URL)
+      user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
@@ -66,9 +66,9 @@ export function Autoliv(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'Autoliv Youtube',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
           title: '',

@@ -93,47 +93,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     super(props);
 
     this.onNavClick = this.onNavClick.bind(this);
+    let topics : ITopics = this.props.topics;
 
     let currentPivotSet = "keysForTopic";
 
-    let topics : ITopics = this.props.topics;
-
-    let Entities1 = buildEntities(this.onNavClick);
-    let Entities2 = buildEntities2(this.onNavClick);
-    let Entities4 = buildEntities4(this.onNavClick);
-    let Entities7 = buildEntities7(this.onNavClick);
-    let Entities8 = buildEntities8(this.onNavClick);
-    let Entities9 = buildEntities9(this.onNavClick);    
-
-    let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
-
-    let userEntitiesTest1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
-    
-    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntitiesTest1);
-
-    let loadData: ILoadData = {
-
-      Entities1: Entities1,
-      Entities2: Entities2,
-      Entities4: Entities4,
-      Entities7: Entities7,
-      Entities9: Entities9,
-
-      allEntities: allEntities,
-      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
-      allTopics: buildEntityKeywords(allEntities, "keywords"),
-
-      entitiesForMainTopic: [],
-      availSubTopicEntities: [],
-      keysForTopic: [],
-
-      subTopic1Entities: null,
-      subTopic2Entities: null,
-      subTopic3Entities: null,
-
-    };
-
-    loadData = this._rebuildEntities(topics, loadData);
+    let loadData: ILoadData = this.rebuildAllEntities();
 
     let selectedEntity = loadData.subTopic1Entities[0];
     let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
@@ -153,12 +117,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
       topics: topics,
-      selectedNavKey: 'public constructor(' + selectedEntity.titleKey,
+      selectedNavKey: 'public constructor:' + selectedEntity.titleKey,
       loadData: loadData,
-
-      userEntitiesTest1: '',
-      userEntitiesTest2: '',  
-      userEntitiesTest3: '',
 
     };
 
@@ -289,25 +249,83 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   private _updateStateOnPropsChange(params: any ): void {
 
-    let loadData = this._rebuildEntities(this.props.topics, this.state.loadData);
+    this.onNavClick = this.onNavClick.bind(this);
+    let topics : ITopics = this.props.topics;
+    
+    let currentPivotSet = "keysForTopic";
+
+    let loadData: ILoadData = this.rebuildAllEntities();
 
     let selectedEntity = loadData.subTopic1Entities[0];
-
-    let pivots = this._rebuildPivots(loadData);
+    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+    let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
-    let topics : ITopics = this.props.topics;
-
-    this.setState({
+    this.setState({ 
       pivots: pivots,
+      selectedMedia: '',
+      loadStatus: "updating Props",
+      currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
-      loadData: loadData,
+      selectedNavItem: selectedNavItem,
+      navigationType: this.props.navigationType,
       topics: topics,
-    });
+      selectedNavKey: '_updateStateOnPropsChange: ' + selectedEntity.titleKey,
+      loadData: loadData,
+     });
 
   }
+
+
+  private rebuildAllEntities() {
+
+    this.onNavClick = this.onNavClick.bind(this);
+  
+    let topics : ITopics = this.props.topics;
+  
+    let Entities1 = buildEntities(this.onNavClick);
+    let Entities2 = buildEntities2(this.onNavClick);
+    let Entities4 = buildEntities4(this.onNavClick);
+    let Entities7 = buildEntities7(this.onNavClick);
+    let Entities8 = buildEntities8(this.onNavClick);
+    let Entities9 = buildEntities9(this.onNavClick);    
+  
+    let testUserEntities1 = IsValidJSONString(this.props.userEntities1);
+  
+    let userEntitiesTest1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
+    
+    let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntitiesTest1);
+  
+    let loadData: ILoadData = {
+  
+      Entities1: Entities1,
+      Entities2: Entities2,
+      Entities4: Entities4,
+      Entities7: Entities7,
+      Entities9: Entities9,
+  
+      allEntities: allEntities,
+      allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
+      allTopics: buildEntityKeywords(allEntities, "keywords"),
+  
+      entitiesForMainTopic: [],
+      availSubTopicEntities: [],
+      keysForTopic: [],
+  
+      subTopic1Entities: null,
+      subTopic2Entities: null,
+      subTopic3Entities: null,
+  
+    };
+  
+    loadData = this._rebuildEntities(topics, loadData);
+  
+    return loadData;
+
+  }
+
 
   private _rebuildEntities(topics: ITopics, loadData1: ILoadData ) {
 
