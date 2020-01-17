@@ -3,7 +3,12 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 const VideoListItem = ({ video, onVideoSelect }) => {
-  const imageUrl = video.snippet.thumbnails.default.url;
+  console.log('VideoListItem', video);
+
+  //Added due to case where SPFx call video was flagged as PRIVATE... it was crashing the web part.
+  if (!video || !video.snippet || !video.snippet.thumbnails || !video.snippet.thumbnails.default || !video.snippet.thumbnails.default.url ) { return null}
+  
+  const imageUrl = video.snippet.thumbnails.default.url ? video.snippet.thumbnails.default.url : '';
   
   return (
     // <li onClick={() => onVideoSelect(video)} className="list-group-item">

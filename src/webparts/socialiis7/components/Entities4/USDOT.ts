@@ -1,11 +1,11 @@
 
 import { IEntity } from '../ISocialiis7Props';
 
-export function Sample(){
+export function USDOT(){
 
   const entity :IEntity = {
-    title: 'Sample', //
-    keywords: ["Auto","Global","Tier1","Passive"], // Can be any number of
+    title: 'USDOT', //
+    keywords: ["Auto","Regulatory","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
@@ -17,17 +17,17 @@ export function Sample(){
     ],
     twitter: 
       {
-        title: '',
+        title: 'Twitter',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://twitter.com/USDOT',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      title: 'Facebook',
       order: 1, //For Sorting
-      url: '',
+      url: 'https://www.facebook.com/USDOT/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
@@ -49,6 +49,21 @@ export function Sample(){
     ,  // End github
     webSites: [
       {
+        title: 'Transportation.gov',
+        order: 1, //For Sorting
+        url: 'https://www.transportation.gov/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: '',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: '',
+        order: 1, //For Sorting
+        url: '',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
         title: '',
         order: 1, //For Sorting
         url: '',
@@ -57,7 +72,7 @@ export function Sample(){
     ],
     youtube: {
       title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      user: 'usdotnhtsa', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
@@ -80,12 +95,29 @@ export function Sample(){
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
+        },{
+          title: '',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: '', //Used to determine what functions to have avaialble
+          objectUrl: '', // to be used as generic link if no API key is given
         }
+
+
+
       ] // End YouTube playlists
     }, // End YouTube
-
+    instagram: 
+      {
+        title: 'Instagram',
+        order: 1, //For Sorting
+        url: 'https://www.instagram.com/usdot/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      }
+    ,  // End linkedIn
 
   };
+
+
 
     //instagram:any,
     //facebook: any,
@@ -94,5 +126,5 @@ export function Sample(){
     //appleStore: any,
 
     return entity;
-    
-}
+
+} 

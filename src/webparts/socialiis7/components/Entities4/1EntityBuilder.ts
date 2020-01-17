@@ -10,15 +10,23 @@ export function buildEntities4(onNavClick) {
 
     let Entities : IEntity[] = [];
     console.log('ents', ents);
+
+    //Suppliers
     Entities.push(addOtherProps(ents.Autoliv(), onNavClick));
     Entities.push(addOtherProps(ents.TRW(), onNavClick));
     Entities.push(addOtherProps(ents.Veoneer(), onNavClick));
 
+    //TradeShows
     Entities.push(addOtherProps(ents.CES(), onNavClick));
     Entities.push(addOtherProps(ents.NAIAS(), onNavClick));
-    Entities.push(addOtherProps(ents.NHSTA(), onNavClick));
 
+    //Government
+    Entities.push(addOtherProps(ents.NHSTA(), onNavClick));
+    Entities.push(addOtherProps(ents.USDOT(), onNavClick));
+
+    //Industry
     Entities.push(addOtherProps(ents.IIHS(), onNavClick));
 
     return Entities;
+    
 }

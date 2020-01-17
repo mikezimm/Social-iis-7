@@ -64,9 +64,9 @@ export function NHSTA(){
         url: 'https://www.nhtsa.gov/recalls',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },{
-        title: '',
+        title: 'safecar.gov 5 star ratings',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.safercar.gov/Safety+Ratings',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
