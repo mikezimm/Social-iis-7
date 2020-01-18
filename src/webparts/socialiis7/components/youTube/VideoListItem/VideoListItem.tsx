@@ -6,7 +6,7 @@ const VideoListItem = ({ video, onVideoSelect }) => {
   console.log('VideoListItem', video);
 
   //Added due to case where SPFx call video was flagged as PRIVATE... it was crashing the web part.
-  if (!video || !video.snippet || !video.snippet.thumbnails || !video.snippet.thumbnails.default || !video.snippet.thumbnails.default.url ) { return null}
+  if (!video || !video.snippet || !video.snippet.thumbnails || !video.snippet.thumbnails.default || !video.snippet.thumbnails.default.url ) { return null; }
   
   const imageUrl = video.snippet.thumbnails.default.url ? video.snippet.thumbnails.default.url : '';
   

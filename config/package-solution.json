@@ -3,7 +3,7 @@
   "solution": {
     "name": "socialiis-7-client-side-solution",
     "id": "08c78ac8-2814-43b1-820d-7b01145e9a0e",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "isDomainIsolated": false
   },

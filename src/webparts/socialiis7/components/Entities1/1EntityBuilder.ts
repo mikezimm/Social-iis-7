@@ -285,7 +285,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         navigation = [{
             name: 'Share Me',
             key:   Entity.titleKey + '||||' + sectionName + '||||' + Entity.titleKey,
-            url:   'xxxxx',
+            url:   null,
             onClick: onNavClick,
             mediaSource: sectionName,
             objectID: 'the Cat Jumped over the Moon!',
