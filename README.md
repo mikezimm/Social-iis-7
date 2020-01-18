@@ -40,8 +40,13 @@ NEW INSTALL Required:  2020-01-13
 npm install on-el-resize  (For Facebook component)
 
 
+npm install react-twitter-embed --save
 
 ```
+
+## React Twitter Embed from
+https://saurabhnemade.github.io/react-twitter-embed/
+
 
 ## ToDo
 look at this regex for removing comments from json:

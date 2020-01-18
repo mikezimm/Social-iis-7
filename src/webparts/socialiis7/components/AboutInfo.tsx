@@ -26,6 +26,9 @@ import { IFacebookPageProps } from './Facebook/IFacebookPageProps';
 import TweetsFeedWebPart from './tweetsFeed/TweetsFeedWebPart';
 import { ITweetsFeedWebPartProps } from './tweetsFeed/ITweetsFeedWebPartProps';
 
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton,
+         TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, 
+         TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 
 export interface IAboutInfoProps {
   parentProps:ISocialiis7Props;
@@ -102,6 +105,18 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       console.log('aboutPane:', aboutPane);
 
     } else if ( selectedNavItem.mediaSource === 'twitter' ) {
+      //This is a Youtube Channel or Playlist
+      console.log('Twitter page props: ', selectedNavItem);
+      aboutPane = 
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName={selectedNavItem.objectID}
+          options={{height: 400}}
+        />;
+
+      console.log('aboutPane:', aboutPane);
+
+  } else if ( selectedNavItem.mediaSource === 'twitterOriginal' ) {
       //This is a Youtube Channel or Playlist
       console.log('Twitter page props: ', selectedNavItem);
       aboutPane = <TweetsFeedWebPart
