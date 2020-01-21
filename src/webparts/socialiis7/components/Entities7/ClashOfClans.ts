@@ -10,9 +10,9 @@ export function ClashOfClans(){
       profilePic: "https://pbs.twimg.com/profile_images/1006114388397391874/5mcVx5ku_400x400.jpg",
       blog: [
         {
-          title: 'Clash Of Clans',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://en.wikipedia.org/wiki/Clash_of_Clans',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -50,9 +50,9 @@ export function ClashOfClans(){
       ,  // End github
       webSites: [
         {
-          title: '',
+          title: 'Clash Of Clans Wikipedia',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Clash_of_Clans',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

@@ -10,9 +10,9 @@ export function DarkSouls(){
       profilePic: "https://upload.wikimedia.org/wikipedia/en/8/8d/Dark_Souls_Cover_Art.jpg",
       blog: [
         {
-          title: 'Dark Souls',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://en.wikipedia.org/wiki/Dark_Souls',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -50,9 +50,9 @@ export function DarkSouls(){
       ,  // End github
       webSites: [
         {
-          title: '',
+          title: 'Dark Souls',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Dark_Souls',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

@@ -42,11 +42,11 @@ export interface IAboutMeProps {
   imageUrl: string;
   title?: string;
   href?: string;
-
   
   options?: string;
   color?: string;
   imgSize?: string;
 
+  masked?: boolean;
 
 }

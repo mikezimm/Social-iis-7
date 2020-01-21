@@ -13,6 +13,8 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import styles from './Socialiis7.module.scss';
 import AboutMe from './AboutMe/AboutMe';
+import FootPrint from './AboutMe/FootPrint';
+
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
@@ -26,6 +28,7 @@ import { IFacebookPageProps } from './Facebook/IFacebookPageProps';
 import TweetsFeedWebPart from './tweetsFeed/TweetsFeedWebPart';
 import { ITweetsFeedWebPartProps } from './tweetsFeed/ITweetsFeedWebPartProps';
 
+import Iframe from 'react-iframe';
 
 export interface IAboutInfoProps {
   parentProps:ISocialiis7Props;
@@ -126,7 +129,23 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
       console.log('aboutPane:', aboutPane);
 
-    } else {
+    } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 || selectedNavItem.mediaSource === 'blog' ) {
+      //This is a Youtube Channel or Playlist
+      console.log('Webpage page props: ', selectedNavItem);
+      aboutPane = 
+      <Iframe url={selectedNavItem.url}
+        width= '600'
+        height= '400'
+        id="myAboutPageId"
+        className="myClassname"
+        display="block"
+        position="relative"
+      />
+      ;
+
+      console.log('aboutPane:', aboutPane);
+
+    } else if ( selectedNavItem.mediaSource === 'twitter' ) {
       aboutPane = 
       <AboutMe
         imageUrl={ (!showDebug ? this.props.parentState.selectedEntity.profilePic : '')}
@@ -136,6 +155,26 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         imageWidth={ !showDebug ? 600 : 0 }
         >
       </AboutMe>;
+
+    } else {
+      aboutPane = 
+      <div>
+      <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>
+      <AboutMe
+        imageUrl={ (!showDebug ? this.props.parentState.selectedEntity.profilePic : '')}
+        setImgCover='centerContain'
+        setImgFit='portrait'
+        imageHeight={ !showDebug ? 400 : 0 }
+        imageWidth={ !showDebug ? 600 : 0 }
+        >
+      </AboutMe>
+      <FootPrint
+        footprint={Entity.footPrint}
+      ></FootPrint>
+      </Stack>
+      </div>;
+
+
     }
 
 

@@ -58,6 +58,7 @@ export interface IYoutube {
 export interface IEntity {
   title: string; //
   titleKey?: string;
+  footPrint?: string[];
   keywords: string[];
   profilePic: string;
   webSites?: IWeb[];

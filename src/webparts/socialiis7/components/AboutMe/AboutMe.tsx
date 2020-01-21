@@ -42,6 +42,7 @@ export default class AboutMe extends React.Component<IAboutMeProps, IAboutMeStat
     //let thisTarget = (item[this.props.newTabField]) ? "_blank" : "";
     //let thisHref = (item[this.props.linkField]) ? item[this.props.linkField].Url : "#";
     let thisPadding = `${this.props.textPadding}px`;
+    let opacityVal = this.props.masked ? .5 : 1 ;
 
     var iHoverZoomStyle = styles.imgHoverZoomHover12;
 
@@ -62,7 +63,7 @@ export default class AboutMe extends React.Component<IAboutMeProps, IAboutMeStat
           <Image 
             className={
               styles.pTileItemImageCustom} 
-            
+            style={{opacity: opacityVal}}
             src={this.props.imageUrl} 
             shouldFadeIn={true} 
             imageFit={imageOptionsGroup.getImgFit(this.props.setImgFit)}
