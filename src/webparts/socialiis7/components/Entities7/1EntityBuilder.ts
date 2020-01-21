@@ -16,6 +16,7 @@ export function buildEntities7(onNavClick ) {
     Entities.push(addOtherProps(ents.SiteDesigns(), onNavClick));
     Entities.push(addOtherProps(ents.ListFormatting(), onNavClick));
     Entities.push(addOtherProps(ents.PnPPowerShell(), onNavClick));
+    Entities.push(addOtherProps(ents.ZeldaBotW(), onNavClick));
 
     return Entities;
 }

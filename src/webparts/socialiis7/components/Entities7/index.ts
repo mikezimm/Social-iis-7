@@ -6,3 +6,4 @@ export * from './Lions';
 export * from './SiteDesigns';
 export * from './ListFormatting';
 export * from './PnPPowerShell';
+export * from './ZeldaBotW';

@@ -56,14 +56,14 @@ export function MineCraft(){
       }
     ],
     youtube: {
-      title: 'YouTube',
-      user: '', //Youtube User (from URL)
+      title: 'DanTDM',
+      user: 'TheDiamondMinecart', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
           title: '',
-          objectType: 'Video', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectType: 'User', //user,Channel, Playlist, Videos, Video
+          objectID: 'stampylonghead', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
           title: '',
@@ -71,14 +71,14 @@ export function MineCraft(){
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'Stampy\'s Lovely World',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLEZiAg2bYC7ngh-_Z_ruvzSfn1KPQRL5V', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          title: 'Stampy\'s Funland',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLEZiAg2bYC7nOHBB_VqGYe1CdaYD-eorq',
           objectUrl: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
