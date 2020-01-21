@@ -13,6 +13,7 @@ export function buildEntities9(onNavClick ) {
     Entities.push(addOtherProps(ents.SubNautica(), onNavClick));
     Entities.push(addOtherProps(ents.PCBuild(), onNavClick));
     Entities.push(addOtherProps(ents.Jays2Cents(), onNavClick));
+    Entities.push(addOtherProps(ents.FlightSimulator20(), onNavClick));
 
     return Entities;
 }
