@@ -3,6 +3,7 @@ import { Image, ImageFit, } from 'office-ui-fabric-react/lib/Image';
 import { css, IImageProps, sizeToPixels, } from 'office-ui-fabric-react';
 
 import styles from './AboutMe.module.scss';
+import stylesF from './FootPrint.module.scss';
 
 import { imageOptionsGroup, } from '../../../../services/propPane/ReactImageOptions';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
@@ -17,7 +18,6 @@ export interface IFootPrints {
 }
 
 export default class FootPrint extends React.Component<IFootPrintProps> {
-    
 
   public render(): React.ReactElement<IFootPrintProps> {
     let maskedOpacity = .5;
@@ -30,8 +30,8 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     let iconWebsite = "data:image/png;base64,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";
     let iconWiki = "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/103px-Wikipedia-logo-v2.svg.png";
 
-    let imageHeight = 60;
-    let imageWidth = 60;
+    let imageHeight = 64;
+    let imageWidth = 64;
     let padding = 10;
     //console.log('AboutMe: this.props',this.props);
     let thisTop = `${imageHeight * .6 }px`;
@@ -61,11 +61,12 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
 
     //                className={
     //    styles.pTileItemImageCustom} 
+    //        <div style={ {width: thisWidth, height: thisHeight, top: thisTop, padding: padding }  } >
     let allIcons = footPrint.map(icon => (
-        <div style={ {width: thisWidth, height: thisHeight, top: thisTop, padding: padding }  } >
+        <div>
             <Image 
                 className={''} 
-                style={{opacity: icon.opacity}}
+                style={{opacity: icon.opacity, width: thisWidth, height: thisHeight}}
                 src={icon.imageUrl} 
                 shouldFadeIn={true} 
                 imageFit={imageOptionsGroup.getImgFit('contain')}
@@ -82,16 +83,13 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     //        <div className={ [styles.pTileItemWrapper, styles.pTileItemWrapperExpanded].join(" ")}
 
       return (
-
-        <div className={ ''}
-            style={ { width: overallWidth, height: overallHeight } } 
-            >
-            <Stack horizontal={true} horizontalAlign={"space-evenly"} tokens={stackFormRowsTokens}>
+        <div 
+          className={ stylesF.footPrint }
+          style={ { width: overallWidth, height: overallHeight } } >
+          <Stack horizontal={true} horizontalAlign={"space-evenly"} tokens={stackFormRowsTokens}>
             {( allIcons )}
-            </Stack>
-          </div>
-
-  
+          </Stack>
+        </div>
       );
 
   }

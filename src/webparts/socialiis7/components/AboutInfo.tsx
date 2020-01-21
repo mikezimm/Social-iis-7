@@ -170,7 +170,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
             { (showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity, undefined, 4)) : '')  }                
           </div>
         </Stack>
-      </div>
+      </div>;
 
     } else {
       aboutPane = 
