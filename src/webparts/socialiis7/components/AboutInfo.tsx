@@ -155,6 +155,22 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         imageWidth={ !showDebug ? 600 : 0 }
         >
       </AboutMe>;
+    } else if ( selectedNavItem.mediaSource === 'debug' ) {
+      aboutPane = 
+        <div className={ styles.description }>
+        { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
+          JSON.stringify(jsonobj,null,'\t') */}
+
+        { ( !showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity.navigation, undefined, 4)) : '')  }
+        <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>
+          <div style={{ fontSize: 20, fontWeight: 'bold'}}>
+            { (showDebug ? 'This is the entire JSON for ' + this.props.parentState.selectedEntity.title : '' )}
+          </div>
+          <div>
+            { (showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity, undefined, 4)) : '')  }                
+          </div>
+        </Stack>
+      </div>
 
     } else {
       aboutPane = 
@@ -186,20 +202,6 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
           { aboutPane }
 
-          <div className={ styles.description }>
-            { /* https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript/46862258#46862258:
-              JSON.stringify(jsonobj,null,'\t') */}
-
-            { ( !showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity.navigation, undefined, 4)) : '')  }
-            <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>
-              <div style={{ fontSize: 20, fontWeight: 'bold'}}>
-                { (showDebug ? 'This is the entire JSON for ' + this.props.parentState.selectedEntity.title : '' )}
-              </div>
-              <div>
-                { (showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity, undefined, 4)) : '')  }                
-              </div>
-            </Stack>
-          </div>
           </Stack>  {/* Stack for Buttons and Fields */}
         </div>
       );
