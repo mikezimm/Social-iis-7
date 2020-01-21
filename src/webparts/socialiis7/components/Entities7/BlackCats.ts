@@ -10,9 +10,9 @@ export function BlackCats(){
       profilePic: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Blackcat-Lilith.jpg",
       blog: [
         {
-          title: 'Wikipedia',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://en.wikipedia.org/wiki/Black_cat',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -50,9 +50,9 @@ export function BlackCats(){
       ,  // End github
       webSites: [
         {
-          title: '',
+          title: 'Wikipedia',
           order: 1, //For Sorting
-          url: '',
+          url: 'https://en.wikipedia.org/wiki/Black_cat',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],

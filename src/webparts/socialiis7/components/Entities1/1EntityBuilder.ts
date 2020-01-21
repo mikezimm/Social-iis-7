@@ -235,20 +235,20 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                     //console.log('facebook objectID: ', objectID);
                 }
 
-            } else if ( url.length === 0 && objectID.length > 0 ) { 
+                } else if ( url.length === 0 && objectID.length > 0 ) { 
 
-                if ( sectionName === 'facebook' ){
-                    url = 'https://www.facebook.com/';
+                    if ( sectionName === 'facebook' ){
+                        url = 'https://www.facebook.com/';
 
-                } else if ( sectionName === 'twitter' ){
-                    url = 'https://www.twitter.com/';
-                }
+                    } else if ( sectionName === 'twitter' ){
+                        url = 'https://www.twitter.com/';
+                    }
 
-                url =+ objectID;
+                    url =+ objectID;
 
-             }
+            }
 
-             return {
+            return {
                 name: newSection.title,
                 key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(newSection.title),
                 url: url,
@@ -263,6 +263,11 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             //navElements.filter((el) => el !== null)
             //navigation = newSection.map((item) => {
             navigation = [];
+
+            
+            //standardize web section titles
+            if ( sectionName.toLowerCase().indexOf('web') > -1 ) { sectionName = 'web'; }
+            
             for (let item of newSection){
                 let tempNav = null;
                 if (item.title.length > 0 || item.url.length > 0 ){
@@ -327,7 +332,27 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'github', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'location', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'wiki', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'debug', onNavClick));
+
+    result.footPrint = [];
+    for (let ele of result.navigation) {
+        let media = ele.mediaSource.toLowerCase();
+        if (result.footPrint.indexOf(media) < 0 ) { result.footPrint.push(media);}
+    }
+    
+    let aboutNav : INavLink[] = null;
+    
+    if ( result.profilePic && result.profilePic.length > 0 ) {
+        aboutNav = [{
+            name: 'About Me',
+            url: result.profilePic,
+            key: result.titleKey + '||||' + ' aboutMe' + '||||' + makeKeyFromString(result.title),
+            mediaSource: 'about',
+            onClick: onNavClick,
+        }];
+        result.navigation = aboutNav.concat(result.navigation);
+    }
 
     return result;
 

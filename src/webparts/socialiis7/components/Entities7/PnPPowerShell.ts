@@ -10,9 +10,9 @@ export function PnPPowerShell(){
       profilePic: "https://collab365.community/wp-content/uploads/2018/12/get-started-with-sharepoint-powershell-pnp-1280x720.png",
       blog: [
         {
-          title: 'MS Documentation',
+          title: '',
           order: 1, //For Sorting
-          url: 'https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps',
+          url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
@@ -53,6 +53,11 @@ export function PnPPowerShell(){
           title: 'Community',
           order: 1, //For Sorting
           url: 'https://techcommunity.microsoft.com/t5/powershell/ct-p/WindowsPowerShell',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
+        },        {
+          title: 'MS Documentation',
+          order: 1, //For Sorting
+          url: 'https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
