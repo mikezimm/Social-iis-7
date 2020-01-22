@@ -10,6 +10,11 @@
   .testMap{
     overflow:auto;border:5px ridge blue
   }
+
+  .aboutIframe {
+    padding: 20px;
+  }
+  
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;

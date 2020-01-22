@@ -137,7 +137,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         width= '600'
         height= '400'
         id="myAboutPageId"
-        className="myClassname"
+        className={''}
         display="block"
         position="relative"
       />
@@ -190,14 +190,13 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       </Stack>
       </div>;
 
-
     }
 
 
     if ( this.props.parentState.selectedEntity && this.props.parentState.navigationType !== 'asdfasdf' ) {
       console.log('Inside AboutInfo');
       return (
-        <div>
+        <div className={styles.aboutIframe}>
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
           { aboutPane }

@@ -6,18 +6,18 @@ export function USDOT(){
   const entity :IEntity = {
     title: 'USDOT', //
     keywords: ["Auto","Regulatory","NA","North America"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://www.transportation.gov/sites/dot.gov/files/styles/homepage_slider_980_400/public/slides/AV%204.jpg?itok=fIe2Kf_J",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        title: 'USDOT Blog',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.transportation.gov/blog/connections',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
       {
-        title: 'Twitter',
+        title: 'USDOT Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/USDOT',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function USDOT(){
     ,  // End twitter
     facebook: 
     {
-      title: 'Facebook',
+      title: 'USDOT Facebook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/USDOT/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,9 +33,9 @@ export function USDOT(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        title: 'USDOT Linked In',
         order: 1, //For Sorting
-        url: '',
+        url: 'https://www.linkedin.com/company/us-department-of-transportation-dot',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
@@ -72,7 +72,7 @@ export function USDOT(){
     ],
     youtube: {
       title: 'YouTube',
-      user: 'usdotnhtsa', //Youtube User (from URL)
+      user: 'usdotgov', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {

@@ -9,7 +9,7 @@ export function Autoliv(){
     profilePic: "https://www.autoliv.com/sites/default/files/banner-contents/Crash-Test-Dummy-Closeup_3.jpg",
     blog: [
       {
-        title: 'About Us',
+        title: 'Autoliv.com',
         order: 1, //For Sorting
         url: 'https://www.autoliv.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble

@@ -6,10 +6,10 @@ export function NHSTA(){
   const entity :IEntity = {
     title: 'NHSTA', //
     keywords: ["Auto","Regulatory","NA","North America"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/winter-driving-tips-2019-homepage-hero.jpg",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        title: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -68,7 +68,14 @@ export function NHSTA(){
         order: 1, //For Sorting
         url: 'https://www.safercar.gov/Safety+Ratings',
         codeType: 'TBD', //Used to determine what functions to have avaialble
+      },{
+        title: 'Takata Recall info',
+        order: 1, //For Sorting
+        url: 'https://datahub.transportation.gov/Automobiles/Takata-Recall-Air-Bags-Repaired-Remaining-by-Manuf/kdn4-w5z3',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
       }
+
+      
     ],
     youtube: {
       title: 'YouTube',
