@@ -13,7 +13,7 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 //export function buildEntities(onNavClick, parentProps: ISocialiis7Props, parentState: ISocialiis7State) {
 export function buildEntities(onNavClick ) {
     let Entities : IEntity[] = [];
-    console.log('ents', ents);
+    //console.log('ents', ents);
     Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick ) );
     Entities.push( addOtherProps(ents.DavidWarner(),onNavClick ) );
     Entities.push( addOtherProps(ents.HugoBernier(),onNavClick ) );
@@ -62,7 +62,7 @@ export function buildUserEntities(onNavClick , userEntity: string) {
 function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick){
 
     //console.log('buildNavigationForWeb 1:',Entity, sectionName );
-
+    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
     //return empty if this does not have any content
@@ -73,12 +73,14 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             return navigation; }
         if (thisSection.length === 0 ) { console.log('.length === 0'); return navigation; }
 
-
-        if ( ['facebook','twitter'].indexOf(sectionName) > -1 ) {
+        
+        //Look for all keys that are not arrays.... test them
+        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
             if ( thisSection.url.length === 0 && thisSection.title.length === 0) { 
                 //console.log('!n[0].url.length === 0'); 
                 return navigation; }
 
+        //Then test all items that should be arrays
         } else if ( sectionName !== 'youtube') {
             //This section only applies where the first key is not an array.
             if (!thisSection[0] ) {
@@ -216,7 +218,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         //console.log('sectionName: ', sectionName);
         //console.log('newSection: ', newSection);
 
-        if ( ['facebook','twitter'].indexOf(sectionName) > -1 ) {
+        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
             let objectID = newSection.objectID;
             let url = newSection.url;
 
@@ -236,12 +238,26 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                 }
 
                 } else if ( url.length === 0 && objectID.length > 0 ) { 
+                    //    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
 
                     if ( sectionName === 'facebook' ){
                         url = 'https://www.facebook.com/';
 
                     } else if ( sectionName === 'twitter' ){
                         url = 'https://www.twitter.com/';
+
+                    } else if ( sectionName === 'stackExchange' ){
+                        url = 'https://sharepoint.stackExchange.com/users/401/';
+                        
+                    } else if ( sectionName === 'github' ){
+                        url = 'https://github.com/';
+                        
+                    } else if ( sectionName === 'instagram' ){
+                        url = 'https://www.instagram.com/';
+                        
+                    } else if ( sectionName === 'linkedIn' ){
+                        url = 'https://www.linkedin.com/in/';
+                        
                     }
 
                     url =+ objectID;
@@ -330,6 +346,8 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'youtube', onNavClick));
     //console.log('Navigation B4 After',result.navigation);
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'github', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stackExchange', onNavClick));
+
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'location', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'wiki', onNavClick));
@@ -345,10 +363,10 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     
     if ( result.profilePic && result.profilePic.length > 0 ) {
         aboutNav = [{
-            name: 'About Me',
+            name: 'Profile',
             url: result.profilePic,
-            key: result.titleKey + '||||' + ' aboutMe' + '||||' + makeKeyFromString(result.title),
-            mediaSource: 'about',
+            key: result.titleKey + '||||' + ' profile' + '||||' + makeKeyFromString(result.title),
+            mediaSource: 'profile',
             onClick: onNavClick,
         }];
         result.navigation = aboutNav.concat(result.navigation);

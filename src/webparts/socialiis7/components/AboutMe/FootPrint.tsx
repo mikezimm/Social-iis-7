@@ -52,6 +52,8 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     footPrint1.push({ opacity: this.props.footprint.indexOf('facebook') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconFacebook });
     footPrint1.push({ opacity: this.props.footprint.indexOf('twitter') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconTwitter });
     footPrint1.push({ opacity: this.props.footprint.indexOf('youtube') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconYouTube });
+    footPrint1.push({ opacity: this.props.footprint.indexOf('github') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconGithub });
+    footPrint1.push({ opacity: this.props.footprint.indexOf('stackexchange') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconStackExchange });
 
     //This section only creates icon if the mediaType exists on the entity
     if ( this.props.footprint.indexOf('wiki') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconWiki }); }
@@ -62,6 +64,8 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     if ( this.props.footprint.indexOf('facebook') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconFacebook }); } 
     if ( this.props.footprint.indexOf('twitter') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconTwitter }); } 
     if ( this.props.footprint.indexOf('youtube') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconYouTube }); } 
+    if ( this.props.footprint.indexOf('github') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconGithub }); } 
+    if ( this.props.footprint.indexOf('stackexchange') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconStackExchange }); } 
 
     //                className={
     //    styles.pTileItemImageCustom} 

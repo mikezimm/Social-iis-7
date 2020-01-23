@@ -4,6 +4,9 @@ import { PageContext } from '@microsoft/sp-page-context';
 
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 
+import { ITheTime } from '../../../services/dateServices';
+
+
 export interface ISocialTopicModel {
 
 
@@ -68,6 +71,7 @@ export interface IEntity {
   blog?: IWeb[];
   instagram?:IWeb;
   facebook?: IWeb;
+  stackExchange?: IWeb;
   github?: IWeb;
   location?: IWeb; //Like Bing Map of city or office or whatever.
   androidStore?: any;
@@ -140,6 +144,11 @@ export interface ISocialiis7Props {
   useListAnalytics: boolean;
   analyticsWeb?: string;
   analyticsList?: string;
+  startTime: ITheTime;
+  analyticsLoad: boolean;
+  analyticsEntity: boolean;
+  analyticsNav: boolean;
+  analyticsError: boolean;
 
   // 2 - Source and destination list information
   sourceListURL?: string; //Get from list item  

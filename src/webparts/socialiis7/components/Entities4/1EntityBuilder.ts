@@ -9,7 +9,7 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities4(onNavClick) {
 
     let Entities : IEntity[] = [];
-    console.log('ents', ents);
+    //console.log('ents', ents);
 
     //Suppliers
     Entities.push(addOtherProps(ents.Autoliv(), onNavClick));

@@ -26,6 +26,7 @@ import {  buildEntities7} from './Entities7/1EntityBuilder';
 import {  buildEntities8} from './Entities8/1EntityBuilder';
 import {  buildEntities9} from './Entities9/1EntityBuilder';
 
+import { saveTheTime, getTheCurrentTime, saveAnalytics } from '../../../services/createAnalytics';
 
 
 import * as choiceBuilders from './choiceFieldBuilder';
@@ -120,7 +121,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       topics: topics,
       selectedNavKey: 'public constructor: ' + selectedEntity.titleKey,
       loadData: loadData,
+      endTime: null,
+      lastEvent: 'Constructor',
 
+      
     };
 
     // because our event handler needs access to the component, bind 
@@ -135,7 +139,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   public componentDidMount() {
     //this._getListItems();
-    
+
+    this.setState({
+      endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
+    });
+
   }
   
   public componentDidUpdate(prevProps){
@@ -173,8 +181,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public render(): React.ReactElement<ISocialiis7Props> {
-    console.log('Public Render: this.state', this.state);
 
+    saveAnalytics(this.props,this.state, 'No Error');
+    console.log('Public Render: ', this.props, this.state);
     
     /**
      * this section was added to keep pivots in sync when syncProjectPivotsOnToggle === true
@@ -274,12 +283,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       loadData: loadData,
       selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
+      endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
       topics: topics,
+      lastEvent: 'Props Change',
     });
 
   }
-
-
 
   private rebuildAllEntities() {
 
@@ -432,6 +441,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         selectedEntity: selectedEntity,
         selectedNavKey: selectedEntity.navigation.length > 0 ? selectedEntity.navigation[0].key : selectedEntity.titleKey,
         selectedNavItem: selectedNavItem,
+        lastEvent: 'Entity Click',
       });
 
     }
@@ -475,6 +485,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           selectedEntity : selectedEntity,
           selectedNavKey : item.key,
           selectedNavItem : selectedNavItem,
+          lastEvent: 'Nav Click',
         });
 
 
@@ -492,6 +503,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         selectedEntity : selectedEntity,
         selectedNavKey : item.key,
         selectedNavItem : selectedNavItem,
+        lastEvent: 'Nav Click',
       });
 
     }

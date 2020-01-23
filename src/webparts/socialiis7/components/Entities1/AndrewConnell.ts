@@ -31,18 +31,25 @@ export function AndrewConnell(){
         },  // End facebook
     linkedIn: 
         {
-            title: '',
+            title: 'Linked In',
             order: 1, //For Sorting
-            url: '',
+            url: 'https://www.linkedin.com/in/andrewconnell',
             codeType: 'TBD', //Used to determine what functions to have avaialble
         },  // End linkedIn
     github: 
         {
-            title: '',
+            title: 'Github',
             order: 1, //For Sorting
-            url: '',
+            url: 'https://github.com/AndrewConnell',
             codeType: 'TBD', //Used to determine what functions to have avaialble
         },  // End github
+      stackExchange: 
+      {
+          title: 'Stack Exchange',
+          order: 1, //For Sorting
+          url: 'https://sharepoint.stackExchange.com/users/401/andrew-connell',
+          codeType: 'TBD', //Used to determine what functions to have avaialble
+      },  // End github
     webSites: [
         {
           title: 'Voitanos Training',

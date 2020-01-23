@@ -8,7 +8,8 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities9(onNavClick ) {
 
     let Entities : IEntity[] = [];
-    console.log('ents', ents);
+    //console.log('ents', ents);
+    
     Entities.push(addOtherProps(ents.MineCraft(), onNavClick));
     Entities.push(addOtherProps(ents.SubNautica(), onNavClick));
     Entities.push(addOtherProps(ents.PCBuild(), onNavClick));

@@ -55,7 +55,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     let Entity : IEntity = this.props.parentState.selectedEntity;  
     if (!selectedNavItem ) { selectedNavItem = Entity.navigation[0];}
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
-    console.log('Render AboutInfo parentState',this.props.parentState);
+    //console.log('Render AboutInfo parentState',this.props.parentState);
 
     //showDebug
     let showDebug = false;
@@ -91,7 +91,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
     } else if ( selectedNavItem.mediaSource === 'facebook' ) {
       //This is a Youtube Channel or Playlist
-      console.log('Facebook page props: ', selectedNavItem);
+      //console.log('Facebook page props: ', selectedNavItem);
       aboutPane = React.createElement(
         FacebookPage,
         {
@@ -102,11 +102,11 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
           showFacepile: false,
         }
       );
-      console.log('aboutPane:', aboutPane);
+      //console.log('aboutPane:', aboutPane);
 
     } else if ( selectedNavItem.mediaSource === 'twitter' ) {
       //This is a Youtube Channel or Playlist
-      console.log('Twitter page props: ', selectedNavItem);
+      //console.log('Twitter page props: ', selectedNavItem);
       aboutPane = <TweetsFeedWebPart
 
           title={Entity.title}
@@ -127,11 +127,11 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
       ></TweetsFeedWebPart>;
 
-      console.log('aboutPane:', aboutPane);
+      //console.log('aboutPane:', aboutPane);
 
     } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 || selectedNavItem.mediaSource === 'blog' ) {
       //This is a Youtube Channel or Playlist
-      console.log('Webpage page props: ', selectedNavItem);
+      //console.log('Webpage page props: ', selectedNavItem);
       aboutPane = 
       <Iframe url={selectedNavItem.url}
         width= '600'
@@ -143,7 +143,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       />
       ;
 
-      console.log('aboutPane:', aboutPane);
+      //console.log('aboutPane:', aboutPane);
 
     } else if ( selectedNavItem.mediaSource === 'twitter' ) {
       aboutPane = 
@@ -194,7 +194,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
 
     if ( this.props.parentState.selectedEntity && this.props.parentState.navigationType !== 'asdfasdf' ) {
-      console.log('Inside AboutInfo');
+      //console.log('Inside AboutInfo');
       return (
         <div className={styles.aboutIframe}>
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}

@@ -8,9 +8,11 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities8(onNavClick ) {
 
     let Entities : IEntity[] = [];
-    console.log('ents', ents);
+    //console.log('ents', ents);
+
     Entities.push(addOtherProps(ents.PowerBI(), onNavClick));
     Entities.push(addOtherProps(ents.Excel(), onNavClick));
+    
     return Entities;
 }
 

@@ -8,7 +8,7 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities7(onNavClick ) {
 
     let Entities : IEntity[] = [];
-    console.log('ents', ents);
+    //console.log('ents', ents);
     Entities.push(addOtherProps(ents.BlackCats(), onNavClick));
     Entities.push(addOtherProps(ents.ClashOfClans(), onNavClick));
     Entities.push(addOtherProps(ents.DarkSouls(), onNavClick));

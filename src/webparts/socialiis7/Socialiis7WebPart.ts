@@ -35,6 +35,10 @@ export interface ISocialiis7WebPartProps {
   analyticsWeb?: string;
   analyticsList?: string;
   stressMultiplier?: number;
+  analyticsLoad: boolean;
+  analyticsEntity: boolean;
+  analyticsNav: boolean;
+  analyticsError: boolean;
 
   // 2 - Source and destination list information
   sourceListURL: string;
@@ -102,6 +106,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
 
 
   public render(): void {
+
     const element: React.ReactElement<ISocialiis7Props > = React.createElement(
       Socialiis7,
       {
@@ -115,7 +120,12 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         useListAnalytics: this.properties.useListAnalytics,
         analyticsWeb: strings.analyticsWeb,
         analyticsList: strings.analyticsList,
-      
+        startTime: getTheCurrentTime(),
+        analyticsLoad: this.properties.analyticsLoad,
+        analyticsEntity: this.properties.analyticsEntity,
+        analyticsNav: this.properties.analyticsNav,
+        analyticsError: this.properties.analyticsError,
+        
         // 2 - Source and destination list information
         sourceListURL: this.properties.sourceListURL, //Get from list item  
         sourceListTitle: this.properties.sourceListTitle,  // Static Name of list (for URL) - used for links and determined by first returned item

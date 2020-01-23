@@ -26,7 +26,11 @@
       "mainTopic": "SharePoint",
       "subTopic1": "SIG",
       "subTopic2": "MSFT",
-      "subTopic3": "MVP"
+      "subTopic3": "MVP",
+      "analyticsLoad": true,
+      "analyticsEntity": true,
+      "analyticsNav": true,
+      "analyticsError": true
     }
   },{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other

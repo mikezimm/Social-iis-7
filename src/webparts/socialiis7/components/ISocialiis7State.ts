@@ -72,6 +72,7 @@ export interface ISocialiis7State {
     
     description: string;
     endTime?: ITheTime;
+    lastEvent?: string;
 
     // 2 - Source and destination list information
     sourceListURL?: string; //Get from list item  

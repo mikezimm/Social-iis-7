@@ -10,7 +10,7 @@ define([], function() {
     "FieldLabel_AnalyticsWeb": "Site where analytics are maintained",
     "FieldLabel_AnalyticsList": "List Title where analytics are maintained",
 
-    "analyticsList": "TilesCycleTesting",
+    "analyticsList": "Socialiis7",
     "analyticsWeb": "https://mcclickster.sharepoint.com/sites/Templates/SiteAudit/",
     "minClickWeb": "",
 

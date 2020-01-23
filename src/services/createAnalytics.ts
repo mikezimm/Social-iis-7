@@ -1,5 +1,11 @@
 import { Web } from "@pnp/sp/presets/all";
 
+import { ISocialiis7Props, ITopics, IEntity } from '../webparts/socialiis7/components/ISocialiis7Props';
+import { ISocialiis7State,} from '../webparts/socialiis7/components/ISocialiis7State';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { ITheTime } from './dateServices';
+import { resultContent } from "office-ui-fabric-react/lib/components/FloatingPicker/PeoplePicker/PeoplePicker.scss";
+
 export function getBrowser(validTypes,changeSiteIcon){
 
     let thisBrowser = "";
@@ -12,7 +18,7 @@ export function getBrowser(validTypes,changeSiteIcon){
  * @param theProps 
  * @param theState 
  */
-export function saveAnalytics (theProps,theState) {
+export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7State, success: string) {
 
     //Do nothing if either of these strings is blank
     if (!theProps.analyticsList) { return ; }
@@ -22,14 +28,20 @@ export function saveAnalytics (theProps,theState) {
         //The current site is not in the expected tenant... skip analytics.
         console.log('the analyticsWeb is not in the same tenant...',theProps.analyticsWeb,theProps.tenant);
         return ;
+    } else if ( !theState.endTime ) { //console.log('EndTime not available yet',theState);
+    } else if ( success === 'Error' && !theProps.analyticsError ) { console.log('saveAnalytics Errors disabled',theProps,theState);
+    } else if ( theState.lastEvent === 'Constructor' && !theProps.analyticsLoad ) { console.log('saveAnalytics Constructor disabled',theProps,theState);
+    } else if ( theState.lastEvent === 'Entity Click' && !theProps.analyticsEntity ) { console.log('saveAnalytics Entity disabled',theProps,theState);
+    } else if ( theState.lastEvent === 'Nav Click' && !theProps.analyticsNav ) { console.log('saveAnalytics Nav disabled',theProps,theState);
     } else {
 
         //console.log('saveAnalytics: ', theProps, theState);
         let analyticsList = theProps.analyticsList;
-        let startTime = theProps.startTime;
-        let endTime = theState.endTime;
+        let startTime: ITheTime = theProps.startTime;
+        let endTime: ITheTime = theState.endTime;
+
         const web = Web(theProps.analyticsWeb);
-        const delta = endTime.now - startTime.now;
+        const delta = endTime.milliseconds - startTime.milliseconds;
         //alert(delta);
         //alert(getBrowser("Chrome",false));
         /*
@@ -40,38 +52,32 @@ export function saveAnalytics (theProps,theState) {
             'Description': theProps.pageContext.web.serverRelativeUrl ,
         };
         
-        let itemInfo1 = "(" + theState.allTiles.length + ")"  + " - " +  theProps.getAll + " - " + " - " + theProps.listDefinition;
-        let itemInfo2 = "(" + theProps.listTitle + ")"  + " - " +  theProps.listWebURL;
+        let itemInfo1 = theProps.topics.mainTopic;
+        let itemInfo2 = theProps.topics.subTopic1 + ';' + theProps.topics.subTopic2 + ';' + theProps.topics.subTopic3;
 
-        let itemInfoProps = theProps.setSize +
-                " ImgFit: " +  theProps.setImgFit;
-
-        let heroCount;
-        if (theProps.heroTiles) { 
-            let itemInfoHero = 
-            " ShowHero: " +  theProps.showHero +
-            " HeroType: " +  theProps.heroType +
-            " HeroFit: " +  theProps.setHeroFit;
-            heroCount = theProps.heroTiles.length;
-            itemInfoProps += ' -Hero: ' + itemInfoHero; }
+        let Entity = theState.selectedEntity.title;
+        let NavItem = theState.selectedNavItem.key;
+        let KeyWords = theState.selectedEntity.keywords.join(';');
     
         web.lists.getByTitle(analyticsList).items.add({
-            'Title': ['Pivot-Tiles',theProps.scenario,theProps.setSize,theProps.heroType].join(' : '),
-            'zzzText1': startTime.now,      
+            'Title': ['Socialiis',theState.lastEvent].join(' : '),
+            'zzzText1': startTime.now,
+            'Setting': theState.lastEvent,
+            'Result': success,
             'zzzText2': startTime.theTime,
             'zzzNumber1': startTime.milliseconds,
             'zzzText3': endTime.now,      
             'zzzText4': endTime.theTime,
             'zzzNumber2': endTime.milliseconds,
             'zzzNumber3': delta,
-            'zzzNumber4': theState.allTiles.length,
-            'zzzNumber5': heroCount,
             'zzzText5': itemInfo1,
             'zzzText6': itemInfo2,
-            'zzzText7': itemInfoProps,
+            'zzzText7': Entity,
+            'zzzText8': NavItem,
+            'zzzText9': KeyWords,
             'SiteLink': siteLink,
             'SiteTitle': theProps.pageContext.web.title,
-            'ListTitle': theProps.listTitle,
+            'ListTitle': '',
 
 
             }).then((response) => {
