@@ -7,11 +7,19 @@ export function Autoliv(){
     title: 'Autoliv', //
     keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW","ALV"], // Can be any number of
     profilePic: "https://www.autoliv.com/sites/default/files/banner-contents/Crash-Test-Dummy-Closeup_3.jpg",
-    blog: [
+    home: 
       {
         title: 'Autoliv.com',
         order: 1, //For Sorting
         url: 'https://www.autoliv.com/',
+        codeType: 'TBD', //Used to determine what functions to have avaialble
+      }
+    ,
+    blog: [
+      {
+        title: '',
+        order: 1, //For Sorting
+        url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
@@ -30,8 +38,7 @@ export function Autoliv(){
       url: 'https://www.facebook.com/AutolivInc',
       codeType: 'TBD', //Used to determine what functions to have avaialble
       objectID: 'AutolivInc'
-    }
-    ,  // End facebook
+    },  // End facebook
     linkedIn:
       {
         title: '',
@@ -40,6 +47,14 @@ export function Autoliv(){
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
+    wikipedia: 
+    {
+      title: 'Wikipedia',
+      order: 1, //For Sorting
+      url: 'https://en.wikipedia.org/wiki/Autoliv',
+      codeType: 'TBD', //Used to determine what functions to have avaialble
+    }
+,  // End wikipedia
     github:
       {
         title: '',

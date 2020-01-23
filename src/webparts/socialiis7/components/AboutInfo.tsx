@@ -72,6 +72,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true; }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true; }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('user') > -1 ) { objectType = 'user'; youTube = true; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('wiki') > -1 ) { objectType = 'wiki'; youTube = true; }
 
     if ( youTube && objectType != null && selectedNavItem.objectID ) {
       //This is a Youtube Channel or Playlist
@@ -129,19 +130,22 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
       //console.log('aboutPane:', aboutPane);
 
-    } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 || selectedNavItem.mediaSource === 'blog' ) {
-      //This is a Youtube Channel or Playlist
-      //console.log('Webpage page props: ', selectedNavItem);
-      aboutPane = 
-      <Iframe url={selectedNavItem.url}
-        width= '600'
-        height= '400'
-        id="myAboutPageId"
-        className={''}
-        display="block"
-        position="relative"
-      />
-      ;
+    } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 
+      || selectedNavItem.mediaSource === 'wiki' 
+      || selectedNavItem.mediaSource === 'blog' 
+      || selectedNavItem.mediaSource === 'home' ) {
+        //This is a website type object
+        //console.log('Webpage page props: ', selectedNavItem);
+        aboutPane = 
+        <Iframe url={selectedNavItem.url}
+          width= '600'
+          height= '400'
+          id="myAboutPageId"
+          className={''}
+          display="block"
+          position="relative"
+        />
+        ;
 
       //console.log('aboutPane:', aboutPane);
 

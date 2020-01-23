@@ -68,6 +68,7 @@ export interface IEntity {
   youtube?: IYoutube;
   twitter?: IWeb;
   linkedIn?: IWeb;
+  home?: IWeb;
   blog?: IWeb[];
   instagram?:IWeb;
   facebook?: IWeb;

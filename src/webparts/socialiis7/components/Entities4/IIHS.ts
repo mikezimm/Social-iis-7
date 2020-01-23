@@ -62,7 +62,7 @@ export function IIHS(){
           url: 'https://en.wikipedia.org/wiki/Insurance_Institute_for_Highway_Safety',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
-    ,  // End instagram
+    ,  // End wikipedia
     webSites: [
       {
         title: 'IIHS-HLDI',

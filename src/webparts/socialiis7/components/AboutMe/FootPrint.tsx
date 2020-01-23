@@ -27,7 +27,7 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     let imageHeight = 64;
     let imageWidth = 64;
     let padding = 10;
-    //console.log('AboutMe: this.props',this.props);
+    console.log('AboutMe: this.props',this.props);
     let thisTop = `${imageHeight * .6 }px`;
     thisTop = `${ 0 }px`;
     let thisHeight = `${imageHeight}px`;
