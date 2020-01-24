@@ -295,6 +295,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   }
 
+  
   private rebuildAllEntities() {
 
     this.onNavClick = this.onNavClick.bind(this);
@@ -333,6 +334,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       userEntities2: userEntities2,
       userEntities3: userEntities3,
       
+      localItems: localItems,
+      localEntities: [],
+
+      masterItems: [],
+      masterEntities: [],
+
       allEntities: allEntities,
       allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
       allTopics: buildEntityKeywords(allEntities, "keywords"),
@@ -344,8 +351,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       subTopic1Entities: null,
       subTopic2Entities: null,
       subTopic3Entities: null,
-
-      localItems: localItems,
 
     };
 
@@ -550,21 +555,70 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let localSort: string = "Title";
     let masterSort: string = "Title";
     let items;
+    let entityTitles: string[] = [];
 
-      try {
-  
-        items = await sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get();
-        console.log('_getListItems:', items);
-        // Build JSON here
-        
-        return items;
+    try {
 
-      } catch (e) {
-        
-        console.error(e);
-        return null;
-        
+      items = await sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get();
+      
+      let localEntites : IEntity[]= [];
+      let newEntity: IEntity = null;
+      for (var j = 0; j < items.length; j++){
+        let thisItem = items[j];
+        if (entityTitles.indexOf(thisItem.Title) < 0 ) { 
+          console.log('thisItem',thisItem);
+          entityTitles.push(thisItem.Title);
+          newEntity = {
+            Title: thisItem.Title,
+            keywords: thisItem.keywords,
+            profilePic: thisItem.profilePic,
+          };
+          let mediaSource = thisItem.mediaSource;
+          if (mediaSource && mediaSource.length > 0) {
+            if (mediaSource === 'youtube') {
+
+            } else {
+              newEntity[mediaSource] = {
+                NavTitle: thisItem.NavTitle,
+                url: thisItem.url,
+                objectType: thisItem.objectType,
+                objectID: thisItem.objectID,
+              };
+            }
+          }
+          console.log('newEntity - new Entity',newEntity);
+        } else {
+          let mediaSource = thisItem.mediaSource;
+          if (mediaSource && mediaSource.length > 0) {
+            if (mediaSource === 'youtube') {
+
+            } else {
+              newEntity[mediaSource] = {
+                NavTitle: thisItem.NavTitle,
+                url: thisItem.url,
+                objectType: thisItem.objectType,
+                objectID: thisItem.objectID,
+              };
+            }
+          }
+          console.log('newEntity - extra line',newEntity);
+        }
+
+        //console.log('newEntity',newEntity);
       }
+      
+      console.log('entityTitles',entityTitles);
+      console.log('_getListItems:', items);
+      // Build JSON here
+      
+      return items;
+
+    } catch (e) {
+      
+      console.error(e);
+      return null;
+      
+    }
 
       //return items;
     /*  THIS WORKS!    Must be inside:   private _getListItems(): void {
