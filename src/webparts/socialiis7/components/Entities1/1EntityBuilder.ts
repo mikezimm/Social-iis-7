@@ -264,7 +264,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
                     }
 
-                    url =+ objectID;
+                    url += objectID;
 
             }
 

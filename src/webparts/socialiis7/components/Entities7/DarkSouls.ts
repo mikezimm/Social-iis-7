@@ -25,9 +25,9 @@ export function DarkSouls(){
         } ,  // End twitter
       facebook:
       {
-        NavTitle: 'Dark Souls Community',
+        NavTitle: 'Dark Souls Facebook Community',
         order: 1, //For Sorting
-        url: 'https://www.facebook.com/darksoulsEU/?brand_redir=163714144280778',
+        url: 'https://www.facebook.com/darksoulsEU',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       } ,  // End facebook
       linkedIn:
