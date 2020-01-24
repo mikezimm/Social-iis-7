@@ -44,7 +44,7 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     let footPrint2 : IFootPrints[] = [];
 
     //This section creates all icons but grays out unused mediaTypes
-    footPrint1.push({ opacity: this.props.footprint.indexOf('wiki') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconWiki });
+    footPrint1.push({ opacity: this.props.footprint.indexOf('wikipedia') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconWiki });
     footPrint1.push({ opacity: this.props.footprint.indexOf('web') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconWebsite });
     footPrint1.push({ opacity: this.props.footprint.indexOf('linkedin') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconLinkedIn });
     footPrint1.push({ opacity: this.props.footprint.indexOf('blog') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconBlog });
@@ -56,7 +56,7 @@ export default class FootPrint extends React.Component<IFootPrintProps> {
     footPrint1.push({ opacity: this.props.footprint.indexOf('stackexchange') > -1 ? 1 : maskedOpacity , imageUrl:  MyIcons.iconStackExchange });
 
     //This section only creates icon if the mediaType exists on the entity
-    if ( this.props.footprint.indexOf('wiki') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconWiki }); }
+    if ( this.props.footprint.indexOf('wikipedia') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconWiki }); }
     if ( this.props.footprint.indexOf('web') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconWebsite }); } 
     if ( this.props.footprint.indexOf('linkedin') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconLinkedIn }); } 
     if ( this.props.footprint.indexOf('blog') > -1 ) { footPrint2.push({ opacity:  1 , imageUrl:  MyIcons.iconBlog }); } 

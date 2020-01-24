@@ -55,7 +55,7 @@ export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7S
         let itemInfo1 = theProps.topics.mainTopic;
         let itemInfo2 = theProps.topics.subTopic1 + ';' + theProps.topics.subTopic2 + ';' + theProps.topics.subTopic3;
 
-        let Entity = theState.selectedEntity.title;
+        let Entity = theState.selectedEntity.Title;
         let NavItem = theState.selectedNavItem.key;
         let KeyWords = theState.selectedEntity.keywords.join(';');
     

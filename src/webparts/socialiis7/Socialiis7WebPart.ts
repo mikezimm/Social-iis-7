@@ -41,7 +41,12 @@ export interface ISocialiis7WebPartProps {
   analyticsError: boolean;
 
   // 2 - Source and destination list information
-  sourceListURL: string;
+  useLocalList: Boolean;
+  useMasterList: Boolean;
+  localListURL: string;
+  masterListURL: string;
+  localListFilter?: string; //Get from list item
+  masterListFilter?: string; //Corporate or Central list url
   sourceListTitle: string;
   
   // 7 - Media Choices - Left Side bar
@@ -127,7 +132,11 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         analyticsError: this.properties.analyticsError,
         
         // 2 - Source and destination list information
-        sourceListURL: this.properties.sourceListURL, //Get from list item  
+        useLocalList: this.properties.useLocalList,
+        useMasterList: this.properties.useMasterList,
+        localListURL: this.properties.localListURL, //Get from list item  
+        masterListURL: this.properties.masterListURL, //Get from list item  
+
         sourceListTitle: this.properties.sourceListTitle,  // Static Name of list (for URL) - used for links and determined by first returned item
 
       

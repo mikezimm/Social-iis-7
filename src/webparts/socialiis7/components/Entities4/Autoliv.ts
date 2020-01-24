@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function Autoliv(){
 
   const entity :IEntity = {
-    title: 'Autoliv', //
+    Title: 'Autoliv', //
     keywords: ["Auto","Global","Tier1","Passive","AB","SB","SW","ALV"], // Can be any number of
     profilePic: "https://www.autoliv.com/sites/default/files/banner-contents/Crash-Test-Dummy-Closeup_3.jpg",
     blog: [
       {
-        title: 'Autoliv.com',
+        NavTitle: 'Autoliv.com',
         order: 1, //For Sorting
         url: 'https://www.autoliv.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function Autoliv(){
     ],
     twitter:
       {
-        title: '@Autoliv on Twitter',
+        NavTitle: '@Autoliv on Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/AutolivInc',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function Autoliv(){
     ,  // End twitter
     facebook:
     {
-      title: 'FaceBook',
+      NavTitle: 'FaceBook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/AutolivInc',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -34,7 +34,7 @@ export function Autoliv(){
     ,  // End facebook
     linkedIn:
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -42,7 +42,7 @@ export function Autoliv(){
     ,  // End linkedIn
     github:
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -50,34 +50,34 @@ export function Autoliv(){
     ,  // End github
     webSites: [
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: 'Autoliv YouTube Channel',
+          NavTitle: 'Autoliv YouTube Channel',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Used to determine what functions to have avaialble
           objectUrl: 'https://www.youtube.com/channel/UCpRLWz7tuZ42lUhKMGV_74Q', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

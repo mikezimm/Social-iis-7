@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function FlightSimulator20(){
 
   const entity :IEntity = {
-    title: 'Flight Simulator', //
+    Title: 'Flight Simulator', //
     keywords: ["PC","Gaming","Simulation","Flight"], // Can be any number of
     profilePic: "https://msgpwebsites.azureedge.net/fsi/wp-content/uploads/2019/06/KittyHawk_E3_withLogo_003-2.jpg",
     blog: [
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function FlightSimulator20(){
     ],
     twitter: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function FlightSimulator20(){
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,7 +33,7 @@ export function FlightSimulator20(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -41,7 +41,7 @@ export function FlightSimulator20(){
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -49,45 +49,45 @@ export function FlightSimulator20(){
     ,  // End github
     webSites: [
       {
-        title: 'Flight Simulator.com',
+        NavTitle: 'Flight Simulator.com',
         order: 1, //For Sorting
         url: 'https://www.flightsimulator.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },      {
-        title: 'Insider FAQ',
+        NavTitle: 'Insider FAQ',
         order: 1, //For Sorting
         url: 'https://www.flightsimulator.com/insider-program-faq/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },      {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: 'In depth review Oct 4, 10',
+          NavTitle: 'In depth review Oct 4, 10',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: 'MOPIjzzH1G8', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: 'Flight Sim Channel',
+          NavTitle: 'Flight Sim Channel',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: 'UCdWFNDBen7LQc0eZUiJPW4Q', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },
         {
-          title: 'New Flight Sim News',
+          NavTitle: 'New Flight Sim News',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PLgmvnsNGp2X2S6aZ1sYomx7p7jK75eRCs', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function Ford(){
 
   const entity :IEntity = {
-    title: 'Ford', //
+    Title: 'Ford', //
     keywords: ["Auto","North America","Cars","Trucks","Electric","OEM","Ford"], // Can be any number of
     profilePic: "https://www.ford.com/cmslibs/content/dam/vdm_ford/live/en_us/ford/nameplate/mustang/2020/collections/3-2/20_frd_mst_ps34_gt350R_rcrd_32.jpg/_jcr_content/renditions/cq5dam.web.2160.2160.jpeg",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,71 +17,67 @@ export function Ford(){
     ],
     twitter: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End twitter
+      } ,  //  End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
-    }
-    ,  // End facebook
+    } ,  //  End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End linkedIn
+      } ,  //  End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End github
+      } ,  //  End github
     webSites: [
       {
-        title: 'Ford Home',
+        NavTitle: 'Ford Home',
         order: 1, //For Sorting
         url: 'https://www.ford.com/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },      {
-        title: 'Shelby',
+        NavTitle: 'Shelby',
         order: 1, //For Sorting
         url: 'https://www.ford.com/cars/mustang/models/shelby-gt350/?gnav=header-all-vehicles',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

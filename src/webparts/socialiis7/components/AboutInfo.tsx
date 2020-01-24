@@ -109,7 +109,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       //console.log('Twitter page props: ', selectedNavItem);
       aboutPane = <TweetsFeedWebPart
 
-          title={Entity.title}
+          title={Entity.Title}
           account= {selectedNavItem.objectID}
           width= '600'
           height= '400'
@@ -129,8 +129,11 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
       //console.log('aboutPane:', aboutPane);
 
-    } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 || selectedNavItem.mediaSource === 'blog' ) {
-      //This is a Youtube Channel or Playlist
+    } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 
+    || selectedNavItem.mediaSource === 'wikipedia' 
+    || selectedNavItem.mediaSource === 'blog' 
+    || selectedNavItem.mediaSource === 'home' ) {
+      //This is a website type object
       //console.log('Webpage page props: ', selectedNavItem);
       aboutPane = 
       <Iframe url={selectedNavItem.url}
@@ -164,7 +167,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
         { ( !showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity.navigation, undefined, 4)) : '')  }
         <Stack horizontal={false} horizontalAlign={"center"} tokens={stackFormRowsTokens}>
           <div style={{ fontSize: 20, fontWeight: 'bold'}}>
-            { (showDebug ? 'This is the entire JSON for ' + this.props.parentState.selectedEntity.title : '' )}
+            { (showDebug ? 'This is the entire JSON for ' + this.props.parentState.selectedEntity.Title : '' )}
           </div>
           <div>
             { (showDebug && this.props.parentState.selectedEntity ? (JSON.stringify(this.props.parentState.selectedEntity, undefined, 4)) : '')  }                

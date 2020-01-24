@@ -5,12 +5,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function SiteDesigns(){
 
     const entity :IEntity = {
-      title: 'SiteDesigns', //
+      Title: 'SiteDesigns', //
       keywords: ["SiteDesigns","SharePoint","ttp"],
       profilePic: "http://ericoverfield.com/wp-content/uploads/2018/06/modern-classic-theming-1.jpg",
       blog: [
         {
-          title: 'Laura Kokkarinen',
+          NavTitle: 'Laura Kokkarinen',
           order: 1, //For Sorting
           url: 'https://laurakokkarinen.com/the-ultimate-guide-to-sharepoint-site-designs-and-site-scripts/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -18,62 +18,58 @@ export function SiteDesigns(){
       ],
       twitter:
         {
-          title: '@theChrisKent',
+          NavTitle: '@theChrisKent',
           order: 1, //For Sorting
           url: 'https://twitter.com/theChrisKent',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End twitter
+        } ,  // End twitter
       facebook:
       {
-        title: 'SP PnP Facebook',
+        NavTitle: 'SP PnP Facebook',
         order: 1, //For Sorting
         url: 'https://www.facebook.com/OfficeDevPnP/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End facebook
+      } ,  // End facebook
       linkedIn:
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End linkedIn
+        } ,  // End linkedIn
       github:
         {
-          title: 'GitHub Site Scripts',
+          NavTitle: 'GitHub Site Scripts',
           order: 1, //For Sorting
           url: 'https://github.com/SharePoint/sp-dev-site-scripts',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End github
+        } ,  // End github
       webSites: [
         {
-          title: 'MS Documentation',
+          NavTitle: 'MS Documentation',
           order: 1, //For Sorting
           url: 'https://docs.microsoft.com/en-us/sharepoint/dev/declarative-customization/site-design-overview',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
-        title: 'YouTube',
+        NavTitle: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
         items: [
           {
-            title: 'SP Dev Channel',
+            NavTitle: 'SP Dev Channel',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: 'UC_mKdhw-V6CeCM7gTo_Iy7w', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/channel/UC_mKdhw-V6CeCM7gTo_Iy7w', // to be used as generic link if no API key is given
           },
           {
-            title: 'Extensions Tutorial',
+            NavTitle: 'Extensions Tutorial',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OXtWO5AIIr7nCR3sWutACpV', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/watch?v=5wITuXdBLqM&list=PLR9nK3mnD-OXtWO5AIIr7nCR3sWutACpV', // to be used as generic link if no API key is given
           },{
-            title: 'Page Transformation',
+            NavTitle: 'Page Transformation',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OXBJr5tcAqxqSn2vwvRYgeZ', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/watch?v=F5POxZPIy84&list=PLR9nK3mnD-OXBJr5tcAqxqSn2vwvRYgeZ', // to be used as generic link if no API key is given

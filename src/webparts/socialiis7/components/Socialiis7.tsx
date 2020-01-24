@@ -108,7 +108,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
     this.state = { 
-      sourceListName: "Something",
+//      sourceListName: "",
       description: "desc goes here",
       pivots: pivots,
       selectedMedia: '',
@@ -359,14 +359,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     //This loop removes entities from what is available for the next section so pivots are not duplicated.
     //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
     loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
-      x => !loadData.subTopic1Entities.filter( y => y.title === x.title).length);
+      x => !loadData.subTopic1Entities.filter( y => y.Title === x.Title).length);
 
     loadData.subTopic2Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic2);
 
     //This loop removes entities from what is available for the next section so pivots are not duplicated.
     //https://stackoverflow.com/questions/47017770/remove-array-of-objects-from-another-array-of-objects/47017949
     loadData.availSubTopicEntities =  loadData.availSubTopicEntities.filter( 
-      x => !loadData.subTopic2Entities.filter( y => y.title === x.title).length);
+      x => !loadData.subTopic2Entities.filter( y => y.Title === x.Title).length);
 
     loadData.subTopic3Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic3);
     loadData.keysForTopic = buildEntityKeywords(loadData.entitiesForMainTopic, "keywords");
@@ -381,9 +381,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       allTopics: this.createPivotData(loadData.allTopics, null),
       allEntityKeywords: this.createPivotData(loadData.entitiesForMainTopic, 'keywords'),
       keysForTopic:this.createPivotData(loadData.keysForTopic, null),
-      subTopic1Titles: this.createPivotData(loadData.subTopic1Entities, 'title'),
-      subTopic2Titles: this.createPivotData(loadData.subTopic2Entities, 'title'),
-      subTopic3Titles: this.createPivotData(loadData.subTopic3Entities, 'title'),
+      subTopic1Titles: this.createPivotData(loadData.subTopic1Entities, 'Title'),
+      subTopic2Titles: this.createPivotData(loadData.subTopic2Entities, 'Title'),
+      subTopic3Titles: this.createPivotData(loadData.subTopic3Entities, 'Title'),
       entTitlesForTopics: [],
       spacers: this.createPivotData([" "], null),
     };
@@ -429,7 +429,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       let selectedEntity : IEntity = null;
       for (let entity of this.state.loadData.entitiesForMainTopic){
 
-        if ( entity.title === item.props.headerText ) {
+        if ( entity.Title === item.props.headerText ) {
           selectedEntity = entity;
         }
 

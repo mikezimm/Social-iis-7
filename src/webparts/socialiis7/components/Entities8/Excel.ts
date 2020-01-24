@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function Excel(){
 
     const entity :IEntity = {
-      title: 'Excel', //
+      Title: 'Excel', //
       keywords: ["MSOffice","Excel","Application"],
       profilePic: "",
       blog: [
         {
-          title: 'Blog',
+          NavTitle: 'Blog',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,66 +17,62 @@ export function Excel(){
       ],
       twitter: 
         {
-          title: 'Twitter',
+          NavTitle: 'Twitter',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End twitter
+        } ,  // End twitter
       facebook: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End facebook
+      } ,  // End facebook
       linkedIn: 
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End linkedIn
+        } ,  // End linkedIn
       github: 
         {
-          title: 'PowerBI on Github',
+          NavTitle: 'PowerBI on Github',
           order: 1, //For Sorting
           url: 'https://github.com/PowerBI',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End github
+        } ,  // End github
       webSites: [
         {
-          title: 'PowerBI.com',
+          NavTitle: 'PowerBI.com',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
-        title: 'YouTube',
+        NavTitle: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
         items: [
           {
-            title: '',
+            NavTitle: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given

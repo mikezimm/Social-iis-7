@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function SIGMonthlyDev(){
 
     const entity :IEntity = {
-      title: 'SIG Monthly', //
+      Title: 'SIG Monthly', //
       keywords: ["SIG","SharePoint","SPFx"],
       profilePic: "https://developer.microsoft.com/en-us/sharepoint/blogs/wp-content/uploads/2019/12/Thumbnail-Dec-10-Gen-900x360.png",
       blog: [
         {
-          title: 'Blog',
+          NavTitle: 'Blog',
           order: 1, //For Sorting
           url: 'https://developer.microsoft.com/en-us/sharepoint/blogs/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,66 +17,62 @@ export function SIGMonthlyDev(){
       ],
       twitter: 
         {
-          title: 'Twitter @SharePoint',
+          NavTitle: 'Twitter @SharePoint',
           order: 1, //For Sorting
           url: 'https://twitter.com/sharepoint',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End twitter
+        } ,  // End twitter
       facebook: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End facebook
+      } ,  // End facebook
       linkedIn: 
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End linkedIn
+        } ,  // End linkedIn
       github: 
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End github
+        } ,  // End github
       webSites: [
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
-        title: 'YouTube',
+        NavTitle: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
         items: [
           {
-            title: '',
+            NavTitle: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: 'Monthly Dev playlist',
+            NavTitle: 'Monthly Dev playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', //Used to determine what functions to have avaialble
             objectUrl: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', // to be used as generic link if no API key is given

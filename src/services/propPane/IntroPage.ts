@@ -33,6 +33,55 @@ export class IntroPage {
               onText: 'strings.FieldLabel_ToggleTextOn',
             }),
           ]}, // this group
+
+/*
+          useLocalList: Boolean;
+          useMasterList: Boolean;
+          localListURL?: string; //Get from list item
+          masterListURL?: string; //Corporate or Central list url
+          sourceListTitle: string;  // Static Name of list (for URL) - used for links and determined by first returned item
+*/
+
+        ,{ groupName: '',
+          groupFields: [
+            PropertyPaneToggle('useMasterList', {
+              label: 'Use Master Entity List',
+              offText: 'strings.FieldLabel_ToggleTextOff',
+              onText: 'strings.FieldLabel_ToggleTextOn',
+            }),
+          ]}, // this group
+          { isCollapsed: !webPartProps.useMasterList,
+            groupFields: [
+              PropertyPaneTextField('masterListURL', {
+                label: 'Master List URL',
+                description: 'Full URL of the default view of the list',
+              }),
+              PropertyPaneTextField('masterListFilter', {
+                label: 'Master List Rest Filter',
+                description: 'Rest style query',
+              }),
+            ]}, // this group
+
+
+            ,{ groupName: '',
+            groupFields: [
+              PropertyPaneToggle('useLocalList', {
+                label: 'Use Local Entity List',
+                offText: 'strings.FieldLabel_ToggleTextOff',
+                onText: 'strings.FieldLabel_ToggleTextOn',
+              }),
+            ]}, // this group
+            { isCollapsed: !webPartProps.useLocalList,
+              groupFields: [
+                PropertyPaneTextField('localListURL', {
+                  label: 'Local List URL',
+                  description: 'Full URL of the default view of the list',
+                }),
+                PropertyPaneTextField('localListFilter', {
+                  label: 'Local List Rest Filter',
+                  description: 'Rest style query',
+                }),
+              ]}, // this group
 /*
         { isCollapsed: !webPartProps.advancedPivotStyles,
           groupFields: [

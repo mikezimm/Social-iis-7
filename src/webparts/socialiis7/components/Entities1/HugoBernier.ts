@@ -4,18 +4,18 @@ import { IEntity } from '../ISocialiis7Props';
   export function HugoBernier(){
 
     const entity :IEntity = {
-      title: 'Hugo Bernier', //
+      Title: 'Hugo Bernier', //
       keywords: ["MVP","SharePoint","SPFx"],
       profilePic: "https://tahoeninjas.blog/wp-content/uploads/2019/08/Hugo-Headshot-260-Square.jpg",
       blog: [
         {
-          title: 'About Me',
+          NavTitle: 'About Me',
           order: 1, //For Sorting
           url: 'https://tahoeninjas.blog/about/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         },
         {
-          title: 'Tahoe Nijas',
+          NavTitle: 'Tahoe Nijas',
           order: 1, //For Sorting
           url: 'https://tahoeninjas.blog/author/bernierh/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -23,66 +23,62 @@ import { IEntity } from '../ISocialiis7Props';
       ],
       twitter: 
         {
-          title: 'Twitter',
+          NavTitle: 'Twitter',
           order: 1, //For Sorting
           url: 'https://twitter.com/bernierh',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End twitter
+        } ,  // End twitter
       facebook: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End facebook
+      } ,  // End facebook
       linkedIn: 
         {
-          title: 'Linked In',
+          NavTitle: 'Linked In',
           order: 1, //For Sorting
           url: 'https://linkedin.com/in/bernierh',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End linkedIn
+        } ,  // End linkedIn
       github: 
         {
-          title: 'Github',
+          NavTitle: 'Github',
           order: 1, //For Sorting
           url: 'https://github.com/hugoabernier',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End github
+        } ,  // End github
       webSites: [
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
-        title: 'YouTube',
+        NavTitle: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
         items: [
           {
-            title: '',
+            NavTitle: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: '',
+            NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given

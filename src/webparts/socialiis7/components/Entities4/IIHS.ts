@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function IIHS(){
 
   const entity :IEntity = {
-    title: 'IIHS', //
+    Title: 'IIHS', //
     keywords: ["Auto","Industry","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function IIHS(){
     ],
     twitter: 
       {
-        title: 'Twitter',
+        NavTitle: 'Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/iihs_autosafety',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function IIHS(){
     ,  // End twitter
     facebook: 
     {
-      title: 'Facebook',
+      NavTitle: 'Facebook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/iihs.org/',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,7 +33,7 @@ export function IIHS(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -41,7 +41,7 @@ export function IIHS(){
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -49,15 +49,14 @@ export function IIHS(){
     ,  // End github
     instagram: 
       {
-        title: 'Instagram',
+        NavTitle: 'Instagram',
         order: 1, //For Sorting
         url: 'https://www.instagram.com/iihs_autosafety/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End github
+      } ,  // End github
       wikipedia: 
         {
-          title: 'Wikipedia',
+          NavTitle: 'Wikipedia',
           order: 1, //For Sorting
           url: 'https://en.wikipedia.org/wiki/Insurance_Institute_for_Highway_Safety',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -65,44 +64,44 @@ export function IIHS(){
     ,  // End instagram
     webSites: [
       {
-        title: 'IIHS-HLDI',
+        NavTitle: 'IIHS-HLDI',
         order: 1, //For Sorting
         url: 'https://www.iihs.org',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },{
-        title: 'IIHS-HLDI Ratings',
+        NavTitle: 'IIHS-HLDI Ratings',
         order: 1, //For Sorting
         url: 'https://www.iihs.org/ratings',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },{
-        title: 'IIHS-HLDI News',
+        NavTitle: 'IIHS-HLDI News',
         order: 1, //For Sorting
         url: 'https://www.iihs.org/news',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: 'iihs', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

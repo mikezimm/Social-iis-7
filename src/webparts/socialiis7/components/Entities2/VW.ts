@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function VW(){
 
   const entity :IEntity = {
-    title: 'VW', //
+    Title: 'VW', //
     keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM","VW"], // Can be any number of
     profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function VW(){
     ],
     twitter: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function VW(){
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,7 +33,7 @@ export function VW(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -41,7 +41,7 @@ export function VW(){
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -49,46 +49,46 @@ export function VW(){
     ,  // End github
     webSites: [
       {
-        title: 'VW Home',
+        NavTitle: 'VW Home',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

@@ -75,8 +75,13 @@ export interface ISocialiis7State {
     lastEvent?: string;
 
     // 2 - Source and destination list information
-    sourceListURL?: string; //Get from list item  
-    sourceListName: string;  // Static Name of list (for URL) - used for links and determined by first returned item
+    useLocalList?: Boolean;
+    useMasterList?: Boolean;
+    localListURL?: string; //Get from list item  
+    masterListURL?: string; //Corporate or Central list url
+    localListFilter?: string; //Get from list item
+    masterListFilter?: string; //Corporate or Central list url
+//    sourceListName: string;  // Static Name of list (for URL) - used for links and determined by first returned item
 
 
     // 3 - 

@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function Tata(){
 
   const entity :IEntity = {
-    title: 'Tata', //
+    Title: 'Tata', //
     keywords: ["Auto","Global","Cars","Trucks","Electric","Gas","OEM"], // Can be any number of
     profilePic: "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/performance/camaro/gallery/exterior/01-images/2020-camaro-ext-gal-05.jpg",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function Tata(){
     ],
     twitter: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function Tata(){
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,7 +33,7 @@ export function Tata(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -41,7 +41,7 @@ export function Tata(){
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -49,46 +49,46 @@ export function Tata(){
     ,  // End github
     webSites: [
       {
-        title: 'Tata Home',
+        NavTitle: 'Tata Home',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

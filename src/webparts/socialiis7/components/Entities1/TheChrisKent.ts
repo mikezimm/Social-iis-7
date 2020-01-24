@@ -4,18 +4,18 @@ import { IEntity } from '../ISocialiis7Props';
 export function TheChrisKent(){
 
   const entity :IEntity = {
-    title: 'Chris Kent', //
+    Title: 'Chris Kent', //
     keywords: ["MVP","SharePoint","SPFx","ColumnFormatting"],
     profilePic: "https://pbs.twimg.com/profile_images/814833960039673856/gnupN0Hs_400x400.jpg",
     blog: [
       {
-        title: 'About Me',
+        NavTitle: 'About Me',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -23,66 +23,62 @@ export function TheChrisKent(){
     ],
     twitter: 
     {
-        title: '@theChrisKent',
+        NavTitle: '@theChrisKent',
         order: 1, //For Sorting
         url: 'https://twitter.com/theChrisKent',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End twitter
+      } ,  //  End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
-    }
-    ,  // End facebook
+    } ,  //  End facebook
     linkedIn: 
       {
-        title: 'Linked In',
+        NavTitle: 'Linked In',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End linkedIn
+      } ,  //  End linkedIn
     github: 
       {
-        title: 'Github',
+        NavTitle: 'Github',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-    ,  // End github
+      } ,  //  End github
     webSites: [
       {
-        title: 'List formatting examples',
+        NavTitle: 'List formatting examples',
         order: 1, //For Sorting
         url: 'https://sharepoint.github.io/sp-dev-list-formatting/',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

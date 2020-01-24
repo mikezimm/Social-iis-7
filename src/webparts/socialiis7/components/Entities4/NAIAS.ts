@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function NAIAS(){
 
   const entity :IEntity = {
-    title: 'NAIAS', //
+    Title: 'NAIAS', //
     keywords: ["Auto","Tradeshow","NA","North America"], // Can be any number of
     profilePic: "https://someURL.com",
     blog: [
       {
-        title: 'Someone\'s Blog',
+        NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,7 +17,7 @@ export function NAIAS(){
     ],
     twitter: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -25,7 +25,7 @@ export function NAIAS(){
     ,  // End twitter
     facebook: 
     {
-      title: '',
+      NavTitle: '',
       order: 1, //For Sorting
       url: '',
       codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -33,7 +33,7 @@ export function NAIAS(){
     ,  // End facebook
     linkedIn: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -41,7 +41,7 @@ export function NAIAS(){
     ,  // End linkedIn
     github: 
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -49,39 +49,39 @@ export function NAIAS(){
     ,  // End github
     webSites: [
       {
-        title: 'NAIAS.com',
+        NavTitle: 'NAIAS.com',
         order: 1, //For Sorting
         url: 'http://www.naias.com',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       },{
-        title: 'Automotive News',
+        NavTitle: 'Automotive News',
         order: 1, //For Sorting
         url: 'https://www.autonews.com/naias',
         codeType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
-      title: 'YouTube',
+      NavTitle: 'YouTube',
       user: 'NAIASDetroit', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          title: '',
+          NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given
         },{
-          title: '',
+          NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
           objectUrl: '', // to be used as generic link if no API key is given

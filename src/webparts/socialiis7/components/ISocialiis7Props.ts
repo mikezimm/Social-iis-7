@@ -19,7 +19,7 @@ export interface ISocialModels {
 }
 
 export interface IWeb {
-  title: string;
+  NavTitle: string;
   titleKey?: string;
   order: number; //For Sorting
   url: string;
@@ -29,7 +29,7 @@ export interface IWeb {
 }
 
 export interface INewsFeed {
-  title: string;
+  NavTitle: string;
   titleKey?: string;
   order: number; //For Sorting
   url: string;
@@ -38,14 +38,14 @@ export interface INewsFeed {
 }
 
 export interface IYoutubeObject {
-  title: string;
+  NavTitle: string;
   objectType: string; //user,Channel, Playlist, Videos, Video
   objectID: string; //Used to determine what functions to have avaialble
   objectUrl: string; // to be used as generic link if no API key is given
 }
 
 export interface IYoutube {
-  title: string;
+  NavTitle: string;
   user?: string; //Youtube User (from URL)
   order?: number; //For Sorting
   items?: IYoutubeObject[];
@@ -59,7 +59,7 @@ export interface IYoutube {
  */
 
 export interface IEntity {
-  title: string; //
+  Title: string; //
   titleKey?: string;
   footPrint?: string[];
   keywords: string[];
@@ -72,6 +72,7 @@ export interface IEntity {
   instagram?:IWeb;
   facebook?: IWeb;
   stackExchange?: IWeb;
+  home?: IWeb;
   github?: IWeb;
   location?: IWeb; //Like Bing Map of city or office or whatever.
   androidStore?: any;
@@ -151,7 +152,12 @@ export interface ISocialiis7Props {
   analyticsError: boolean;
 
   // 2 - Source and destination list information
-  sourceListURL?: string; //Get from list item  
+  useLocalList: Boolean;
+  useMasterList: Boolean;
+  localListURL?: string; //Get from list item
+  masterListURL?: string; //Corporate or Central list url
+  localListFilter?: string; //Get from list item
+  masterListFilter?: string; //Corporate or Central list url
   sourceListTitle: string;  // Static Name of list (for URL) - used for links and determined by first returned item
 
   // 3 - 

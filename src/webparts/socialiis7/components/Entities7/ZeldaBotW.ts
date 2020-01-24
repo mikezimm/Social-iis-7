@@ -4,12 +4,12 @@ import { IEntity } from '../ISocialiis7Props';
 export function ZeldaBotW(){
 
     const entity :IEntity = {
-      title: 'ZeldaBotW', //
+      Title: 'ZeldaBotW', //
       keywords: ["ttp","Nintendo","Switch","Gaming","RPG","Multiplayer"],
       profilePic: "https://www.zelda.com/breath-of-the-wild/assets/media/wallpapers/desktop-1.jpg",
       blog: [
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
@@ -17,66 +17,69 @@ export function ZeldaBotW(){
       ],
       twitter:
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End twitter
+        } ,  // End twitter
       facebook:
       {
-        title: '',
+        NavTitle: '',
         order: 1, //For Sorting
         url: '',
         codeType: 'TBD', //Used to determine what functions to have avaialble
-      }
-      ,  // End facebook
+      } ,  // End facebook
       linkedIn:
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End linkedIn
+        } ,  // End linkedIn
       github:
         {
-          title: '',
+          NavTitle: '',
           order: 1, //For Sorting
           url: '',
           codeType: 'TBD', //Used to determine what functions to have avaialble
-        }
-      ,  // End github
+        } ,  // End github
+      wikipedia:
+      {
+        NavTitle: 'Zelda Wikipedia',
+        order: 1, //For Sorting
+        url: 'https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild',
+        codeType: '', //Used to determine what functions to have avaialble
+      },  // End wikipedia
       webSites: [
         {
-          title: 'Zelda.com',
+          NavTitle: 'Zelda.com',
           order: 1, //For Sorting
           url: 'https://www.zelda.com/breath-of-the-wild/',
           codeType: 'TBD', //Used to determine what functions to have avaialble
         },{
-            title: 'Wikipedia',
+            NavTitle: '',
             order: 1, //For Sorting
-            url: 'https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild',
+            url: '',
             codeType: 'TBD', //Used to determine what functions to have avaialble
           }        
       ],
       youtube: {
-        title: 'YouTube',
+        NavTitle: 'YouTube',
         user: '', //Youtube User (from URL)
         order: 0, //For Sorting
         items: [
           {
-            title: 'Nintendo YouTube',
+            NavTitle: 'Nintendo YouTube',
             objectType: 'User', //user,Channel, Playlist, Videos, Video
             objectID: 'Nintendo', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
         },{
-            title: 'BotW PlayList',
+            NavTitle: 'BotW PlayList',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PL2JiZAV5BmDULhRvaW7CgwicEUIgKqQ4N', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given
           },{
-            title: 'Stampy\`s BotW',
+            NavTitle: 'Stampy\`s BotW',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLEZiAg2bYC7nXdTKT4sBqU5RRZa7ShTsD', //Used to determine what functions to have avaialble
             objectUrl: '', // to be used as generic link if no API key is given

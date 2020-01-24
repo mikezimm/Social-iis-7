@@ -45,10 +45,10 @@ export function creatEntryTypeChoices(parentProps:ISocialiis7Props , parentState
   let choiceSpacer = '\u00A0\u00A0';
   let spacer4x = ""; // +  +  + ;
   options.push(  {key: 'blog', text: 'Blog', disabled: ( parentState.selectedEntity.blog && parentState.selectedEntity.blog[0] && parentState.selectedEntity.blog[0].url ? false: true) });
-  options.push(  {key: 'twitter', text: 'Twitter', disabled: ( parentState.selectedEntity.twitter && parentState.selectedEntity.twitter.title && parentState.selectedEntity.twitter.title.length>0 ? false: true)  });
+  options.push(  {key: 'twitter', text: 'Twitter', disabled: ( parentState.selectedEntity.twitter && parentState.selectedEntity.twitter.NavTitle && parentState.selectedEntity.twitter.NavTitle.length>0 ? false: true)  });
   options.push(  {key: 'youTube', text: 'YouTube', disabled: ( parentState.selectedEntity.youtube && parentState.selectedEntity.youtube.user && parentState.selectedEntity.youtube.user.length >0  ? false: true)  });
   options.push(  {key: 'location', text: 'Location', disabled: ( parentState.selectedEntity.location && parentState.selectedEntity.location.url ? false: true)  });
-  options.push(  {key: 'github', text: 'Github', disabled: ( parentState.selectedEntity.github && parentState.selectedEntity.github.title? false: true)  });
+  options.push(  {key: 'github', text: 'Github', disabled: ( parentState.selectedEntity.github && parentState.selectedEntity.github.NavTitle? false: true)  });
   options.push(  {key: 'linkedIn', text: 'LinkedIn', disabled: ( parentState.selectedEntity.linkedIn && parentState.selectedEntity.linkedIn.url ? false: true)  });
 
   let webSites = {
