@@ -50,6 +50,8 @@ export interface ILoadData {
     userEntities2: IEntity[];
     userEntities3: IEntity[];
 
+    localItems: any;
+
     allEntities: IEntity[];
     allEntityKeywords: string[];
     allTopics: string[];

@@ -4,6 +4,10 @@ import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
 import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
 import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
+import { sp } from '@pnp/sp';
+//Updated Jan 5, 2020 per https://pnp.github.io/pnpjs/getting-started/
+import { Web } from "@pnp/sp/presets/all";
+
 import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
@@ -138,7 +142,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public componentDidMount() {
-    //this._getListItems();
+    //let items = this._getListItems();
+    //console.log('items:', items);
 
     this.setState({
       endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
@@ -311,6 +316,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
     let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
 
+    let localItems = this._getListItems();
+    console.log('rebuildAllEntities:', localItems);
+
     let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntities1);
     allEntities = allEntities.concat(userEntities1).concat(userEntities2).concat(userEntities3);
 
@@ -336,6 +344,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       subTopic1Entities: null,
       subTopic2Entities: null,
       subTopic3Entities: null,
+
+      localItems: localItems,
 
     };
 
@@ -510,6 +520,70 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   } //End onNavClick
 
+//  private _getListItems(): void {
+  //https://sympmarc.com/2018/12/12/using-pnpjs-and-async-await-to-really-simplify-your-api-calls/
+  private async _getListItems(): Promise<any[]> {
+
+    let masterListURL: string = '';
+    let masterListFilter: string = "";
+
+    if ( this.props.useMasterList && this.props.masterListURL ) {
+      masterListURL = this.props.masterListURL.replace(this.props.tenant,'');
+    }
+    if ( this.props.useMasterList && this.props.masterListFilter ) {
+      masterListFilter = this.props.masterListFilter;
+    }
+
+    let localListURL: string = '';
+    let localListFilter: string = "";
+
+    if ( this.props.useLocalList && this.props.localListURL ) {
+      localListURL = this.props.localListURL.replace(this.props.tenant,'');
+    }
+
+    if ( this.props.useLocalList && this.props.localListFilter ) {
+      localListFilter = this.props.localListFilter;
+    }
+    //const fixedURL = Utils.fixURLs(this.props.listWebURL, this.props.pageContext);
+    let selectCols: string = "*";
+
+    let localSort: string = "Title";
+    let masterSort: string = "Title";
+    let items;
+
+      try {
+  
+        items = await sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get();
+        console.log('_getListItems:', items);
+        // Build JSON here
+        
+        return items;
+
+      } catch (e) {
+        
+        console.error(e);
+        return null;
+        
+      }
+
+      //return items;
+    /*  THIS WORKS!    Must be inside:   private _getListItems(): void {
+    sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get().then(response => {
+      console.log('response:', response);
+
+    }).catch((e) => {
+      console.log('ERROR:  catch sp.web.currentUser', e);
+
+    });
+*/
+
+//    let projectRestFilter: string = "Team eq '" + 20 + "'";
+//    let trackTimeRestFilter: string = "User eq '" + 20 + "'";
+
+
+
+
+  }
 
   //http://react.tips/how-to-create-reactjs-components-dynamically/ - based on createImage
   public createPivot(pivT: IPivot) {
