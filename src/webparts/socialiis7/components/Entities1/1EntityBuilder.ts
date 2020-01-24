@@ -54,8 +54,6 @@ export function buildUserEntities(onNavClick , userEntity: string) {
         }
     }
 
-
-    
     return Entities;
 }
 
@@ -65,6 +63,9 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
     let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','wikipedia','instagram','home'];
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
+    if ( !sectionName ) { return navigation; }
+    else if ( sectionName.indexOf('web') > -1 ) { sectionName = 'website'; }
+
     //return empty if this does not have any content
     //console.log('buildNavigationForWeb 2: thisSection',thisSection );
      if (sectionName !== 'debug') {
@@ -258,7 +259,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
                     } else if ( sectionName === 'linkedIn' ){
                         url = 'https://www.linkedin.com/in/';
 
-                    } else if ( sectionName.indexOf('wiki') > -1 ){
+                    } else if ( sectionName.indexOf('wikipedia') > -1 ){
                         url = 'https://en.wikipedia.org/wiki/';
 
                     }
@@ -349,7 +350,6 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
      *      then if it's of type IWeb (Not IWeb[] ): add to  ---->  nonArrayNodes
      *  Then update about.aspx to determine what gets displayed in the about pane.
      */
-
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'home', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'blog', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'webSites', onNavClick));
@@ -367,6 +367,8 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'stock', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'wikipedia', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'debug', onNavClick));
+
+
 
     result.footPrint = [];
     for (let ele of result.navigation) {

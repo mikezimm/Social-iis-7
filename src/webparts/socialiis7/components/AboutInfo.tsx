@@ -72,6 +72,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     else if (selectedNavItem.objectType.toLowerCase().indexOf('channel') > -1 ) { objectType = 'channelId'; youTube = true; }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('video') > -1 ) { objectType = 'video'; youTube = true; }
     else if (selectedNavItem.objectType.toLowerCase().indexOf('user') > -1 ) { objectType = 'user'; youTube = true; }
+    else if (selectedNavItem.objectType.toLowerCase().indexOf('wiki') > -1 ) { objectType = 'wiki'; youTube = true; }
 
     if ( youTube && objectType != null && selectedNavItem.objectID ) {
       //This is a Youtube Channel or Playlist
