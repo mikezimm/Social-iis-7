@@ -13,7 +13,7 @@ export function DarkSouls(){
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter:
@@ -21,42 +21,42 @@ export function DarkSouls(){
           NavTitle: '@DarkSoulsGame',
           order: 1, //For Sorting
           url: 'https://twitter.com/DarkSoulsGame',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End twitter
       facebook:
       {
         NavTitle: 'Dark Souls Facebook Community',
         order: 1, //For Sorting
         url: 'https://www.facebook.com/darksoulsEU',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       } ,  // End facebook
       linkedIn:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End linkedIn
       github:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End github
       wikipedia:
       {
         NavTitle: 'Dark Souls Wikipedia',
         order: 1, //For Sorting
         url: 'https://en.wikipedia.org/wiki/Dark_Souls',
-        codeType: '', //Used to determine what functions to have avaialble
+        objectType: '', //Used to determine what functions to have avaialble
       },  // End wikipedia
       webSites: [
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
@@ -68,18 +68,18 @@ export function DarkSouls(){
             NavTitle: 'Your video',
             objectType: 'video', //user,Channel, Playlist, Videos, Video
             objectID: '6u2w7kzmweU', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },
           {
             NavTitle: 'Dark Souls Walkthrough',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PL7RtZMiaOk8i5W4e8j_Bz6YDdFq3o4aAh', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           }
         ] // End YouTube items
       }, // End YouTube

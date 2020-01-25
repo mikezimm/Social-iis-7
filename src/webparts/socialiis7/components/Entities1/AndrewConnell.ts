@@ -12,7 +12,7 @@ export function AndrewConnell(){
           NavTitle: 'Andrew\'s Blog',
           order: 1, //For Sorting
           url: 'https://www.andrewconnell.com/blog/',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter:
@@ -20,47 +20,47 @@ export function AndrewConnell(){
           NavTitle: 'Andrew\'s Twitter Feed',
           order: 1, //For Sorting
           url: 'https://twitter.com/andrewconnell',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }, 
     facebook:
         {
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
         },  // End facebook
     linkedIn: 
         {
             NavTitle: 'Linked In',
             order: 1, //For Sorting
             url: 'https://www.linkedin.com/in/andrewconnell',
-            codeType: 'TBD', //Used to determine what functions to have avaialble
+            objectType: 'TBD', //Used to determine what functions to have avaialble
         },  // End linkedIn
     github: 
         {
             NavTitle: 'Github',
             order: 1, //For Sorting
             url: 'https://github.com/AndrewConnell',
-            codeType: 'TBD', //Used to determine what functions to have avaialble
+            objectType: 'TBD', //Used to determine what functions to have avaialble
         },  // End github
       stackExchange: 
       {
           NavTitle: 'Stack Exchange',
           order: 1, //For Sorting
           url: 'https://sharepoint.stackExchange.com/users/401/andrew-connell',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
       },  // End github
     webSites: [
         {
           NavTitle: 'Voitanos Training',
           order: 1, //For Sorting
           url: 'https://www.voitanos.io/',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         },        {
           NavTitle: 'Voitanos Training2',
           order: 1, //For Sorting
           url: 'https://www.voitanos.io/',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],  // End webSites
       youtube: {
@@ -72,22 +72,22 @@ export function AndrewConnell(){
             NavTitle: 'Laura Rogers Channel',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: 'UCbTVoDCaPM6wE0xsDGGr9VA', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/channel/UCbTVoDCaPM6wE0xsDGGr9VA', // to be used as generic link if no API key is given
+            url: 'https://www.youtube.com/channel/UCbTVoDCaPM6wE0xsDGGr9VA', // to be used as generic link if no API key is given
           },{
             NavTitle: 'Office / SharePoint / SPFx',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLb9FvVDRfRYjJxT9CBTJy1ugWcGrebq0W', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/playlist?list=PLb9FvVDRfRYjJxT9CBTJy1ugWcGrebq0W', // to be used as generic link if no API key is given
+            url: 'https://www.youtube.com/playlist?list=PLb9FvVDRfRYjJxT9CBTJy1ugWcGrebq0W', // to be used as generic link if no API key is given
           },{
             NavTitle: 'Space Shuttle',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLb9FvVDRfRYgLUxBwoDo_Qzt-G3_YgckS', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/playlist?list=PLb9FvVDRfRYgLUxBwoDo_Qzt-G3_YgckS', // to be used as generic link if no API key is given
+            url: 'https://www.youtube.com/playlist?list=PLb9FvVDRfRYgLUxBwoDo_Qzt-G3_YgckS', // to be used as generic link if no API key is given
           },{
             NavTitle: 'Test Video',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: 'R4zeaxHxswM', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           }
           
         ],

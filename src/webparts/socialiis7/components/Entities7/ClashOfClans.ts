@@ -13,7 +13,7 @@ export function ClashOfClans(){
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter:
@@ -21,42 +21,42 @@ export function ClashOfClans(){
           NavTitle: '@ClashOfClans',
           order: 1, //For Sorting
           url: 'https://twitter.com/ClashofClans',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End twitter
       facebook:
       {
         NavTitle: 'ClashOfClans Facebook',
         order: 1, //For Sorting
         url: 'https://www.facebook.com/gaming/clashofclans/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       } ,  // End facebook
       linkedIn:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End linkedIn
       github:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End github
       wikipedia:
       {
         NavTitle: 'Clash Of Clans Wikipedia',
         order: 1, //For Sorting
         url: 'https://en.wikipedia.org/wiki/Clash_of_Clans',
-        codeType: '', //Used to determine what functions to have avaialble
+        objectType: '', //Used to determine what functions to have avaialble
       },  // End wikipedia
       webSites: [
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
@@ -68,22 +68,22 @@ export function ClashOfClans(){
             NavTitle: '',
             objectType: 'Channel', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           }
         ] // End YouTube items
       }, // End YouTube

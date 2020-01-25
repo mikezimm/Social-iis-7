@@ -12,7 +12,7 @@ export function Autoliv(){
         NavTitle: 'Autoliv.com',
         order: 1, //For Sorting
         url: 'https://www.autoliv.com/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,
     blog: [
@@ -20,7 +20,7 @@ export function Autoliv(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter:
@@ -28,7 +28,7 @@ export function Autoliv(){
         NavTitle: '@Autoliv on Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/AutolivInc',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook:
@@ -36,7 +36,7 @@ export function Autoliv(){
       NavTitle: 'FaceBook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/AutolivInc',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
       objectID: 'AutolivInc'
     },  // End facebook
     linkedIn:
@@ -44,7 +44,7 @@ export function Autoliv(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     wikipedia: 
@@ -52,7 +52,7 @@ export function Autoliv(){
       NavTitle: 'Wikipedia',
       order: 1, //For Sorting
       url: 'https://en.wikipedia.org/wiki/Autoliv',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
 ,  // End wikipedia
     github:
@@ -60,7 +60,7 @@ export function Autoliv(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -68,7 +68,7 @@ export function Autoliv(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -80,22 +80,22 @@ export function Autoliv(){
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Autoliv YouTube Channel',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: 'UCpRLWz7tuZ42lUhKMGV_74Q', //Used to determine what functions to have avaialble
-          objectUrl: 'https://www.youtube.com/channel/UCpRLWz7tuZ42lUhKMGV_74Q', // to be used as generic link if no API key is given
+          url: 'https://www.youtube.com/channel/UCpRLWz7tuZ42lUhKMGV_74Q', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube

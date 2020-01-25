@@ -21,9 +21,9 @@ export interface ISocialModels {
 export interface IWeb {
   NavTitle: string;
   titleKey?: string;
-  order: number; //For Sorting
+  order?: number; //For Sorting
   url: string;
-  codeType: string; //Used to determine what functions to have avaialble
+  objectType?: string; //Used to determine what functions to have avaialble
   objectID?: string;
 
 }
@@ -33,24 +33,26 @@ export interface INewsFeed {
   titleKey?: string;
   order: number; //For Sorting
   url: string;
-  codeType: string; //Used to determine what functions to have avaialble
+  objectType: string; //Used to determine what functions to have avaialble
 
 }
 
-export interface IYoutubeObject {
+export interface IYoutubeObject extends IWeb{
   NavTitle: string;
-  objectType: string; //user,Channel, Playlist, Videos, Video
-  objectID: string; //Used to determine what functions to have avaialble
-  objectUrl: string; // to be used as generic link if no API key is given
+  titleKey?: string;
+  objectType?: string; //user,Channel, Playlist, Videos, Video
+  objectID?: string; //Used to determine what functions to have avaialble
+  url: string; // to be used as generic link if no API key is given
+  order?: number; //For Sorting
 }
 
 export interface IYoutube {
   NavTitle: string;
   user?: string; //Youtube User (from URL)
   order?: number; //For Sorting
-  items?: IYoutubeObject[];
-  channels?: IYoutubeObject[];
-  playLists?: IYoutubeObject[];
+  items?: IWeb[];
+  channels?: IWeb[];
+  playLists?: IWeb[];
 
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
 import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
-import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from './ISocialiis7State';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData, IListEntities} from './ISocialiis7State';
 import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { sp } from '@pnp/sp';
@@ -21,7 +21,7 @@ import { pivotOptionsGroup, } from '../../../services/propPane';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import {
-  buildEntities,buildEntityKeywords, getEntitiesForThis, buildUserEntities, IsValidJSONString
+  buildEntities,buildEntityKeywords, getEntitiesForThis, buildUserEntities, IsValidJSONString, getPropsFromObjectInfo
 
 } from './Entities1/1EntityBuilder';
 import {  buildEntities2} from './Entities2/1EntityBuilder';
@@ -103,13 +103,22 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let currentPivotSet = "keysForTopic";
 
-    let loadData: ILoadData = this.rebuildAllEntities();
+    let loadData: ILoadData = this.rebuildNonListEntities();
+    loadData = this._rebuildEntities(topics, loadData);
 
     let selectedEntity = loadData.subTopic1Entities[0];
     let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
-    let pivots : IMyPivots = this._rebuildPivots(loadData);
 
-    let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+    let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
+    let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
+    let allLoaded = ( localListLoaded && masterListLoaded ) ? true : false;
+
+    let pivots : IMyPivots = null;
+    let currentPivots : IPivot[][] =  null;
+    if ( allLoaded ) {
+      pivots = this._rebuildPivots(loadData);
+      currentPivots = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+    }
 
     this.state = { 
 //      sourceListName: "",
@@ -127,7 +136,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       loadData: loadData,
       endTime: null,
       lastEvent: 'Constructor',
-
+      hardCodedLoaded: true,
+      localListLoaded: localListLoaded,
+      masterListLoaded: masterListLoaded,
+      allLoaded: allLoaded,
+      loadOrder: ['Constructor'],
       
     };
 
@@ -164,7 +177,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   }
 
   public createPivotObject(currentPivots: IPivot[][], display){
-
+    if (currentPivots == null) { return '';}
     if (currentPivots.length === 0) { return '';}
 
     //let setPivot = pivots[0].headerText;
@@ -269,13 +282,21 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let currentPivotSet = "keysForTopic";
 
-    let loadData: ILoadData = this.rebuildAllEntities();
+    let loadData: ILoadData = this.rebuildNonListEntities();
+    loadData = this._rebuildEntities(topics, loadData);
 
     let selectedEntity = loadData.subTopic1Entities[0];
     let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
     let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+
+    let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
+    let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
+    let allLoaded = ( localListLoaded && masterListLoaded ) ? true : false;
+
+    let loadOrder: string[] = this.state.loadOrder;
+    loadOrder.push('PropsChange');
 
     this.setState({
       pivots: pivots,
@@ -291,12 +312,17 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
       topics: topics,
       lastEvent: 'Props Change',
+      hardCodedLoaded: true,
+      localListLoaded: localListLoaded,
+      masterListLoaded: masterListLoaded,
+      allLoaded: allLoaded,
+      loadOrder: loadOrder,
     });
 
   }
 
   
-  private rebuildAllEntities() {
+  private rebuildNonListEntities() {
 
     this.onNavClick = this.onNavClick.bind(this);
 
@@ -317,8 +343,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
     let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
 
-    let localItems = this._getListItems();
-    console.log('rebuildAllEntities:', localItems);
+    /*
+    listEntites: listEntites,
+    entityTitles: entityTitles,
+    */
 
     let allEntities = Entities1.concat(Entities2).concat(Entities4).concat(Entities7).concat(Entities9).concat(Entities8).concat(userEntities1);
     allEntities = allEntities.concat(userEntities1).concat(userEntities2).concat(userEntities3);
@@ -333,12 +361,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       userEntities1: userEntities1,
       userEntities2: userEntities2,
       userEntities3: userEntities3,
-      
-      localItems: localItems,
-      localEntities: [],
-
-      masterItems: [],
-      masterEntities: [],
 
       allEntities: allEntities,
       allEntityKeywords: buildEntityKeywords(allEntities, "keywords"),
@@ -354,7 +376,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     };
 
-    loadData = this._rebuildEntities(topics, loadData);
+    let localListLoaded = this.props.useLocalList ? false : true;
+    let masterListLoaded = this.props.useMasterList ? false : true;
+
+    if ( !localListLoaded ) { this._getListItems('local'); }
+    if ( !masterListLoaded ) { this._getListItems('master'); }
 
     return loadData;
 
@@ -527,96 +553,143 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
 //  private _getListItems(): void {
   //https://sympmarc.com/2018/12/12/using-pnpjs-and-async-await-to-really-simplify-your-api-calls/
-  private async _getListItems(): Promise<any[]> {
+  private async _getListItems(localOrMaster: string): Promise<void> {
 
-    let masterListURL: string = '';
-    let masterListFilter: string = "";
+    let useThisList: Boolean = null;
+    let thisListURL: string = null;
+    let thisListFilter: string = "";
 
-    if ( this.props.useMasterList && this.props.masterListURL ) {
-      masterListURL = this.props.masterListURL.replace(this.props.tenant,'');
+    if (localOrMaster == 'local') {
+      thisListURL = this.props.localListURL;
+      thisListFilter = this.props.localListFilter;
+      useThisList = this.props.useLocalList;
+
+    } else if ( localOrMaster == 'master' ) {
+      thisListURL = this.props.masterListURL ;
+      thisListFilter = this.props.masterListFilter;
+      useThisList = this.props.useMasterList;
+
     }
-    if ( this.props.useMasterList && this.props.masterListFilter ) {
-      masterListFilter = this.props.masterListFilter;
+
+    //Remove tenanat URL from list URL
+    if ( useThisList && thisListURL ) {
+      thisListURL = thisListURL.replace(this.props.tenant,'');
     }
 
-    let localListURL: string = '';
-    let localListFilter: string = "";
-
-    if ( this.props.useLocalList && this.props.localListURL ) {
-      localListURL = this.props.localListURL.replace(this.props.tenant,'');
-    }
-
-    if ( this.props.useLocalList && this.props.localListFilter ) {
-      localListFilter = this.props.localListFilter;
-    }
     //const fixedURL = Utils.fixURLs(this.props.listWebURL, this.props.pageContext);
     let selectCols: string = "*";
 
-    let localSort: string = "Title";
-    let masterSort: string = "Title";
+    let thisSort: string = "Title";
     let items;
     let entityTitles: string[] = [];
+    let listEntites : IEntity[]= [];
+
+    let theseEntities : IListEntities = {
+      listEntites: listEntites,
+      entityTitles: entityTitles,
+    };
 
     try {
 
-      items = await sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get();
+      items = await sp.web.getList(thisListURL).items.filter(thisListFilter).orderBy(thisSort,true).get();
       
-      let localEntites : IEntity[]= [];
       let newEntity: IEntity = null;
+      let count = -1;
+      let entityKeys = [];
       for (var j = 0; j < items.length; j++){
         let thisItem = items[j];
         if (entityTitles.indexOf(thisItem.Title) < 0 ) { 
-          console.log('thisItem',thisItem);
+         // console.log('thisItem',thisItem);
+
           entityTitles.push(thisItem.Title);
           newEntity = {
             Title: thisItem.Title,
             keywords: thisItem.keywords,
             profilePic: thisItem.profilePic,
           };
-          let mediaSource = thisItem.mediaSource;
-          if (mediaSource && mediaSource.length > 0) {
-            if (mediaSource === 'youtube') {
-
-            } else {
-              newEntity[mediaSource] = {
-                NavTitle: thisItem.NavTitle,
-                url: thisItem.url,
-                objectType: thisItem.objectType,
-                objectID: thisItem.objectID,
-              };
-            }
-          }
-          console.log('newEntity - new Entity',newEntity);
-        } else {
-          let mediaSource = thisItem.mediaSource;
-          if (mediaSource && mediaSource.length > 0) {
-            if (mediaSource === 'youtube') {
-
-            } else {
-              newEntity[mediaSource] = {
-                NavTitle: thisItem.NavTitle,
-                url: thisItem.url,
-                objectType: thisItem.objectType,
-                objectID: thisItem.objectID,
-              };
-            }
-          }
-          console.log('newEntity - extra line',newEntity);
+          count ++;
+          entityKeys = [];
+          listEntites.push(newEntity);
+          //console.log('newEntity - new Entity',listEntites[count]);
         }
+
+        let obj = getPropsFromObjectInfo(thisItem.NavTitle, thisItem.mediaSource,thisItem.objectType, thisItem.objectID, thisItem.url);
+
+        if (obj.mediaSource && obj.mediaSource.length > 0) {
+
+          let thisNavItem = {
+            NavTitle: obj.NavTitle,
+            url: obj.url,
+            objectType: obj.objectType,
+            objectID: obj.objectID,
+            mediaSource: obj.mediaSource,
+          };
+
+          let isCompleteNavItem = true;
+          if ( obj.mediaSource === "" ) { isCompleteNavItem = false; }
+          if ( obj.NavTitle === "" ) { isCompleteNavItem = false; }
+          if ( obj.url === "" && obj.objectID === "" ) { isCompleteNavItem = false; }
+
+          if ( isCompleteNavItem === true ) {
+
+            if (obj.mediaSource === 'youtube' || obj.mediaSource === 'webSites' || obj.mediaSource === 'blog') {
+              //These have arrays of objects in them
+  
+              //If key (mediaSource) does not yet exist, add
+              if (entityKeys.indexOf(obj.mediaSource) < 0 ) { 
+                //Key does not yet exist... Add key
+                listEntites[count][obj.mediaSource] = null;
+                entityKeys.push(obj.mediaSource);
+              }
+  
+              if (obj.mediaSource === 'youtube') {//youtube object has items key which is an array
+                if (listEntites[count][obj.mediaSource] == null) { 
+                  listEntites[count][obj.mediaSource] = {
+                    NavTitle: '',
+                    user: '',
+                    items: []
+                  };              
+                }
+                listEntites[count][obj.mediaSource]['items'].push(thisNavItem);
+  
+              } else { //other mediaSources are just an array
+                if (listEntites[count][obj.mediaSource] == null) { listEntites[count][obj.mediaSource] = []; }
+                listEntites[count][obj.mediaSource].push(thisNavItem);
+  
+              }
+  
+            } else { // These are single layer deep
+              listEntites[count][obj.mediaSource] = thisNavItem;
+  
+            }
+          }
+          //asdfasdf
+        }
+
+        //console.log('localEntites[count] - extra line',localEntites[count]);
 
         //console.log('newEntity',newEntity);
       }
       
-      console.log('entityTitles',entityTitles);
-      console.log('_getListItems:', items);
+      //console.log('entityTitles',entityTitles);
+      //console.log('_getListItems localEntites:', localEntites);
       // Build JSON here
+
+      theseEntities = {
+        listEntites: listEntites,
+        entityTitles: entityTitles,
+      };
+
+      //At this point we should update state, rebuild pivots etc...
+
+      this._saveListItemsToState( localOrMaster, theseEntities );
+
       
-      return items;
 
     } catch (e) {
-      
+      console.error('load error');
       console.error(e);
-      return null;
+      
       
     }
 
@@ -634,11 +707,71 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 //    let projectRestFilter: string = "Team eq '" + 20 + "'";
 //    let trackTimeRestFilter: string = "User eq '" + 20 + "'";
 
+  }
 
+  private _saveListItemsToState (localOrMaster: string, theseEntities: IListEntities){
+
+    /*
+          theseEntities = {
+        listEntites: listEntites,
+        entityTitles: entityTitles,
+      };
+    */
+   let topics : ITopics = this.props.topics;
+   let currentPivotSet = "keysForTopic";
+
+   let pivots : IMyPivots = null;
+   let currentPivots : IPivot[][] =  null;
+   let loadData = this.state.loadData;
+
+   let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
+   let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
+
+   if (localOrMaster === 'master') { 
+     masterListLoaded = true; 
+     loadData.masterEntities = theseEntities.listEntites;
+     loadData.masterEntityTitles = theseEntities.entityTitles;
+    }
+   if (localOrMaster === 'local') { 
+     localListLoaded = true; 
+     loadData.localEntities = theseEntities.listEntites;
+     loadData.localEntityTitles = theseEntities.entityTitles;
+    }
+
+   let allLoaded = ( localListLoaded && masterListLoaded ) ? true : false;
+
+   if ( allLoaded ) {
+     pivots = this._rebuildPivots(loadData);
+     currentPivots = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
+   }
+
+   let selectedEntity = loadData.subTopic1Entities[0];
+   let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+
+   let loadOrder: string[] = this.state.loadOrder;
+   loadOrder.push(localOrMaster);
+
+   this.setState({
+     pivots: pivots,
+     selectedMedia: '',
+     loadStatus: "updating list Entities",
+     currentPivotSet: currentPivotSet,
+     currentPivots: currentPivots,
+     selectedEntity: selectedEntity,
+     selectedNavKey: '_updateStateOnPropsChange: ' + selectedEntity.titleKey,
+     loadData: loadData,
+     selectedNavItem: selectedNavItem,
+     endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
+     topics: topics,
+     lastEvent: 'Load ' + localOrMaster,
+     localListLoaded: localListLoaded,
+     masterListLoaded: masterListLoaded,
+     allLoaded: allLoaded,
+     loadOrder: loadOrder,
+   });
 
 
   }
-
   //http://react.tips/how-to-create-reactjs-components-dynamically/ - based on createImage
   public createPivot(pivT: IPivot) {
 

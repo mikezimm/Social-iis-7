@@ -13,7 +13,7 @@ export function BlackCats(){
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter:
@@ -21,42 +21,42 @@ export function BlackCats(){
           NavTitle: 'Twitter',
           order: 1, //For Sorting
           url: 'https://twitter.com/blackcatrescue',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End twitter
       facebook:
       {
         NavTitle: 'Facebook',
         order: 1, //For Sorting
         url: 'https://www.facebook.com/Black-Cats-759441280811241/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       } ,  // End facebook
       linkedIn:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         },  // End linkedIn
       github:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         },  // End github
       wikipedia:
       {
         NavTitle: 'Wikipedia',
         order: 1, //For Sorting
         url: 'https://en.wikipedia.org/wiki/Black_cat',
-        codeType: '', //Used to determine what functions to have avaialble
+        objectType: '', //Used to determine what functions to have avaialble
       },  // End wikipedia
       webSites: [
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
@@ -68,12 +68,12 @@ export function BlackCats(){
             NavTitle: 'Black Cats Rescue',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '7pgY2YetXyE', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/watch?v=7pgY2YetXyE', // to be used as generic link if no API key is given
+            url: 'https://www.youtube.com/watch?v=7pgY2YetXyE', // to be used as generic link if no API key is given
           },{
             NavTitle: 'Funny Cat Videos',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB', //Used to determine what functions to have avaialble
-            objectUrl: 'https://www.youtube.com/playlist?list=PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB', // to be used as generic link if no API key is given
+            url: 'https://www.youtube.com/playlist?list=PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB', // to be used as generic link if no API key is given
           }
         ], // End YouTube items
       }, // End YouTube
