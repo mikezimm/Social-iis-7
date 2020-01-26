@@ -10,7 +10,7 @@ export const VideoList = (props) => {
                 onVideoSelect={props.onVideoSelect} />
         );
     });
-    console.log('List width: ', props.listWidth);
+    //console.log('List width: ', props.listWidth);
 
     if ( props.videos.length < 2 ) { return (<div></div>); } else {
         return (

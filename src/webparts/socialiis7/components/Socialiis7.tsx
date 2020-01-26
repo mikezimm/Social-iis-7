@@ -94,7 +94,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     loadData = this._rebuildEntities(topics, loadData);
 
     let selectedEntity = loadData.subTopic1Entities[0];
-    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+    let selectedNavItem = loadData.subTopic1Entities[0] ? loadData.subTopic1Entities[0].navigation[0] : null;
 
     let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
     let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
@@ -119,7 +119,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
       topics: topics,
-      selectedNavKey: 'public constructor: ' + selectedEntity.titleKey,
+      selectedNavKey: selectedEntity ? 'public constructor: ' + selectedEntity.titleKey : "None available",
       loadData: loadData,
       endTime: null,
       lastEvent: allLoaded ? 'Constructor' : 'Not Loaded',
@@ -213,7 +213,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         //Why do I get an error here every time?
         //selectedKey: 'x',
         selectedNavKey: this.state.selectedNavKey,
-        selectedEntityString: this.state.selectedEntity.titleKey,
+        selectedEntityString: this.state.selectedEntity ? this.state.selectedEntity.titleKey : "None available",
         anchorLinks: (this.state.selectedEntity ? this.state.selectedEntity.navigation : []),
       }
     );
@@ -274,7 +274,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
-      selectedNavKey: '_updateStateOnPropsChange: ' + selectedEntity.titleKey,
+      selectedNavKey: selectedEntity ? '_updateStateOnPropsChange: ' + selectedEntity.titleKey : "None available",
       loadData: loadData,
       selectedNavItem: selectedNavItem,
       navigationType: this.props.navigationType,
@@ -722,7 +722,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
      currentPivotSet: currentPivotSet,
      currentPivots: currentPivots,
      selectedEntity: selectedEntity,
-     selectedNavKey: '_updateStateOnPropsChange: ' + selectedEntity.titleKey,
+     selectedNavKey: selectedEntity ? '_updateStateOnPropsChange: ' + selectedEntity.titleKey : "None available",
      loadData: loadData,
      selectedNavItem: selectedNavItem,
      endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),

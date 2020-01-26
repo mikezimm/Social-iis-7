@@ -29,14 +29,19 @@ export function buildEntities(onNavClick ) {
 
 //https://codeblogmoney.com/validate-json-string-using-javascript/
 export function IsValidJSONString(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        console.log('string is not a valid JSON');
+    if ( str == null ){
         return false;
+    } else {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            console.log('string is not a valid JSON');
+            return false;
+        }
+        console.log('string IS a valid JSON');
+        return true;
     }
-    console.log('string IS a valid JSON');
-    return true;
+
 }
 
 

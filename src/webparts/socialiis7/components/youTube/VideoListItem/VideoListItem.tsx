@@ -3,7 +3,7 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 const VideoListItem = ({ video, onVideoSelect }) => {
-  console.log('VideoListItem', video);
+  //console.log('VideoListItem', video);
 
   //Added due to case where SPFx call video was flagged as PRIVATE... it was crashing the web part.
   if (!video || !video.snippet || !video.snippet.thumbnails || !video.snippet.thumbnails.default || !video.snippet.thumbnails.default.url ) { return null; }
