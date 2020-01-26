@@ -56,19 +56,19 @@ export function MineCraft(){
       }
     ],
     youtube: {
-      NavTitle: 'DanTDM',
-      user: 'TheDiamondMinecart', //Youtube User (from URL)
+      NavTitle: '',
+      user: '', //Youtube User (from URL)
       order: 0, //For Sorting
       items: [
         {
-          NavTitle: '',
+          NavTitle: 'Stampy\'s Channel',
           objectType: 'User', //user,Channel, Playlist, Videos, Video
           objectID: 'stampylonghead', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
-          objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          NavTitle: 'DanTDM\'s Channel',
+          objectType: 'User', //user,Channel, Playlist, Videos, Video
+          objectID: 'TheDiamondMinecart', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Stampy\'s Lovely World',
