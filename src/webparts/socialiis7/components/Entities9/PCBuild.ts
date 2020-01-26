@@ -12,7 +12,7 @@ export function PCBuild(){
         NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function PCBuild(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
@@ -28,7 +28,7 @@ export function PCBuild(){
       NavTitle: '',
       order: 1, //For Sorting
       url: '',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -36,7 +36,7 @@ export function PCBuild(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -44,7 +44,7 @@ export function PCBuild(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -52,7 +52,7 @@ export function PCBuild(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -64,27 +64,27 @@ export function PCBuild(){
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Top 10 PC Build mistakes',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: 'VZDv9ubQfY4', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'PC Build Traps',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '-plesrt8ZCs', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube

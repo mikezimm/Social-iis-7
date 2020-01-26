@@ -12,7 +12,7 @@ export function Veoneer(){
         NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function Veoneer(){
         NavTitle: 'Veoneer on Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/Veoneer',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
         objectID: 'Veoneer' 
       }
     ,  // End twitter
@@ -29,7 +29,7 @@ export function Veoneer(){
       NavTitle: 'Facebook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/Veoneer/',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -37,7 +37,7 @@ export function Veoneer(){
         NavTitle: 'LinkedIn',
         order: 1, //For Sorting
         url: 'https://www.linkedin.com/company/veoneer/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -45,7 +45,7 @@ export function Veoneer(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -53,7 +53,7 @@ export function Veoneer(){
         NavTitle: 'Veoneer.com',
         order: 1, //For Sorting
         url: 'https://www.veoneer.com/en/who-we-are',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -65,22 +65,22 @@ export function Veoneer(){
           NavTitle: 'Youtube Veoneer',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: 'UCRO1uMYtcNm1pzmQly1L4nw', //Used to determine what functions to have avaialble
-          objectUrl: 'https://www.youtube.com/channel/UCRO1uMYtcNm1pzmQly1L4nw', // to be used as generic link if no API key is given
+          url: 'https://www.youtube.com/channel/UCRO1uMYtcNm1pzmQly1L4nw', // to be used as generic link if no API key is given
         },{
           NavTitle: 'MIT Human-Centered Autonomous Vehicle',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: 'OoC8oH0CLGc', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube

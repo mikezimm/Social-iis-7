@@ -12,7 +12,7 @@ export function USDOT(){
         NavTitle: 'USDOT Blog',
         order: 1, //For Sorting
         url: 'https://www.transportation.gov/blog/connections',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function USDOT(){
         NavTitle: 'USDOT Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/USDOT',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
@@ -28,7 +28,7 @@ export function USDOT(){
       NavTitle: 'USDOT Facebook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/USDOT/',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -36,7 +36,7 @@ export function USDOT(){
         NavTitle: 'USDOT Linked In',
         order: 1, //For Sorting
         url: 'https://www.linkedin.com/company/us-department-of-transportation-dot',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -44,7 +44,7 @@ export function USDOT(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -52,22 +52,22 @@ export function USDOT(){
         NavTitle: 'Transportation.gov',
         order: 1, //For Sorting
         url: 'https://www.transportation.gov/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -79,27 +79,27 @@ export function USDOT(){
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
 
 
@@ -111,7 +111,7 @@ export function USDOT(){
         NavTitle: 'Instagram',
         order: 1, //For Sorting
         url: 'https://www.instagram.com/usdot/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
 

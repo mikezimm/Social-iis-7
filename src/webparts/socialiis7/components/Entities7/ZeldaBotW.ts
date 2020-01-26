@@ -12,7 +12,7 @@ export function ZeldaBotW(){
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       twitter:
@@ -20,47 +20,47 @@ export function ZeldaBotW(){
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End twitter
       facebook:
       {
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       } ,  // End facebook
       linkedIn:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End linkedIn
       github:
         {
           NavTitle: '',
           order: 1, //For Sorting
           url: '',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         } ,  // End github
       wikipedia:
       {
         NavTitle: 'Zelda Wikipedia',
         order: 1, //For Sorting
         url: 'https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild',
-        codeType: '', //Used to determine what functions to have avaialble
+        objectType: '', //Used to determine what functions to have avaialble
       },  // End wikipedia
       webSites: [
         {
           NavTitle: 'Zelda.com',
           order: 1, //For Sorting
           url: 'https://www.zelda.com/breath-of-the-wild/',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         },{
             NavTitle: '',
             order: 1, //For Sorting
             url: '',
-            codeType: 'TBD', //Used to determine what functions to have avaialble
+            objectType: 'TBD', //Used to determine what functions to have avaialble
           }        
       ],
       youtube: {
@@ -72,17 +72,17 @@ export function ZeldaBotW(){
             NavTitle: 'Nintendo YouTube',
             objectType: 'User', //user,Channel, Playlist, Videos, Video
             objectID: 'Nintendo', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
         },{
             NavTitle: 'BotW PlayList',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PL2JiZAV5BmDULhRvaW7CgwicEUIgKqQ4N', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: 'Stampy\`s BotW',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLEZiAg2bYC7nXdTKT4sBqU5RRZa7ShTsD', //Used to determine what functions to have avaialble
-            objectUrl: '', // to be used as generic link if no API key is given
+            url: '', // to be used as generic link if no API key is given
           }
         ] // End YouTube items
       }, // End YouTube

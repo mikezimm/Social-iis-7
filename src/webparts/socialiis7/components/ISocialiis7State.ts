@@ -39,6 +39,12 @@ export interface IUser {
     LoginName?: string;
 }
 
+export interface IListEntities {
+    listEntites: IEntity[];
+    entityTitles: string[];
+
+}
+
 export interface ILoadData {
     Entities1: IEntity[];
     Entities2: IEntity[];
@@ -50,7 +56,13 @@ export interface ILoadData {
     userEntities2: IEntity[];
     userEntities3: IEntity[];
 
-    localItems: any;
+    localItems?: any;
+    localEntities?: IEntity[];
+    localEntityTitles?: string[];
+    
+    masterItems?: any;
+    masterEntities?: IEntity[];
+    masterEntityTitles?: string[];
 
     allEntities: IEntity[];
     allEntityKeywords: string[];
@@ -79,6 +91,11 @@ export interface ISocialiis7State {
     // 2 - Source and destination list information
     useLocalList?: Boolean;
     useMasterList?: Boolean;
+    hardCodedLoaded?: Boolean;
+    localListLoaded?: Boolean;
+    masterListLoaded?: Boolean;
+    allLoaded: Boolean;
+    loadOrder?: string[];
     localListURL?: string; //Get from list item  
     masterListURL?: string; //Corporate or Central list url
     localListFilter?: string; //Get from list item

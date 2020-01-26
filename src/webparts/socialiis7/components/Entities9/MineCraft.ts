@@ -12,7 +12,7 @@ export function MineCraft(){
         NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function MineCraft(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
@@ -28,7 +28,7 @@ export function MineCraft(){
       NavTitle: '',
       order: 1, //For Sorting
       url: '',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -36,7 +36,7 @@ export function MineCraft(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -44,7 +44,7 @@ export function MineCraft(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -52,7 +52,7 @@ export function MineCraft(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -64,22 +64,22 @@ export function MineCraft(){
           NavTitle: '',
           objectType: 'User', //user,Channel, Playlist, Videos, Video
           objectID: 'stampylonghead', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Stampy\'s Lovely World',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PLEZiAg2bYC7ngh-_Z_ruvzSfn1KPQRL5V', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Stampy\'s Funland',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PLEZiAg2bYC7nOHBB_VqGYe1CdaYD-eorq',
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube

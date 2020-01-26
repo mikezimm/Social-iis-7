@@ -111,7 +111,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
                 navElements = newSection[key].map((item) => {
                     //console.log('buildNavigationForWeb 1a:',item );
-                    if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
+                    if ( item.objectID.length === 0 && item.url.length === 0 ) { return null; } else {
 
                         let navKey = Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.NavTitle);
                         if ( navKeys.indexOf(navKey) > -1 ) { return null; } else {
@@ -156,7 +156,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             } else if ( key === 'channels' || key === 'playLists' ) {
                 navElements = newSection[key].map((item) => {
                     //console.log('buildNavigationForWeb 1a:',item );
-                    if ( item.objectID.length === 0 && item.objectUrl.length === 0 ) { return null; } else {
+                    if ( item.objectID.length === 0 && item.url.length === 0 ) { return null; } else {
 
                         let navKey = Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(item.NavTitle);
                         if ( navKeys.indexOf(navKey) > -1 ) { return null; } else {
@@ -227,55 +227,16 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
             if ( !objectID && !url ) { return navigation; }
 
             //objectID is not filled out, try to get from url.
-            if ( !objectID || objectID.length === 0 ) {
-
-                if ( url.length > 0 ) { 
-                    //Can't get this regex to work :(    [^/]+(?=/$|$)     https://stackoverflow.com/a/8798292
-                    //Remove last / from url 
-                    objectID = url.slice(-1) === '/' ? url.slice(0, -1) : url; //
-                    //Then get accountName from previous /
-                    objectID = objectID.slice(objectID.lastIndexOf('/') + 1 );
-                    //console.log('facebook objectID: ', objectID);
-                }
-
-                } else if ( url.length === 0 && objectID.length > 0 ) { 
-                    //    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
-
-                    if ( sectionName === 'facebook' ){
-                        url = 'https://www.facebook.com/';
-
-                    } else if ( sectionName === 'twitter' ){
-                        url = 'https://www.twitter.com/';
-
-                    } else if ( sectionName === 'stackExchange' ){
-                        url = 'https://sharepoint.stackExchange.com/users/401/';
-                        
-                    } else if ( sectionName === 'github' ){
-                        url = 'https://github.com/';
-                        
-                    } else if ( sectionName === 'instagram' ){
-                        url = 'https://www.instagram.com/';
-                        
-                    } else if ( sectionName === 'linkedIn' ){
-                        url = 'https://www.linkedin.com/in/';
-
-                    } else if ( sectionName.indexOf('wikipedia') > -1 ){
-                        url = 'https://en.wikipedia.org/wiki/';
-
-                    }
-
-                    url += objectID;
-
-            }
+            let obj = getPropsFromObjectInfo(newSection.NavTitle, sectionName, null, objectID, url);
 
             return {
-                name: newSection.NavTitle,
-                key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(newSection.NavTitle),
-                url: url,
+                name: obj.NavTitle,
+                key: Entity.titleKey + '||||' + sectionName + '||||' + makeKeyFromString(obj.NavTitle),
+                url: obj.url,
                 onClick: onNavClick,
                 mediaSource: sectionName,
                 objectType: 'user',
-                objectID: objectID,
+                objectID: obj.objectID,
             };
 
         } else { //This is expected to be an array like websites
@@ -319,6 +280,81 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
     }
     //console.log('buildNavigationForWeb youtube navigation4:',navigation );  
     return navigation;
+
+}
+
+
+/**
+ * getPropsFromObjectInfo() takes a partial nav element and fills in the blanks with objectID and urls.
+ * @param NavTitle 
+ * @param mediaSource 
+ * @param objectType 
+ * @param objectID 
+ * @param url 
+ */
+export function getPropsFromObjectInfo(NavTitle: string, mediaSource: string, objectType:string, objectID: string, url: string) {
+    
+    if (NavTitle == null ) { NavTitle = ''; }
+    if (mediaSource == null ) { mediaSource = ''; }
+    if (url == null ) { url = ''; }
+    if (objectType == null ) { objectType = ''; }
+    if (objectID == null ) { objectID = ''; }
+    if (url == null ) { url = ''; }
+
+    //Standardize keys
+    if (mediaSource.indexOf('web') > -1) { mediaSource = 'webSites'; }
+
+    if ( objectID.length === 0 ) { 
+
+        if ( url.length > 0 ) { 
+            //Can't get this regex to work :(    [^/]+(?=/$|$)     https://stackoverflow.com/a/8798292
+            //Remove last / from url 
+            objectID = url.slice(-1) === '/' ? url.slice(0, -1) : url; //
+            //Then get accountName from previous /
+            objectID = objectID.slice(objectID.lastIndexOf('/') + 1 );
+            //console.log('facebook objectID: ', objectID);
+        }
+
+    } else if ( url.length === 0 && objectID.length > 0 ) { 
+            //    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
+
+        if ( mediaSource === 'facebook' ){
+            url = 'https://www.facebook.com/';
+
+        } else if ( mediaSource === 'twitter' ){
+            url = 'https://www.twitter.com/';
+
+        } else if ( mediaSource === 'stackExchange' ){
+            url = 'https://sharepoint.stackExchange.com/users/401/';
+            
+        } else if ( mediaSource === 'github' ){
+            url = 'https://github.com/';
+            
+        } else if ( mediaSource === 'instagram' ){
+            url = 'https://www.instagram.com/';
+            
+        } else if ( mediaSource === 'linkedIn' ){
+            url = 'https://www.linkedin.com/in/';
+
+        } else if ( mediaSource.indexOf('wikipedia') > -1 ){
+            url = 'https://en.wikipedia.org/wiki/';
+
+        }
+
+        url += objectID;
+
+    }
+
+    let obj = {
+        NavTitle: NavTitle,
+        mediaSource: mediaSource,
+        objectType: objectType,
+        objectID: objectID,
+        url: url,        
+    };
+
+    return obj;
+
 
 }
 

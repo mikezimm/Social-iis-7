@@ -213,4 +213,4 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
       return null;
     }
   }
-  }
+}

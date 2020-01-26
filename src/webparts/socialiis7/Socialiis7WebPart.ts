@@ -137,6 +137,9 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         localListURL: this.properties.localListURL, //Get from list item  
         masterListURL: this.properties.masterListURL, //Get from list item  
 
+        localListFilter: this.properties.localListFilter,
+        masterListFilter: this.properties.masterListFilter,
+
         sourceListTitle: this.properties.sourceListTitle,  // Static Name of list (for URL) - used for links and determined by first returned item
 
       

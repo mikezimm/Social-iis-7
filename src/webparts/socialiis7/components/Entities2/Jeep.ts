@@ -12,7 +12,7 @@ export function Jeep(){
         NavTitle: 'Someone\'s Blog',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function Jeep(){
         NavTitle: 'Twitter for Jeep',
         order: 1, //For Sorting
         url: 'https://twitter.com/jeep',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
@@ -28,7 +28,7 @@ export function Jeep(){
       NavTitle: 'FaceBook Jeep',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/jeep',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -36,7 +36,7 @@ export function Jeep(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -44,7 +44,7 @@ export function Jeep(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -52,7 +52,7 @@ export function Jeep(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     youtube: {
@@ -64,22 +64,22 @@ export function Jeep(){
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'World Surf League Locals Tour',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PLvULN5PwSSrt4iuIfcSO4FX_yLdW7gkzi', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube
@@ -88,7 +88,7 @@ export function Jeep(){
           NavTitle: 'Jeep Instagram',
           order: 1, //For Sorting
           url: 'https://www.instagram.com/jeep/',
-          codeType: 'TBD', //Used to determine what functions to have avaialble
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ,
 

@@ -12,7 +12,7 @@ export function NHSTA(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ],
     twitter: 
@@ -20,7 +20,7 @@ export function NHSTA(){
         NavTitle: 'Twitter',
         order: 1, //For Sorting
         url: 'https://twitter.com/NHTSAgov',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End twitter
     facebook: 
@@ -28,7 +28,7 @@ export function NHSTA(){
       NavTitle: 'Facebook',
       order: 1, //For Sorting
       url: 'https://www.facebook.com/NHTSA/',
-      codeType: 'TBD', //Used to determine what functions to have avaialble
+      objectType: 'TBD', //Used to determine what functions to have avaialble
     }
     ,  // End facebook
     linkedIn: 
@@ -36,7 +36,7 @@ export function NHSTA(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
     github: 
@@ -44,7 +44,7 @@ export function NHSTA(){
         NavTitle: '',
         order: 1, //For Sorting
         url: '',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End github
     webSites: [
@@ -52,27 +52,27 @@ export function NHSTA(){
         NavTitle: 'NHTSA.gov',
         order: 1, //For Sorting
         url: 'https://www.nhtsa.gov',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: 'NHTSA Ratings',
         order: 1, //For Sorting
         url: 'https://www.nhtsa.gov/ratings',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: 'NHTSA Recalls',
         order: 1, //For Sorting
         url: 'https://www.nhtsa.gov/recalls',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: 'safecar.gov 5 star ratings',
         order: 1, //For Sorting
         url: 'https://www.safercar.gov/Safety+Ratings',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       },{
         NavTitle: 'Takata Recall info',
         order: 1, //For Sorting
         url: 'https://datahub.transportation.gov/Automobiles/Takata-Recall-Air-Bags-Repaired-Remaining-by-Manuf/kdn4-w5z3',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
 
       
@@ -86,27 +86,27 @@ export function NHSTA(){
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Distracted Driving',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PL2GlXO1j4M734mT_Q4nxsle5UhfR-nxUG', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Victim\'s Stories',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PL2GlXO1j4M710fnrcOSAQUn3WeNlZkBI2', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: 'Newer Cars are Safer',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
           objectID: 'PL2GlXO1j4M71HXh-KNeh6F1a5nBdZZn5p', //Used to determine what functions to have avaialble
-          objectUrl: '', // to be used as generic link if no API key is given
+          url: '', // to be used as generic link if no API key is given
         }
 
         
@@ -118,7 +118,7 @@ export function NHSTA(){
         NavTitle: 'Instagram',
         order: 1, //For Sorting
         url: 'https://www.instagram.com/nhtsagov/',
-        codeType: 'TBD', //Used to determine what functions to have avaialble
+        objectType: 'TBD', //Used to determine what functions to have avaialble
       }
     ,  // End linkedIn
 
