@@ -18,8 +18,9 @@ export function getBrowser(validTypes,changeSiteIcon){
  * @param theProps 
  * @param theState 
  */
-export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7State, success: string) {
+export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7State, success: string, consoleNote: string) {
 
+    console.log('saveAnalytics Location: ' + consoleNote);
     //Do nothing if either of these strings is blank
     if (!theProps.analyticsList) { return ; }
     if (!theProps.analyticsWeb) { return ; }
@@ -28,8 +29,10 @@ export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7S
         //The current site is not in the expected tenant... skip analytics.
         console.log('the analyticsWeb is not in the same tenant...',theProps.analyticsWeb,theProps.tenant);
         return ;
+
+    } else if ( theState.lastEvent === 'Not Loaded' ) { console.log('saveAnalytics Not Loaded',theProps,theState);
     } else if ( !theState.endTime ) { //console.log('EndTime not available yet',theState);
-    } else if ( success === 'Error' && !theProps.analyticsError ) { console.log('saveAnalytics Errors disabled',theProps,theState);
+    } else if ( success.indexOf('Error') > -1  && !theProps.analyticsError ) { console.log('saveAnalytics Errors disabled',theProps,theState);
     } else if ( theState.lastEvent === 'Constructor' && !theProps.analyticsLoad ) { console.log('saveAnalytics Constructor disabled',theProps,theState);
     } else if ( theState.lastEvent === 'Entity Click' && !theProps.analyticsEntity ) { console.log('saveAnalytics Entity disabled',theProps,theState);
     } else if ( theState.lastEvent === 'Nav Click' && !theProps.analyticsNav ) { console.log('saveAnalytics Nav disabled',theProps,theState);

@@ -122,7 +122,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       selectedNavKey: 'public constructor: ' + selectedEntity.titleKey,
       loadData: loadData,
       endTime: null,
-      lastEvent: 'Constructor',
+      lastEvent: allLoaded ? 'Constructor' : 'Not Loaded',
       hardCodedLoaded: true,
       localListLoaded: localListLoaded,
       masterListLoaded: masterListLoaded,
@@ -183,7 +183,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   public render(): React.ReactElement<ISocialiis7Props> {
 
-    saveAnalytics(this.props,this.state, 'No Error');
+    if ( this.state.allLoaded ) { saveAnalytics(this.props,this.state, 'No Error', 'Public Render'); }
     console.log('Public Render: ', this.props, this.state);
     
     /**
@@ -254,7 +254,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     loadData = this._rebuildEntities(topics, loadData);
 
     let selectedEntity = loadData.subTopic1Entities[0];
-    let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+    let selectedNavItem = loadData.subTopic1Entities[0] ? loadData.subTopic1Entities[0].navigation[0] : null;
+
     let pivots : IMyPivots = this._rebuildPivots(loadData);
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
@@ -661,9 +662,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         this._saveListItemsToState( localOrMaster, theseEntities );
 
       } catch (e) {
+        saveAnalytics(this.props,this.state, 'Load ' + localOrMaster + ' Error', 'Load List Error');
         console.error('load error');
         console.error(e);
-        
+
       }
     }
 
@@ -703,8 +705,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
    loadData.allTopics = buildEntityKeywords(loadData.allEntities, "keywords");
 
    let selectedEntity = loadData.subTopic1Entities[0];
-   let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
-
+   let selectedNavItem = loadData.subTopic1Entities[0] ? loadData.subTopic1Entities[0].navigation[0] : null;
 
    if ( allLoaded ) {
      pivots = this._rebuildPivots(loadData);
@@ -726,7 +727,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
      selectedNavItem: selectedNavItem,
      endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
      topics: topics,
-     lastEvent: 'Load ' + localOrMaster,
+     lastEvent: 'Loaded ' + localOrMaster,
      localListLoaded: localListLoaded,
      masterListLoaded: masterListLoaded,
      allLoaded: allLoaded,

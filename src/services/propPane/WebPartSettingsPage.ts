@@ -39,6 +39,11 @@ import {
                 options: socialiis7OptionsGroup.sampleTopicChoices,
               }),
 
+              PropertyPaneTextField('mainTopic', {
+                label: 'Or type in Main Topic',
+                description: 'Proper cased text to filter all items by',
+              }),
+
               PropertyPaneTextField('subTopic1', {
                 label: 'Sub Topic1',
                 description: 'This is the left most set of Pivots',

@@ -27,9 +27,10 @@
       "subTopic1": "SIG",
       "subTopic2": "MSFT",
       "subTopic3": "MVP",
+
       "analyticsLoad": true,
-      "analyticsEntity": true,
-      "analyticsNav": true,
+      "analyticsEntity": false,
+      "analyticsNav": false,
       "analyticsError": true,
 
 
@@ -52,7 +53,19 @@
       "mainTopic": "ttp",
       "subTopic1": "Gaming",
       "subTopic2": "Animals",
-      "subTopic3": "PS"
+      "subTopic3": "PS",
+
+      "analyticsLoad": true,
+      "analyticsEntity": false,
+      "analyticsNav": false,
+      "analyticsError": true,
+
+
+      "useMasterList": true,
+      "masterListURL": "",
+
+      "useLocalList": true,
+      "localListURL": "https://mcclickster.sharepoint.com/sites/Templates/Socialiis/Lists/EntityList"
     }
   },{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
@@ -66,7 +79,18 @@
       "mainTopic": "PC",
       "subTopic1": "PCBuild",
       "subTopic2": "Gaming",
-      "subTopic3": "OpenWorld"
+      "subTopic3": "OpenWorld",
+
+      "analyticsLoad": true,
+      "analyticsEntity": false,
+      "analyticsNav": false,
+      "analyticsError": true,
+
+      "useMasterList": true,
+      "masterListURL": "",
+
+      "useLocalList": true,
+      "localListURL": "https://mcclickster.sharepoint.com/sites/Templates/Socialiis/Lists/EntityList"
     }
   }]
 }

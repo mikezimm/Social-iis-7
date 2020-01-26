@@ -58,7 +58,7 @@ export class IntroPage {
               }),
               PropertyPaneTextField('masterListFilter', {
                 label: 'Master List Rest Filter',
-                description: 'Rest style query',
+                description: 'Rest style query, Main Topic is added by default',
               }),
             ]}, // this group
 
@@ -79,9 +79,22 @@ export class IntroPage {
                 }),
                 PropertyPaneTextField('localListFilter', {
                   label: 'Local List Rest Filter',
-                  description: 'Rest style query',
+                  description: 'Rest style query, Main Topic is added by default',
                 }),
               ]}, // this group
+              {
+
+              groupFields: [
+                PropertyPaneLabel('', {
+                  text: 'Equals filter syntax:  Title eq \'FindMe\'',
+                }),
+                PropertyPaneLabel('', {
+                  text: 'Contains string filter syntax:  substringof(\'FindMe\',StaticColumnName)',
+                }),
+              ]}, // this group
+          
+
+              //substringof('active',keywords)
 /*
         { isCollapsed: !webPartProps.advancedPivotStyles,
           groupFields: [
