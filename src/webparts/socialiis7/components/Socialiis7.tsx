@@ -21,7 +21,8 @@ import { pivotOptionsGroup, } from '../../../services/propPane';
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import {
-  buildEntities,buildEntityKeywords, getEntitiesForThis, buildUserEntities, IsValidJSONString, getPropsFromObjectInfo
+  buildEntities,buildEntityKeywords, getEntitiesForThis, buildUserEntities, IsValidJSONString, getPropsFromObjectInfo,
+  addOtherProps
 
 } from './Entities1/1EntityBuilder';
 import {  buildEntities2} from './Entities2/1EntityBuilder';
@@ -40,20 +41,6 @@ import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
 import { IAboutInfoProps } from './AboutInfo';
 import AboutInfo from './AboutInfo';
-
-import AboutPage from './AboutInfo';
-
-/**
- * Typical Youtube embed
- * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- * 
- * frameborder="0" has to be removed.
- * allowfullscreen has to be removed but you can add "; fullscreen" into the allow= string
- * 
- * working example:
- * <iframe width="560" height="315" src="https://www.youtube.com/embed/ddPWBxh6EX4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
- * 
- */
 
 export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocialiis7State> {
 
@@ -144,10 +131,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       
     };
 
-    // because our event handler needs access to the component, bind 
-    //  the component to the function so it can get access to the
-    //  components properties (this.props)... otherwise "this" is undefined
-
     /*
         this.onLinkClick = this.onLinkClick.bind(this);
     */
@@ -215,20 +198,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let entryOptions = choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this));
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
 
-        /*
-    */
-
-    /*
-    if (this.state.syncProjectPivotsOnToggle){
-      display1 = "block";
-      display2 = "none";
-      choice1 = this.state.projectMasterPriorityChoice;
-      choice2 = this.state.projectMasterPriorityChoice;
-    }
-*/
-
-    /*
-        */
     let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
       AboutInfo,
       {
@@ -237,7 +206,6 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       }
     );
 
-    
     const leftNavigation: React.ReactElement<IPageNavigatorProps > = React.createElement(
       PageNavigator,
       {
@@ -412,6 +380,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     loadData.subTopic3Entities = getEntitiesForThis(loadData.availSubTopicEntities, "keywords", topics.subTopic3);
     loadData.keysForTopic = buildEntityKeywords(loadData.entitiesForMainTopic, "keywords");
 
+
     return loadData;
 
   }
@@ -571,6 +540,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     }
 
+    if (thisListURL == null ) { thisListURL = ''; }
+    if (thisListFilter == null ) { thisListFilter = ''; }
+
     //Remove tenanat URL from list URL
     if ( useThisList && thisListURL ) {
       thisListURL = thisListURL.replace(this.props.tenant,'');
@@ -580,6 +552,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let selectCols: string = "*";
 
     let thisSort: string = "Title";
+    let thisSort2: string = "order0";
     let items;
     let entityTitles: string[] = [];
     let listEntites : IEntity[]= [];
@@ -589,141 +562,122 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       entityTitles: entityTitles,
     };
 
-    try {
+    if ( thisListURL.length > 0 ) {
+      try {
 
-      items = await sp.web.getList(thisListURL).items.filter(thisListFilter).orderBy(thisSort,true).get();
-      
-      let newEntity: IEntity = null;
-      let count = -1;
-      let entityKeys = [];
-      for (var j = 0; j < items.length; j++){
-        let thisItem = items[j];
-        if (entityTitles.indexOf(thisItem.Title) < 0 ) { 
-         // console.log('thisItem',thisItem);
+        items = await sp.web.getList(thisListURL).items.filter(thisListFilter).orderBy(thisSort,true).orderBy(thisSort2,true).get();
 
-          entityTitles.push(thisItem.Title);
-          newEntity = {
-            Title: thisItem.Title,
-            keywords: thisItem.keywords,
-            profilePic: thisItem.profilePic,
-          };
-          count ++;
-          entityKeys = [];
-          listEntites.push(newEntity);
-          //console.log('newEntity - new Entity',listEntites[count]);
-        }
+        let newEntity: IEntity = null;
+        let count = -1;
+        let entityKeys = [];
+        for (var j = 0; j < items.length; j++){
+          let thisItem = items[j];
+          if (entityTitles.indexOf(thisItem.Title) < 0 ) { 
 
-        let obj = getPropsFromObjectInfo(thisItem.NavTitle, thisItem.mediaSource,thisItem.objectType, thisItem.objectID, thisItem.url);
+            let keywords = thisItem.keywords == null ? [] : thisItem.keywords.split(';');
+            
+            entityTitles.push(thisItem.Title);
+            newEntity = {
+              Title: thisItem.Title,
+              keywords: keywords,
+              profilePic: thisItem.profilePic,
+            };
+            count ++;
+            entityKeys = [];
+            listEntites.push(newEntity);
 
-        if (obj.mediaSource && obj.mediaSource.length > 0) {
-
-          let thisNavItem = {
-            NavTitle: obj.NavTitle,
-            url: obj.url,
-            objectType: obj.objectType,
-            objectID: obj.objectID,
-            mediaSource: obj.mediaSource,
-          };
-
-          let isCompleteNavItem = true;
-          if ( obj.mediaSource === "" ) { isCompleteNavItem = false; }
-          if ( obj.NavTitle === "" ) { isCompleteNavItem = false; }
-          if ( obj.url === "" && obj.objectID === "" ) { isCompleteNavItem = false; }
-
-          if ( isCompleteNavItem === true ) {
-
-            if (obj.mediaSource === 'youtube' || obj.mediaSource === 'webSites' || obj.mediaSource === 'blog') {
-              //These have arrays of objects in them
-  
-              //If key (mediaSource) does not yet exist, add
-              if (entityKeys.indexOf(obj.mediaSource) < 0 ) { 
-                //Key does not yet exist... Add key
-                listEntites[count][obj.mediaSource] = null;
-                entityKeys.push(obj.mediaSource);
-              }
-  
-              if (obj.mediaSource === 'youtube') {//youtube object has items key which is an array
-                if (listEntites[count][obj.mediaSource] == null) { 
-                  listEntites[count][obj.mediaSource] = {
-                    NavTitle: '',
-                    user: '',
-                    items: []
-                  };              
-                }
-                listEntites[count][obj.mediaSource]['items'].push(thisNavItem);
-  
-              } else { //other mediaSources are just an array
-                if (listEntites[count][obj.mediaSource] == null) { listEntites[count][obj.mediaSource] = []; }
-                listEntites[count][obj.mediaSource].push(thisNavItem);
-  
-              }
-  
-            } else { // These are single layer deep
-              listEntites[count][obj.mediaSource] = thisNavItem;
-  
-            }
           }
-          //asdfasdf
+
+          let obj = getPropsFromObjectInfo(thisItem.NavTitle, thisItem.mediaSource,thisItem.objectType, thisItem.objectID, thisItem.url);
+
+          if (obj.mediaSource && obj.mediaSource.length > 0) {
+
+            let thisNavItem = {
+              NavTitle: obj.NavTitle,
+              url: obj.url,
+              objectType: obj.objectType,
+              objectID: obj.objectID,
+              mediaSource: obj.mediaSource,
+            };
+
+            let isCompleteNavItem = true;
+            if ( obj.mediaSource === "" ) { isCompleteNavItem = false; }
+            if ( obj.NavTitle === "" ) { isCompleteNavItem = false; }
+            if ( obj.url === "" && obj.objectID === "" ) { isCompleteNavItem = false; }
+
+            if ( isCompleteNavItem === true ) {
+
+              if (obj.mediaSource === 'youtube' || obj.mediaSource === 'webSites' || obj.mediaSource === 'blog') {
+                //These have arrays of objects in them
+    
+                //If key (mediaSource) does not yet exist, add
+                if (entityKeys.indexOf(obj.mediaSource) < 0 ) { 
+                  //Key does not yet exist... Add key
+                  listEntites[count][obj.mediaSource] = null;
+                  entityKeys.push(obj.mediaSource);
+                }
+    
+                if (obj.mediaSource === 'youtube') {//youtube object has items key which is an array
+                  if (listEntites[count][obj.mediaSource] == null) { 
+                    listEntites[count][obj.mediaSource] = {
+                      NavTitle: '',
+                      user: '',
+                      items: []
+                    };              
+                  }
+                  listEntites[count][obj.mediaSource]['items'].push(thisNavItem);
+    
+                } else { //other mediaSources are just an array
+                  if (listEntites[count][obj.mediaSource] == null) { listEntites[count][obj.mediaSource] = []; }
+                  listEntites[count][obj.mediaSource].push(thisNavItem);
+    
+                }
+    
+              } else { // These are single layer deep
+                listEntites[count][obj.mediaSource] = thisNavItem;
+    
+              }
+            }
+            //asdfasdf
+          }
+
         }
 
-        //console.log('localEntites[count] - extra line',localEntites[count]);
+        let completeListEntites = [];
+        
+        for (let ent1 of listEntites ){
+          let newEnt = addOtherProps(ent1,this.onNavClick );
+          completeListEntites.push(newEnt);
 
-        //console.log('newEntity',newEntity);
+        }
+
+        theseEntities = {
+          listEntites: completeListEntites,
+          entityTitles: entityTitles,
+        };
+
+        //At this point we should update state, rebuild pivots etc...
+
+        this._saveListItemsToState( localOrMaster, theseEntities );
+
+      } catch (e) {
+        console.error('load error');
+        console.error(e);
+        
       }
-      
-      //console.log('entityTitles',entityTitles);
-      //console.log('_getListItems localEntites:', localEntites);
-      // Build JSON here
-
-      theseEntities = {
-        listEntites: listEntites,
-        entityTitles: entityTitles,
-      };
-
-      //At this point we should update state, rebuild pivots etc...
-
-      this._saveListItemsToState( localOrMaster, theseEntities );
-
-      
-
-    } catch (e) {
-      console.error('load error');
-      console.error(e);
-      
-      
     }
-
-      //return items;
-    /*  THIS WORKS!    Must be inside:   private _getListItems(): void {
-    sp.web.getList(localListURL).items.filter(localListFilter).orderBy(localSort,true).get().then(response => {
-      console.log('response:', response);
-
-    }).catch((e) => {
-      console.log('ERROR:  catch sp.web.currentUser', e);
-
-    });
-*/
-
-//    let projectRestFilter: string = "Team eq '" + 20 + "'";
-//    let trackTimeRestFilter: string = "User eq '" + 20 + "'";
 
   }
 
   private _saveListItemsToState (localOrMaster: string, theseEntities: IListEntities){
 
-    /*
-          theseEntities = {
-        listEntites: listEntites,
-        entityTitles: entityTitles,
-      };
-    */
    let topics : ITopics = this.props.topics;
    let currentPivotSet = "keysForTopic";
 
    let pivots : IMyPivots = null;
    let currentPivots : IPivot[][] =  null;
    let loadData = this.state.loadData;
-
+   
    let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
    let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
 
@@ -740,13 +694,22 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
    let allLoaded = ( localListLoaded && masterListLoaded ) ? true : false;
 
+   loadData.allEntities = loadData.allEntities.concat(theseEntities.listEntites);
+
+
+   loadData = this._rebuildEntities(topics, loadData);
+
+   loadData.allEntityKeywords = buildEntityKeywords(loadData.allEntities, "keywords");
+   loadData.allTopics = buildEntityKeywords(loadData.allEntities, "keywords");
+
+   let selectedEntity = loadData.subTopic1Entities[0];
+   let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
+
+
    if ( allLoaded ) {
      pivots = this._rebuildPivots(loadData);
      currentPivots = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
    }
-
-   let selectedEntity = loadData.subTopic1Entities[0];
-   let selectedNavItem = loadData.subTopic1Entities[0].navigation[0];
 
    let loadOrder: string[] = this.state.loadOrder;
    loadOrder.push(localOrMaster);
