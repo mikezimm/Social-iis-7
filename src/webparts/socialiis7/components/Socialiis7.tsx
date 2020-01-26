@@ -41,6 +41,7 @@ import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
 
 import { IAboutInfoProps } from './AboutInfo';
 import AboutInfo from './AboutInfo';
+import * as myErrors from './ErrorMessages';
 
 export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocialiis7State> {
 
@@ -109,6 +110,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
+      showTips: "yes",
       description: "desc goes here",
       pivots: pivots,
       selectedMedia: '',
@@ -218,7 +220,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       }
     );
 
+    //Error Messages imported from PivotTiles
+    let buildTips = myErrors.buildTips(this.props,this.state);
+    let noListFound = myErrors.NoListFound(this.props,this.state);
+    let noItemsFound = myErrors.NoItemsFound(this.props,this.state);
+    let loadingSpinner = myErrors.LoadingSpinner(this.state);
+
     return (
+
       <div className={ styles.socialiis7 }>
         <div className={ styles.container }>
           <div className={ styles.row }>
@@ -238,6 +247,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           </div>
 
+          { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+
+          <div className={styles.tableRow}>
+            { ( loadingSpinner ) }
+            { ( noListFound )}
+            { ( noItemsFound )}
+
+          </div>
         </div>
       </div>
     );
@@ -308,9 +325,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let testUserEntities2 = IsValidJSONString(this.props.userEntities2);
     let testUserEntities3 = IsValidJSONString(this.props.userEntities3);
 
-    let userEntities1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1) : [];
-    let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2) : [];
-    let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3) : [];
+    let userEntities1 = testUserEntities1 ? buildUserEntities(this.onNavClick, this.props.userEntities1,'User Props 1') : [];
+    let userEntities2 = testUserEntities2 ? buildUserEntities(this.onNavClick, this.props.userEntities2,'User Props 2') : [];
+    let userEntities3 = testUserEntities3 ? buildUserEntities(this.onNavClick, this.props.userEntities3,'User Props 3') : [];
 
     /*
     listEntites: listEntites,
@@ -647,7 +664,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         let completeListEntites = [];
         
         for (let ent1 of listEntites ){
-          let newEnt = addOtherProps(ent1,this.onNavClick );
+          let newEnt = addOtherProps(ent1,this.onNavClick, localOrMaster + ' List' );
           completeListEntites.push(newEnt);
 
         }

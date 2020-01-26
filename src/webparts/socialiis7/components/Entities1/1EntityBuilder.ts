@@ -14,15 +14,16 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities(onNavClick ) {
     let Entities : IEntity[] = [];
     //console.log('ents', ents);
-    Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick ) );
-    Entities.push( addOtherProps(ents.DavidWarner(),onNavClick ) );
-    Entities.push( addOtherProps(ents.HugoBernier(),onNavClick ) );
-    Entities.push( addOtherProps(ents.JeffTeper(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick ) );
-    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick ) );
-    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick ) );
+    let thisSource = 'Entities1';
+    Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.DavidWarner(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.HugoBernier(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.JeffTeper(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick,thisSource ) );
+    Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick, thisSource ) );
     
     return Entities;
 }
@@ -45,17 +46,17 @@ export function IsValidJSONString(str) {
 }
 
 
-export function buildUserEntities(onNavClick , userEntity: string) {
+export function buildUserEntities(onNavClick , userEntity: string, source: string) {
     let Entities : IEntity[] = [];
 
     let newEntity = JSON.parse(userEntity);
 
     if ( userEntity.indexOf('[') !== 0 ) {
         // assume it's single item
-        Entities.push( addOtherProps(newEntity, onNavClick ) );
+        Entities.push( addOtherProps(newEntity, onNavClick, source ) );
     } else {
         for (let ent of newEntity) {
-            Entities.push( addOtherProps(ent, onNavClick ) );
+            Entities.push( addOtherProps(ent, onNavClick, source ) );
         }
     }
 
@@ -371,10 +372,11 @@ function makeKeyFromString(str : string){
 
 }
 
-export function  addOtherProps(Entity : IEntity, onNavClick ) {
+export function  addOtherProps(Entity : IEntity, onNavClick , source: string) {
 
     let result : IEntity = cloneDeep(Entity);
     result.titleKey = makeKeyFromString(result.Title);
+    result.source = source;
     Entity.titleKey = result.titleKey;
     if ( result.keywords.indexOf(result.Title) < 0) { result.keywords.push(result.Title);}
 

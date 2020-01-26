@@ -10,31 +10,32 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 
 export function buildEntities2(onNavClick ) {
     let Entities : IEntity[] = [];
+    let thisSource: string = 'Entities2';
     //console.log('ents', ents);
 
     //GM
-    Entities.push(addOtherProps(ents.GM(), onNavClick));
-    Entities.push(addOtherProps(ents.Chevy(), onNavClick));
-    Entities.push(addOtherProps(ents.Corvette(), onNavClick));
-    Entities.push(addOtherProps(ents.Camaro(), onNavClick));
+    Entities.push(addOtherProps(ents.GM(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Chevy(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Corvette(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Camaro(), onNavClick, thisSource));
 
     //FCA
-    Entities.push(addOtherProps(ents.FCA(), onNavClick));
-    Entities.push(addOtherProps(ents.Jeep(), onNavClick));
+    Entities.push(addOtherProps(ents.FCA(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Jeep(), onNavClick, thisSource));
 
     //Ford
-    Entities.push(addOtherProps(ents.Ford(), onNavClick));
+    Entities.push(addOtherProps(ents.Ford(), onNavClick, thisSource));
 
     //Tesla
-    Entities.push(addOtherProps(ents.Tesla(), onNavClick));
+    Entities.push(addOtherProps(ents.Tesla(), onNavClick, thisSource));
 
     //EU
-    Entities.push(addOtherProps(ents.Bentley(), onNavClick));
-    Entities.push(addOtherProps(ents.LandRover(), onNavClick));
-    Entities.push(addOtherProps(ents.VW(), onNavClick));
+    Entities.push(addOtherProps(ents.Bentley(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.LandRover(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.VW(), onNavClick, thisSource));
 
     //Asia
-    Entities.push(addOtherProps(ents.Tata(), onNavClick));
+    Entities.push(addOtherProps(ents.Tata(), onNavClick, thisSource));
 
 
     return Entities;

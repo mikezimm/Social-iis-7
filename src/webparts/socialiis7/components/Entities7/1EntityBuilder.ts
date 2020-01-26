@@ -9,14 +9,15 @@ export function buildEntities7(onNavClick ) {
 
     let Entities : IEntity[] = [];
     //console.log('ents', ents);
-    Entities.push(addOtherProps(ents.BlackCats(), onNavClick));
-    Entities.push(addOtherProps(ents.ClashOfClans(), onNavClick));
-    Entities.push(addOtherProps(ents.DarkSouls(), onNavClick));
-    Entities.push(addOtherProps(ents.Lions(), onNavClick));
-    Entities.push(addOtherProps(ents.SiteDesigns(), onNavClick));
-    Entities.push(addOtherProps(ents.ListFormatting(), onNavClick));
-    Entities.push(addOtherProps(ents.PnPPowerShell(), onNavClick));
-    Entities.push(addOtherProps(ents.ZeldaBotW(), onNavClick));
+    let thisSource: string = 'Entities7';
+    Entities.push(addOtherProps(ents.BlackCats(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.ClashOfClans(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.DarkSouls(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Lions(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.SiteDesigns(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.ListFormatting(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.PnPPowerShell(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.ZeldaBotW(), onNavClick, thisSource));
 
     return Entities;
 }

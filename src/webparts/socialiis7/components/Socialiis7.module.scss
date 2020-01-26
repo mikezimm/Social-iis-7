@@ -1,6 +1,45 @@
+
+//From PivotTiles.module.scss
+//@import '../../../../../node_modules/office-ui-fabric-react/dist/sass/_References';
+
+//From original Socialiis7 build
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .socialiis7 {
+
+  // VVVVVV From PivotTiles.module.scss
+  
+  .showErrorMessage {
+    display:"";
+    padding-left: 40px;
+    padding-bottom: 40px;
+    width: 900px;
+    max-width: 1200px;
+  }
+
+  .showErrorMessageNoPad {
+    display:"";
+    //padding-bottom: 40px;
+    color: $ms-color-themePrimary;
+  }
+
+
+  .hideMe {
+    display:none;
+  }
+
+  .rowNoPad {
+    @include ms-Grid-row;
+  }
+
+  .tableRow {
+    display: table-row
+  }
+
+  // ^^^^^^  From PivotTiles.module.scss
+
+
+
   .container {
     max-width: 1200px;
     margin: 0px auto;
@@ -20,7 +59,7 @@
     @include ms-fontColor-white;
     background-color: $ms-color-white;
     padding: 20px;
-    width: 700px;
+    max-width: 700px;
   }
 
   .floatLeft {
