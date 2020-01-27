@@ -38,6 +38,7 @@ import * as choiceBuilders from './choiceFieldBuilder';
 
 import PageNavigator from './Navigator/PageNavigator';
 import { IPageNavigatorProps } from './Navigator/IPageNavigatorProps';
+import MyCommandBar from './CommandBar/CommandBar';
 
 import { IAboutInfoProps } from './AboutInfo';
 import AboutInfo from './AboutInfo';
@@ -110,7 +111,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
-      showTips: "yes",
+      showTips: "none",
       description: "desc goes here",
       pivots: pivots,
       selectedMedia: '',
@@ -130,11 +131,27 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       masterListLoaded: masterListLoaded,
       allLoaded: allLoaded,
       loadOrder: ['Constructor'],
+      setLayout: 'this.props.setSize',
       
     };
 
+    this.toggleTips = this.toggleTips.bind(this);
+    this.searchMe = this.searchMe.bind(this);
+    this.toggleLayout = this.toggleLayout.bind(this);
     /*
-        this.onLinkClick = this.onLinkClick.bind(this);
+
+      toggleTips?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
+      searchMe?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
+      toggleLayout?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
+
+
+      this.onLinkClick = this.onLinkClick.bind(this);
+      this.toggleTips = this.toggleTips.bind(this);
+      this.minimizeTiles = this.minimizeTiles.bind(this);
+      this.searchMe = this.searchMe.bind(this);
+      this.showAll = this.showAll.bind(this);
+      this.toggleLayout = this.toggleLayout.bind(this);
+      this.onChangePivotClick = this.onChangePivotClick.bind(this);
     */
 
   }
@@ -159,6 +176,23 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       this._updateStateOnPropsChange({});
     }
 
+  }
+
+  public createCommandBarObject(){
+    let tipError = false;
+    if (this.state.itemsError || this.state.listError ){ tipError = true; }
+
+    let commandPart = 
+      <MyCommandBar
+          toggleTips= { this.toggleTips }
+          searchMe= { this.searchMe.bind(this) }
+          //showAll= { this.showAll.bind(this) }
+          toggleLayout= { this.toggleLayout.bind(this) }
+          commandClass = {(tipError ? 'warnTips' : '') }
+          setLayout = { this.state.setLayout }
+        />;
+
+      return commandPart;
   }
 
   public createPivotObject(currentPivots: IPivot[][], display){
@@ -186,7 +220,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public render(): React.ReactElement<ISocialiis7Props> {
 
     if ( this.state.allLoaded ) { saveAnalytics(this.props,this.state, 'No Error', 'Public Render'); }
-    console.log('Public Render: ', this.props, this.state);
+    console.log('Public Render: ', this.props, this.state, this.context);
     
     /**
      * this section was added to keep pivots in sync when syncProjectPivotsOnToggle === true
@@ -199,6 +233,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let entryOptions = this.props.navigationType === 'choice' ? choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this)) : '';
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
+    const stackFormHeaderTokens: IStackTokens = { childrenGap: 5 };    
 
     let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
       AboutInfo,
@@ -232,7 +267,14 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         <div className={ styles.container }>
           <div className={ styles.row }>
           <div className={styles.floatLeft}>
-          { this.createPivotObject(this.state.currentPivots, display1)  }
+
+            <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
+              { this.createCommandBarObject()  }
+              { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+              { this.createPivotObject(this.state.currentPivots, display1)  }
+
+            </Stack>
+
           </div>
           <Stack horizontal={true} horizontalAlign={"space-between"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
 
@@ -247,7 +289,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           </div>
 
-          { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+
 
           <div className={styles.tableRow}>
             { ( loadingSpinner ) }
@@ -789,6 +831,60 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     );
   }
 
+  
+  public toggleLayout = (item: any): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+
+    let setLayout = this.state.setLayout;
+
+    if (setLayout === "Card") {
+      setLayout = 'setSizeProp'; //this.props.setSize
+    } else if (setLayout === "List") {
+      setLayout = "Card";
+    } else {       setLayout = "List"; }
+
+    this.setState({
+      setLayout: setLayout,
+    });
+
+  } //End toggleTips  
+
+  public toggleTips = (item: any): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+
+    let newshowTips = this.state.showTips === 'none' ? 'yes' : 'none';
+
+    this.setState({
+      showTips: newshowTips,
+    });
+
+  } //End toggleTips  
+
+  private searchMe = (item: PivotItem): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+    let e: any = event;
+    console.log(e);
+    let searchType = "";
+    let newSearchShow =  e.altKey === true ? true : !this.state.searchShow;
+    let searchCount = 0; //this.state.lastFilteredTiles.length;
+    let searchWhere = this.state.searchWhere;
+    if (e.altKey) { 
+      searchType = "all";
+      newSearchShow = true;
+      searchCount = 0; //this.state.allTiles.length;
+      searchWhere = ' in all categories';
+    }
+    
+    console.log('newSearchShow: ', newSearchShow, searchType);
+    this.setState({
+      searchType: searchType,
+      searchShow: ( e.altKey === true ? true : !this.state.searchShow ),
+      searchCount: searchCount,
+      searchWhere: searchWhere,
+    });
+
+    
+  } //End searchMe
 
 }
 

@@ -108,7 +108,8 @@ export interface ISocialiis7State {
     // 4 - 
 
     // 5 - UI Defaults
-
+    setLayout?: string;
+    
     // 6 - User Feedback
 
     // 7 - Media Choices - Left Side bar
