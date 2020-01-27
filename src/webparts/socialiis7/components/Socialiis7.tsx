@@ -111,7 +111,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
-      showTips: "yes",
+      showTips: "none",
       description: "desc goes here",
       pivots: pivots,
       selectedMedia: '',
@@ -180,18 +180,17 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   public createCommandBarObject(){
     let tipError = false;
-    if (this.state.itemsError || this.state.listError ){ tipError = true }
+    if (this.state.itemsError || this.state.listError ){ tipError = true; }
 
     let commandPart = 
-    <MyCommandBar
+      <MyCommandBar
           toggleTips= { this.toggleTips }
           searchMe= { this.searchMe.bind(this) }
           //showAll= { this.showAll.bind(this) }
           toggleLayout= { this.toggleLayout.bind(this) }
           commandClass = {(tipError ? 'warnTips' : '') }
           setLayout = { this.state.setLayout }
-          
-        />
+        />;
 
       return commandPart;
   }
@@ -234,6 +233,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let entryOptions = this.props.navigationType === 'choice' ? choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this)) : '';
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
+    const stackFormHeaderTokens: IStackTokens = { childrenGap: 5 };    
 
     let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
       AboutInfo,
@@ -267,8 +267,13 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
         <div className={ styles.container }>
           <div className={ styles.row }>
           <div className={styles.floatLeft}>
-          { this.createPivotObject(this.state.currentPivots, display1)  }
-          { this.createCommandBarObject()  }
+
+            <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
+              { this.createCommandBarObject()  }
+              { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+              { this.createPivotObject(this.state.currentPivots, display1)  }
+
+            </Stack>
 
           </div>
           <Stack horizontal={true} horizontalAlign={"space-between"} tokens={stackFormRowsTokens}>{/* Stack for Buttons and Fields */}
@@ -284,7 +289,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
           </div>
 
-          { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+
 
           <div className={styles.tableRow}>
             { ( loadingSpinner ) }
@@ -835,8 +840,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     if (setLayout === "Card") {
       setLayout = 'setSizeProp'; //this.props.setSize
     } else if (setLayout === "List") {
-      setLayout = "Card"
-    } else {       setLayout = "List" }
+      setLayout = "Card";
+    } else {       setLayout = "List"; }
 
     this.setState({
       setLayout: setLayout,
@@ -867,10 +872,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       searchType = "all";
       newSearchShow = true;
       searchCount = 0; //this.state.allTiles.length;
-      searchWhere = ' in all categories'
+      searchWhere = ' in all categories';
     }
     
-    console.log('newSearchShow: ', newSearchShow, searchType)
+    console.log('newSearchShow: ', newSearchShow, searchType);
     this.setState({
       searchType: searchType,
       searchShow: ( e.altKey === true ? true : !this.state.searchShow ),

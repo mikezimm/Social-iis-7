@@ -46,7 +46,7 @@ export function buildTips(parentProps: ISocialiis7Props,parentState: ISocialiis7
   //if ( masterEntitiesLength === 0 && localEntitiesLength == 0 ) {  return '';  }
   if ( parentState.showTips !== "yes" ) {  return '';  }
   const theseTips = 
-  <div className={styles.rowNoPad}>
+  <div className={styles.showErrorMessageNoPad}>
       <div className={parentState.showTips === "yes" ? styles.showErrorMessage : styles.hideMe }>
 
         <h1>Topic Info - will eventually be hidden by default</h1>
