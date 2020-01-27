@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Socialiis7.module.scss';
-import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
+import { ISocialiis7Props, ITopics, IEntity, NonArrayNodes } from './ISocialiis7Props';
 import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData, IListEntities} from './ISocialiis7State';
 import { escape, cloneDeep } from '@microsoft/sp-lodash-subset';
 
@@ -197,7 +197,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let choice1 = this.state.loadStatus;
     let choice2 = this.state.loadStatus;
 
-    let entryOptions = choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this));
+    let entryOptions = this.props.navigationType === 'choice' ? choiceBuilders.creatEntryTypeChoices(this.props,this.state, this._updateEntryType.bind(this)) : '';
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
 
     let aboutMe: React.ReactElement<IAboutInfoProps > = React.createElement(
@@ -625,7 +625,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
             if ( isCompleteNavItem === true ) {
 
-              if (obj.mediaSource === 'youtube' || obj.mediaSource === 'webSites' || obj.mediaSource === 'blog') {
+              if ( NonArrayNodes.indexOf(obj.mediaSource) < 0 ) {
                 //These have arrays of objects in them
     
                 //If key (mediaSource) does not yet exist, add

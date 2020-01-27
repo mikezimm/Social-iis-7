@@ -135,6 +135,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 
     || selectedNavItem.mediaSource === 'wikipedia' 
     || selectedNavItem.mediaSource === 'blog' 
+    || selectedNavItem.mediaSource === 'office365' 
     || selectedNavItem.mediaSource === 'home' ) {
       //This is a website type object
       //console.log('Webpage page props: ', selectedNavItem);

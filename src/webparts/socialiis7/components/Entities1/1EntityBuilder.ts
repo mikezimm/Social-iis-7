@@ -7,7 +7,7 @@ import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import * as ents from './index';
 import { keyframes } from 'office-ui-fabric-react';
 
-import { IEntity, IWeb, ISocialiis7Props, ITopics } from '../ISocialiis7Props';
+import { IEntity, NonArrayNodes, IWeb, ISocialiis7Props, ITopics } from '../ISocialiis7Props';
 import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISocialiis7State';
 
 //export function buildEntities(onNavClick, parentProps: ISocialiis7Props, parentState: ISocialiis7State) {
@@ -66,7 +66,6 @@ export function buildUserEntities(onNavClick , userEntity: string, source: strin
 function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick){
 
     //console.log('buildNavigationForWeb 1:',Entity, sectionName );
-    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','wikipedia','instagram','home'];
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
     if ( !sectionName ) { return navigation; }
@@ -82,7 +81,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
         
         //Look for all keys that are not arrays.... test them
-        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
+        if ( NonArrayNodes.indexOf(sectionName) > -1 ) {
             if ( thisSection.url.length === 0 && thisSection.NavTitle.length === 0) { 
                 //console.log('!n[0].url.length === 0'); 
                 return navigation; }
@@ -225,7 +224,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         //console.log('sectionName: ', sectionName);
         //console.log('newSection: ', newSection);
 
-        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
+        if ( NonArrayNodes.indexOf(sectionName) > -1 ) {
             let objectID = newSection.objectID;
             let url = newSection.url;
 
@@ -322,7 +321,7 @@ export function getPropsFromObjectInfo(NavTitle: string, mediaSource: string, ob
         }
 
     } else if ( url.length === 0 && objectID.length > 0 ) { 
-            //    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
+            //    let NonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
 
         if ( mediaSource === 'facebook' ){
             url = 'https://www.facebook.com/';
@@ -390,10 +389,11 @@ export function  addOtherProps(Entity : IEntity, onNavClick , source: string) {
      *  Create an Icon if you want one in the Footprint... \components\Icons.ts 
      *  Add it here so it will get built into the Navigation elements
      *  Add in buildNavigationForWeb()
-     *      then if it's of type IWeb (Not IWeb[] ): add to  ---->  nonArrayNodes
+     *      then if it's of type IWeb (Not IWeb[] ): add to  ---->  NonArrayNodes
      *  Then update about.aspx to determine what gets displayed in the about pane.
      */
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'home', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'office365', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'blog', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'webSites', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'twitter', onNavClick));
