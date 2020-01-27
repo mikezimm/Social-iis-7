@@ -49,6 +49,11 @@ export function PowerBI(){
           order: 1, //For Sorting
           url: 'https://community.powerbi.com/',
           objectType: 'TBD', //Used to determine what functions to have avaialble
+        },{
+          NavTitle: 'PowerBI User Group',
+          order: 1, //For Sorting
+          url: 'https://www.pbiusergroup.com/home',
+          objectType: 'TBD', //Used to determine what functions to have avaialble
         }
       ],
       youtube: {
