@@ -6,7 +6,7 @@ export function PCBuild(){
   const entity :IEntity = {
     Title: 'Upgrade PC', //
     keywords: ["PC","PCBuild"], // Can be any number of
-    profilePic: "https://someURL.com",
+    profilePic: "",
     blog: [
       {
         NavTitle: 'Someone\'s Blog',

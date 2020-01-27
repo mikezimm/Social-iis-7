@@ -146,7 +146,8 @@ export interface ISocialiis7Props {
   pageContext: PageContext;
   tenant: string;
   urlVars: {};
-
+  pageType: string; //localWorkbench; hostedWorkbench; SharePoint
+ 
   // 1 - Analytics options
   useListAnalytics: boolean;
   analyticsWeb?: string;

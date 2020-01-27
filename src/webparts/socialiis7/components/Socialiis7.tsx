@@ -481,15 +481,11 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let e: any = ev;
 
-    ev.preventDefault(); // Let's stop this event.
-    e.preventDefault(); // Let's stop this event.
-
     let thisEntityKey = item.key.split('||||')[0];
     let selectedEntity : IEntity = null;
 
     let selectedNavItem = null;
 
-    
     for (let ent of this.state.loadData.entitiesForMainTopic) {
       if (ent.titleKey === thisEntityKey) { 
         selectedEntity = ent;
@@ -500,6 +496,27 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     if (nav.key === item.key) { 
       selectedNavItem = nav;
     }
+  }
+
+  console.log('Test Nav', selectedNavItem.mediaSource, this.props.pageType);
+
+  if (selectedNavItem.mediaSource === 'office365' && this.props.pageType === 'SharePoint' ) {
+    //Do default if the media source is office365 and page type is on SharePoint.
+    //Testing has shown that without this, when you click on a nav link in SharePoint it loads that page.
+    ev.preventDefault(); // Let's stop this event.
+    e.preventDefault(); // Let's stop this event.
+
+  } else if (selectedNavItem.mediaSource === 'office365' && this.props.pageType.indexOf('Workbench') > -1 ) {
+    //Do default if the media source is office365 and page type is on SharePoint.
+    //Testing has shown that without this, when you click on a nav link in SharePoint it loads that page.
+    ev.preventDefault(); // Let's stop this event.
+    e.preventDefault(); // Let's stop this event.
+
+  } else {
+    //Need to not do this if it's in SharePoint
+    ev.preventDefault(); // Let's stop this event.
+    e.preventDefault(); // Let's stop this event.
+
   }
 
     //This is done to confirm that the "Share Info" button was clicked

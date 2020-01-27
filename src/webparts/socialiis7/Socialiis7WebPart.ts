@@ -112,14 +112,26 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
 
   public render(): void {
 
+    let tenant = this.context.pageContext.web.absoluteUrl.replace(this.context.pageContext.web.serverRelativeUrl,"");
+    let locationhref = window.location.href ? window.location.href : '';
+    let pageType = 'Unknown'; //localWorkbench; hostedWorkbench; SharePoint
+    if ( locationhref && locationhref.indexOf("layouts/15/workbench.aspx") > 0  ) {
+      pageType = "Hosted Workbench";
+
+    } else if (locationhref && locationhref.indexOf("/workbench.html") > 0 ) {
+      pageType = "Local Workbench";
+
+    } else { pageType = "SharePoint"; }
+
     const element: React.ReactElement<ISocialiis7Props > = React.createElement(
       Socialiis7,
       {
         description: this.properties.description,
         // 0 - Context
         pageContext: this.context.pageContext,
-        tenant: this.context.pageContext.web.absoluteUrl.replace(this.context.pageContext.web.serverRelativeUrl,""),
+        tenant: tenant,
         urlVars: this.getUrlVars(),
+        pageType: pageType,
       
         // 1 - Analytics options  
         useListAnalytics: this.properties.useListAnalytics,
