@@ -37,11 +37,11 @@ export function buildTips(parentProps: ISocialiis7Props,parentState: ISocialiis7
 
   let allTopics = parentState.loadData.allTopics.join('; ');
   let keysForTopic = parentState.loadData.keysForTopic.join('; ');
-  let otherTopics = parentState.loadData.allTopics.filter( function( el ) {
-    return parentState.loadData.keysForTopic.indexOf( el ) < 0;
-  } ).join('; ');
 
-  console.log('masterEntitiesLength',masterEntitiesLength,masterEntityTitles,localEntitiesLength,localEntityTitles);
+  //arrow function courtesy of:  https://stackoverflow.com/a/47018466/4210807
+  let otherTopics = parentState.loadData.allTopics.filter( x => !parentState.loadData.keysForTopic.filter( y => y === x).length).join('; ');
+
+  //console.log('masterEntitiesLength',masterEntitiesLength,masterEntityTitles,localEntitiesLength,localEntityTitles);
 
   //if ( masterEntitiesLength === 0 && localEntitiesLength == 0 ) {  return '';  }
   if ( parentState.showTips !== "yes" ) {  return '';  }
