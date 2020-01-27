@@ -7,50 +7,56 @@ import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import * as ents from './index';
 import { keyframes } from 'office-ui-fabric-react';
 
-import { IEntity, IWeb, ISocialiis7Props, ITopics } from '../ISocialiis7Props';
+import { IEntity, NonArrayNodes, IWeb, ISocialiis7Props, ITopics } from '../ISocialiis7Props';
 import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISocialiis7State';
 
 //export function buildEntities(onNavClick, parentProps: ISocialiis7Props, parentState: ISocialiis7State) {
 export function buildEntities(onNavClick ) {
     let Entities : IEntity[] = [];
     //console.log('ents', ents);
-    Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick ) );
-    Entities.push( addOtherProps(ents.DavidWarner(),onNavClick ) );
-    Entities.push( addOtherProps(ents.HugoBernier(),onNavClick ) );
-    Entities.push( addOtherProps(ents.JeffTeper(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick ) );
-    Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick ) );
-    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick ) );
-    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick ) );
+    let thisSource = 'Entities1';
+    Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.DavidWarner(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.HugoBernier(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.JeffTeper(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick,thisSource ) );
+    Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick, thisSource ) );
     
     return Entities;
 }
 
 //https://codeblogmoney.com/validate-json-string-using-javascript/
 export function IsValidJSONString(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        console.log('string is not a valid JSON');
+    if ( str == null ){
         return false;
+    } else {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            console.log('string is not a valid JSON');
+            return false;
+        }
+        console.log('string IS a valid JSON');
+        return true;
     }
-    console.log('string IS a valid JSON');
-    return true;
+
 }
 
 
-export function buildUserEntities(onNavClick , userEntity: string) {
+export function buildUserEntities(onNavClick , userEntity: string, source: string) {
     let Entities : IEntity[] = [];
 
     let newEntity = JSON.parse(userEntity);
 
     if ( userEntity.indexOf('[') !== 0 ) {
         // assume it's single item
-        Entities.push( addOtherProps(newEntity, onNavClick ) );
+        Entities.push( addOtherProps(newEntity, onNavClick, source ) );
     } else {
         for (let ent of newEntity) {
-            Entities.push( addOtherProps(ent, onNavClick ) );
+            Entities.push( addOtherProps(ent, onNavClick, source ) );
         }
     }
 
@@ -60,7 +66,6 @@ export function buildUserEntities(onNavClick , userEntity: string) {
 function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick){
 
     //console.log('buildNavigationForWeb 1:',Entity, sectionName );
-    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','wikipedia','instagram','home'];
     let navigation: INavLink[] = [];
     let thisSection = Entity[sectionName];
     if ( !sectionName ) { return navigation; }
@@ -76,7 +81,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
 
         
         //Look for all keys that are not arrays.... test them
-        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
+        if ( NonArrayNodes.indexOf(sectionName) > -1 ) {
             if ( thisSection.url.length === 0 && thisSection.NavTitle.length === 0) { 
                 //console.log('!n[0].url.length === 0'); 
                 return navigation; }
@@ -219,7 +224,7 @@ function buildNavigationForWeb( Entity: IEntity, sectionName: string, onNavClick
         //console.log('sectionName: ', sectionName);
         //console.log('newSection: ', newSection);
 
-        if ( nonArrayNodes.indexOf(sectionName) > -1 ) {
+        if ( NonArrayNodes.indexOf(sectionName) > -1 ) {
             let objectID = newSection.objectID;
             let url = newSection.url;
 
@@ -316,7 +321,7 @@ export function getPropsFromObjectInfo(NavTitle: string, mediaSource: string, ob
         }
 
     } else if ( url.length === 0 && objectID.length > 0 ) { 
-            //    let nonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
+            //    let NonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','instagram'];
 
         if ( mediaSource === 'facebook' ){
             url = 'https://www.facebook.com/';
@@ -366,10 +371,11 @@ function makeKeyFromString(str : string){
 
 }
 
-export function  addOtherProps(Entity : IEntity, onNavClick ) {
+export function  addOtherProps(Entity : IEntity, onNavClick , source: string) {
 
     let result : IEntity = cloneDeep(Entity);
     result.titleKey = makeKeyFromString(result.Title);
+    result.source = source;
     Entity.titleKey = result.titleKey;
     if ( result.keywords.indexOf(result.Title) < 0) { result.keywords.push(result.Title);}
 
@@ -383,10 +389,11 @@ export function  addOtherProps(Entity : IEntity, onNavClick ) {
      *  Create an Icon if you want one in the Footprint... \components\Icons.ts 
      *  Add it here so it will get built into the Navigation elements
      *  Add in buildNavigationForWeb()
-     *      then if it's of type IWeb (Not IWeb[] ): add to  ---->  nonArrayNodes
+     *      then if it's of type IWeb (Not IWeb[] ): add to  ---->  NonArrayNodes
      *  Then update about.aspx to determine what gets displayed in the about pane.
      */
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'home', onNavClick));
+    result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'office365', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'blog', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'webSites', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'twitter', onNavClick));

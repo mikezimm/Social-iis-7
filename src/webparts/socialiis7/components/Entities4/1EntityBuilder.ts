@@ -9,23 +9,24 @@ import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData} from '../ISociali
 export function buildEntities4(onNavClick) {
 
     let Entities : IEntity[] = [];
+    let thisSource: string = 'Entities4';
     //console.log('ents', ents);
 
     //Suppliers
-    Entities.push(addOtherProps(ents.Autoliv(), onNavClick));
-    Entities.push(addOtherProps(ents.TRW(), onNavClick));
-    Entities.push(addOtherProps(ents.Veoneer(), onNavClick));
+    Entities.push(addOtherProps(ents.Autoliv(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.TRW(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.Veoneer(), onNavClick, thisSource));
 
     //TradeShows
-    Entities.push(addOtherProps(ents.CES(), onNavClick));
-    Entities.push(addOtherProps(ents.NAIAS(), onNavClick));
+    Entities.push(addOtherProps(ents.CES(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.NAIAS(), onNavClick, thisSource));
 
     //Government
-    Entities.push(addOtherProps(ents.NHSTA(), onNavClick));
-    Entities.push(addOtherProps(ents.USDOT(), onNavClick));
+    Entities.push(addOtherProps(ents.NHSTA(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.USDOT(), onNavClick, thisSource));
 
     //Industry
-    Entities.push(addOtherProps(ents.IIHS(), onNavClick));
+    Entities.push(addOtherProps(ents.IIHS(), onNavClick, thisSource));
 
     return Entities;
     

@@ -21,7 +21,7 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
       selectedVideo: null,
       activePlayList: this.props.objectType.indexOf('playlist') > -1 ? this.props.objectId : null,
     };
-    console.log('YouTube constructor:', this.props, this.state);
+    //console.log('YouTube constructor:', this.props, this.state);
     this.videoSearch(this.props.apiKey, '',  this.props.objectType , this.props.objectId, this.props.maxResults.toString());
   }
 
@@ -31,7 +31,7 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
       let rebuildYouTube = false;
       if ( prevProps.objectId !== this.props.objectId ) { rebuildYouTube = true; }
 
-      console.log('Youtube componentDidUpdate:', prevProps, this.props);
+      //console.log('Youtube componentDidUpdate:', prevProps, this.props);
       if ( rebuildYouTube === true){
         
         this.state = {

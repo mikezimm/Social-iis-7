@@ -43,8 +43,10 @@ export interface IAboutInfoState {
 export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutInfoState> {
   constructor(props: IAboutInfoProps) {
     super(props);
+
     this.state = { 
-      selectedEntityTitle: this.props.parentState.selectedEntity.titleKey,
+      //selectedEntityTitle: this.props.parentState.selectedEntity.titleKey,
+      selectedEntityTitle: this.props.parentState.selectedEntity ? this.props.parentState.selectedEntity.titleKey : 'None Available',
     };
   }
 
@@ -53,7 +55,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     let selectedNavKey : string = this.props.parentState.selectedNavKey;
     let selectedNavItem : INavLink = this.props.parentState.selectedNavItem;
     let Entity : IEntity = this.props.parentState.selectedEntity;  
-    if (!selectedNavItem ) { selectedNavItem = Entity.navigation[0];}
+    if (!selectedNavItem ) { selectedNavItem = Entity.navigation[0] ? Entity.navigation[0] : null; }
     const stackFormRowsTokens: IStackTokens = { childrenGap: 10 };
     //console.log('Render AboutInfo parentState',this.props.parentState);
 
@@ -133,6 +135,7 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
     } else if ( selectedNavItem.mediaSource.indexOf('web') > -1 
     || selectedNavItem.mediaSource === 'wikipedia' 
     || selectedNavItem.mediaSource === 'blog' 
+    || selectedNavItem.mediaSource === 'office365' 
     || selectedNavItem.mediaSource === 'home' ) {
       //This is a website type object
       //console.log('Webpage page props: ', selectedNavItem);

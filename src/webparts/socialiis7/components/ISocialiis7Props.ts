@@ -60,8 +60,11 @@ export interface IYoutube {
  * 
  */
 
+export const NonArrayNodes = ['facebook','twitter','stackExchange','linkedIn','github','wikipedia','instagram','home'];
+
 export interface IEntity {
   Title: string; //
+  source?: string;
   titleKey?: string;
   footPrint?: string[];
   keywords: string[];
@@ -71,6 +74,7 @@ export interface IEntity {
   twitter?: IWeb;
   linkedIn?: IWeb;
   blog?: IWeb[];
+  office365?: IWeb[];
   instagram?:IWeb;
   facebook?: IWeb;
   stackExchange?: IWeb;
