@@ -111,6 +111,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
+      WindowSize: null,
       showTips: selectedEntity == null ? "yes" : "none",
       searchShow: false,
       description: "desc goes here",
@@ -161,13 +162,30 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   public componentDidMount() {
     //let items = this._getListItems();
     //console.log('items:', items);
+    /*
+    window.addEventListener('resize', (e: Event) => {
+      this.handleResize(this.props.WebpartElement.getBoundingClientRect(),e);
+    });
+    */
 
     this.setState({
       endTime: this.state.endTime ? this.state.endTime : getTheCurrentTime(),
     });
 
   }
-  
+  /*  Attempted resize via:  https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/#comment-1600
+  private handleResize(webpartboundary, event:Event):event is CustomEvent  {
+    this.setState({WindowSize: webpartboundary.width});
+    return 'detail' in event;
+  }
+
+  public componentWillUnmount() {
+      window.removeEventListener('resize', (e: Event) => {
+            this.handleResize(this.props.WebpartElement.getBoundingClientRect(),e);
+          });
+      }
+*/
+
   public componentDidUpdate(prevProps){
 /*
 */
@@ -185,6 +203,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     if (this.state.itemsError || this.state.listError ){ tipError = true; }
 
     let commandPart = 
+    <div className={''}>
       <MyCommandBar
           toggleTips= { this.toggleTips }
           searchMe= { this.searchMe.bind(this) }
@@ -193,7 +212,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           commandClass = {(tipError ? 'warnTips' : '') }
           minimize = { this.minimize.bind(this) }
           setLayout = { this.state.setLayout }
-        />;
+        />
+    </div>
+      ;
 
       return commandPart;
   }
@@ -276,7 +297,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           <div className={ styles.row }>
           <div className={styles.floatLeft}>
 
+
             <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
+              {{ /*This member just sets the entire stack width */}}
+              <div style={{width: 1400}}></div>
               { this.createCommandBarObject()  }
               { ( showTopics === "yes" ? ( buildTips ) : "" ) }
               { ( listBuild ) }

@@ -5,6 +5,7 @@ import { PageContext } from '@microsoft/sp-page-context';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 
 import { ITheTime } from '../../../services/dateServices';
+import { DOMElement } from "react";
 
 
 export interface ISocialTopicModel {
@@ -149,7 +150,9 @@ export interface ISocialiis7Props {
   tenant: string;
   urlVars: {};
   pageType: string; //localWorkbench; hostedWorkbench; SharePoint
- 
+  WebpartElement: HTMLElement;
+  WindowSize: Number;
+
   // 1 - Analytics options
   useListAnalytics: boolean;
   analyticsWeb?: string;

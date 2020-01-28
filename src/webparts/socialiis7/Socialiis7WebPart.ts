@@ -126,12 +126,15 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
     const element: React.ReactElement<ISocialiis7Props > = React.createElement(
       Socialiis7,
       {
+
         description: this.properties.description,
         // 0 - Context
         pageContext: this.context.pageContext,
         tenant: tenant,
         urlVars: this.getUrlVars(),
         pageType: pageType,
+        WebpartElement: null, //this.domElement,
+        WindowSize: null, //this.domElement.getBoundingClientRect().width,
       
         // 1 - Analytics options  
         useListAnalytics: this.properties.useListAnalytics,

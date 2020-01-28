@@ -84,7 +84,7 @@ export default class MyCommandBar extends React.Component<ICommandBarProps, ICom
               items={ Utils.getMainItems() }
               farItems={ farItems }
               styles={{
-                root: {padding:'0px !important'},
+                root: {padding:'0px !important', width: '100%'},
                 
               }}
             />

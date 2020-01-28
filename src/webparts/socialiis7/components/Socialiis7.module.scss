@@ -59,7 +59,21 @@
     @include ms-fontColor-white;
     background-color: $ms-color-white;
     padding: 20px;
-    max-width: 700px;
+    //@max-width: 700px;  //Removed 2020-01-28 so that command bar will be full width to right
+  }
+
+  .floatRight {
+    //width: 1200px;
+    //max-width: 500px;
+    width: 100%;
+    display: flex;
+    //align-items: center makes items centered vertically
+    align-items: flex-end;
+
+    //These did nothing to prevent the left icons from shifting on hover.
+    //border: 0px;
+    //margin: 0px;
+    //padding: 0px;
   }
 
   .floatLeft {

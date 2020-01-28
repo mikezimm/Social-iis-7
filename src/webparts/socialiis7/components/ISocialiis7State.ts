@@ -81,7 +81,8 @@ export interface ILoadData {
 export interface ISocialiis7State {
     // 0 - Context
     currentUser?: IUser;  //Current user information
-
+    WindowSize?: Number;
+    
     // 1 - Analytics options
     
     description: string;
