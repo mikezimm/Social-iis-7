@@ -81,6 +81,8 @@ export interface ILoadData {
 export interface ISocialiis7State {
     // 0 - Context
     currentUser?: IUser;  //Current user information
+    WebpartHeight?:  Number;    //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
+    WebpartWidth?:   Number;    //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
 
     // 1 - Analytics options
     

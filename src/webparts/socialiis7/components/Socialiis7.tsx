@@ -111,6 +111,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
+      //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
+      WebpartHeight: this.props.WebpartElement.getBoundingClientRect().height ,
+      WebpartWidth:  this.props.WebpartElement.getBoundingClientRect().width - 50 ,
+
       showTips: selectedEntity == null ? "yes" : "none",
       searchShow: false,
       description: "desc goes here",
@@ -268,7 +272,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let noItemsFound = myErrors.NoItemsFound(this.props,this.state);
     let loadingSpinner = myErrors.LoadingSpinner(this.state);
     let showTopics = this.state.selectedEntity == null ? "yes" : this.state.showTips;
-
+    let WebpartWidth = this.state.WebpartWidth.toString();
     return (
 
       <div className={ styles.socialiis7 }>
@@ -277,6 +281,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           <div className={styles.floatLeft}>
 
             <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
+              <div style={{width: `${WebpartWidth}px` }}></div>
               { this.createCommandBarObject()  }
               { ( showTopics === "yes" ? ( buildTips ) : "" ) }
               { ( listBuild ) }
@@ -337,6 +342,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     loadOrder.push('PropsChange');
 
     this.setState({
+      WebpartHeight: this.props.WebpartElement.getBoundingClientRect().height,
+      WebpartWidth:  this.props.WebpartElement.getBoundingClientRect().width,
       pivots: pivots,
       selectedMedia: '',
       loadStatus: "updating Props",

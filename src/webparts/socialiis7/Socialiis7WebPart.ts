@@ -132,6 +132,9 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         tenant: tenant,
         urlVars: this.getUrlVars(),
         pageType: pageType,
+        
+        //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
+        WebpartElement:this.domElement,
       
         // 1 - Analytics options  
         useListAnalytics: this.properties.useListAnalytics,
