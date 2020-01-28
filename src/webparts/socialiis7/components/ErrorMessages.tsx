@@ -44,12 +44,20 @@ export function buildTips(parentProps: ISocialiis7Props,parentState: ISocialiis7
   //console.log('masterEntitiesLength',masterEntitiesLength,masterEntityTitles,localEntitiesLength,localEntityTitles);
 
   //if ( masterEntitiesLength === 0 && localEntitiesLength == 0 ) {  return '';  }
-  if ( parentState.showTips !== "yes" ) {  return '';  }
+  console.log('ErrorMessage');
   const theseTips = 
   <div className={styles.showErrorMessageNoPad}>
-      <div className={parentState.showTips === "yes" ? styles.showErrorMessage : styles.hideMe }>
+      <div className={ (parentState.showTips === "yes" ) ? styles.showErrorMessage : styles.hideMe }>
 
-        <h1>Topic Info - will eventually be hidden by default</h1>
+        <h1>Topic Info - If you don't see anything interesting...</h1>
+        <ol>
+            <li>Open Page 2 of the Webpart Properties (if they are not already opened)</li>
+            <li>Select the Main Topic Dropdown</li>
+            <li>Or Type in one of these topics in the Main Topics property box</li>
+            
+        </ol>
+        <ul><li>Press the Question Mark Icon in upper right to hide Topic Info</li></ul>
+        
         <div className={styles.showErrorMessageNoPad }>
             <h3 className={''}>SubTopics available for current Main Topic: {parentProps.topics.mainTopic}</h3>
                 <p>{keysForTopic}</p>

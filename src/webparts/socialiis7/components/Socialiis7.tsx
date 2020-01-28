@@ -17,7 +17,6 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { pivotOptionsGroup, } from '../../../services/propPane';
 
-
 import { CompoundButton, Stack, IStackTokens, elementContains } from 'office-ui-fabric-react';
 
 import {
@@ -43,6 +42,7 @@ import MyCommandBar from './CommandBar/CommandBar';
 import { IAboutInfoProps } from './AboutInfo';
 import AboutInfo from './AboutInfo';
 import * as myErrors from './ErrorMessages';
+import * as listBuilders from './ListView/ListView';
 
 export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocialiis7State> {
 
@@ -111,7 +111,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.state = { 
 //      sourceListName: "",
-      showTips: "none",
+      showTips: selectedEntity == null ? "yes" : "none",
+      searchShow: false,
       description: "desc goes here",
       pivots: pivots,
       selectedMedia: '',
@@ -138,6 +139,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     this.toggleTips = this.toggleTips.bind(this);
     this.searchMe = this.searchMe.bind(this);
     this.toggleLayout = this.toggleLayout.bind(this);
+    this.minimize = this.minimize.bind(this);
     /*
 
       toggleTips?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
@@ -189,6 +191,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           //showAll= { this.showAll.bind(this) }
           toggleLayout= { this.toggleLayout.bind(this) }
           commandClass = {(tipError ? 'warnTips' : '') }
+          minimize = { this.minimize.bind(this) }
           setLayout = { this.state.setLayout }
         />;
 
@@ -256,10 +259,15 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     );
 
     //Error Messages imported from PivotTiles
+    let listBuild = this.state.searchShow 
+        ? listBuilders.listViewBuilder(this.props,this.state,this.state.loadData.allEntities)
+        : "";
+
     let buildTips = myErrors.buildTips(this.props,this.state);
     let noListFound = myErrors.NoListFound(this.props,this.state);
     let noItemsFound = myErrors.NoItemsFound(this.props,this.state);
     let loadingSpinner = myErrors.LoadingSpinner(this.state);
+    let showTopics = this.state.selectedEntity == null ? "yes" : this.state.showTips;
 
     return (
 
@@ -270,7 +278,9 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
             <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
               { this.createCommandBarObject()  }
-              { ( this.state.showTips === "yes" ? ( buildTips ) : "" ) }
+              { ( showTopics === "yes" ? ( buildTips ) : "" ) }
+              { ( listBuild ) }
+              
               { this.createPivotObject(this.state.currentPivots, display1)  }
 
             </Stack>
@@ -657,6 +667,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
             newEntity = {
               Title: thisItem.Title,
               keywords: keywords,
+              keywordsText: thisItem.keywords,
+
               profilePic: thisItem.profilePic,
             };
             count ++;
@@ -831,6 +843,28 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     );
   }
 
+  private minimize = (item: PivotItem): void => {
+    //This sends back the correct pivot category which matches the category on the tile.
+    let e: any = event;
+    console.log(e);
+    if (e.altKey && e.shiftKey && !e.ctrlKey) { 
+
+    } else if (e.ctrlKey) { 
+
+    } else {
+      let newFilteredTiles = [];
+
+      this.setState({
+        searchCount: 0, //this.state.allTiles.length,
+        showTips: 'none',
+        searchShow: false,
+
+      });
+    }
+    
+
+
+  } //End onClick
   
   public toggleLayout = (item: any): void => {
     //This sends back the correct pivot category which matches the category on the tile.

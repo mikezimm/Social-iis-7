@@ -16,6 +16,16 @@ export class Utils {
 
       return [
         {
+          key: 'mini',
+          name: '',
+          ariaLabel: 'Minimize',
+          iconProps: {
+            iconName: 'ChromeMinimize',
+
+          },
+          onClick: () => minimize()
+        },
+        {
           key: 'search',
           name: '',
           ariaLabel: 'Search',
@@ -35,16 +45,7 @@ export class Utils {
           },
           onClick: () => searchMe()
         },
-        {
-          key: 'mini',
-          name: '',
-          ariaLabel: 'Minimize',
-          iconProps: {
-            iconName: 'ChromeMinimize',
 
-          },
-          onClick: () => minimize()
-        },
         {
           key: 'all',
           name: '',

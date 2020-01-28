@@ -73,7 +73,7 @@ import {
       subTopic1 = "Auto";
       subTopic2 = "Electronics";
       subTopic3 = "";
-    } else if ( ["GM","VW","FCA","Tata","Tesla"].indexOf(mainTopic) > -1 ) {
+    } else if ( ["GM","VW","FCA","Tata","Tesla","Ford","Tesla","Honda","Toyota"].indexOf(mainTopic) > -1 ) {
       subTopic1 = "OEM";
       subTopic2 = "Brand";
       subTopic3 = "Vehicle";
@@ -97,8 +97,10 @@ import {
       subTopic1 = "Online";
       subTopic2 = "Application";
       subTopic3 = "SharePoint";
-    } 
-    
+    } else {
+      subTopic1 = mainTopic;
+    }
+   
 
 
     let topics : ITopics = {

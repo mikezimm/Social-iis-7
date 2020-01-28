@@ -52,6 +52,8 @@ export default class AboutInfo extends React.Component<IAboutInfoProps, IAboutIn
 
   public render(): React.ReactElement<IAboutInfoProps> {
 
+    if ( this.props.parentState.selectedNavItem == null ) { return null; }
+
     let selectedNavKey : string = this.props.parentState.selectedNavKey;
     let selectedNavItem : INavLink = this.props.parentState.selectedNavItem;
     let Entity : IEntity = this.props.parentState.selectedEntity;  

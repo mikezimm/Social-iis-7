@@ -68,6 +68,8 @@ export interface IEntity {
   titleKey?: string;
   footPrint?: string[];
   keywords: string[];
+  keywordsText?: string;
+
   profilePic: string;
   webSites?: IWeb[];
   youtube?: IYoutube;
