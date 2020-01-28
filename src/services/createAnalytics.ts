@@ -30,6 +30,7 @@ export function saveAnalytics (theProps: ISocialiis7Props,theState: ISocialiis7S
         console.log('the analyticsWeb is not in the same tenant...',theProps.analyticsWeb,theProps.tenant);
         return ;
 
+    } else if ( theState.selectedEntity == null ) { return ;
     } else if ( theState.lastEvent === 'Not Loaded' ) { console.log('saveAnalytics Not Loaded',theProps,theState);
     } else if ( !theState.endTime ) { //console.log('EndTime not available yet',theState);
     } else if ( success.indexOf('Error') > -1  && !theProps.analyticsError ) { console.log('saveAnalytics Errors disabled',theProps,theState);

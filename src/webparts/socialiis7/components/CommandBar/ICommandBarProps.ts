@@ -3,7 +3,7 @@ export interface ICommandBarProps {
      * Callback for when the selected pivot item is changed.
      */
     toggleTips?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
-    minimizeTiles?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
+    minimize?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
     searchMe?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
     showAll?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
     toggleLayout?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;

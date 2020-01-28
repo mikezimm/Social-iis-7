@@ -411,7 +411,9 @@ export function  addOtherProps(Entity : IEntity, onNavClick , source: string) {
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'wikipedia', onNavClick));
     result.navigation = result.navigation.concat(buildNavigationForWeb(Entity, 'debug', onNavClick));
 
-
+    if ( result.keywordsText == null && result.keywords && result.keywords.length > 0  ){
+        result.keywordsText = result.keywords.join(';');
+    }
 
     result.footPrint = [];
     for (let ele of result.navigation) {
