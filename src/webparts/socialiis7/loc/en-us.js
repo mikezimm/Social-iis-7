@@ -30,5 +30,9 @@ define([], function() {
 
     // 9 - Other web part options
 
+    "FieldLabel_ToggleTextOff": "Off",
+    "FieldLabel_ToggleTextOn": "On",
+    
+
   }
 });

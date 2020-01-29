@@ -1,5 +1,5 @@
 
-import { ISocialiis7Props, IEntity } from './ISocialiis7Props';
+import { ISocialiis7Props, ITopics, IEntity } from './ISocialiis7Props';
 import { string } from 'prop-types';
 
 import { ITheTime } from '../../../services/dateServices';
@@ -117,12 +117,7 @@ export interface ISocialiis7State {
     // 7 - Media Choices - Left Side bar
     navigationType: string;
 
-    topics: {
-        mainTopic?: string;
-        subTopic1?: string;
-        subTopic2?: string;
-        subTopic3?: string;
-    };
+    topics: ITopics ;
 
     //Saved in webpart props
     userEntities1?: string;

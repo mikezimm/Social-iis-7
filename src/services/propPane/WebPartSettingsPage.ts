@@ -39,6 +39,63 @@ import {
                 options: socialiis7OptionsGroup.sampleTopicChoices,
               }),
 
+              
+/*
+              toggleDef?: string;  //String of topics with ; parser for Default load
+              toggle1?: string;  //String of topics with ; parser for Toggle button
+              toggle2?: string;  //String of topics with ; parser for Toggle button
+              toggle3?: string;  //String of topics with ; parser for Toggle button
+              toggle4?: string;  //String of topics with ; parser for Toggle button
+              specific?: string; //For specific list of entities
+              random?: string; //For Random topics
+*/
+
+              PropertyPaneToggle('togglePropTopicHelp', {
+                label: 'Show Topic Instructions in Webpart',
+                offText: strings.FieldLabel_ToggleTextOff,
+                onText: strings.FieldLabel_ToggleTextOn,
+              }),
+
+              PropertyPaneTextField('toggleDef', {
+                label: 'Default Topics',
+                description: 'Separated by semi-colon ;  First Topic is main filter',
+              }),
+
+              PropertyPaneTextField('toggle1', {
+                label: 'Additional Topics 1 - activated on Shuffle',
+                description: 'Separated by semi-colon ; First Topic is main filter',
+              }),
+
+
+              PropertyPaneTextField('toggle2', {
+                label: 'Additional Topics 2 - activated on Shuffle',
+                description: 'Separated by semi-colon ; First Topic is main filter',
+              }),
+              /*
+              PropertyPaneTextField('toggle3', {
+                label: 'Additional Topics 3 - activated on Shuffle',
+                description: 'Separated by semi-colon ; First Topic is main filter',
+              }),
+
+
+              PropertyPaneTextField('toggle4', {
+                label: 'Additional Topics 4 - activated on Shuffle',
+                description: 'Separated by semi-colon ; First Topic is main filter',
+              }),              
+              */
+            ]}, // this group
+
+            ,{ groupName: '',
+            groupFields: [
+              PropertyPaneToggle('showCurrentTopics', {
+                label: 'Show Current Topics (legacy)',
+                offText: strings.FieldLabel_ToggleTextOff,
+                onText: strings.FieldLabel_ToggleTextOn,
+              }),
+            ]}, // this group
+            { isCollapsed: !webPartProps.showCurrentTopics,
+              groupFields: [
+
               PropertyPaneTextField('mainTopic', {
                 label: 'Or type in Main Topic',
                 description: 'Proper cased text to filter all items by',

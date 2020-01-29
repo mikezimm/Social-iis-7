@@ -28,6 +28,10 @@ declare interface ISocialiis7WebPartStrings {
   // 8 - Pivot Choices - Top Bar
 
   // 9 - Other web part options
+
+  FieldLabel_ToggleTextOff: string;
+  FieldLabel_ToggleTextOn: string;
+
 }
 
 declare module 'Socialiis7WebPartStrings' {

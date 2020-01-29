@@ -139,6 +139,15 @@ export interface ITopics {
     subTopic1?: string;
     subTopic2?: string;
     subTopic3?: string;
+    toggleDef?: string;  //String of topics with ; parser for Default load
+    toggle0?: string;  //String of topics with ; parser for Toggle button
+    toggle1?: string;  //String of topics with ; parser for Toggle button
+    toggle2?: string;  //String of topics with ; parser for Toggle button
+    toggle3?: string;  //String of topics with ; parser for Toggle button
+    toggle4?: string;  //String of topics with ; parser for Toggle button
+    specific?: string; //For specific list of entities
+    random?: string; //For Random topics
+    current?: number;
 
 }
 export interface ISocialiis7Props {
@@ -183,6 +192,7 @@ export interface ISocialiis7Props {
   navigationType: string;
 
   topics: ITopics;
+  togglePropTopicHelp: boolean;
 
   userEntities1: string;
   userEntities2: string;  
