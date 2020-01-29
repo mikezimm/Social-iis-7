@@ -56,6 +56,16 @@ export interface ISocialiis7WebPartProps {
   subTopic1: string;
   subTopic2: string;
   subTopic3: string; 
+
+  toggleDef?: string;  //String of topics with ; parser for Default load
+  toggle1?: string;  //String of topics with ; parser for Toggle button
+  toggle2?: string;  //String of topics with ; parser for Toggle button
+  toggle3?: string;  //String of topics with ; parser for Toggle button
+  toggle4?: string;  //String of topics with ; parser for Toggle button
+  specific?: string; //For specific list of entities
+  random?: string; //For Random topics
+
+  togglePropTopicHelp: boolean;
   
   userEntities1?: string;
   userEntities2?: string;  
@@ -174,7 +184,18 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
           subTopic1: this.properties.subTopic1,
           subTopic2: this.properties.subTopic2,
           subTopic3: this.properties.subTopic3,
+
+          toggleDef: this.properties.toggleDef,  //String of topics with ; parser for Default load
+          toggle1: this.properties.toggle1,  //String of topics with ; parser for Toggle button
+          toggle2: this.properties.toggle2,  //String of topics with ; parser for Toggle button
+          toggle3: this.properties.toggle3,  //String of topics with ; parser for Toggle button
+          toggle4: this.properties.toggle4,  //String of topics with ; parser for Toggle button
+          specific: this.properties.specific, //For specific list of entities
+          random: this.properties.random, //For Random topics
+
         },
+
+        togglePropTopicHelp: this.properties.togglePropTopicHelp,
 
         userEntities1: this.properties.userEntities1,
         userEntities2: this.properties.userEntities2, 
@@ -207,6 +228,10 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
   }
   
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+
+      //exit on these
+      if (  ['togglePropTopicHelp','showCurrentTopics'].indexOf(propertyPath) > -1 ) { return; }
+       
 
     /**
      * Use this section when there are multiple web part configurations
@@ -242,12 +267,50 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       'navigationType'
     ];
     console.log('onPropertyPaneFieldChanged: ',propertyPath, newValue);
-    if (  propertyPath === 'mainTopic') {
-      this.properties[propertyPath] = newValue;  
+
+    if (  propertyPath === 'toggleDef') {
+      this.properties.toggleDef = newValue;
+      let subTopics : string[] = newValue.split(';');
+
+      this.properties.mainTopic = subTopics[0] ? subTopics[0] : '';
+      this.properties.subTopic1 = subTopics[1] ? subTopics[1] : '';
+      this.properties.subTopic2 = subTopics[2] ? subTopics[2] : '';
+      this.properties.subTopic3 = subTopics[3] ? subTopics[3] : '';
+      
+      this.context.propertyPane.refresh();
+      
+      console.log('onPropertyPaneFieldChanged #1: subTopics', subTopics);
+      console.log('onPropertyPaneFieldChanged #1: this.properties', this.properties);
+
+    } else if (  ['subTopic1','subTopic2','subTopic3'].indexOf(propertyPath) > -1 ) {
+      this.properties[propertyPath] = newValue;
+      let subTopics: string[] = [this.properties.mainTopic];
+      propertyPath === 'subTopic1' ? subTopics.push(newValue) : subTopics.push(this.properties.subTopic1) ;
+      propertyPath === 'subTopic2' ? subTopics.push(newValue) : subTopics.push(this.properties.subTopic2) ;
+      propertyPath === 'subTopic3' ? subTopics.push(newValue) : subTopics.push(this.properties.subTopic3) ;
+      this.properties.toggleDef = subTopics.join(';');
+
+      this.context.propertyPane.refresh();
+      
+      console.log('onPropertyPaneFieldChanged #1: subTopics', subTopics);
+      console.log('onPropertyPaneFieldChanged #1: this.properties', this.properties);
+
+
+    } else if (  propertyPath === 'mainTopic') {
+      this.properties[propertyPath] = newValue;
       let topics: ITopics = socialiis7OptionsGroup.getTopics(newValue);
       this.properties.subTopic1 = topics.subTopic1;
       this.properties.subTopic2 = topics.subTopic2;
       this.properties.subTopic3 = topics.subTopic3;
+
+      this.properties.toggleDef = topics.toggleDef;      
+      this.properties.toggle1 = topics.toggle1;
+      this.properties.toggle2 = topics.toggle2;
+      this.properties.toggle3 = topics.toggle3;
+      this.properties.toggle4 = topics.toggle4;
+
+      this.properties.specific = topics.specific;
+      this.properties.random = topics.random;
 
       this.context.propertyPane.refresh();
       
@@ -255,6 +318,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       console.log('onPropertyPaneFieldChanged #1: this.properties', this.properties);
 
     }
+
     if (  ['subTopic1', 'subTopic2', 'subTopic3'].indexOf(propertyPath) > -1 ) {
 
       if (propertyPath === 'subTopic1') { 

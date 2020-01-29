@@ -1,118 +1,167 @@
 import {
-    IPropertyPanePage,
-    PropertyPaneLabel,
-    IPropertyPaneLabelProps,
-    PropertyPaneHorizontalRule,
-    PropertyPaneTextField, IPropertyPaneTextFieldProps,
-    PropertyPaneLink, IPropertyPaneLinkProps,
-    PropertyPaneDropdown, IPropertyPaneDropdownProps,
-    IPropertyPaneDropdownOption
-  } from '@microsoft/sp-webpart-base';
+  IPropertyPanePage,
+  PropertyPaneLabel,
+  IPropertyPaneLabelProps,
+  PropertyPaneHorizontalRule,
+  PropertyPaneTextField, IPropertyPaneTextFieldProps,
+  PropertyPaneLink, IPropertyPaneLinkProps,
+  PropertyPaneDropdown, IPropertyPaneDropdownProps,
+  IPropertyPaneDropdownOption
+} from '@microsoft/sp-webpart-base';
 
-  import { Pivot, IPivotStyles, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
-  import { Image, ImageFit, ImageCoverStyle,IImageProps,IImageState } from 'office-ui-fabric-react/lib/Image';
+import { Pivot, IPivotStyles, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
+import { Image, ImageFit, ImageCoverStyle,IImageProps,IImageState } from 'office-ui-fabric-react/lib/Image';
 
-  import { ITopics } from '../../webparts/socialiis7/components/ISocialiis7Props';
-  import * as strings from 'Socialiis7WebPartStrings';
+import { ITopics } from '../../webparts/socialiis7/components/ISocialiis7Props';
+import * as strings from 'Socialiis7WebPartStrings';
 
-  export class Socialiis7OptionsGroup {
+export class Socialiis7OptionsGroup {
 
 
-    public leftNavChoices: IPropertyPaneDropdownOption[] = <IPropertyPaneDropdownOption[]>[
-        {   index: 0,   key: 'naviation', text: "Navigation"  },
-        {   index: 1,   key: 'choice', text: "Choice"  },
-    ];
-    
-    //Currently may not be neccessary
-    public getLeftNav (findMe) {
-        return findMe;
-    }
-
-    public sampleTopicChoices: IPropertyPaneDropdownOption[] = <IPropertyPaneDropdownOption[]>[
-      {   index: 0,   key: 'SharePoint', text: "SharePoint"  },
-      {   index: 6,   key: 'SPFx', text: "SPFx"  },
-      {   index: 10,   key: 'MSOffice', text: "MSOffice"  },
-      {   index: 1,   key: 'Auto', text: "Auto OEMs"  },
-      {   index: 1,   key: 'Tradeshow', text: "Automotive Tradeshows"  },
-      {   index: 1,   key: 'Regulatory', text: "Automotive Regulatory"  },
-      {   index: 7,   key: 'GM', text: "One OEM and children"  },
-      {   index: 8,   key: 'VW', text: "VW"  },
-      {   index: 9,   key: 'Tata', text: "Tata"  },
-      {   index: 2,   key: 'Gaming', text: "Gaming"  },
-      {   index: 3,   key: 'PC', text: "PC"  },
-      {   index: 4,   key: 'Animals', text: "Animals"  },
-      {   index: 5,   key: 'ttp', text: "ttp"  },
+  public leftNavChoices: IPropertyPaneDropdownOption[] = <IPropertyPaneDropdownOption[]>[
+      {   index: 0,   key: 'naviation', text: "Navigation"  },
+      {   index: 1,   key: 'choice', text: "Choice"  },
   ];
-
-  public getTopics (mainTopic: string) {
-    let subTopic1 = "";
-    let subTopic2 = "";
-    let subTopic3 = "";
-
-    if ( mainTopic === 'MSFT') {
-      subTopic1 = "MSFT";
-      subTopic2 = "";
-      subTopic3 = "";
-    } else if ( mainTopic === 'SharePoint') {
-      subTopic1 = "SIG";
-      subTopic2 = "MSFT";
-      subTopic3 = "MVP";
-    } else if ( mainTopic === 'SPFx') {
-      subTopic1 = "SIG";
-      subTopic2 = "MSFT";
-      subTopic3 = "MVP";
-    } else if ( mainTopic === 'Auto') {
-      subTopic1 = "OEM";
-      subTopic2 = "Passive";
-      subTopic3 = "Active";
-    } else if ( mainTopic === 'Regulatory') {
-      subTopic1 = "Auto";
-      subTopic2 = "NA";
-      subTopic3 = "EU";
-    } else if ( mainTopic === 'Tradeshow') {
-      subTopic1 = "Auto";
-      subTopic2 = "Electronics";
-      subTopic3 = "";
-    } else if ( ["GM","VW","FCA","Tata","Tesla","Ford","Tesla","Honda","Toyota"].indexOf(mainTopic) > -1 ) {
-      subTopic1 = "OEM";
-      subTopic2 = "Brand";
-      subTopic3 = "Vehicle";
-    } else if ( mainTopic === 'Gaming') {
-      subTopic1 = "PC";
-      subTopic2 = "FirstPerson";
-      subTopic3 = "Builder";
-    } else if ( mainTopic === 'PC') {
-      subTopic1 = "PCBuild";
-      subTopic2 = "Gaming";
-      subTopic3 = "OpenWorld";
-    } else  if ( mainTopic === 'Animals') {
-      subTopic1 = "Pets";
-      subTopic2 = "Africa";
-      subTopic3 = "Dark";
-    } else  if ( mainTopic === 'ttp') {
-      subTopic1 = "Gaming";
-      subTopic2 = "Animals";
-      subTopic3 = "PS";
-    } else  if ( mainTopic === 'MSOffice') {
-      subTopic1 = "Online";
-      subTopic2 = "Application";
-      subTopic3 = "SharePoint";
-    } else {
-      subTopic1 = mainTopic;
-    }
-   
-
-
-    let topics : ITopics = {
-      mainTopic : mainTopic,
-      subTopic1 : subTopic1,
-      subTopic2 : subTopic2,
-      subTopic3 : subTopic3,
-    };
-
-    return topics;
+  
+  //Currently may not be neccessary
+  public getLeftNav (findMe) {
+      return findMe;
   }
 
-  }
+  public sampleTopicChoices: IPropertyPaneDropdownOption[] = <IPropertyPaneDropdownOption[]>[
+    {   index: 0,   key: 'SharePoint', text: "SharePoint"  },
+    {   index: 6,   key: 'SPFx', text: "SPFx"  },
+    {   index: 10,   key: 'MSOffice', text: "MSOffice"  },
+    {   index: 1,   key: 'Auto', text: "Auto OEMs"  },
+    {   index: 1,   key: 'Tradeshow', text: "Automotive Tradeshows"  },
+    {   index: 1,   key: 'Regulatory', text: "Automotive Regulatory"  },
+    {   index: 7,   key: 'GM', text: "GM"  },
+    {   index: 8,   key: 'VW', text: "VW"  },
+    {   index: 9,   key: 'Tata', text: "Tata"  },
 
-  export let socialiis7OptionsGroup = new Socialiis7OptionsGroup();
+
+    {   index: 11,   key: 'Honda', text: "Honda"  },
+    {   index: 12,   key: 'Toyota', text: "Toyota"  },
+    {   index: 13,   key: 'Tesla', text: "Tesla"  },
+    {   index: 14,   key: 'FCA', text: "FCA"  },
+
+    {   index: 2,   key: 'Gaming', text: "Gaming"  },
+    {   index: 3,   key: 'PC', text: "PC"  },
+    {   index: 4,   key: 'Animals', text: "Animals"  },
+    {   index: 5,   key: 'ttp', text: "ttp"  },
+];
+
+public getTopics (mainTopic: string) {
+  let subTopic1 = "";
+  let subTopic2 = "";
+  let subTopic3 = "";
+
+  let toggle1 = '';
+  let toggle2 = '';
+  let toggle3 = '';
+  let toggle4 = '';
+  let specific = '';
+  let random = '';
+
+  if ( mainTopic === 'MSFT') {
+    subTopic1 = "MSFT";
+    subTopic2 = "";
+    subTopic3 = "";
+
+  } else if ( mainTopic === 'SharePoint') {
+    subTopic1 = "SIG";
+    subTopic2 = "MSFT";
+    subTopic3 = "MVP";
+
+    toggle1 = ['SPFx','SIG'].join(';');
+    toggle2 = ['SPFx','MVP'].join(';');
+    toggle3 = ['SPFx','PowerUsers'].join(';');
+
+
+  } else if ( mainTopic === 'SPFx') {
+    subTopic1 = "SIG";
+    subTopic2 = "MSFT";
+    subTopic3 = "MVP";
+
+  } else if ( mainTopic === 'Auto') {
+    subTopic1 = "OEM";
+    subTopic2 = "Passive";
+    subTopic3 = "Active";
+    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
+    toggle2 = ['Tradeshow','Auto','Electronics'].join(';');
+
+  } else if ( mainTopic === 'Regulatory') {
+    subTopic1 = "Auto";
+    subTopic2 = "NA";
+    subTopic3 = "EU";
+    toggle1 = ['Tradeshow','Auto','Electronics'].join(';');
+    toggle2 = ['Auto','OEM'].join(';');
+
+  } else if ( mainTopic === 'Tradeshow') {
+    subTopic1 = "Auto";
+    subTopic2 = "Electronics";
+    subTopic3 = "";
+    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
+    toggle2 = ['Auto','OEM'].join(';');
+
+  } else if ( ["GM","VW","FCA","Tata","Tesla","Ford","Tesla","Honda","Toyota"].indexOf(mainTopic) > -1 ) {
+    subTopic1 = "OEM";
+    subTopic2 = "Brand";
+    subTopic3 = "Vehicle";
+
+    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
+    toggle2 = ['Tradeshow','Auto','Electronics'].join(';');
+    toggle3 = ['Auto','OEM'].join(';');
+    toggle4 = ['Auto','Passive'].join(';');
+
+  } else if ( mainTopic === 'Gaming') {
+    subTopic1 = "PC";
+    subTopic2 = "FirstPerson";
+    subTopic3 = "Builder";
+
+  } else if ( mainTopic === 'PC') {
+    subTopic1 = "PCBuild";
+    subTopic2 = "Gaming";
+    subTopic3 = "OpenWorld";
+
+  } else  if ( mainTopic === 'Animals') {
+    subTopic1 = "Pets";
+    subTopic2 = "Africa";
+    subTopic3 = "Dark";
+
+  } else  if ( mainTopic === 'ttp') {
+    subTopic1 = "Gaming";
+    subTopic2 = "Animals";
+    subTopic3 = "PS";
+
+  } else  if ( mainTopic === 'MSOffice') {
+    subTopic1 = "Online";
+    subTopic2 = "Application";
+    subTopic3 = "SharePoint";
+
+  } else {
+    subTopic1 = mainTopic;
+  }
+ 
+  let toggleDef = [mainTopic,subTopic1,subTopic2,subTopic3].join(';');  //String of topics with ; parser for Default load
+
+  let topics : ITopics = {
+    mainTopic : mainTopic,
+    subTopic1 : subTopic1,
+    subTopic2 : subTopic2,
+    subTopic3 : subTopic3,
+    toggleDef: toggleDef,
+    toggle1: toggle1,
+    toggle2: toggle2,
+    toggle3: toggle3,
+    toggle4: toggle4,
+    specific: specific,
+    random: random,
+  };
+
+  return topics;
+}
+
+}
+
+export let socialiis7OptionsGroup = new Socialiis7OptionsGroup();
