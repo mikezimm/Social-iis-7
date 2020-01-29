@@ -41,6 +41,8 @@ npm install on-el-resize  (For Facebook component)
 
 npm i react-iframe (2020-01-21 For React Iframe)
 
+npm install webpack-bundle-analyzer --save-dev  (2020-01-28:  To analyze web pack size)
+
 ```
 
 ## ToDo
