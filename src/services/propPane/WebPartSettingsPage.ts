@@ -62,27 +62,27 @@ import {
               }),
 
               PropertyPaneTextField('toggle1', {
-                label: 'Additional Topics - activated on Shuffle',
+                label: 'Additional Topics 1 - activated on Shuffle',
                 description: 'Separated by semi-colon ; First Topic is main filter',
               }),
 
-              /*
+
               PropertyPaneTextField('toggle2', {
-                label: 'Additional Topics - activated on Shuffle',
+                label: 'Additional Topics 2 - activated on Shuffle',
+                description: 'Separated by semi-colon ; First Topic is main filter',
+              }),
+              /*
+              PropertyPaneTextField('toggle3', {
+                label: 'Additional Topics 3 - activated on Shuffle',
                 description: 'Separated by semi-colon ; First Topic is main filter',
               }),
 
-              PropertyPaneTextField('toggle3', {
-                label: 'Additional Topics - activated on Shuffle',
-                description: 'Separated by semi-colon ; First Topic is main filter',
-              }),
-              */
-             
+
               PropertyPaneTextField('toggle4', {
-                label: 'Additional Topics - activated on Shuffle',
+                label: 'Additional Topics 4 - activated on Shuffle',
                 description: 'Separated by semi-colon ; First Topic is main filter',
               }),              
-
+              */
             ]}, // this group
 
             ,{ groupName: '',

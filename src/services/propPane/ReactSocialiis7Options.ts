@@ -52,10 +52,12 @@ export class Socialiis7OptionsGroup {
 ];
 
 public getTopics (mainTopic: string) {
+
   let subTopic1 = "";
   let subTopic2 = "";
   let subTopic3 = "";
 
+  let toggle0 = '';
   let toggle1 = '';
   let toggle2 = '';
   let toggle3 = '';
@@ -82,6 +84,7 @@ public getTopics (mainTopic: string) {
     subTopic1 = "SIG";
     subTopic2 = "MSFT";
     subTopic3 = "MVP";
+    toggle1 = ['SPFx','Socialiis7','TrackMyTime7','PivotTiles'].join(';');
 
   } else if ( mainTopic === 'Auto') {
     subTopic1 = "OEM";
@@ -138,19 +141,22 @@ public getTopics (mainTopic: string) {
     subTopic1 = "Online";
     subTopic2 = "Application";
     subTopic3 = "SharePoint";
+    toggle1 = ['SharePoint','ListFormatting','PowerUsers'].join(';');
 
   } else {
     subTopic1 = mainTopic;
   }
  
   let toggleDef = [mainTopic,subTopic1,subTopic2,subTopic3].join(';');  //String of topics with ; parser for Default load
-
+  toggle0 = [mainTopic,subTopic1,subTopic2,subTopic3].join(';');
   let topics : ITopics = {
     mainTopic : mainTopic,
     subTopic1 : subTopic1,
     subTopic2 : subTopic2,
     subTopic3 : subTopic3,
     toggleDef: toggleDef,
+
+    toggle0: toggle0,
     toggle1: toggle1,
     toggle2: toggle2,
     toggle3: toggle3,

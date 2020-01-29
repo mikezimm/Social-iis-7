@@ -58,6 +58,7 @@ export interface ISocialiis7WebPartProps {
   subTopic3: string; 
 
   toggleDef?: string;  //String of topics with ; parser for Default load
+  toggle0?: string;
   toggle1?: string;  //String of topics with ; parser for Toggle button
   toggle2?: string;  //String of topics with ; parser for Toggle button
   toggle3?: string;  //String of topics with ; parser for Toggle button
@@ -186,12 +187,14 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
           subTopic3: this.properties.subTopic3,
 
           toggleDef: this.properties.toggleDef,  //String of topics with ; parser for Default load
+          toggle0: this.properties.toggleDef,  //String of topics with ; parser for Toggle button
           toggle1: this.properties.toggle1,  //String of topics with ; parser for Toggle button
           toggle2: this.properties.toggle2,  //String of topics with ; parser for Toggle button
           toggle3: this.properties.toggle3,  //String of topics with ; parser for Toggle button
           toggle4: this.properties.toggle4,  //String of topics with ; parser for Toggle button
           specific: this.properties.specific, //For specific list of entities
           random: this.properties.random, //For Random topics
+          current: 0,
 
         },
 
@@ -270,13 +273,14 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
 
     if (  propertyPath === 'toggleDef') {
       this.properties.toggleDef = newValue;
+      this.properties.toggle0 = newValue;
       let subTopics : string[] = newValue.split(';');
 
       this.properties.mainTopic = subTopics[0] ? subTopics[0] : '';
       this.properties.subTopic1 = subTopics[1] ? subTopics[1] : '';
       this.properties.subTopic2 = subTopics[2] ? subTopics[2] : '';
       this.properties.subTopic3 = subTopics[3] ? subTopics[3] : '';
-      
+
       this.context.propertyPane.refresh();
       
       console.log('onPropertyPaneFieldChanged #1: subTopics', subTopics);
@@ -289,6 +293,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       propertyPath === 'subTopic2' ? subTopics.push(newValue) : subTopics.push(this.properties.subTopic2) ;
       propertyPath === 'subTopic3' ? subTopics.push(newValue) : subTopics.push(this.properties.subTopic3) ;
       this.properties.toggleDef = subTopics.join(';');
+      this.properties.toggle0 = subTopics.join(';');
 
       this.context.propertyPane.refresh();
       
@@ -303,7 +308,8 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       this.properties.subTopic2 = topics.subTopic2;
       this.properties.subTopic3 = topics.subTopic3;
 
-      this.properties.toggleDef = topics.toggleDef;      
+      this.properties.toggleDef = topics.toggleDef;
+      this.properties.toggle0 = topics.toggleDef;
       this.properties.toggle1 = topics.toggle1;
       this.properties.toggle2 = topics.toggle2;
       this.properties.toggle3 = topics.toggle3;

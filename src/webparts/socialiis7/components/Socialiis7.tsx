@@ -144,6 +144,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     this.searchMe = this.searchMe.bind(this);
     this.toggleLayout = this.toggleLayout.bind(this);
     this.minimize = this.minimize.bind(this);
+
     /*
 
       toggleTips?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
@@ -179,7 +180,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     if (this.props.topics !== prevProps.topics) {  rebuildPivots = true ; }
 
     if (rebuildPivots === true) {
-      this._updateStateOnPropsChange({});
+      this._updateStateOnPropsChange({}, null);
     }
 
   }
@@ -317,10 +318,42 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     );
   }
 
-  private _updateStateOnPropsChange(params: any ): void {
+  private _updateStateOnPropsChange(params: any , newTopics : string): void {
+
+    let topics : ITopics = this.props.topics;
+    let newCurrent : any = 0;
+    let redoTopics : string[] = this.props.topics.toggleDef.split(';');
+
+    function getNewCurrent(oldCurrent: number, getTopics: ITopics) {
+      let newCurrentX : number = oldCurrent < 3 ? oldCurrent + 1 : 0 ;
+      let tempTopics1 : string = getTopics['toggle' + newCurrentX];
+      let tempTopicsRaw = tempTopics1.replace(/;/g,'');
+      if (tempTopicsRaw.length > 0 ) { return newCurrentX;} else { getNewCurrent(newCurrentX, getTopics); }
+
+    }
+
+    if ( newTopics == null ) { 
+      
+    } else if ( newTopics === 'toggle' ) { 
+
+      newCurrent = getNewCurrent(this.state.topics.current, this.props.topics );
+      redoTopics = this.props.topics['toggle' + newCurrent].split(';');
+      topics.current = newCurrent;
+
+    } else if (newTopics.toString().toLowerCase() === 'random' ) { 
+
+
+    } else if (newTopics.length  > 0 ) { 
+      redoTopics = newTopics.split(';');
+      
+    }
+
+    topics.mainTopic = redoTopics[0];
+    topics.subTopic1 = redoTopics[1];
+    topics.subTopic2 = redoTopics[2];
+    topics.subTopic3 = redoTopics[3];
 
     this.onNavClick = this.onNavClick.bind(this);
-    let topics : ITopics = this.props.topics;
 
     let currentPivotSet = "keysForTopic";
 
@@ -362,6 +395,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       masterListLoaded: masterListLoaded,
       allLoaded: allLoaded,
       loadOrder: loadOrder,
+      
     });
 
   }
@@ -875,19 +909,18 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
   
   public toggleLayout = (item: any): void => {
     //This sends back the correct pivot category which matches the category on the tile.
+    console.log('toggleLayout');
 
-    let setLayout = this.state.setLayout;
+    let e: any = event;
+    console.log(e);
+    if (e.altKey && e.shiftKey && !e.ctrlKey) { 
 
-    if (setLayout === "Card") {
-      setLayout = 'setSizeProp'; //this.props.setSize
-    } else if (setLayout === "List") {
-      setLayout = "Card";
-    } else {       setLayout = "List"; }
+    } else if (e.ctrlKey) { 
+      this._updateStateOnPropsChange({}, '');
+    } else {
+      this._updateStateOnPropsChange({}, 'toggle');
 
-    this.setState({
-      setLayout: setLayout,
-    });
-
+    }
   } //End toggleTips  
 
   public toggleTips = (item: any): void => {
