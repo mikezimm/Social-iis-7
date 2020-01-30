@@ -272,6 +272,8 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let noListFound = myErrors.NoListFound(this.props,this.state);
     let noItemsFound = myErrors.NoItemsFound(this.props,this.state);
     let loadingSpinner = myErrors.LoadingSpinner(this.state);
+
+    let NoItemsForTopics = myErrors.NoItemsForTopics(this.props, this.state);
     let showTopics = this.state.selectedEntity == null ? "yes" : this.state.showTips;
     let WebpartWidth = this.state.WebpartWidth.toString();
     return (
@@ -284,6 +286,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
             <Stack horizontal={false} horizontalAlign={"space-between"} tokens={stackFormHeaderTokens}>{/* Stack Command and Pivot area */}
               <div style={{width: `${WebpartWidth}px` }}></div>
               { this.createCommandBarObject()  }
+              { ( NoItemsForTopics )}
               { ( showTopics === "yes" ? ( buildTips ) : "" ) }
               { ( listBuild ) }
               
@@ -324,19 +327,13 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
     let newCurrent : any = 0;
     let redoTopics : string[] = this.props.topics.toggleDef.split(';');
 
-    function getNewCurrent(oldCurrent: number, getTopics: ITopics) {
-      let newCurrentX : number = oldCurrent < 3 ? oldCurrent + 1 : 0 ;
-      let tempTopics1 : string = getTopics['toggle' + newCurrentX];
-      let tempTopicsRaw = tempTopics1.replace(/;/g,'');
-      if (tempTopicsRaw.length > 0 ) { return newCurrentX;} else { getNewCurrent(newCurrentX, getTopics); }
-
-    }
 
     if ( newTopics == null ) { 
       
     } else if ( newTopics === 'toggle' ) { 
 
-      newCurrent = getNewCurrent(this.state.topics.current, this.props.topics );
+      newCurrent = this.getFirstEmptyTopic(this.props.topics ) > this.state.topics.current + 1 ? this.state.topics.current + 1 : 0 ;
+      console.log('newCurrent', newCurrent);
       redoTopics = this.props.topics['toggle' + newCurrent].split(';');
       topics.current = newCurrent;
 
@@ -367,6 +364,12 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     let currentPivots : IPivot[][] = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
 
+
+    //https://stackoverflow.com/a/43363105/4210807 - Get sum of array items
+    let entArrays = currentPivots == null ? [] : currentPivots.map(pivs => { return pivs.length; } );
+    let entCount = entArrays.reduce((a,b) => a + b,0);
+    console.log('noEntitiesFound',entArrays, entCount);
+
     let localListLoaded = this.props.useLocalList && this.props.localListURL.length > 0 ? false : true;
     let masterListLoaded = this.props.useMasterList && this.props.masterListURL.length > 0 ? false : true;
     let allLoaded = ( localListLoaded && masterListLoaded ) ? true : false;
@@ -376,10 +379,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
     this.setState({
       WebpartHeight: this.props.WebpartElement.getBoundingClientRect().height,
-      WebpartWidth:  this.props.WebpartElement.getBoundingClientRect().width,
+      WebpartWidth:  this.props.WebpartElement.getBoundingClientRect().width - 50 ,
       pivots: pivots,
       selectedMedia: '',
-      loadStatus: "updating Props",
+      loadStatus: entCount === 0 ? "NoItemsForTopics" : "updating Props",
       currentPivotSet: currentPivotSet,
       currentPivots: currentPivots,
       selectedEntity: selectedEntity,
@@ -400,7 +403,18 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
 
   }
 
-  
+  private getFirstEmptyTopic(getTopics: ITopics) {
+
+    if (getTopics.toggle0 == "") { return 0; }
+    if (getTopics.toggle1 == "") { return 1; }
+    if (getTopics.toggle2 == "") { return 2; }
+    if (getTopics.toggle3 == "") { return 3; }
+    if (getTopics.toggle4 == "") { return 4; }
+    return 5;
+  }
+
+
+
   private rebuildNonListEntities() {
 
     this.onNavClick = this.onNavClick.bind(this);
@@ -841,13 +855,18 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
      currentPivots = [pivots.subTopic1Titles,pivots.subTopic2Titles,pivots.subTopic3Titles];
    }
 
+   let entArrays = currentPivots == null ? [] : currentPivots.map(pivs => { return pivs.length; } );
+   let entCount = entArrays.reduce((a,b) => a + b,0);
+   console.log('noEntitiesFound',entArrays, entCount);
+
    let loadOrder: string[] = this.state.loadOrder;
    loadOrder.push(localOrMaster);
 
    this.setState({
      pivots: pivots,
+     WebpartWidth:  this.props.WebpartElement.getBoundingClientRect().width - 50 ,
      selectedMedia: '',
-     loadStatus: "updating list Entities",
+     loadStatus: entCount > 0 ? "updating list Entities" : "NoItemsForTopics",
      currentPivotSet: currentPivotSet,
      currentPivots: currentPivots,
      selectedEntity: selectedEntity,

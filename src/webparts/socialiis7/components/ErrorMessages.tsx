@@ -127,6 +127,34 @@ export function NoListFound (parentProps: ISocialiis7Props,parentState: ISociali
       return noListFound;
 }
 
+
+export function NoItemsForTopics (parentProps: ISocialiis7Props,parentState: ISocialiis7State) {
+  //  console.log('NoListFound');
+  //  console.log(parentProps);
+  
+      const fixedURL = Utils.fixURLs(parentProps.localListURL, parentProps.pageContext);
+  
+      const errMessage = SanitizeErrorMessage(parentState.loadError);
+
+      const primaryFilter = parentState.topics.mainTopic;
+      const subTopics = [parentState.topics.subTopic1,parentState.topics.subTopic2, parentState.topics.subTopic3].join('; ');
+
+      const noItemsFound = 
+      <div className={styles.rowNoPad}>
+        <div className={parentState.loadStatus === "NoItemsForTopics" ? [styles.showErrorMessage, styles.showTextRed].join(' ') : styles.hideMe }>
+          <p>{parentState.loadError}</p>
+          <h1>No items were found with these topics: </h1>
+          <h3> - Main topic (required): { primaryFilter }</h3>
+          <h3> - combined with at least one of these topics: { subTopics } </h3>
+          {errMessage}
+          <p>You can also get this message if you do not have permissions to the list.</p>
+        </div>
+      </div>;
+  
+    
+        return noItemsFound;
+  }
+
 export function NoItemsFound (parentProps: ISocialiis7Props,parentState: ISocialiis7State) {
 //  console.log('NoListFound');
 //  console.log(parentProps);
