@@ -2,11 +2,11 @@
 import { IEntity } from '../ISocialiis7Props';
 
 
-export function Sample(){
+export function MSGraph(){
 
   const entity :IEntity = {
-    Title: 'Add Title of Entity', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    Title: 'MSGraph', //
+    keywords: ["MSOffice","MSGraph","Online","Developer"], // Can be any number of
     profilePic: "",
     blog: [
       {
@@ -73,10 +73,21 @@ export function Sample(){
           objectID: '', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
+          NavTitle: 'Getting started with Graph',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLWZJrkeLOrbY-OrrFV_oKezJ9O86oMNrf', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
+        },{
+          NavTitle: 'Graph Developer Training',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: 'PLWZJrkeLOrbadEAXLIxYkkWxQBHiapCss', //Used to determine what functions to have avaialble
+          url: '', // to be used as generic link if no API key is given
+        },{
+          NavTitle: 'Graph Community Calls',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: 'PLWZJrkeLOrbabneRhISU-N7uK4PvVy-jV', //Used to determine what functions to have avaialble
+          url: '', // to be used as generic link if no API key is given
+
         }
       ] // End YouTube items
     }, // End YouTube

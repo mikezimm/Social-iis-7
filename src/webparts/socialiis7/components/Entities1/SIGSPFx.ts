@@ -5,7 +5,7 @@ export function SIGSPFx(){
 
     const entity :IEntity = {
       Title: 'SIG SPFx', //
-      keywords: ["SIG","SharePoint","SPFx"],
+      keywords: ["SIG","MSOffice","SharePoint","SPFx"],
       profilePic: "https://developer.microsoft.com/en-us/office/blogs/wp-content/uploads/2020/01/Slide2-900x360.png",
       blog: [
         {
@@ -62,15 +62,15 @@ export function SIGSPFx(){
             objectID: '', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           },{
-            NavTitle: '',
-            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
-            url: '', // to be used as generic link if no API key is given
-          },{
             NavTitle: 'SPFx call playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x', //Used to determine what functions to have avaialble
             url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OXdcwfcHGsGr78nHWLRsv1x', // to be used as generic link if no API key is given
+          },{
+            NavTitle: 'SharePoint Pnp Community Channel',
+            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+            objectID: 'UC_mKdhw-V6CeCM7gTo_Iy7w', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video

@@ -2,11 +2,11 @@
 import { IEntity } from '../ISocialiis7Props';
 
 
-export function Sample(){
+export function SIGPowerApps(){
 
   const entity :IEntity = {
-    Title: 'Add Title of Entity', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    Title: 'SIG PowerApps', //
+    keywords: ["SIG","MSOffice","PowerApps","Online"], // Can be any number of
     profilePic: "",
     blog: [
       {
@@ -61,6 +61,11 @@ export function Sample(){
           NavTitle: '',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
           objectID: '', //Used to determine what functions to have avaialble
+          url: '', // to be used as generic link if no API key is given
+        },{
+          NavTitle: 'PowerApps Community Calls',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: 'PLWZJrkeLOrbZHcO-s6DcXChodEjJ611nJ', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
           NavTitle: '',

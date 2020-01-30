@@ -65,57 +65,71 @@ public getTopics (mainTopic: string) {
   let specific = '';
   let random = '';
 
+
+  let SIGs = ['SIG','SharePoint','MSOnline'].join(';');
+  let SharePointDev = ['SharePoint','SIG','MVP','SPFx'].join(';');
+  let SharePointMVPs = ['SharePoint','MVP'].join(';');
+  let SharePointPowerUsers = ['SharePoint','ListFormatting','ColumnFormatting','PowerUsers'].join(';');
+  let SharePowerWebParts = ['SPFx','Socialiis7','TrackMyTime7','PivotTiles'].join(';');
+
+  let Regulatory = ['Regulatory','Auto','NA','EU'].join(';');
+  let Tradeshows = ['Tradeshow','Auto','Electronics'].join(';');
+  let AutoOEMs = ['Auto','OEM'].join(';');
+  let AutoPassive = ['Auto','Passive'].join(';');
+
   if ( mainTopic === 'MSFT') {
     subTopic1 = "MSFT";
     subTopic2 = "";
     subTopic3 = "";
+    toggle1 = SIGs;
 
   } else if ( mainTopic === 'SharePoint') {
     subTopic1 = "SIG";
     subTopic2 = "MSFT";
     subTopic3 = "MVP";
 
-    toggle1 = ['SPFx','SIG'].join(';');
-    toggle2 = ['SPFx','MVP'].join(';');
-    toggle3 = ['SPFx','PowerUsers'].join(';');
-
+    toggle1 = SharePointPowerUsers;
+    toggle2 = SharePointMVPs;
+    toggle3 = SharePowerWebParts;
+    toggle4 = SIGs;
 
   } else if ( mainTopic === 'SPFx') {
     subTopic1 = "SIG";
     subTopic2 = "MSFT";
     subTopic3 = "MVP";
-    toggle1 = ['SPFx','Socialiis7','TrackMyTime7','PivotTiles'].join(';');
+    toggle1 = SIGs;
+    toggle2 = SharePowerWebParts;
 
   } else if ( mainTopic === 'Auto') {
     subTopic1 = "OEM";
     subTopic2 = "Passive";
     subTopic3 = "Active";
-    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
-    toggle2 = ['Tradeshow','Auto','Electronics'].join(';');
+    toggle1 = Regulatory;
+    toggle2 = Tradeshows;
 
   } else if ( mainTopic === 'Regulatory') {
     subTopic1 = "Auto";
     subTopic2 = "NA";
     subTopic3 = "EU";
-    toggle1 = ['Tradeshow','Auto','Electronics'].join(';');
-    toggle2 = ['Auto','OEM'].join(';');
+    toggle1 = Tradeshows;
+    toggle2 = AutoOEMs;
 
   } else if ( mainTopic === 'Tradeshow') {
     subTopic1 = "Auto";
     subTopic2 = "Electronics";
     subTopic3 = "";
-    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
-    toggle2 = ['Auto','OEM'].join(';');
+    toggle1 = Regulatory;
+    toggle2 = AutoOEMs;
 
   } else if ( ["GM","VW","FCA","Tata","Tesla","Ford","Tesla","Honda","Toyota"].indexOf(mainTopic) > -1 ) {
     subTopic1 = "OEM";
     subTopic2 = "Brand";
     subTopic3 = "Vehicle";
 
-    toggle1 = ['Regulatory','Auto','NA','EU'].join(';');
-    toggle2 = ['Tradeshow','Auto','Electronics'].join(';');
-    toggle3 = ['Auto','OEM'].join(';');
-    toggle4 = ['Auto','Passive'].join(';');
+    toggle1 = Regulatory;
+    toggle2 = Tradeshows;
+    toggle3 = AutoPassive;
+    toggle4 = AutoOEMs;
 
   } else if ( mainTopic === 'Gaming') {
     subTopic1 = "PC";
@@ -141,7 +155,8 @@ public getTopics (mainTopic: string) {
     subTopic1 = "Online";
     subTopic2 = "Application";
     subTopic3 = "SharePoint";
-    toggle1 = ['SharePoint','ListFormatting','PowerUsers'].join(';');
+    toggle1 = SIGs;
+    toggle2 = SharePointPowerUsers;
 
   } else {
     subTopic1 = mainTopic;

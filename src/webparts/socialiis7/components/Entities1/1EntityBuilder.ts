@@ -15,16 +15,28 @@ export function buildEntities(onNavClick ) {
     let Entities : IEntity[] = [];
     //console.log('ents', ents);
     let thisSource = 'Entities1';
+
+    //MVPs
     Entities.push( addOtherProps(ents.AndrewConnell(),onNavClick, thisSource ) );
     Entities.push( addOtherProps(ents.DavidWarner(),onNavClick, thisSource ) );
     Entities.push( addOtherProps(ents.HugoBernier(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick, thisSource ) );
+
+    //MSFT
     Entities.push( addOtherProps(ents.JeffTeper(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick, thisSource ) );
+
+    //SIGs
     Entities.push( addOtherProps(ents.SIGGeneralDev(),onNavClick,thisSource ) );
     Entities.push( addOtherProps(ents.SIGMonthlyDev(),onNavClick, thisSource ) );
     Entities.push( addOtherProps(ents.SIGSPFx(),onNavClick, thisSource ) );
-    Entities.push( addOtherProps(ents.VesaJuvonen(),onNavClick, thisSource ) );
-    Entities.push( addOtherProps(ents.TheChrisKent(),onNavClick, thisSource ) );
-    
+    Entities.push( addOtherProps(ents.SIGMSTeams(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGGraph(),onNavClick, thisSource ) );
+    Entities.push( addOtherProps(ents.SIGPowerApps(),onNavClick, thisSource ) );
+
+    //Topics
+    Entities.push( addOtherProps(ents.SPFx(),onNavClick, thisSource ) );
+
     return Entities;
 }
 

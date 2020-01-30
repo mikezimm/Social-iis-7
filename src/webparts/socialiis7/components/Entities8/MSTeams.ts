@@ -2,11 +2,11 @@
 import { IEntity } from '../ISocialiis7Props';
 
 
-export function Sample(){
+export function MSTeams(){
 
   const entity :IEntity = {
-    Title: 'Add Title of Entity', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    Title: 'MSTeams', //
+    keywords: ["MSOffice","MSTeams","Online"], // Can be any number of
     profilePic: "",
     blog: [
       {
@@ -58,20 +58,26 @@ export function Sample(){
       order: 0, //For Sorting
       items: [
         {
-          NavTitle: '',
+          NavTitle: 'Learn how to build Teams Apps',
           objectType: 'Video', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'ZH0sqPeNVbk', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
+          NavTitle: 'MSFT365 Developer',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'UCV_6HOhwxYLXAGd-JOqKPoQ', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
+            NavTitle: 'MSTeams Developer Training',
+            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectID: 'PLWZJrkeLOrbYIpskTq7ggZIQF9iWhvWpG', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
+        },{
+          NavTitle: 'Teams Community Calls',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
+          objectID: 'PLWZJrkeLOrbbTKzV1sQOFAXd_s0BHJDiL', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
+
         },{
           NavTitle: '',
           objectType: 'Playlist', //user,Channel, Playlist, Videos, Video

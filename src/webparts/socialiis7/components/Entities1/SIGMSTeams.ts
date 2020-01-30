@@ -2,11 +2,11 @@
 import { IEntity } from '../ISocialiis7Props';
 
 
-export function Sample(){
+export function SIGMSTeams(){
 
   const entity :IEntity = {
-    Title: 'Add Title of Entity', //
-    keywords: ["Keyword1","Keyword2","Keyword3"], // Can be any number of
+    Title: 'SIG MSTeams', //
+    keywords: ["SIG","MSOffice","Online","MSTeams"], // Can be any number of
     profilePic: "",
     blog: [
       {
@@ -63,20 +63,31 @@ export function Sample(){
           objectID: '', //Used to determine what functions to have avaialble
           url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
-          objectType: 'Channel', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          url: '', // to be used as generic link if no API key is given
+            NavTitle: 'Teams Community Calls',
+            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectID: 'PLWZJrkeLOrbbTKzV1sQOFAXd_s0BHJDiL', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
-          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          url: '', // to be used as generic link if no API key is given
+            NavTitle: 'Learn how to build Teams Apps',
+            objectType: 'Video', //user,Channel, Playlist, Videos, Video
+            objectID: 'ZH0sqPeNVbk', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
         },{
-          NavTitle: '',
-          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          url: '', // to be used as generic link if no API key is given
+            NavTitle: 'MSTeams Developer Training',
+            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectID: 'PLWZJrkeLOrbYIpskTq7ggZIQF9iWhvWpG', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
+        },{
+            NavTitle: 'MSFT365 Developer',
+            objectType: 'Channel', //user,Channel, Playlist, Videos, Video
+            objectID: 'UCV_6HOhwxYLXAGd-JOqKPoQ', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
+
+        },{
+            NavTitle: '',
+            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectID: '', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
         }
       ] // End YouTube items
     }, // End YouTube
