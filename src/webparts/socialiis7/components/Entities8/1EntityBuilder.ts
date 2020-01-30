@@ -12,6 +12,7 @@ export function buildEntities8(onNavClick ) {
     let thisSource: string = 'Entities8';
     Entities.push(addOtherProps(ents.PowerBI(), onNavClick, thisSource));
     Entities.push(addOtherProps(ents.Excel(), onNavClick, thisSource));
+    Entities.push(addOtherProps(ents.AviSingh(), onNavClick, thisSource));
     
     return Entities;
 }

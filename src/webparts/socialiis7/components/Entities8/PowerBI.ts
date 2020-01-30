@@ -72,6 +72,11 @@ export function PowerBI(){
             objectID: 'UCJ7UhloHSA4wAqPzyi6TOkw', //Used to determine what functions to have avaialble
             url: 'https://www.youtube.com/channel/UCJ7UhloHSA4wAqPzyi6TOkw', // to be used as generic link if no API key is given
           },{
+            NavTitle: "Avi Singh",
+            url: "UCRNmSv7mAPYiC0Y40TJijAw",
+            objectType: "channel",
+            objectID: "UCRNmSv7mAPYiC0Y40TJijAw",
+          },{
             NavTitle: '',
             objectType: 'Video', //user,Channel, Playlist, Videos, Video
             objectID: '', //Used to determine what functions to have avaialble

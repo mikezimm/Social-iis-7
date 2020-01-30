@@ -57,9 +57,9 @@ export function Excel(){
         order: 0, //For Sorting
         items: [
           {
-            NavTitle: '',
-            objectType: 'Video', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            NavTitle: 'Excel Is Fun',
+            objectType: 'User', //user,Channel, Playlist, Videos, Video
+            objectID: 'ExcelIsFun', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
@@ -67,9 +67,9 @@ export function Excel(){
             objectID: '', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           },{
-            NavTitle: '',
+            NavTitle: 'Basics Lessons on Youtube',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            objectID: 'PLrRPvpgDmw0n34OMHeS94epMaX_Y8Tu1k', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           },{
             NavTitle: '',
