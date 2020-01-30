@@ -134,7 +134,7 @@ export interface IEntityModel {
 }
 
 export interface ITopics {
-
+    titleTopic?: string;
     mainTopic?: string;
     subTopic1?: string;
     subTopic2?: string;

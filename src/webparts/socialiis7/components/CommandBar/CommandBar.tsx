@@ -79,9 +79,10 @@ export default class MyCommandBar extends React.Component<ICommandBarProps, ICom
 
         return (
           <div className={ styles.container }>
+            <div>Left Side</div>
             <CommandBar 
               buttonAs={customButton}
-              items={ Utils.getMainItems() }
+              items={ Utils.getMainItems(this.props.topics, this.props.toggleLayout) }
               farItems={ farItems }
               styles={{
                 root: {padding:'0px !important'},

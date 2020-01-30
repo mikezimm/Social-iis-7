@@ -1,9 +1,43 @@
 //Utils Concept from:  https://stackoverflow.com/questions/32790311/how-to-structure-utility-class
+import { ISocialiis7Props, ITopics, IEntity, NonArrayNodes } from '../ISocialiis7Props';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData, IListEntities} from '../ISocialiis7State';
 
 export class Utils {
 
-    public static getMainItems() {
-      return [];
+    public static getMainItems( parentTopics: ITopics , toggleLayout) {
+
+      let thisTitle = 'Topics ' +  parentTopics.current + ' of 4: ';
+/*
+      thisTitle += "\"" + parentTopics.mainTopic + "\" and ";
+      thisTitle += parentTopics.subTopic1.length > 0 ? " or \"" + parentTopics.subTopic1 + "\"" : "" ;
+      thisTitle += parentTopics.subTopic2.length > 0 ? " or \"" + parentTopics.subTopic2 + "\"" : "" ;
+      thisTitle += parentTopics.subTopic3.length > 0 ? " or \"" + parentTopics.subTopic3 + "\"" : "" ;
+      thisTitle = thisTitle.replace('and  or', 'and'); //Clean up any extra words
+*/
+      thisTitle += "\"" + parentTopics.mainTopic + "\" and one of these: ";
+      let currentTopics: string[] = [];
+      
+      if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic1) + "\""; }
+      if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic2) + "\""; }
+      if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic3) + "\""; }
+      thisTitle += currentTopics.join(' or ');
+
+      return [
+        {
+          key: 'Topics',
+          name: 'Topics',
+          text: thisTitle,
+          ariaLabel: 'Topics',
+          disabled: false,
+          allowDisabledFocus: true,
+          checked: true, // Tells wether it is check or not by default.
+          iconProps: {
+            iconName: 'DoubleChevronLeftMedMirrored',
+
+          },
+          onClick: () => toggleLayout(),
+        }
+      ];
     }
 
     public static getOverlflowItems() {
@@ -60,7 +94,7 @@ export class Utils {
           name: '',
           ariaLabel: 'Layout',
           iconProps: {
-            iconName: ( thisProps.setLayout === "List" ? 'NumberedList' : thisProps.setLayout === "Card" ? "Tiles" : "GridViewSmall" ),
+            iconName: ( thisProps.setLayout === "Refresh" ? 'Refresh' : thisProps.setLayout === "Refresh" ? "Refresh" : "Refresh" ),
           }, 
           onClick: () => toggleLayout()
         },

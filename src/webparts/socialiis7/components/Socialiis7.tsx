@@ -198,6 +198,7 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
           commandClass = {(tipError ? 'warnTips' : '') }
           minimize = { this.minimize.bind(this) }
           setLayout = { this.state.setLayout }
+          topics= { this.state.topics }
         />;
 
       return commandPart;
@@ -345,10 +346,10 @@ export default class Socialiis7 extends React.Component<ISocialiis7Props, ISocia
       
     }
 
-    topics.mainTopic = redoTopics[0];
-    topics.subTopic1 = redoTopics[1];
-    topics.subTopic2 = redoTopics[2];
-    topics.subTopic3 = redoTopics[3];
+    topics.mainTopic = redoTopics[0] == null ? '' : redoTopics[0] ;
+    topics.subTopic1 = redoTopics[1] == null ? '' : redoTopics[1] ;
+    topics.subTopic2 = redoTopics[2] == null ? '' : redoTopics[2] ;
+    topics.subTopic3 = redoTopics[3] == null ? '' : redoTopics[3] ;
 
     this.onNavClick = this.onNavClick.bind(this);
 

@@ -276,10 +276,10 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
       this.properties.toggle0 = newValue;
       let subTopics : string[] = newValue.split(';');
 
-      this.properties.mainTopic = subTopics[0] ? subTopics[0] : '';
-      this.properties.subTopic1 = subTopics[1] ? subTopics[1] : '';
-      this.properties.subTopic2 = subTopics[2] ? subTopics[2] : '';
-      this.properties.subTopic3 = subTopics[3] ? subTopics[3] : '';
+      this.properties.mainTopic = subTopics[0] == null ? '' : subTopics[0] ;
+      this.properties.subTopic1 = subTopics[1] == null ? '' : subTopics[1] ;
+      this.properties.subTopic2 = subTopics[2] == null ? '' : subTopics[2] ;
+      this.properties.subTopic3 = subTopics[3] == null ? '' : subTopics[3] ;
 
       this.context.propertyPane.refresh();
       
