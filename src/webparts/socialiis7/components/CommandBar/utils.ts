@@ -17,9 +17,9 @@ export class Utils {
       thisTitle += "\"" + parentTopics.mainTopic + "\" and one of these: ";
       let currentTopics: string[] = [];
       
-      if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic1) + "\""; }
-      if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic2) + "\""; }
-      if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic3) + "\""; }
+      if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic1 + "\"" ); }
+      if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic2 + "\"" ); }
+      if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic3 + "\"" ); }
       thisTitle += currentTopics.join(' or ');
 
       return [
@@ -28,9 +28,9 @@ export class Utils {
           name: 'Topics',
           text: thisTitle,
           ariaLabel: 'Topics',
-          disabled: false,
-          allowDisabledFocus: true,
-          checked: true, // Tells wether it is check or not by default.
+          //disabled: false,
+          //allowDisabledFocus: true,
+          //checked: true, // Tells wether it is check or not by default.
           iconProps: {
             iconName: 'DoubleChevronLeftMedMirrored',
 
