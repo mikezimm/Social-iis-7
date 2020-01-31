@@ -46,6 +46,12 @@ npm install webpack-bundle-analyzer --save-dev  (2020-01-28:  To analyze web pac
 ```
 
 ## ToDo
+
+Provision Assets guide:
+https://dips365.com/2019/08/12/spassetsusingspfx/
+
+
+
 look at this regex for removing comments from json:
 https://www.regextester.com/94245
 

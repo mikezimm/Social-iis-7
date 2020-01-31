@@ -24,11 +24,17 @@ export class Utils {
       */
             thisTitle += "\"" + parentTopics.mainTopic + "\" and one of these: ";
             let currentTopics: string[] = [];
-            
+            /* Alternate heading feel
             if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic1 + "\"" ); }
             if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic2 + "\"" ); }
             if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic3 + "\"" ); }
-            thisTitle += currentTopics.join(' or ');
+          */
+            let spacer = " | ";
+            if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( parentTopics.subTopic1 ); }
+            if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( parentTopics.subTopic2 ); }
+            if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( parentTopics.subTopic3 ); }
+
+            thisTitle +=  spacer+ currentTopics.join(spacer) + spacer;
 
         return thisTitle;
     }

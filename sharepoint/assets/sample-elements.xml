@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+ <Field ID="{<<<<< ADD Field1 GUID HERE >>>>>}"
+            Name="<<<<< ADD Field1 Name HERE >>>>>"
+            DisplayName="<<<<< ADD Field1 Display Name HERE >>>>>"
+            Type="Currency"
+            Decimals="2"
+            Min="0"
+            Required="FALSE"
+            Group="SPFx Columns" />
+ <Field ID="{<<<<< ADD Field2 GUID HERE >>>>>}"
+            Name="<<<<< ADD Field2 Name HERE >>>>>"
+            DisplayName="<<<<< ADD Field2 Display Name HERE >>>>>"
+            Type="Choice"
+            Required="FALSE"
+            Group="SPFx Columns">
+        <CHOICES>
+        <CHOICE>Administration</CHOICE>
+        <CHOICE>Information</CHOICE>
+        <CHOICE>Facilities</CHOICE>
+        <CHOICE>Operations</CHOICE>
+        <CHOICE>Sales</CHOICE>
+        <CHOICE>Marketing</CHOICE>
+        </CHOICES>
+    </Field>
+    <ContentType ID="0x0100<<<<< ADD ContentType GUID HERE >>>>>"
+            Name="<<<<< ADD Name HERE >>>>>"
+            Group="<<<<< ADD Group HERE >>>>>"
+            Description="<<<<< ADD Content Type Description HERE >>>>>">
+        <FieldRefs>
+            <FieldRef ID="{<<<<< ADD Field1 GUID HERE >>>>>}" /> 
+            <FieldRef ID="{<<<<< ADD Field2 GUID HERE >>>>>}" />
+        </FieldRefs>
+    </ContentType> 
+    <ListInstance
+            CustomSchema="<<<<< ADD CustomSchema FileName HERE >>>>>"
+            FeatureId="<<<<< ADD FeatureId GUID HERE >>>>>"
+            Title="<<<<< ADD List Title HERE >>>>>"
+            Description="<<<<< ADD List Description HERE >>>>>"
+            TemplateType="100"
+            Url="Lists/<<<<< ADD Url HERE >>>>>">
+    </ListInstance>
+</Elements>

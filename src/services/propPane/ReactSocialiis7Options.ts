@@ -66,7 +66,7 @@ public getTopics (mainTopic: string) {
   let random = '';
 
 
-  let SIGs = ['SIG','SharePoint','MSOnline'].join(';');
+  let SIGs = ['SIG','SharePoint','Online'].join(';');
   let SharePointDev = ['SharePoint','SIG','MVP','SPFx'].join(';');
   let SharePointMVPs = ['SharePoint','MVP'].join(';');
   let SharePointPowerUsers = ['SharePoint','ListFormatting','ColumnFormatting','PowerUsers'].join(';');

@@ -1,6 +1,7 @@
 import { string } from "prop-types";
 
 import { PageContext } from '@microsoft/sp-page-context';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 
@@ -159,7 +160,8 @@ export interface ISocialiis7Props {
   urlVars: {};
   pageType: string; //localWorkbench; hostedWorkbench; SharePoint
   WebpartElement: HTMLElement;   //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
- 
+  wpContext: WebPartContext;
+
   // 1 - Analytics options
   useListAnalytics: boolean;
   analyticsWeb?: string;

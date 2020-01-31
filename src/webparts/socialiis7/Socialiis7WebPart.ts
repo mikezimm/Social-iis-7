@@ -18,7 +18,7 @@ import { socialiis7OptionsGroup } from '../../services/propPane/ReactSocialiis7O
 import { saveTheTime, getTheCurrentTime, saveAnalytics } from '../../services/createAnalytics';
 
 import { PageContext } from '@microsoft/sp-page-context';
-
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'Socialiis7WebPartStrings';
 import Socialiis7 from './components/Socialiis7';
@@ -29,6 +29,7 @@ export interface ISocialiis7WebPartProps {
   // 0 - Context
   description: string;
   pageContext: PageContext;
+  wpContext: WebPartContext;
 
   // 1 - Analytics options
   useListAnalytics: boolean;
@@ -124,6 +125,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
   public render(): void {
 
     let tenant = this.context.pageContext.web.absoluteUrl.replace(this.context.pageContext.web.serverRelativeUrl,"");
+    
     let locationhref = window.location.href ? window.location.href : '';
     let pageType = 'Unknown'; //localWorkbench; hostedWorkbench; SharePoint
     if ( locationhref && locationhref.indexOf("layouts/15/workbench.aspx") > 0  ) {
@@ -143,6 +145,7 @@ export default class Socialiis7WebPart extends BaseClientSideWebPart<ISocialiis7
         tenant: tenant,
         urlVars: this.getUrlVars(),
         pageType: pageType,
+        wpContext: this.context,
         
         //Size courtesy of https://www.netwoven.com/2018/11/13/resizing-of-spfx-react-web-parts-in-different-scenarios/
         WebpartElement:this.domElement,
