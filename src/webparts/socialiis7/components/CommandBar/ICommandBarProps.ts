@@ -1,3 +1,6 @@
+import { ISocialiis7Props, ITopics, IEntity, NonArrayNodes } from '../ISocialiis7Props';
+import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData, IListEntities} from '../ISocialiis7State';
+
 export interface ICommandBarProps {
       /**
      * Callback for when the selected pivot item is changed.
@@ -9,6 +12,7 @@ export interface ICommandBarProps {
     toggleLayout?: (item?: any, ev?: React.MouseEvent<HTMLElement>) => void;
     commandClass?: string;
     setLayout?: string;
+    topics?: ITopics;
 
   }
 

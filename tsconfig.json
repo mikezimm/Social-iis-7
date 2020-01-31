@@ -29,7 +29,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "src/webparts/socialiis7/components/AboutPage.tsx", "src/webparts/socialiis7/components/tweetsFeed/TweetsFeedWebPart.tsx"
+    "src/**/*.ts", "src/webparts/socialiis7/components/AboutPage.tsx", "src/webparts/socialiis7/components/tweetsFeed/TweetsFeedWebPart.tsx", "src/webparts/socialiis7/components/CommandBar/utils.tsx"
   ],
   "exclude": [
     "node_modules",

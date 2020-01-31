@@ -1,15 +1,19 @@
 import * as React from 'react';
 
-import { CommandBar,  } from "office-ui-fabric-react/lib/CommandBar";
-import {CommandBarButton, IButtonProps} from "office-ui-fabric-react/lib/Button";
+import { CommandBar, ICommandBarItemProps, } from "office-ui-fabric-react/lib/CommandBar";
+import {CommandBarButton, IButtonProps,} from "office-ui-fabric-react/lib/Button";
+import {IComponentAs, IComponentAsProps,} from "office-ui-fabric-react/lib/Utilities";
+
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import styles from './CommandBar.module.scss';
-//import tUtils from './utilTiles'
 
 
 import { ICommandBarProps } from './ICommandBarProps';
 import { ICommandBarState } from './ICommandBarState';
 import { Utils } from './utils';
+
 
 export default class MyCommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
 
@@ -20,11 +24,7 @@ export default class MyCommandBar extends React.Component<ICommandBarProps, ICom
           hovering: 10,
           visible:10
         };
-        /*
-                console.log('Constructor: MyCommandBar');
-                console.log(this.props);
-                console.log(this.state);
-        */
+
         console.log(this.props);
         console.log(this.state);
       }
@@ -32,59 +32,114 @@ export default class MyCommandBar extends React.Component<ICommandBarProps, ICom
 
     public render(): JSX.Element {
 
+      //const CustomButton = (p: any) => {
+
+      const CustomLabelButton: IComponentAs<ICommandBarItemProps> = (p: IComponentAsProps<ICommandBarItemProps>) => {
+        //These style examples do change button color and padding
+        //<Icon {...p.iconProps} styles={{root: { marginRight: 10, color: 'green',padding: 10 }}} />
+        //<Text styles={{root: { marginRight: 10, color: 'green',padding: 10 }}}></Text>
+
+        return (
+          <>
+            <Icon {...p.iconProps} styles={{root: { padding: 3, fontSize: 18, marginRight: 10, fontWeight: 'bolder', color: '#00457E' }}}  />
+            <Text styles={{root: { marginRight: 10, fontSize: 16, color: '#00457E'}}}>
+              {p.text}
+            </Text>
+          </>
+        );
+      };
+
       const customButton = (props: IButtonProps) => {
-        //Got this const from:  https://developer.microsoft.com/en-us/fabric/#/controls/web/commandbar
-        // icon: { color: '#E20000' }, does change color of icon
-        // textContainer: { fontSize: 48 }, does NOT change size of icon
-        /*  These impact icons but not the container
-              icon: { color: '#E20000',
-              color: 'black',
-                fontSize: 48,
-                ####  This is where you can set the color for the icons
-                backgroundColor: 'white',
-             },
-            flexContainer is the larger box around just the icon but this removes onhover highlight
-            flexContainer: {backgroundColor: 'white'},
-            rootExpanded: does NOT seem to impact color of bar
-            rootExpanded: {backgroundColor: 'white'},
-            NOTE:  forcing padding: 0px around root element seems to hide gray area in dev window
-            rootFocused : does NOT do anything either
-            rootFocused : {backgroundColor: 'white',padding:'0px !important'},
-            putting padding on role="menubar" class="ms-FocusZone css-50 ms-CommandBar root-47" does do it.
-        */
-       //console.log(this.props);
-       //console.log(this.state);
+
         return (
           <CommandBarButton
             {...props}
             styles={{
               ...props.styles,
-              root: {backgroundColor: 'white'  ,padding:'0px !important'},
-              textContainer: { fontSize: 12 },
+              root: {backgroundColor: 'white'  ,padding:'10px !important', height: 32},
+              textContainer: { fontSize: 16, color: '#00457E' },
               icon: { 
                 fontSize: 18,
                 fontWeight: "bolder",
                 margin: '0px 2px',
-
              },
             }}
           />
         );
       };
 
-//      const _utils = new Utils();
-//      let ttips = new this.props.toggleTips();
-//      let farItems = _utils.getFarItems(ttips);
-      let farItems = Utils.getFarItems(this.props, this.state, this.props.toggleTips, this.props.minimize, this.props.searchMe, this.props.showAll, this.props.toggleLayout);
+      const mini : ICommandBarItemProps = { key: 'mini',  name: '',   ariaLabel: 'Minimize',
+        iconProps: {  iconName: 'ChromeMinimize', },
+        onClick: () => this.props.minimize(),
+        commandBarButtonAs: customButton
+      };
+
+      const search : ICommandBarItemProps = { key: 'search',  name: '', ariaLabel: 'Search',
+        iconProps: {  iconName: 'Search', },
+        onClick: () => this.props.searchMe(),
+        commandBarButtonAs: customButton
+      };
+
+      const all : ICommandBarItemProps = { key: 'all',   name: '',   ariaLabel: 'ShowAll',
+        iconProps: {  iconName: 'ClearFilter',  },
+        onClick: () => this.props.showAll(),
+        commandBarButtonAs: customButton
+      };
+
+      const layout : ICommandBarItemProps = { key: 'layout',  name: '', ariaLabel: 'Layout',
+        iconProps: {
+          iconName: ( this.props.setLayout === "Refresh" ? 'Refresh' : this.props.setLayout === "Refresh" ? "Refresh" : "Refresh" ),
+        }, 
+        onClick: () => this.props.toggleLayout(),
+        commandBarButtonAs: customButton
+      };
+
+      const tips : ICommandBarItemProps = { key: 'tips',  name: '',   ariaLabel: 'Tips',
+        iconProps: {
+          iconName: 'Help',
+          style: {color:( this.props.commandClass.indexOf('warnTips') > -1 ? 'red' : '')},
+        }, 
+        onClick: () => this.props.toggleTips(),
+        commandBarButtonAs: customButton
+      };
+
+      const _farItems: ICommandBarItemProps[] = [ mini,  search, all, layout , tips  ];
+
+      const _itemsClick: ICommandBarItemProps[] = [
+        { key: 'Topics',  name: 'Topics',
+          text: Utils.getTopicLabel(this.props.topics),
+          ariaLabel: Utils.getTopicLabel(this.props.topics),
+          iconProps: {
+            iconName: 'DoubleChevronLeftMedMirrored',
+          },
+          onClick: () => this.props.toggleLayout(),
+          commandBarButtonAs: customButton
+        }
+      ];
+
+      const _itemsLabel: ICommandBarItemProps[] = [
+        { key: 'Topics',
+          name: 'Topics',
+          text: Utils.getTopicLabel(this.props.topics),
+          ariaLabel: Utils.getTopicLabel(this.props.topics),
+          iconProps: {
+            iconName: 'DoubleChevronLeftMedMirrored',
+          },
+          commandBarButtonAs: CustomLabelButton
+        }
+      ];
 
         return (
-          <div className={ styles.container }>
+          <div className={ styles.cmdBar }>
             <CommandBar 
-              buttonAs={customButton}
-              items={ Utils.getMainItems() }
-              farItems={ farItems }
+              //buttonAs={customButton}
+              items={ _itemsClick }
+              farItems={ _farItems }
               styles={{
-                root: {padding:'0px !important'},
+                //root: {padding:'0px !important'},
+                root: {backgroundColor: 'white'  ,padding:'10px'},
+                primarySet: {backgroundColor: 'white'  ,padding:'10px'}, //This sets the main _items
+                secondarySet:  {backgroundColor: 'white'  ,padding:'3px', height: '32px'}, //This sets the _farRightItems
                 
               }}
             />
@@ -92,145 +147,5 @@ export default class MyCommandBar extends React.Component<ICommandBarProps, ICom
         );
       }
 
-      private getFarItems() {
-        return [
-          { key: 'mini',    name: '',    ariaLabel: 'Minimize',    iconProps: { iconName: 'ChromeMinimize' },
-            onClick: () => this.props.minimize()
-          },
-          { key: 'tips',    name: '',     ariaLabel: 'Tips',        iconProps: { iconName: 'Help' },
-            onClick: () => this.props.toggleTips()
-          },
-        ];
-      }
-
-
-
-      private getItems = () => {
-          return [];
-      }
-
-      private getOverlflowItems = () => {
-          return [];
-      }
-      private getItemsExample = () => {
-        return [
-          {
-            key: 'newItem',
-            name: 'New',
-            cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
-            iconProps: {
-              iconName: 'Add'
-            },
-            ariaLabel: 'New',
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  iconProps: {
-                    iconName: 'Mail'
-                  },
-                  ['data-automation-id']: 'newEmailButton'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  iconProps: {
-                    iconName: 'Calendar'
-                  }
-                }
-              ]
-            }
-          },
-          {
-            key: 'upload',
-            name: 'Upload',
-            iconProps: {
-              iconName: 'Upload'
-            },
-            href: 'https://dev.office.com/fabric',
-            ['data-automation-id']: 'uploadButton'
-          },
-          {
-            key: 'share',
-            name: 'Share',
-            iconProps: {
-              iconName: 'Share'
-            },
-            onClick: () => console.log('Share')
-          },
-          {
-            key: 'download',
-            name: 'Download',
-            iconProps: {
-              iconName: 'Download'
-            },
-            onClick: () => console.log('Download')
-          }
-        ];
-      }
-    
-      private getOverlflowItemsExample = () => {
-        return [
-          {
-            key: 'move',
-            name: 'Move to...',
-            onClick: () => console.log('Move to'),
-            iconProps: {
-              iconName: 'MoveToFolder'
-            }
-          },
-          {
-            key: 'copy',
-            name: 'Copy to...',
-            onClick: () => console.log('Copy to'),
-            iconProps: {
-              iconName: 'Copy'
-            }
-          },
-          {
-            key: 'rename',
-            name: 'Rename...',
-            onClick: () => console.log('Rename'),
-            iconProps: {
-              iconName: 'Edit'
-            }
-          }
-        ];
-      }
-    
-      private getFarItemsExample = () => {
-        return [
-          {
-            key: 'sort',
-            name: 'Sort',
-            ariaLabel: 'Sort',
-            iconProps: {
-              iconName: 'SortLines'
-            },
-            onClick: () => console.log('Sort')
-          },
-          {
-            key: 'tile',
-            name: 'Grid view',
-            ariaLabel: 'Grid view',
-            iconProps: {
-              iconName: 'Tiles'
-            },
-            iconOnly: true,
-            onClick: () => console.log('Tiles')
-          },
-          {
-            key: 'info',
-            name: 'Info',
-            ariaLabel: 'Info',
-            iconProps: {
-              iconName: 'Info'
-            },
-            iconOnly: true,
-            onClick: () => console.log('Info')
-          }
-        ];
-      }
   }
   
