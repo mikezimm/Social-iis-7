@@ -2,9 +2,38 @@
 import { ISocialiis7Props, ITopics, IEntity, NonArrayNodes } from '../ISocialiis7Props';
 import {IUser, ISocialiis7State, IMyPivots, IPivot, ILoadData, IListEntities} from '../ISocialiis7State';
 
+import { CommandBar,ICommandBarItemProps,  } from "office-ui-fabric-react/lib/CommandBar";
+import {CommandBarButton, IButtonProps, } from "office-ui-fabric-react/lib/Button";
+import {IComponentAs, IComponentAsProps,} from "office-ui-fabric-react/lib/Utilities";
+import {Icon} from "office-ui-fabric-react/lib/Icon";
+import {Text} from "office-ui-fabric-react/lib/Text";
+
+import styles from './CommandBar.module.scss';
+
 export class Utils {
 
-    public static getMainItems( parentTopics: ITopics , toggleLayout) {
+    public static getTopicLabel (parentTopics: ITopics){
+
+      let thisTitle = 'Topics ' +  parentTopics.current + ' of 4: ';
+      /*
+            thisTitle += "\"" + parentTopics.mainTopic + "\" and ";
+            thisTitle += parentTopics.subTopic1.length > 0 ? " or \"" + parentTopics.subTopic1 + "\"" : "" ;
+            thisTitle += parentTopics.subTopic2.length > 0 ? " or \"" + parentTopics.subTopic2 + "\"" : "" ;
+            thisTitle += parentTopics.subTopic3.length > 0 ? " or \"" + parentTopics.subTopic3 + "\"" : "" ;
+            thisTitle = thisTitle.replace('and  or', 'and'); //Clean up any extra words
+      */
+            thisTitle += "\"" + parentTopics.mainTopic + "\" and one of these: ";
+            let currentTopics: string[] = [];
+            
+            if ( parentTopics.subTopic1.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic1 + "\"" ); }
+            if ( parentTopics.subTopic2.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic2 + "\"" ); }
+            if ( parentTopics.subTopic3.length > 0  ) { currentTopics.push( "\"" + parentTopics.subTopic3 + "\"" ); }
+            thisTitle += currentTopics.join(' or ');
+
+        return thisTitle;
+    }
+    
+    public static getMainItems ( parentTopics: ITopics , toggleLayout, CustomLabelButton: any) {
 
       let thisTitle = 'Topics ' +  parentTopics.current + ' of 4: ';
 /*
@@ -36,6 +65,7 @@ export class Utils {
 
           },
           onClick: () => toggleLayout(),
+          commandBarButtonAs: CustomLabelButton({text: thisTitle}),
         }
       ];
     }
@@ -43,7 +73,8 @@ export class Utils {
     public static getOverlflowItems() {
       return [];
     }
-    
+
+
     public static getFarItems(thisProps, thisState ,toggleTips, minimize, searchMe, showAll, toggleLayout) {
       //console.log('getFarItems: thisProps', thisProps);
       //console.log('getFarItems: thisState', thisState);
@@ -57,7 +88,7 @@ export class Utils {
             iconName: 'ChromeMinimize',
 
           },
-          onClick: () => minimize()
+          onClick: () => minimize(),
         },
         {
           key: 'search',
@@ -77,7 +108,7 @@ export class Utils {
             iconName: 'Search',
 
           },
-          onClick: () => searchMe()
+          onClick: () => searchMe(),
         },
 
         {
@@ -87,7 +118,7 @@ export class Utils {
           iconProps: {
             iconName: 'ClearFilter',
           },
-          onClick: () => showAll()
+          onClick: () => showAll(),
         },
         {
           key: 'layout',
@@ -96,7 +127,7 @@ export class Utils {
           iconProps: {
             iconName: ( thisProps.setLayout === "Refresh" ? 'Refresh' : thisProps.setLayout === "Refresh" ? "Refresh" : "Refresh" ),
           }, 
-          onClick: () => toggleLayout()
+          onClick: () => toggleLayout(),
         },
         {
           key: 'tips',
@@ -106,7 +137,7 @@ export class Utils {
             iconName: 'Help',
             style: {color:( thisProps.commandClass.indexOf('warnTips') > -1 ? 'red' : '')},
           }, 
-          onClick: () => toggleTips()
+          onClick: () => toggleTips(),
         },
 
 
