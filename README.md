@@ -47,6 +47,10 @@ npm install webpack-bundle-analyzer --save-dev  (2020-01-28:  To analyze web pac
 
 ## ToDo
 
+Tweet Feed:
+Try https://github.com/saurabhnemade/react-twitter-embed
+
+
 Provision Assets guide:
 https://dips365.com/2019/08/12/spassetsusingspfx/
 

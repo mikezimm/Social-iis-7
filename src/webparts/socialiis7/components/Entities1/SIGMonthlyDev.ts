@@ -76,6 +76,11 @@ export function SIGMonthlyDev(){
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
             objectID: 'PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', //Used to determine what functions to have avaialble
             url: 'https://www.youtube.com/playlist?list=PLR9nK3mnD-OVC4_ut9bUi6ffRXLVuF0_g', // to be used as generic link if no API key is given
+          },{
+            NavTitle: 'SharePoint Dev Weekly Playlist',
+            objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+            objectID: 'PLR9nK3mnD-OVYI-St_CBiFfuL4CZbBpkC', //Used to determine what functions to have avaialble
+            url: '', // to be used as generic link if no API key is given
           }
         ] // End YouTube items
       }, // End YouTube

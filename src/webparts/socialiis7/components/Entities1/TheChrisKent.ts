@@ -63,10 +63,10 @@ export function TheChrisKent(){
       order: 0, //For Sorting
       items: [
         {
-          NavTitle: '',
-          objectType: 'Video', //user,Channel, Playlist, Videos, Video
-          objectID: '', //Used to determine what functions to have avaialble
-          url: '', // to be used as generic link if no API key is given
+          NavTitle: 'Formatting Tips',
+          objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
+          objectID: 'PLR9nK3mnD-OXgMjDBdjWUTRia89oixBhx', //Used to determine what functions to have avaialble
+          url: 'https://www.youtube.com/watch?v=0ZMWqgygzII&list=PLR9nK3mnD-OXgMjDBdjWUTRia89oixBhx', // to be used as generic link if no API key is given
         },{
           NavTitle: '',
           objectType: 'Channel', //user,Channel, Playlist, Videos, Video

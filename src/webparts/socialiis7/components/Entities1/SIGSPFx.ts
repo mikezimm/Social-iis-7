@@ -72,9 +72,9 @@ export function SIGSPFx(){
             objectID: 'UC_mKdhw-V6CeCM7gTo_Iy7w', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           },{
-            NavTitle: '',
+            NavTitle: 'SharePoint Dev Weekly Playlist',
             objectType: 'Playlist', //user,Channel, Playlist, Videos, Video
-            objectID: '', //Used to determine what functions to have avaialble
+            objectID: 'PLR9nK3mnD-OVYI-St_CBiFfuL4CZbBpkC', //Used to determine what functions to have avaialble
             url: '', // to be used as generic link if no API key is given
           }
         ] // End YouTube items
